@@ -1,8 +1,8 @@
 {
-  "name": "react-native-basepre",
-  "version": "0.0.0",
-  "description": "Hello Expo!",
-  "author": null,
+  "name": "react-native-base",
+  "version": "0.0.1",
+  "description": "Basic Layout",
+  "author": "Dragan Novakovic",
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "dependencies": {
