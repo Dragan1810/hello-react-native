@@ -15,6 +15,7 @@ import ModalScreen from '../screens/ModalScreen';
       contentComponent: DrawerContainer,
       navigationOptions: ({ navigation }) => ({
         gesturesEnabled: true,
+
       })
     });
 

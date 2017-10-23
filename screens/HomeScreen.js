@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, ScrollView, View } from 'react-native';
-import AppHeader from '../components/AppHeader';
+import { StyleSheet, Text, ScrollView, View, Image } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import AppHeader from './components/AppHeader';
-import AppSearch from './components/AppSearch';
+import AppHeader from '../components/AppHeader';
+import AppSearch from '../components/AppSearch';
 
 
 class HomeScreen extends Component {
+  static navigationOptions = {
+    drawerLabel: 'Home',
+    drawerIcon: ({ tintColor }) => (
+      <Image
+        source={require('../assets/react-navigation.png')}
+        style={[styles.icon, { tintColor }]}
+      />
+    ),
+  };
         render() {
-          //console.log(this.props.navigation)
+          const { icon, container, text, searchBar } = styles;
+         // console.log(this.props.navigation)
             return (
-                <View>
+                <View style={text}>
                   <AppHeader />
-                    <Text>Bilo staaa</Text>
+                  <View style={searchBar}>
+                    <AppSearch />
+                  </View>
+                    <Text>Testing Home Screen</Text>
                 </View>
               );
         }
