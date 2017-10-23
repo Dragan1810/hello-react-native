@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, ScrollView, View } from 'react-native';
 import AppHeader from '../components/AppHeader';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import AppHeader from './components/AppHeader';
+import AppSearch from './components/AppSearch';
 
 
 class HomeScreen extends Component {
