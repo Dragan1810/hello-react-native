@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
-import { Header } from 'react-native-elements';
+import { Header, Icon } from 'react-native-elements';
 
 class AppHeader extends Component {
     render() {
-        const { container } = styles;
         return (
             <Header
             backgroundColor={'#3D6DCC'}
-            leftComponent={{ icon: 'menu', color: '#fff' }}
+            leftComponent={<Meni navigate={this.props.navigate} />}
             centerComponent={{ text: 'ERP', style: { color: '#fff' } }}
-            rightComponent={{ icon: 'home', color: '#fff' }}
+            rightComponent={<Home navigate={this.props.navigate} />}
             />
         );
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#3D6DCC'
-    }
-});
+const Meni = (props) => (
+     <Icon name='menu' color='#fff' onPress={() => props.navigate('DrawerOpen')} />
+    );
+
+const Home = (props) => (
+    <Icon name='home' color='#fff' onPress={() => props.navigate('Home')} />
+    );
+
 
 export default AppHeader;

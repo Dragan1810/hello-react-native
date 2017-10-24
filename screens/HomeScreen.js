@@ -1,27 +1,21 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, ScrollView, View, Image } from 'react-native';
+import { StyleSheet, Text, ScrollView, View, Image, Dimensions } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AppHeader from '../components/AppHeader';
 import AppSearch from '../components/AppSearch';
 
 
 class HomeScreen extends Component {
-  static navigationOptions = {
-    drawerLabel: 'Home',
-    drawerIcon: ({ tintColor }) => (
-      <Image
-        source={require('../assets/react-navigation.png')}
-        style={[styles.icon, { tintColor }]}
-      />
-    ),
-  };
+
         render() {
+          const { width,height } = Dimensions.get('window');
+          const { navigate } = this.props.navigation;
           const { icon, container, text, searchBar } = styles;
          // console.log(this.props.navigation)
             return (
                 <View style={text}>
-                  <AppHeader />
-                  <View style={searchBar}>
+                  <AppHeader navigate={navigate} />
+                  <View style={[searchBar, { width }]}>
                     <AppSearch />
                   </View>
                     <Text>Testing Home Screen</Text>
@@ -40,8 +34,7 @@ const styles = StyleSheet.create({
     },
     searchBar: {
       alignSelf: 'flex-start',
-      height: 100,
-      width: 320,
+      height: 100
     },
     text: {
       flex: 1,
