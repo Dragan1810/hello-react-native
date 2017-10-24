@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, ScrollView, View, Image } from 'react-native';
+import { StyleSheet, Text, ScrollView, View, Image, Dimensions } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AppHeader from '../components/AppHeader';
 import AppSearch from '../components/AppSearch';
+import { Constants } from 'expo';
 
 
 class HomeScreen extends Component {
@@ -16,6 +17,7 @@ class HomeScreen extends Component {
     ),
   };
         render() {
+          let { heightD, widthD } = Dimensions.get('window');
           const { icon, container, text, searchBar } = styles;
          // console.log(this.props.navigation)
             return (
@@ -41,7 +43,7 @@ const styles = StyleSheet.create({
     searchBar: {
       alignSelf: 'flex-start',
       height: 100,
-      width: 320,
+      width: widthD,
     },
     text: {
       flex: 1,

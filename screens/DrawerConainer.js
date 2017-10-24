@@ -44,7 +44,7 @@ export default class DrawerContainer extends Component {
                 </Card>
                 <List style={{paddingTop: 0, marginTop: 0 }}>
                     {list.map((item, i) => (
-                    <TouchableOpacity onPress={() => navigate('ModalScreen')}>
+                    <TouchableOpacity onPress={() => navigate('ModalItems')}>
                         <ListItem
                             key={i}
                             title={item.title}
