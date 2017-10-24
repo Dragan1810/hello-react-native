@@ -3,6 +3,7 @@ import { StyleSheet, Text, ScrollView, View, Image, Dimensions } from 'react-nat
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AppHeader from '../components/AppHeader';
 import AppSearch from '../components/AppSearch';
+import { Constants } from 'expo';
 
 
 class HomeScreen extends Component {
