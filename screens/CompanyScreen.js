@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, ScrollView, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, FlatList, View, Dimensions } from 'react-native';
 import { Card, List, ListItem } from 'react-native-elements';
 import AppHeader from '../components/AppHeader';
 import AppSearch from '../components/AppSearch';
+import CompanyItem from '../components/CompanyItem';
 import { getData } from '../helpers/index';
 
 
@@ -23,47 +24,15 @@ class CompanyScreen extends Component {
           const { navigate } = this.props.navigation;
           const { text, searchBar } = styles;
             return (
-            <View style={{flex:1}}>
-            <ScrollView contentContainerStyle={{flex:1}}>
-            <View style={text}>
-              <AppHeader navigate={navigate} />
-              <View style={[searchBar, { width }]}>
-                <AppSearch />
-
-              {this.state.data.map(item => {
-                return (
-                  <Card title={item.CompanyName} key={item.Id}>
-                    <List>
-                          <ListItem
-                            title={item.CompanyName}
-                            leftIcon={{name: 'settings'}}
-                          />
-                          <ListItem
-                            title={item.CompanyCode}
-                            leftIcon={{name: 'settings'}}
-                          />
-                          <ListItem
-                            title={item.Address}
-                            leftIcon={{name: 'settings'}}
-                          />
-                          <ListItem
-                            title={item.Email}
-                            leftIcon={{name: 'settings'}}
-                          />
-                          <ListItem
-                            title={item.IndustryName}
-                            leftIcon={{name: 'settings'}}
-                          />
-                    </List>
-                  </Card>
-                )
-              })}
-
-              </View>
-                <Text>Testing Company Screen(Or Loading....)</Text>
-                </View>
-            </ScrollView>
-            </View>
+              <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
+                <FlatList
+                  data={this.state.data}
+                  renderItem={({ item }) => (
+                    <CompanyItem data={item} />
+                  )}
+                  keyExtractor={item => item.Id}
+                />
+              </List>
           );
         }
 }

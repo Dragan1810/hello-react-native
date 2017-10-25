@@ -9,7 +9,7 @@ import ModalScreen from '../screens/ModalScreen';
     const DrawerNavigation = DrawerNavigator({
       Home: { screen: HomeScreen },
       ListItems: { screen: CompanyScreen },
-      ModalItems: { screen: ModalScreen }
+      BoxItems: { screen: BoxScreen },
 
     }, {
       contentComponent: DrawerContainer,

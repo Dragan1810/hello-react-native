@@ -3,21 +3,37 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AppHeader from '../components/AppHeader';
 import AppSearch from '../components/AppSearch';
+import { getData } from '../helpers/index';
 
 
-class ModalScreen extends Component {
+class BoxScreen extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      data:[]
+    };
+  }
+
+  componentDidMount() {
+    getData().then(data => this.setState({ data }));
+  }
+
         render() {
           const { width, height } = Dimensions.get('window');
           const { navigate } = this.props.navigation;
           const { text, searchBar } = styles;
             return (
-              <View style={text}>
-                <AppHeader navigate={navigate} />
-                  <View style={[searchBar, { width }]}>
-                    <AppSearch />
-                  </View>
-                  <Text>Hello Demo 3 !!!!!</Text>
-              </View>
+              <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
+              <FlatList
+                data={this.state.data}
+                renderItem={({ item }) => (
+                  <BoxItem data={item} />
+                )}
+                keyExtractor={item => item.Id}
+              />
+            </List>
+                
           );
         }
 }
@@ -39,4 +55,4 @@ const styles = StyleSheet.create({
     }
   });
 
-export default ModalScreen;
+export default BoxScreen;

@@ -21,10 +21,10 @@ export default class DrawerContainer extends Component {
                         />
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => navigate('ModalItems')}>
+                    <TouchableOpacity onPress={() => navigate('BoxItems')}>
                         <ListItem
-                            title={'Demo 2'}
-                            leftIcon={{ name: 'settings' }}
+                            title={'Box'}
+                            leftIcon={{ name: 'box' }}
                         />
                     </TouchableOpacity>
 
