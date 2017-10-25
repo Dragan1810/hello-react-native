@@ -3,7 +3,7 @@ import { DrawerNavigator } from 'react-navigation';
 import HomeScreen from '../screens/HomeScreen';
 import DrawerContainer from '../screens/DrawerContainer';
 import CompanyScreen from '../screens/CompanyScreen';
-import ModalScreen from '../screens/ModalScreen';
+import BoxScreen from '../screens/BoxScreen';
 
 
     const DrawerNavigation = DrawerNavigator({

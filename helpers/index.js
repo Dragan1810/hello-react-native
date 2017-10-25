@@ -1,8 +1,7 @@
 
-
-export async function getData() {
+export async function getData(Uri) {
     try {
-        let response = await fetch('http://46.101.103.32/api/Company/GetCompanies');
+        let response = await fetch(Uri);
         let json = await response.json();
         return json;
       }

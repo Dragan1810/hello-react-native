@@ -1,15 +1,32 @@
-const data = {
-    proizvodnja: [klanje,cetvrtanje,ekspedicija],
-    Robni_Promet: [Inputnote],
-    Magacin: [Demo,Warehouse],
-    Kartoteka: [Product,Animal,SubAnimal],
-    poslovni_partner: BusinessPartner
+export const data = {
+    production: {
+        klanje : "To be",
+        cetvrtanje: "To be",
+        ekspedicija: "To be"
+    },
+    robniPromet: {
+        InputNote : "http://46.101.103.32/api/InputNote/GetInputNotes"
+    },
+    magacin: {
+        Depot: "http://46.101.103.32/api/Depot/GetDepots",
+        Warehouse: "http://46.101.103.32/api/Warehouse/GetWarehouses"
+    },
+    kartoteka: {
+        Product: "http://46.101.103.32/api/Product/GetProducts",
+        Animal: "To be",
+        SubAnimal: "To be"
+    },
+    poslovniPartner: {
+        BusinessPartner: "http://46.101.103.32/api/BusinessPartner/GetBusinessPartners"
+    },
+    company : {
+        company: "http://46.101.103.32/api/Company/GetCompanies"
     }
 }
 
+/*
 
 BusinessPartnerBankAccount
-BusinessPartner
 BusinessPartnerLocation
 BusinessPartnerPhone
 ClawbackFromBuyer
@@ -21,11 +38,9 @@ Conto
 Country
 CreditNote
 DeliveryNote
-Depot
 ExchangeRate
 InputCalculation
 InputInvoice
-InputNote
 KepuBook
 ManuelWarrant
 Municipality
@@ -34,9 +49,9 @@ OutputInvoice
 PriceLeveling
 Pricing
 ProductCard
-Product
 ProductGroup
 ProductSubItem
 Section
 Values
-Warehouse
+
+*/
