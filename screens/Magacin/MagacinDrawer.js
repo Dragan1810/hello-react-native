@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { Card, List, ListItem } from 'react-native-elements';
 
-export default class DrawerContainer extends Component {
+export default class DrawerContainer2 extends Component {
     render() {
         const { navigate } = this.props.navigation;
         return (
@@ -13,25 +13,10 @@ export default class DrawerContainer extends Component {
                 >
                 </Card>
                 <List style={{ paddingTop: 0, marginTop: 0 }}>
-
-                    <TouchableOpacity onPress={() => navigate('ListItems')}>
-                        <ListItem
-                            title={'Company'}
-                            leftIcon={{ name: 'account-balance' }}
-                        />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => navigate('BoxItems')}>
+                    <TouchableOpacity onPress={() => navigate('depot')}>
                         <ListItem
                             title={'Box'}
                             leftIcon={{ name: 'storage' }}
-                        />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => navigate('ModalItems')}>
-                        <ListItem
-                            title={'Demo 3'}
-                            leftIcon={{ name: 'settings' }}
                         />
                     </TouchableOpacity>
                 </List>

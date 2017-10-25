@@ -9,7 +9,7 @@ import { getData } from '../helpers/index';
 import { data } from '../helpers/Data';
 
 
-class BoxScreen extends Component {
+class DepotScreen extends Component {
   constructor() {
     super();
 
@@ -58,4 +58,4 @@ const styles = StyleSheet.create({
     }
   });
 
-export default BoxScreen;
+export default DepotScreen;

@@ -7,8 +7,14 @@ import AppSearch from '../components/AppSearch';
 import { Constants } from 'expo';
 
 
-class HomeScreen extends Component {
+class Pre extends Component {
+constructor() {
+    super();
+}
 
+componentDidMount() {
+    this.props.navigation.navigate('DrawerOpen');
+}
         render() {
           const { width,height } = Dimensions.get('window');
           const { navigate } = this.props.navigation;
@@ -20,9 +26,7 @@ class HomeScreen extends Component {
                   <View style={[searchBar, { width }]}>
                     <AppSearch />
                   </View>
-                    <Text>Testing Home Screen</Text>
-                    <Button title='Drawer1' onPress={()=>navigate('Magacin')} />
-                    <Button title='Drawer2' onPress={()=>navigate('Company')} />
+                    <Text>Hello from DEMO 1 !!!!</Text>
                 </View>
               );
         }
@@ -48,4 +52,4 @@ const styles = StyleSheet.create({
     }
   });
 
-export default HomeScreen;
+export default Pre;
