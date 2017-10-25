@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, FlatList } from 'react-native';
+import { Card, List, ListItem } from 'react-native-elements';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AppHeader from '../components/AppHeader';
 import AppSearch from '../components/AppSearch';
+import BoxItem from '../components/BoxItem';
 import { getData } from '../helpers/index';
+import { data } from '../helpers/Data';
 
 
 class BoxScreen extends Component {
@@ -16,7 +19,7 @@ class BoxScreen extends Component {
   }
 
   componentDidMount() {
-    getData().then(data => this.setState({ data }));
+    getData(data.magacin.Depot).then(data => this.setState({ data }));
   }
 
         render() {
@@ -33,7 +36,7 @@ class BoxScreen extends Component {
                 keyExtractor={item => item.Id}
               />
             </List>
-                
+
           );
         }
 }

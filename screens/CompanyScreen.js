@@ -5,6 +5,7 @@ import AppHeader from '../components/AppHeader';
 import AppSearch from '../components/AppSearch';
 import CompanyItem from '../components/CompanyItem';
 import { getData } from '../helpers/index';
+import { data } from '../helpers/Data';
 
 
 class CompanyScreen extends Component {
@@ -16,7 +17,7 @@ class CompanyScreen extends Component {
     };
   }
   componentDidMount() {
-    getData().then(data => this.setState({ data }));
+    getData(data.company.company).then(data => this.setState({ data }));
   }
 
         render() {
