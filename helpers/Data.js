@@ -4,7 +4,7 @@ export const data = {
         cetvrtanje: "To be",
         ekspedicija: "To be"
     },
-    robniPromet: {
+    documents: {
         inputNote : "http://46.101.103.32/api/InputNote/GetInputNotes"
     },
     magacin: {

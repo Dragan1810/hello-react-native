@@ -14,12 +14,27 @@ const WarehouseItem = ({data}) => {
 export default WarehouseItem;
 
 /*
-"Id": 9,
-"Code": 1002,
-"CompanyId": 22,
-"Name": "Depo 2",
-"Description": null,
-"Boxes": null,
-"CreatedById": 13,
-"CreatedByName": "Ivan Ivanovic"
+public int WarehouseCode { get; set; }
+
+        [Required] // Basic warehouse data
+        public string WarehouseName { get; set; }
+        public string Address { get; set; }
+        public int TypeId { get; set; }
+        public string Type { get; set; }
+
+        public Company Company { get; set; }
+
+        public Conto Conto { get; set; }
+        public Conto ContoPriceDiff { get; set; }
+
+        public bool Active { get; set; }
+
+        /// <summary>
+        /// User that created or updated warehouse last
+        /// </summary>
+        public User CreatedBy { get; set; }
+
+        // Timestamps
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 */
