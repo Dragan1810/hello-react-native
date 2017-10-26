@@ -13,7 +13,6 @@ class HomeScreen extends Component {
           const { width,height } = Dimensions.get('window');
           const { navigate } = this.props.navigation;
           const { icon, container, text, searchBar } = styles;
-         // console.log(this.props.navigation)
             return (
                 <View style={text}>
                   <AppHeader navigate={navigate} />
@@ -21,8 +20,8 @@ class HomeScreen extends Component {
                     <AppSearch />
                   </View>
                     <Text>Testing Home Screen</Text>
-                    <Button title='Drawer1' onPress={()=>navigate('Magacin')} />
-                    <Button title='Drawer2' onPress={()=>navigate('Company')} />
+                    <Button title='Company' onPress={()=>navigate('Company')} />
+                    <Button title='Magacin' onPress={()=>navigate('Company')} />
                 </View>
               );
         }

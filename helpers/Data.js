@@ -5,19 +5,19 @@ export const data = {
         ekspedicija: "To be"
     },
     robniPromet: {
-        InputNote : "http://46.101.103.32/api/InputNote/GetInputNotes"
+        inputNote : "http://46.101.103.32/api/InputNote/GetInputNotes"
     },
     magacin: {
-        Depot: "http://46.101.103.32/api/Depot/GetDepots",
-        Warehouse: "http://46.101.103.32/api/Warehouse/GetWarehouses"
+        depot: "http://46.101.103.32/api/Depot/GetDepots",
+        warehouse: "http://46.101.103.32/api/Warehouse/GetWarehouses"
     },
     kartoteka: {
-        Product: "http://46.101.103.32/api/Product/GetProducts",
-        Animal: "To be",
-        SubAnimal: "To be"
+        product: "http://46.101.103.32/api/Product/GetProducts",
+        animal: "To be",
+        subAnimal: "To be"
     },
     poslovniPartner: {
-        BusinessPartner: "http://46.101.103.32/api/BusinessPartner/GetBusinessPartners"
+        businessPartner: "http://46.101.103.32/api/BusinessPartner/GetBusinessPartners"
     },
     company : {
         company: "http://46.101.103.32/api/Company/GetCompanies"
