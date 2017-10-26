@@ -3,7 +3,7 @@ import { StyleSheet, Text, FlatList, View, Dimensions } from 'react-native';
 import { Card, List, ListItem } from 'react-native-elements';
 
 
-const BoxItem = ({data}) => {
+const BPItem = ({data}) => {
     return(
         <Card title={data.Name}>
             <ListItem title={data.CompanyId} />
@@ -11,7 +11,7 @@ const BoxItem = ({data}) => {
         </Card>
     )
 }
-export default BoxItem;
+export default BPItem;
 
 /*
 "Id": 9,

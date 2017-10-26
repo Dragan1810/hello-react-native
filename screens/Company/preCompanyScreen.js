@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, ScrollView, View, Image, Dimensions } from 'react-native';
 import { Button } from 'react-native-elements'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import AppHeader from '.../components/AppHeader';
-import AppSearch from '.../components/AppSearch';
-import { Constants } from 'expo';
+import AppHeader from '../../components/AppHeader';
+import AppSearch from '../../components/AppSearch';
 
 
 class Pre extends Component {
@@ -19,14 +18,13 @@ componentDidMount() {
           const { width,height } = Dimensions.get('window');
           const { navigate } = this.props.navigation;
           const { icon, container, text, searchBar } = styles;
-         // console.log(this.props.navigation)
             return (
                 <View style={text}>
                   <AppHeader navigate={navigate} />
                   <View style={[searchBar, { width }]}>
                     <AppSearch />
                   </View>
-                    <Text>Hello from DEMO 1 !!!!</Text>
+                    <Text>Company Group</Text>
                 </View>
               );
         }

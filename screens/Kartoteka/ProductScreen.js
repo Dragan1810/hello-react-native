@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, FlatList, View, Dimensions } from 'react-native';
 import { Card, List, ListItem } from 'react-native-elements';
-import AppHeader from '.../components/AppHeader';
-import AppSearch from '.../components/AppSearch';
-import CompanyItem from '.../components/CompanyItem';
-import { getData } from '.../helpers/index';
-import { data } from '.../helpers/Data';
+import AppHeader from '../../components/AppHeader';
+import AppSearch from '../../components/AppSearch';
+import ProductItem from '../../components/ProductItem';
+import { getData } from '../../helpers/index';
+import { data } from '../../helpers/Data';
 
 
 class ProductScreen extends Component {
@@ -29,7 +29,7 @@ class ProductScreen extends Component {
                 <FlatList
                   data={this.state.data}
                   renderItem={({ item }) => (
-                    <CompanyItem data={item} />
+                    <ProductItem data={item} />
                   )}
                   keyExtractor={item => item.Id}
                 />
