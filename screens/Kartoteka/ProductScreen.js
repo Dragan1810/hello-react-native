@@ -25,6 +25,8 @@ class ProductScreen extends Component {
           const { navigate } = this.props.navigation;
           const { text, searchBar } = styles;
             return (
+              <View>
+                <AppSearch />
               <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
                 <FlatList
                   data={this.state.data}
@@ -34,6 +36,7 @@ class ProductScreen extends Component {
                   keyExtractor={item => item.Id}
                 />
               </List>
+              </View>
           );
         }
 }

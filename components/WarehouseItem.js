@@ -5,36 +5,33 @@ import { Card, List, ListItem } from 'react-native-elements';
 
 const WarehouseItem = ({data}) => {
     return(
-        <Card title={data.Name}>
-            <ListItem title={data.CompanyId} />
-            <ListItem title={data.CreatedByName} />
+        <Card title={data.WarehouseName}>
+            <ListItem title={data.WarehouseCode} />
+            <ListItem title={data.Type} />
+            <ListItem title={data.Conto} />
+
         </Card>
     )
 }
 export default WarehouseItem;
 
 /*
-public int WarehouseCode { get; set; }
+        WarehouseCode
 
-        [Required] // Basic warehouse data
-        public string WarehouseName { get; set; }
-        public string Address { get; set; }
-        public int TypeId { get; set; }
-        public string Type { get; set; }
+        WarehouseName
+        Address
+        TypeId
+        Type
 
-        public Company Company { get; set; }
+        Company
 
-        public Conto Conto { get; set; }
-        public Conto ContoPriceDiff { get; set; }
+        Conto
+        ContoPriceDiff
 
-        public bool Active { get; set; }
+        Active
 
-        /// <summary>
-        /// User that created or updated warehouse last
-        /// </summary>
-        public User CreatedBy { get; set; }
+        CreatedBy
 
-        // Timestamps
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        DateTime CreatedAt
+        DateTime UpdatedAt
 */

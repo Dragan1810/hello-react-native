@@ -6,16 +6,16 @@ import { Card, List, ListItem } from 'react-native-elements';
 const ProductItem = ({data}) => {
     return(
         <Card title={data.CompanyName}>
-            <ListItem title={data.CompanyCode} />
-            <ListItem title={data.Address} />
-            <ListItem title={data.IndustryName} />
-            <ListItem title={data.Email} />
-            <ListItem title={data.WebSite} />
+            <ListItem title={data.ProductName} />
+            <ListItem title={data.ProductCode} />
+            <ListItem title={data.BarCode} />
+            <ListItem title={data.MinQuantity} />
+            <ListItem title={data.ProductGroupName} />
         </Card>
     )
 }
 export default ProductItem;
-/* 
+/*
 "Id": 30,
 "ProductCode": 1001,
 "ProductName": "Svinjska jetra",

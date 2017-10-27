@@ -6,8 +6,14 @@ import { Card, List, ListItem } from 'react-native-elements';
 const BPItem = ({data}) => {
     return(
         <Card title={data.Name}>
-            <ListItem title={data.CompanyId} />
-            <ListItem title={data.CreatedByName} />
+            <ListItem title={data.Address} />
+            <ListItem title={data.Code} />
+            <ListItem title={data.PIB} />
+            <ListItem title={data.PIO} />
+            <ListItem title={data.PDV} />
+            <ListItem title={data.IndustryCode} />
+            <ListItem title={data.Phone} />
+
         </Card>
     )
 }

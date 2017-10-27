@@ -9,7 +9,8 @@ export const data = {
     },
     magacin: {
         depot: "http://46.101.103.32/api/Depot/GetDepots",
-        warehouse: "http://46.101.103.32/api/Warehouse/GetWarehouses"
+        warehouse: "http://46.101.103.32/api/Warehouse/GetWarehouses",
+        box: "http://46.101.103.32/api/Box/GetBoxes"
     },
     kartoteka: {
         product: "http://46.101.103.32/api/Product/GetProducts",
