@@ -8,7 +8,7 @@ export default class DrawerContainer2 extends Component {
         return (
             <ScrollView>
                 <Card
-                    image={require('../assets/ERP-tag-cloud-Infograph-600x351.jpg')}
+                    image={require('../../assets/ERP-tag-cloud-Infograph-600x351.jpg')}
                     containerStyle={{ margin: 0, padding: 0 }}
                 >
                 </Card>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, FlatList, View, Dimensions } from 'react-native';
 import { Card, List, ListItem } from 'react-native-elements';
-import AppHeader from '../../compoents/AppHeader';
+import AppHeader from '../../components/AppHeader';
 import AppSearch from '../../components/AppSearch';
 import CompanyItem from '../../components/CompanyItem';
 import { getData } from '../../helpers/index';

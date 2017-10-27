@@ -5,8 +5,8 @@ import preProductionScreen from '../screens/Production/preProductionScreen';
 import KlanjeScreen from '../screens/Production/KlanjeScreen';
 import CetvrtanjeScreen from '../screens/Production/CetvrtanjeScreen';
 import EkspedicijaScreen from '../screens/Production/EkspedicijaScreen';
-import preRobniPrometScreen from '../screens/RobniPromet/preRobniPrometScreen';
-import InputNoteScreen from '../screens/RobniPromet/InputNoteScreen';
+import preRobniPrometScreen from '../screens/Documents/preRobniPrometScreen';
+import InputNoteScreen from '../screens/Documents/InputNoteScreen';
 import preMagacinScreen from '../screens/Magacin/preMagacinScreen';
 import DepotScreen from '../screens/Magacin/DepotScreen';
 import WarehouseScreen from '../screens/Magacin/WarehouseScreen';
@@ -16,9 +16,16 @@ import AnimalScreen from '../screens/Kartoteka/AnimalScreen';
 import SubAnimalScreen from '../screens/Kartoteka/SubAnimalScreen';
 import prePoslovniPartnerScreen from '../screens/PoslovniPartner/prePoslovniPartnerScreen';
 import BusinessPartnerScreen from '../screens/PoslovniPartner/BusinessPartnerScreen';
-
 import CompanyScreen from '../screens/Company/CompanyScreen';
 import preCompanyScreen from '../screens/Company/preCompanyScreen';
+
+import CompanyDrawer from '../screens/Company/CompanyDrawer';
+import DocumentsDrawer from '../screens/Documents/DocumentsDrawer';
+import KartotekaDrawer from '../screens/Kartoteka/KartotekaDrawer';
+import MagacinDrawer from '../screens/Magacin/MagacinDrawer';
+import ProductionDrawer from '../screens/Production/ProductionDrawer';
+import PoslovniPartnerDrawer from '../screens/PoslovniPartner/PoslovniPartnerDrawer';
+
 
 
 
@@ -42,7 +49,7 @@ const robniPrometNavigation = DrawerNavigator({
       inputNote: { screen: InputNoteScreen }
 
     }, {
-      contentComponent: RobniPrometDrawer,
+      contentComponent: DocumentsDrawer,
     },{
       initialRouteName: 'preRobniPromet'
     });

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { Card, List, ListItem } from 'react-native-elements';
 
-export default class CompanyDrawer extends Component {
+export default class ProductionDrawer extends Component {
     render() {
         const { navigate } = this.props.navigation;
         return (
