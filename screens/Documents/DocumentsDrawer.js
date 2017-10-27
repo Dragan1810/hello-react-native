@@ -14,12 +14,13 @@ export default class CompanyDrawer extends Component {
                 </Card>
                 <List style={{ paddingTop: 0, marginTop: 0 }}>
 
-                    <TouchableOpacity onPress={() => navigate('ListItems')}>
+                    <TouchableOpacity onPress={() => navigate('inputNote')}>
                         <ListItem
-                            title={'Company'}
+                            title={'Input Note'}
                             leftIcon={{ name: 'account-balance' }}
                         />
                     </TouchableOpacity>
+
                 </List>
             </ScrollView>
         );

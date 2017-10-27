@@ -20,8 +20,13 @@ class HomeScreen extends Component {
                     <AppSearch />
                   </View>
                     <Text>Testing Home Screen</Text>
-                    <Button title='Company' onPress={()=>navigate('Company')} />
-                    <Button title='Magacin' onPress={()=>navigate('Company')} />
+                    <Button large title='Company' onPress={()=>navigate('Company')} />
+                    <Button title='Magacin' onPress={()=>navigate('Magacin')} />
+                    <Button title='Proizvodnja' onPress={()=>navigate('Production')} />
+                    <Button title='Documents' onPress={()=>navigate('RobniPromet')} />
+                    <Button title='Kartoteka' onPress={()=>navigate('Kartoteka')} />
+                    <Button title='PoslovniPartner' onPress={()=>navigate('PoslovniPartner')} />
+                    
                 </View>
               );
         }

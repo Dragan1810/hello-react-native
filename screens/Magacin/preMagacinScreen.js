@@ -26,7 +26,7 @@ componentDidMount() {
                   <View style={[searchBar, { width }]}>
                     <AppSearch />
                   </View>
-                    <Text>Hello from DEMO 1 !!!!</Text>
+                    <Text>Magacin meni</Text>
                 </View>
               );
         }

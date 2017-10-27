@@ -14,10 +14,23 @@ export default class CompanyDrawer extends Component {
                 </Card>
                 <List style={{ paddingTop: 0, marginTop: 0 }}>
 
-                    <TouchableOpacity onPress={() => navigate('ListItems')}>
+                    <TouchableOpacity onPress={() => navigate('product')}>
                         <ListItem
-                            title={'Company'}
-                            leftIcon={{ name: 'account-balance' }}
+                            title={'Products'}
+                            leftIcon={{ name: 'settings' }}
+                        />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => navigate('animal')}>
+                        <ListItem
+                            title={'Animal'}
+                            leftIcon={{ name: 'settings' }}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigate('subAnimal')}>
+                        <ListItem
+                            title={'SubAnimal'}
+                            leftIcon={{ name: 'settings' }}
                         />
                     </TouchableOpacity>
                 </List>

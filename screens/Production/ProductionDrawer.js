@@ -14,9 +14,22 @@ export default class ProductionDrawer extends Component {
                 </Card>
                 <List style={{ paddingTop: 0, marginTop: 0 }}>
 
-                    <TouchableOpacity onPress={() => navigate('ListItems')}>
+                    <TouchableOpacity onPress={() => navigate('klanje')}>
                         <ListItem
-                            title={'Company'}
+                            title={'Klanje'}
+                            leftIcon={{ name: 'account-balance' }}
+                        />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => navigate('cetvrtanje')}>
+                        <ListItem
+                            title={'Cetvrtanje'}
+                            leftIcon={{ name: 'account-balance' }}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigate('ekspedicija')}>
+                        <ListItem
+                            title={'Ekspedicija'}
                             leftIcon={{ name: 'account-balance' }}
                         />
                     </TouchableOpacity>

@@ -19,14 +19,13 @@ componentDidMount() {
           const { width,height } = Dimensions.get('window');
           const { navigate } = this.props.navigation;
           const { icon, container, text, searchBar } = styles;
-         // console.log(this.props.navigation)
             return (
                 <View style={text}>
                   <AppHeader navigate={navigate} />
                   <View style={[searchBar, { width }]}>
                     <AppSearch />
                   </View>
-                    <Text>Hello from DEMO 1 !!!!</Text>
+                    <Text>Proizvodnja meni</Text>
                 </View>
               );
         }

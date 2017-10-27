@@ -13,9 +13,16 @@ export default class DrawerContainer2 extends Component {
                 >
                 </Card>
                 <List style={{ paddingTop: 0, marginTop: 0 }}>
+                    <TouchableOpacity onPress={() => navigate('warehouse')}>
+                        <ListItem
+                            title={'Warehouse'}
+                            leftIcon={{ name: 'storage' }}
+                        />
+                    </TouchableOpacity>
+
                     <TouchableOpacity onPress={() => navigate('depot')}>
                         <ListItem
-                            title={'Box'}
+                            title={'Depot'}
                             leftIcon={{ name: 'storage' }}
                         />
                     </TouchableOpacity>
