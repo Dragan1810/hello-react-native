@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, FlatList, View, Dimensions } from 'react-native';
-import { Card, List, ListItem } from 'react-native-elements';
+import { Card, List, ListItem, SearchBar } from 'react-native-elements';
 import AppHeader from '../../components/AppHeader';
 import AppSearch from '../../components/AppSearch';
 import ProductItem from '../../components/ProductItem';
@@ -15,9 +15,14 @@ class ProductScreen extends Component {
     this.state = {
       data: []
     };
+
+    this.search = this.search.bind(this);
   }
   componentDidMount() {
     getData(data.kartoteka.product).then(data => this.setState({ data }));
+  }
+  search(e) {
+    console.log(e.nativeEvent.text);
   }
 
         render() {
@@ -26,7 +31,12 @@ class ProductScreen extends Component {
           const { text, searchBar } = styles;
             return (
               <View>
-                <AppSearch />
+                <SearchBar
+                  round
+                  lightTheme
+                  onSubmitEditing={e=>this.search(e)}
+                  placeholder='Type Here...'
+                />
               <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
                 <FlatList
                   data={this.state.data}
