@@ -27,21 +27,21 @@ import ProductionDrawer from '../screens/Production/ProductionDrawer';
 import PoslovniPartnerDrawer from '../screens/PoslovniPartner/PoslovniPartnerDrawer';
 
 
+// Route za navigaciju
+// prvo se importuju svi screenovi i draweri
 
 
 
-
-
-const productionNavigation = DrawerNavigator({
-  preProduction: { screen: preProductionScreen },
+const productionNavigation = DrawerNavigator({  // primer navigacije
+  preProduction: { screen: preProductionScreen }, // routa : { ime screena gde vodi}
   klanje: { screen: KlanjeScreen },
   cetvrtanje: { screen: CetvrtanjeScreen },
   ekspedicija: { screen: EkspedicijaScreen }
 
 }, {
-  contentComponent: ProductionDrawer,
+  contentComponent: ProductionDrawer,  // komponenta drawera
 },{
-  initialRouteName: 'preProduction'
+  initialRouteName: 'preProduction'  //inicijalna routa gde se postavlja pre prikazivanja opcija
 });
 
 const robniPrometNavigation = DrawerNavigator({
@@ -99,7 +99,7 @@ const companyNavigation = DrawerNavigator({
     });
 
 
-const MainNavigation = StackNavigator({
+const MainNavigation = StackNavigator({   //main navigacija u koju su ubacene sve sub navigacije
   Home: { screen: HomeScreen },
   Magacin: { screen: magacinNavigation },
   Company: { screen: companyNavigation },
