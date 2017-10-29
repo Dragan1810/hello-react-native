@@ -13,7 +13,8 @@ class ProductScreen extends Component {
     super(props);
 
     this.state = {
-      data: []
+      data: [],
+      search: ''
     };
 
     this.search = this.search.bind(this);
@@ -22,7 +23,8 @@ class ProductScreen extends Component {
     getData(data.kartoteka.product).then(data => this.setState({ data }));
   }
   search(e) {
-    console.log(e.nativeEvent.text);
+    this.setState({search:e.nativeEvent.text})
+
   }
 
         render() {

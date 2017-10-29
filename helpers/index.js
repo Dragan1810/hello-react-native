@@ -9,3 +9,16 @@ export async function getData(Uri) {
         console.error(error);
       }
     }
+
+/*
+
+export function FilterData(data, searchItem) {
+  return data.filter(item => {
+    let keys = Object.keys(item);
+    for (let i = 0; i < keys.length; i++) {
+      return item[keys[i]].includes(searchItem) ? item : '';
+    }
+  });
+}
+
+*/
