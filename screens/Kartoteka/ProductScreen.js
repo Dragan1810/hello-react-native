@@ -5,7 +5,7 @@ import AppHeader from '../../components/AppHeader';
 import AppSearch from '../../components/AppSearch';
 import ProductItem from '../../components/ProductItem';
 import { getData } from '../../helpers/index';
-import { data } from '../../helpers/Data';
+import { data, filterData } from '../../helpers/Data';
 
 
 class ProductScreen extends Component {
@@ -24,6 +24,10 @@ class ProductScreen extends Component {
   }
   search(e) {
     this.setState({search:e.nativeEvent.text})
+    console.log(this.state.data,this.state.search);
+    //let data = filterData(this.state.data,this.state.search);
+
+   // this.setState({data});
 
   }
 

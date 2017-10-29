@@ -10,9 +10,7 @@ export async function getData(Uri) {
       }
     }
 
-/*
-
-export function FilterData(data, searchItem) {
+export function filterData(data, searchItem) {
   return data.filter(item => {
     let keys = Object.keys(item);
     for (let i = 0; i < keys.length; i++) {
@@ -20,5 +18,3 @@ export function FilterData(data, searchItem) {
     }
   });
 }
-
-*/
