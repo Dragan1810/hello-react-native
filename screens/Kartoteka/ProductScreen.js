@@ -27,6 +27,8 @@ class ProductScreen extends Component {
   }
 
         render() {
+        //  const filteredData = filterData(this.state.data, "abc");
+          console.log(this.state.data);
           const { width, height } = Dimensions.get('window');
           const { navigate } = this.props.navigation;
           const { text, searchBar } = styles;
