@@ -7,6 +7,12 @@ const DepotItem = ({data}) => {
     return(
         <Card title={data.Name}>
             <ListItem title={data.CompanyId} />
+            <ListItem title={data.Code} />
+            <ListItem title={data.CompanyId} />
+            <ListItem title={data.Name} />
+            <ListItem title={data.Description} />
+            <ListItem title={data.Boxes} />
+            <ListItem title={data.CreatedById} />
             <ListItem title={data.CreatedByName} />
         </Card>
     )
