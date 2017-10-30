@@ -24,12 +24,6 @@ class ProductScreen extends Component {
   }
   search(e) {
     this.setState({search:e.nativeEvent.text})
-    console.log(this.state.data);
-    // vidi errore
-          const data = filterData(this.state.data,this.state.search);
-          this.setState({data});
-          //sfasfsafasfasf
-
   }
 
         render() {
