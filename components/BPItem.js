@@ -50,5 +50,5 @@ export default BPItem;
 "IsSelected": false,
 "CreatedByName": "Petar Petrovic",
 "CompanyName": "Djurdjevic klanica d.o.o",
-"UpdatedAt": "14.09.2017 23:34"
+"UpdatedAt": "14.09.2017 23:34ddddddddddd"
 */
