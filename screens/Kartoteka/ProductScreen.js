@@ -27,8 +27,11 @@ class ProductScreen extends Component {
   }
 
         render() {
-        //  const filteredData = filterData(this.state.data, "abc");
-          console.log(this.state.data);
+          let data = this.state.data;
+          if (this.state.data.length>1){
+            const filteredData = filterData(this.state.data, this.state.search);
+            data = filteredData;
+          }
           const { width, height } = Dimensions.get('window');
           const { navigate } = this.props.navigation;
           const { text, searchBar } = styles;
@@ -42,7 +45,7 @@ class ProductScreen extends Component {
                 />
               <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
                 <FlatList
-                  data={this.state.data}
+                  data={data}
                   renderItem={({ item }) => (
                     <ProductItem data={item} />
                   )}
