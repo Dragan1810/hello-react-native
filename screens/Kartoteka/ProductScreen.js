@@ -4,8 +4,8 @@ import { Card, List, ListItem, SearchBar } from 'react-native-elements';
 import AppHeader from '../../components/AppHeader';
 import AppSearch from '../../components/AppSearch';
 import ProductItem from '../../components/ProductItem';
-import { getData } from '../../helpers/index';
-import { data, filterData } from '../../helpers/Data';
+import { getData, filterData } from '../../helpers/index';
+import { data } from '../../helpers/Data';
 
 
 class ProductScreen extends Component {
@@ -24,11 +24,10 @@ class ProductScreen extends Component {
   }
   search(e) {
     this.setState({search:e.nativeEvent.text})
-    console.log(this.state.data,this.state.search);
-    //let data = filterData(this.state.data,this.state.search);
-
-   // this.setState({data});
-
+    console.log(this.state.data);
+    // vidi errore
+          const data = filterData(this.state.data,this.state.search);
+          this.setState({data});
   }
 
         render() {
