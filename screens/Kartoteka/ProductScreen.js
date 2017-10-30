@@ -28,6 +28,8 @@ class ProductScreen extends Component {
     // vidi errore
           const data = filterData(this.state.data,this.state.search);
           this.setState({data});
+          //sfasfsafasfasf
+
   }
 
         render() {
