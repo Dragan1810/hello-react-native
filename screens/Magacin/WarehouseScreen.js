@@ -19,7 +19,7 @@ class WarehouseScreen extends Component {
   }
 
   componentDidMount() {
-    getData(data.magacin.Depot).then(data => this.setState({ data }));
+    getData(data.magacin.warehouse).then(data => this.setState({ data }));
   }
 
         render() {

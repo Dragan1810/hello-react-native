@@ -11,14 +11,35 @@ const BPItem = ({data}) => {
             <ListItem title={data.PIB} />
             <ListItem title={data.PIO} />
             <ListItem title={data.PDV} />
+            <ListItem title={data.CountyId} />
+            <ListItem title={data.CountryName} />
+            <ListItem title={data.MunicipalityId} />
+            <ListItem title={data.MunicipalityCode} />
+            <ListItem title={data.MunicipalityName} />
             <ListItem title={data.IndustryCode} />
             <ListItem title={data.Phone} />
+            <ListItem title={data.Mobile} />
+            <ListItem title={data.Rebate} />
+            <ListItem title={data.IndustryCode} />
+            <ListItem title={data.IdentificationNumber} />
+            <ListItem title={data.Fax} />
+            <ListItem title={data.ContactPerson} />
+            <ListItem title={data.BankAccountName} />
+            <ListItem title={data.BankAccountNumber} />
+            <ListItem title={data.IsInPDV} />
+            <ListItem title={data.DueDate} />
+            <ListItem title={data.Email} />
+            <ListItem title={data.WebSite} />
+            <ListItem title={data.IsSelected} />
+            <ListItem title={data.CreatedByName} />
+            <ListItem title={data.CompanyName} />
+            <ListItem title={data.UpdatedAt} />
 
         </Card>
     )
 }
 export default BPItem;
-
+//gfgfgg
 /*
 "Id": 13,
 "Code": 1003,
@@ -50,5 +71,5 @@ export default BPItem;
 "IsSelected": false,
 "CreatedByName": "Petar Petrovic",
 "CompanyName": "Djurdjevic klanica d.o.o",
-"UpdatedAt": "14.09.2017 23:34"
+"UpdatedAt": "14.09.2017 23:34ddddddddddd"
 */

@@ -19,7 +19,7 @@ class DepotScreen extends Component {
   }
 
   componentDidMount() {
-    getData(data.magacin.Depot).then(data => this.setState({ data }));
+    getData(data.magacin.depot).then(data => this.setState({ data }));
   }
 
         render() {

@@ -4,14 +4,14 @@ import { Card, List, ListItem } from 'react-native-elements';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AppHeader from '../../components/AppHeader';
 import AppSearch from '../../components/AppSearch';
-import DepotItem from '../../components/DepotItem';
+import BPItem from '../../components/BPItem';
 import { getData } from '../../helpers/index';
 import { data } from '../../helpers/Data';
 
 
 class BusinessPartnerScreen extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       data:[]
@@ -19,7 +19,7 @@ class BusinessPartnerScreen extends Component {
   }
 
   componentDidMount() {
-    getData(data.magacin.Depot).then(data => this.setState({ data }));
+    getData(data.poslovniPartner.businessPartner).then(data => this.setState({ data }));
   }
 
         render() {

@@ -8,7 +8,6 @@ const DepotItem = ({data}) => {
         <Card title={data.Name}>
             <ListItem title={data.CompanyId} />
             <ListItem title={data.Code} />
-            <ListItem title={data.CompanyId} />
             <ListItem title={data.Name} />
             <ListItem title={data.Description} />
             <ListItem title={data.Boxes} />
