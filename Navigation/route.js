@@ -18,6 +18,7 @@ import prePoslovniPartnerScreen from '../screens/PoslovniPartner/prePoslovniPart
 import BusinessPartnerScreen from '../screens/PoslovniPartner/BusinessPartnerScreen';
 import CompanyScreen from '../screens/Company/CompanyScreen';
 import preCompanyScreen from '../screens/Company/preCompanyScreen';
+import BoxesScreen from '../screens/Magacin/BoxesScreen';
 
 import CompanyDrawer from '../screens/Company/CompanyDrawer';
 import DocumentsDrawer from '../screens/Documents/DocumentsDrawer';
@@ -57,7 +58,8 @@ const robniPrometNavigation = DrawerNavigator({
 const magacinNavigation = DrawerNavigator({
       preMagacin: { screen: preMagacinScreen },
       depot: { screen: DepotScreen },
-      warehouse: { screen: WarehouseScreen }
+      warehouse: { screen: WarehouseScreen },
+      box: { screen: BoxesScreen}
 
     }, {
       contentComponent: MagacinDrawer,

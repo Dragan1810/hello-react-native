@@ -6,6 +6,7 @@ import { Card, List, ListItem } from 'react-native-elements';
 const BPItem = ({data}) => {
     return(
         <Card title={data.Name}>
+            <ListItem title={data.Id} />
             <ListItem title={data.Address} />
             <ListItem title={data.Code} />
             <ListItem title={data.PIB} />
@@ -13,21 +14,22 @@ const BPItem = ({data}) => {
             <ListItem title={data.PDV} />
             <ListItem title={data.CountyId} />
             <ListItem title={data.CountryName} />
+            <ListItem title={data.CountyCode} />
             <ListItem title={data.MunicipalityId} />
             <ListItem title={data.MunicipalityCode} />
             <ListItem title={data.MunicipalityName} />
             <ListItem title={data.IndustryCode} />
+            <ListItem title={data.IdentificationNumber} />
+            <ListItem title={data.Rebate} />
             <ListItem title={data.Phone} />
             <ListItem title={data.Mobile} />
-            <ListItem title={data.Rebate} />
-            <ListItem title={data.IndustryCode} />
-            <ListItem title={data.IdentificationNumber} />
             <ListItem title={data.Fax} />
             <ListItem title={data.ContactPerson} />
-            <ListItem title={data.BankAccountName} />
             <ListItem title={data.BankAccountNumber} />
+            <ListItem title={data.BankAccountName} />
             <ListItem title={data.IsInPDV} />
             <ListItem title={data.DueDate} />
+            <ListItem title={data.IsFarmer} />
             <ListItem title={data.Email} />
             <ListItem title={data.WebSite} />
             <ListItem title={data.IsSelected} />
