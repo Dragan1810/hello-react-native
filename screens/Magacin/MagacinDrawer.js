@@ -26,6 +26,13 @@ export default class DrawerContainer2 extends Component {
                             leftIcon={{ name: 'storage' }}
                         />
                     </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => navigate('box')}>
+                        <ListItem
+                            title={'Boxes'}
+                            leftIcon={{ name: 'storage' }}
+                        />
+                    </TouchableOpacity>
                 </List>
             </ScrollView>
         );
