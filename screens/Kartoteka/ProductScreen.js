@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, FlatList, View, Dimensions } from 'react-native';
-import { Card, List, ListItem, SearchBar } from 'react-native-elements';
+import { Card, List, ListItem, SearchBar, Icon } from 'react-native-elements';
 import AppHeader from '../../components/AppHeader';
 import AppSearch from '../../components/AppSearch';
 import ProductItem from '../../components/ProductItem';
@@ -33,17 +33,29 @@ class ProductScreen extends Component {
             data = filteredData;
           }
           const { width, height } = Dimensions.get('window');
-          const { navigate } = this.props.navigation;
+          const { navigate, goBack } = this.props.navigation;
           const { text, searchBar } = styles;
             return (
-              <View>
+              <View style={styles.container}>
+              <View style={{flexDirection:'row'}}>
+                <Icon
+                  containerStyle={{width:width*(1/3),alignSelf:'flex-start',margin:0,padding:0,height:30}}
+                  name='arrow-left'
+                  type='font-awesome'
+                  color='#517fa4'
+                  onPress={()=>goBack()}
+                />
                 <SearchBar
+                  containerStyle={{width:width*(2/3),alignSelf:'flex-end',margin:0,padding:0}}
                   round
                   lightTheme
                   onSubmitEditing={e=>this.search(e)}
                   placeholder='Type Here...'
                 />
-              <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
+                
+                </View>
+                
+              <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0,backgroundColor:'#C7BE9F' }}>
                 <FlatList
                   data={data}
                   renderItem={({ item }) => (
@@ -64,6 +76,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    backgroundColor:'#C7BE9F',
+    paddingTop: 20
   },
   searchBar: {
     alignSelf: 'flex-start',
