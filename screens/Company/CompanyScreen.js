@@ -3,7 +3,7 @@ import { StyleSheet, Text, FlatList, View, Dimensions } from 'react-native';
 import { Card, List, ListItem, SearchBar, Icon } from 'react-native-elements'; //gotovi UI elementi
 import AppHeader from '../../components/AppHeader'; //custom reusable componenta koja se koristi u vise screenova
 import AppSearch from '../../components/AppSearch';
-import CompanyItem from '../../components/CompanyItem'; 
+import CompanyItem from '../../components/CompanyItem';
 import { getData, filterData } from '../../helpers/index'; // funkcija koja fetchuje podatke iz apija
 import { data } from '../../helpers/Data'; // podaci o apiju
 
@@ -35,7 +35,7 @@ class CompanyScreen extends Component {
             data = filteredData;
           }
           const { width, height } = Dimensions.get('window'); //dimnenzije telefona za css
-          const { navigate, goBack } = this.props.navigation; // prop iz navigacije 
+          const { navigate, goBack } = this.props.navigation; // prop iz navigacije
           const { text, searchBar } = styles; // css
             return (
               <View style={styles.container}>
@@ -59,8 +59,8 @@ class CompanyScreen extends Component {
 
               <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
                 <FlatList
-                  data={this.state.data}  // data objekat
-                  renderItem={({ item }) => (  // for petlja koja prolazi kroz svaki objekat 
+                  data={data}  // data objekat
+                  renderItem={({ item }) => (  // for petlja koja prolazi kroz svaki objekat
                     <CompanyItem data={item} />
                   )}
                   keyExtractor={item => item.Id}

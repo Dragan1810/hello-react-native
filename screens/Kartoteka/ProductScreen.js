@@ -21,14 +21,17 @@ class ProductScreen extends Component {
     this.search = this.search.bind(this);
     this.handleRefresh = this.handleRefresh.bind(this);
   }
+
   componentDidMount() {
     getData(data.kartoteka.product).then(data => this.setState({ data }));
   }
+
   handleRefresh() {
     this.setState({
       refreshing: true
     }, ()=> getData(data.kartoteka.product).then(data => this.setState({ data, refreshing: false })))
   }
+
   search(e) {
     this.setState({search:e.nativeEvent.text})
   }
@@ -37,6 +40,12 @@ class ProductScreen extends Component {
           const { width, height } = Dimensions.get('window');
           const { navigate } = this.props.navigation;
           const { text, searchBar } = styles;
+          const rdy =  <ActivityIndicator
+                            animating={true}
+                            style={styles.indicator}
+                            size="large"
+                        />
+
             return (
               <View>
                 <SearchBar
@@ -45,6 +54,7 @@ class ProductScreen extends Component {
                   onSubmitEditing={e=>this.search(e)}
                   placeholder='Type Here...'
                 />
+                {this.state.data.length < 1 && rdy}
               <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
                 <FlatList
                   data={this.state.data}
@@ -78,6 +88,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     paddingTop: 65
+  },
+  indicator: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 80,
+    paddingTop:40,
   }
 });
 
