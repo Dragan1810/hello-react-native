@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Dimensions, FlatList } from 'react-native';
-import { Card, List, ListItem } from 'react-native-elements';
+import { Card, List, ListItem, SearchBa, Icon } from 'react-native-elements';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AppHeader from '../../components/AppHeader';
 import AppSearch from '../../components/AppSearch';
 import BoxItem from '../../components/BoxItem';
-import { getData } from '../../helpers/index';
+import { getData, filterData } from '../../helpers/index';
 import { data } from '../../helpers/Data';
 
 
@@ -14,8 +14,14 @@ class BoxesScreen extends Component {
     super();
 
     this.state = {
-      data:[]
+      data:[],
+      search: ''
     };
+    this.search = this.search.bind(this);
+  }
+
+  search(e) {
+    this.setState({search:e.nativeEvent.text})
   }
 
   componentDidMount() {
@@ -23,20 +29,45 @@ class BoxesScreen extends Component {
   }
 
         render() {
+
+          let data = this.state.data;
+          if (this.state.data.length>1){
+            const filteredData = filterData(this.state.data, this.state.search);
+            data = filteredData;
+          }
           const { width, height } = Dimensions.get('window');
-          const { navigate } = this.props.navigation;
+          const { navigate, goBack } = this.props.navigation;
           const { text, searchBar } = styles;
             return (
+              <View style={styles.container}>
+              <View style={{flexDirection:'row'}}>
+                <Icon
+                  containerStyle={{width:width*(1/3),alignSelf:'flex-start',margin:0,padding:0,height:30}}
+                  name='arrow-left'
+                  type='font-awesome'
+                  color='#517fa4'
+                  onPress={()=>goBack()}
+                />
+                <SearchBar
+                  containerStyle={{width:width*(2/3),alignSelf:'flex-end',margin:0,padding:0}}
+                  round
+                  lightTheme
+                  onSubmitEditing={e=>this.search(e)}
+                  placeholder='Type Here...'
+                />
+                
+                </View>
+                
               <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
               <FlatList
-                data={this.state.data}
+                data={data}
                 renderItem={({ item }) => (
                   <BoxItem data={item} />
                 )}
                 keyExtractor={item => item.Id}
               />
             </List>
-
+            </View>
           );
         }
 }
