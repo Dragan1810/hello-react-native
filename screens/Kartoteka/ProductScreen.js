@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, FlatList, View, Dimensions } from 'react-native';
-import { Card, List, ListItem, SearchBar, Icon } from 'react-native-elements';
+import { StyleSheet, Text, FlatList, View, Dimensions, ActivityIndicator } from 'react-native';
+import { Card, List, ListItem, SearchBar } from 'react-native-elements';
 import AppHeader from '../../components/AppHeader';
 import AppSearch from '../../components/AppSearch';
 import ProductItem from '../../components/ProductItem';
@@ -14,54 +14,46 @@ class ProductScreen extends Component {
 
     this.state = {
       data: [],
-      search: ''
+      search: '',
+      refreshing: false
     };
 
     this.search = this.search.bind(this);
+    this.handleRefresh = this.handleRefresh.bind(this);
   }
   componentDidMount() {
     getData(data.kartoteka.product).then(data => this.setState({ data }));
+  }
+  handleRefresh() {
+    this.setState({
+      refreshing: true
+    }, ()=> getData(data.kartoteka.product).then(data => this.setState({ data, refreshing: false })))
   }
   search(e) {
     this.setState({search:e.nativeEvent.text})
   }
 
         render() {
-          let data = this.state.data;
-          if (this.state.data.length>1){
-            const filteredData = filterData(this.state.data, this.state.search);
-            data = filteredData;
-          }
           const { width, height } = Dimensions.get('window');
-          const { navigate, goBack } = this.props.navigation;
+          const { navigate } = this.props.navigation;
           const { text, searchBar } = styles;
             return (
-              <View style={styles.container}>
-              <View style={{flexDirection:'row'}}>
-                <Icon
-                  containerStyle={{width:width*(1/3),alignSelf:'flex-start',margin:0,padding:0,height:30}}
-                  name='arrow-left'
-                  type='font-awesome'
-                  color='#517fa4'
-                  onPress={()=>goBack()}
-                />
+              <View>
                 <SearchBar
-                  containerStyle={{width:width*(2/3),alignSelf:'flex-end',margin:0,padding:0}}
                   round
                   lightTheme
                   onSubmitEditing={e=>this.search(e)}
                   placeholder='Type Here...'
                 />
-                
-                </View>
-                
-              <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0,backgroundColor:'#C7BE9F' }}>
+              <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
                 <FlatList
-                  data={data}
+                  data={this.state.data}
                   renderItem={({ item }) => (
                     <ProductItem data={item} />
                   )}
                   keyExtractor={item => item.Id}
+                  refreshing={this.state.refreshing}
+                  onRefresh={this.handleRefresh}
                 />
               </List>
               </View>
@@ -76,8 +68,6 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor:'#C7BE9F',
-    paddingTop: 20
   },
   searchBar: {
     alignSelf: 'flex-start',
