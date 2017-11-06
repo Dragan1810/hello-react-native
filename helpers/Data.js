@@ -1,6 +1,6 @@
 export const data = {
     production: {
-        klanje : "To be",
+        klanje : "http://46.101.103.32/api/Slaughter/GetSlaughters",
         cetvrtanje: "To be",
         ekspedicija: "To be"
     },
@@ -10,7 +10,8 @@ export const data = {
     magacin: {
         depot: "http://46.101.103.32/api/Depot/GetDepots",
         warehouse: "http://46.101.103.32/api/Warehouse/GetWarehouses",
-        box: "http://46.101.103.32/api/Box/GetBoxes"
+        box: "http://46.101.103.32/api/Box/GetBoxes",
+        stock: "http://46.101.103.32/api/Stock/GetStocks"
     },
     kartoteka: {
         product: "http://46.101.103.32/api/Product/GetProducts",
