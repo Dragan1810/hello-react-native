@@ -19,34 +19,37 @@ class HomeScreen extends Component {
                   <View style={[searchBar, { width }]}>
                     <AppSearch />
                   </View>
-                    <Text>Kategorije</Text>
-
-                    <Button 
-                        title='Magacin' 
+                    <Button
+                        title='Magacin'
+                        large
                         onPress={()=>navigate('Magacin')}
-                        borderRadius={50}
+                        borderRadius={40}
                         backgroundColor={'#93d9f0'}
                         icon={{name: 'archive', type: 'entypo'}}
+                        containerViewStyle={ button }
+
                     />
 
-                    <Button 
-                        title='Proizvodnja' 
-                        onPress={()=>navigate('Production')} 
-                        borderRadius={50}
+                    <Button
+                        title='Proizvodnja'
+                        large
+                        onPress={()=>navigate('Production')}
+                        borderRadius={40}
                         backgroundColor={'#93d9f0'}
                         icon={{name: 'industry', type: 'font-awesome'}}
+                        containerViewStyle={ button }
                     />
 
-                    <Button 
-                        title='Documents' 
-                        onPress={()=>navigate('RobniPromet')}
+                    <Button
+                        title='Dokumenti'
+                        onPress={()=>navigate('Kartoteka')}
                         large
                         icon={{name: 'archive', type: 'entypo'}}
                         backgroundColor={'#93d9f0'}
                         containerViewStyle={ button }
-                        borderRadius={50}
+                        borderRadius={40}
                     />
-                    
+
                 </View>
               );
         }
@@ -71,7 +74,8 @@ const styles = StyleSheet.create({
       paddingTop: 65
     },
     button: {
-      paddingTop:10
+      paddingTop:5,
+      width: 300
     }
   });
 

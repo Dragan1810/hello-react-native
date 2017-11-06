@@ -4,9 +4,11 @@ import { Card, List, ListItem, SearchBar, Icon } from 'react-native-elements';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AppHeader from '../../components/AppHeader';
 import AppSearch from '../../components/AppSearch';
+import Activity from '../../components/ActivityIndicator';
 import DepotItem from '../../components/DepotItem';
 import { getData, filterData } from '../../helpers/index';
 import { data } from '../../helpers/Data';
+import { Constants } from 'expo'
 
 
 class DepotScreen extends Component {
@@ -15,14 +17,22 @@ class DepotScreen extends Component {
 
     this.state = {
       data:[],
-      search: ''
+      search: '',
+      refreshing: false
     };
 
-    this.seach = this.search.bind(this);
+    this.search = this.search.bind(this);
+    this.handleRefresh = this.handleRefresh.bind(this);
   }
 
   componentDidMount() {
     getData(data.magacin.depot).then(data => this.setState({ data }));
+  }
+
+  handleRefresh() {
+    this.setState({
+      refreshing: true
+    }, ()=> getData(data.kartoteka.product).then(data => this.setState({ data, refreshing: false })))
   }
 
   search(e) {
@@ -37,38 +47,40 @@ class DepotScreen extends Component {
             const filteredData = filterData(this.state.data, this.state.search);
             data = filteredData;
           }
+          const rdy =  <Activity />
           const { width, height } = Dimensions.get('window');
           const { navigate, goBack } = this.props.navigation;
-          const { text, searchBar } = styles;
+          const { text, searchBar, search, list, icon, container, title } = styles;
             return (
 
-          <View style={styles.container}>
-          <View style={{flexDirection:'row'}}>
+          <View style={[container]}>
+          <View style={title}>
             <Icon
-              containerStyle={{width:width*(1/3),alignSelf:'flex-start',margin:0,padding:0,height:30}}
-              name='left-open'
+              containerStyle={[icon, {width:width*(1/5)}]}
+              name='chevron-left'
               type='font-awesome'
-              color='#517fa4'
+              color='#fff'
+              size={35}
               onPress={()=>goBack()}
             />
             <SearchBar
-              containerStyle={{width:width*(2/3),alignSelf:'flex-end',margin:0,padding:0}}
+              containerStyle={[search,{width:width*(4/5)}]}
               round
               onSubmitEditing={e=>this.search(e)}
               placeholder='Type Here...'
             />
-            
-            </View>
 
-              <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
+            </View>
+              {this.state.data.length < 1 && rdy}
               <FlatList
                 data={data}
                 renderItem={({ item }) => (
                   <DepotItem data={item} />
                 )}
                 keyExtractor={item => item.Id}
+                refreshing={this.state.refreshing}
+                onRefresh={this.handleRefresh}
               />
-            </List>
             </View>
 
           );
@@ -77,23 +89,39 @@ class DepotScreen extends Component {
 
 const styles = StyleSheet.create({
     icon: {
-      width: 24,
-      height: 24,
+      alignSelf:'flex-start',
+      margin:0,
+      padding:0,
+      backgroundColor:'#517fa4',
     },
     container: {
       flex: 1,
-      backgroundColor:'#C7BE9F',
-      paddingTop: 20
+      paddingTop: Constants.statusBarHeight
+    },
+    title: {
+      flexDirection:'row'
     },
     searchBar: {
       alignSelf: 'flex-start',
-      height: 100
     },
     text: {
       flex: 1,
       alignItems: 'center',
       justifyContent: 'flex-start',
       paddingTop: 65
+    },
+    search: {
+      alignSelf:'flex-end',
+      margin:0,
+      padding:0,
+      backgroundColor:'#517fa4',
+      borderBottomWidth:0,
+      borderTopWidth:0
+    },
+    list: {
+      borderTopWidth: 0,
+      borderBottomWidth: 0,
+      backgroundColor: '#C7BE9F'
     }
   });
 

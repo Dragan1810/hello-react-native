@@ -3,6 +3,7 @@ import { StyleSheet, Text, FlatList, View, Dimensions, ActivityIndicator } from 
 import { Card, List, ListItem, SearchBar } from 'react-native-elements';
 import AppHeader from '../../components/AppHeader';
 import AppSearch from '../../components/AppSearch';
+import Activity from '../../components/ActivityIndicator';
 import ProductItem from '../../components/ProductItem';
 import { getData, filterData } from '../../helpers/index';
 import { data } from '../../helpers/Data';
@@ -40,11 +41,7 @@ class ProductScreen extends Component {
           const { width, height } = Dimensions.get('window');
           const { navigate } = this.props.navigation;
           const { text, searchBar } = styles;
-          const rdy =  <ActivityIndicator
-                            animating={true}
-                            style={styles.indicator}
-                            size="large"
-                        />
+          const rdy =  <Activity />
 
             return (
               <View>
@@ -88,13 +85,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     paddingTop: 65
-  },
-  indicator: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 80,
-    paddingTop:40,
   }
 });
 

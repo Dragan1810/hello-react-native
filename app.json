@@ -11,7 +11,7 @@
     "icon": "./assets/erp1.jpg",
     "splash": {
       "image": "./assets/blurred-background-15_bqjhK0H.jpg",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "packagerOpts": {

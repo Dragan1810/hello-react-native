@@ -6,13 +6,16 @@ import { Card, List, ListItem } from 'react-native-elements';
 const DepotItem = ({data}) => {
     return(
         <Card title={data.Name}>
-            <ListItem title={data.CompanyId} />
-            <ListItem title={data.Code} />
-            <ListItem title={data.Name} />
-            <ListItem title={data.Description} />
-            <ListItem title={data.Boxes} />
-            <ListItem title={data.CreatedById} />
-            <ListItem title={data.CreatedByName} />
+            <ListItem
+                title={`CompanyID: ${data.CompanyId}`}
+                hideChevron={true}
+            />
+            <ListItem title={data.Code} hideChevron={true} />
+            <ListItem title={data.Name} hideChevron={true} />
+            <ListItem title={data.Description} hideChevron={true} />
+            <ListItem title={data.Boxes} hideChevron={true} />
+            <ListItem title={data.CreatedById} hideChevron={true} />
+            <ListItem title={data.CreatedByName} hideChevron={true} />
         </Card>
     )
 }
