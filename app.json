@@ -8,9 +8,9 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
-    "icon": "./assets/react-navigation.png",
+    "icon": "./assets/erp1.jpg",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/blurred-background-15_bqjhK0H.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

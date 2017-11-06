@@ -46,7 +46,7 @@ class DepotScreen extends Component {
           <View style={{flexDirection:'row'}}>
             <Icon
               containerStyle={{width:width*(1/3),alignSelf:'flex-start',margin:0,padding:0,height:30}}
-              name='arrow-left'
+              name='left-open'
               type='font-awesome'
               color='#517fa4'
               onPress={()=>goBack()}
@@ -54,7 +54,6 @@ class DepotScreen extends Component {
             <SearchBar
               containerStyle={{width:width*(2/3),alignSelf:'flex-end',margin:0,padding:0}}
               round
-              lightTheme
               onSubmitEditing={e=>this.search(e)}
               placeholder='Type Here...'
             />

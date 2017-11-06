@@ -12,20 +12,40 @@ class HomeScreen extends Component {
         render() {
           const { width,height } = Dimensions.get('window');
           const { navigate } = this.props.navigation;
-          const { icon, container, text, searchBar } = styles;
+          const { icon, container, text, searchBar, button } = styles;
             return (
                 <View style={text}>
                   <AppHeader navigate={navigate} />
                   <View style={[searchBar, { width }]}>
                     <AppSearch />
                   </View>
-                    <Text>Testing Home Screen</Text>
-                    <Button large title='Company' onPress={()=>navigate('Company')} />
-                    <Button title='Magacin' onPress={()=>navigate('Magacin')} />
-                    <Button title='Proizvodnja' onPress={()=>navigate('Production')} />
-                    <Button title='Documents' onPress={()=>navigate('RobniPromet')} />
-                    <Button title='Kartoteka' onPress={()=>navigate('Kartoteka')} />
-                    <Button title='PoslovniPartner' onPress={()=>navigate('PoslovniPartner')} />
+                    <Text>Kategorije</Text>
+
+                    <Button 
+                        title='Magacin' 
+                        onPress={()=>navigate('Magacin')}
+                        borderRadius={50}
+                        backgroundColor={'#93d9f0'}
+                        icon={{name: 'archive', type: 'entypo'}}
+                    />
+
+                    <Button 
+                        title='Proizvodnja' 
+                        onPress={()=>navigate('Production')} 
+                        borderRadius={50}
+                        backgroundColor={'#93d9f0'}
+                        icon={{name: 'industry', type: 'font-awesome'}}
+                    />
+
+                    <Button 
+                        title='Documents' 
+                        onPress={()=>navigate('RobniPromet')}
+                        large
+                        icon={{name: 'archive', type: 'entypo'}}
+                        backgroundColor={'#93d9f0'}
+                        containerViewStyle={ button }
+                        borderRadius={50}
+                    />
                     
                 </View>
               );
@@ -49,6 +69,9 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'flex-start',
       paddingTop: 65
+    },
+    button: {
+      paddingTop:10
     }
   });
 
