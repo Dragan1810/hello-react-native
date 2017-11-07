@@ -7,7 +7,7 @@ const DepotItem = ({data}) => {
     return(
         <Card title={data.Name}>
             <ListItem
-                title={`CompanyID: ${data.CompanyId}`}
+                title={`CompanyID: ${data.CompanyId}`}  //cutom view
                 hideChevron={true}
             />
             <ListItem title={data.Code} hideChevron={true} />
