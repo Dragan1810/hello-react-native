@@ -8,11 +8,11 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
-    "icon": "./assets/erp1.jpg",
+    "icon": "./assets/S.png",
     "splash": {
-      "image": "./assets/blurred-background-15_bqjhK0H.jpg",
-      "resizeMode": "cover",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/back.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
     },
     "packagerOpts": {
       "assetExts": ["ttf", "mp4"]

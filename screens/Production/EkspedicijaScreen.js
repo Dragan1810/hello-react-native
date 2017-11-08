@@ -26,13 +26,13 @@ export default class EkspedicijaScreen extends Component {
   }
 
   componentDidMount() {
-    getData(data.magacin.depot).then(data => this.setState({ data }));
+    getData(data.production.ekspedicija).then(data => this.setState({ data }));
   }
 
   handleRefresh() {
     this.setState({
       refreshing: true
-    }, ()=> getData(data.kartoteka.product).then(data => this.setState({ data, refreshing: false })))
+    }, ()=> getData(data.production.ekspedicija).then(data => this.setState({ data, refreshing: false })))
   }
 
   search(e) {
