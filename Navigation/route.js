@@ -8,7 +8,7 @@ import EkspedicijaScreen from '../screens/Production/EkspedicijaScreen';
 import preRobniPrometScreen from '../screens/Documents/preRobniPrometScreen';
 import InputNoteScreen from '../screens/Documents/InputNoteScreen';
 import preMagacinScreen from '../screens/Magacin/preMagacinScreen';
-import StockScreen from '../screens/Magacin/DepotScreen';
+import StockScreen from '../screens/Magacin/StockScreen';
 import DepotScreen from '../screens/Magacin/DepotScreen';
 import WarehouseScreen from '../screens/Magacin/WarehouseScreen';
 import preKartotekaScreen from '../screens/Kartoteka/preKartotekaScreen';
