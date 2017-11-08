@@ -8,6 +8,7 @@ import EkspedicijaScreen from '../screens/Production/EkspedicijaScreen';
 import preRobniPrometScreen from '../screens/Documents/preRobniPrometScreen';
 import InputNoteScreen from '../screens/Documents/InputNoteScreen';
 import preMagacinScreen from '../screens/Magacin/preMagacinScreen';
+import StockScreen from '../screens/Magacin/DepotScreen';
 import DepotScreen from '../screens/Magacin/DepotScreen';
 import WarehouseScreen from '../screens/Magacin/WarehouseScreen';
 import preKartotekaScreen from '../screens/Kartoteka/preKartotekaScreen';
@@ -57,6 +58,7 @@ const robniPrometNavigation = DrawerNavigator({
 
 const magacinNavigation = DrawerNavigator({
       preMagacin: { screen: preMagacinScreen },
+      stock: { screen: StockScreen },
       depot: { screen: DepotScreen },
       warehouse: { screen: WarehouseScreen },
       box: { screen: BoxesScreen}
