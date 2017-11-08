@@ -7,10 +7,23 @@ const DepotItem = ({data}) => {
     return(
         <Card title={data.Name}>
             <ListItem
-                title={`CompanyID: ${data.CompanyId}`}  //cutom view
+                title={
+                    <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
+                        <Text>CompanyId:</Text>
+                        <Text>{data.CompanyId}</Text>                        
+                    </View>
+                }
                 hideChevron={true}
             />
-            <ListItem title={data.Code} hideChevron={true} />
+            <ListItem 
+                title={
+                <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
+                    <Text>CompanyId:</Text>
+                    <Text>{data.CompanyId}</Text>                        
+                </View>
+                } 
+                hideChevron={true} 
+            />
             <ListItem title={data.Name} hideChevron={true} />
             <ListItem title={data.Description} hideChevron={true} />
             <ListItem title={data.Boxes} hideChevron={true} />

@@ -54,13 +54,13 @@ class DepotScreen extends Component {
             return (
 
           <View style={[container]}>
-          <View style={title}>
+          <View style={[title, {height: 50 }]}>
             <Icon
-              containerStyle={[icon, {width:width*(1/5)}]}
+              containerStyle={[icon, {width:width*(1/5), height: 50 }]}
               name='chevron-left'
               type='font-awesome'
               color='#fff'
-              size={35}
+              size={32}
               onPress={()=>goBack()}
             />
             <SearchBar
