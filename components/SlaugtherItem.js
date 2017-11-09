@@ -9,11 +9,65 @@ const SlaugtherItem = ({data}) => {
             <ListItem
                 title={
                     <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                        <Text>ProductCode:</Text>
-                        <Text>{data.ProductCode}</Text>                        
+                        <Text>Code:</Text>
+                        <Text>{data.Code}</Text>                        
                     </View>
                 }
                 hideChevron={true}
+            />
+            <ListItem 
+                title={
+                <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
+                    <Text>SlaugtherDate:</Text>
+                    <Text>{data.SlaugtherDate}</Text>                        
+                </View>
+                } 
+                hideChevron={true} 
+            />
+            <ListItem 
+                title={
+                <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
+                    <Text>SupplierId:</Text>
+                    <Text>{data.SupplierId}</Text>                        
+                </View>
+                } 
+                hideChevron={true} 
+            />
+            <ListItem 
+                title={
+                <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
+                    <Text>SupplierCode:</Text>
+                    <Text>{data.SellingCode}</Text>                        
+                </View>
+                } 
+                hideChevron={true} 
+            />
+            <ListItem 
+                title={
+                <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
+                    <Text>SupplierName:</Text>
+                    <Text>{data.SupplierName}</Text>                        
+                </View>
+                } 
+                hideChevron={true} 
+            />
+            <ListItem 
+                title={
+                <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
+                    <Text>AnimalSubTypeId:</Text>
+                    <Text>{data.AnimalSubTypeId}</Text>                        
+                </View>
+                } 
+                hideChevron={true} 
+            />
+            <ListItem 
+                title={
+                <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
+                    <Text>AnimalSubTypeCode:</Text>
+                    <Text>{data.AnimalSubTypeCode}</Text>                        
+                </View>
+                } 
+                hideChevron={true} 
             />
             <ListItem 
                 title={
@@ -27,8 +81,8 @@ const SlaugtherItem = ({data}) => {
             <ListItem 
                 title={
                 <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                    <Text>CurrentlyAvailable:</Text>
-                    <Text>{data.CurrentlyAvailable}</Text>                        
+                    <Text>WeightBeforeSlaugher:</Text>
+                    <Text>{data.WeightBeforeSlaugher}</Text>                        
                 </View>
                 } 
                 hideChevron={true} 
@@ -36,8 +90,8 @@ const SlaugtherItem = ({data}) => {
             <ListItem 
                 title={
                 <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                    <Text>Reserved:</Text>
-                    <Text>{data.Reserved}</Text>                        
+                    <Text>WeightAfterSlaugher:</Text>
+                    <Text>{data.WeightAfterSlaugher}</Text>                        
                 </View>
                 } 
                 hideChevron={true} 
@@ -45,8 +99,8 @@ const SlaugtherItem = ({data}) => {
             <ListItem 
                 title={
                 <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                    <Text>Weight:</Text>
-                    <Text>{data.Weight}</Text>                        
+                    <Text>Randman:</Text>
+                    <Text>{data.Randman}</Text>                        
                 </View>
                 } 
                 hideChevron={true} 
@@ -54,8 +108,8 @@ const SlaugtherItem = ({data}) => {
             <ListItem 
                 title={
                 <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                    <Text>Quantity:</Text>
-                    <Text>{data.Quantity}</Text>                        
+                    <Text>ByingPrice:</Text>
+                    <Text>{data.ByingPrice}</Text>                        
                 </View>
                 } 
                 hideChevron={true} 
@@ -63,8 +117,8 @@ const SlaugtherItem = ({data}) => {
             <ListItem 
                 title={
                 <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                    <Text>PdvPercent:</Text>
-                    <Text>{data.PdvPercent}</Text>                        
+                    <Text>SellingPrice:</Text>
+                    <Text>{data.SellingPrice}</Text>                        
                 </View>
                 } 
                 hideChevron={true} 
@@ -72,44 +126,8 @@ const SlaugtherItem = ({data}) => {
             <ListItem 
                 title={
                 <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                    <Text>Base:</Text>
-                    <Text>{data.Base}</Text>                        
-                </View>
-                } 
-                hideChevron={true} 
-            />
-            <ListItem 
-                title={
-                <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                    <Text>PdvValue:</Text>
-                    <Text>{data.PdvValue}</Text>                        
-                </View>
-                } 
-                hideChevron={true} 
-            />
-            <ListItem 
-                title={
-                <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                    <Text>SellingValue:</Text>
-                    <Text>{data.SellingValue}</Text>                        
-                </View>
-                } 
-                hideChevron={true} 
-            />
-            <ListItem 
-                title={
-                <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                    <Text>TotalPdv:</Text>
-                    <Text>{data.TotalPdv}</Text>                        
-                </View>
-                } 
-                hideChevron={true} 
-            />
-            <ListItem 
-                title={
-                <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                    <Text>TotalValue:</Text>
-                    <Text>{data.TotalValue}</Text>                        
+                    <Text>CreatedById:</Text>
+                    <Text>{data.CreatedById}</Text>                        
                 </View>
                 } 
                 hideChevron={true} 
