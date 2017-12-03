@@ -1,28 +1,28 @@
 export const data = {
     production: {
-        klanje : "http://46.101.103.32/api/Slaughter/GetSlaughters",
+        klanje : "http://212.200.54.246:5001/api/Slaughter/GetSlaughters",
         cetvrtanje: "To be",
         ekspedicija: "To be"
     },
     documents: {
-        inputNote : "http://46.101.103.32/api/InputNote/GetInputNotes"
+        inputNote : "http://212.200.54.246:5001/api/InputNote/GetInputNotes"
     },
     magacin: {
-        depot: "http://46.101.103.32/api/Depot/GetDepots",
-        warehouse: "http://46.101.103.32/api/Warehouse/GetWarehouses",
-        box: "http://46.101.103.32/api/Box/GetBoxes",
-        stock: "http://46.101.103.32/api/Stock/GetStocks"
+        depot: "http://212.200.54.246:5001/api/Depot/GetDepots",
+        warehouse: "http://212.200.54.246:5001/api/Warehouse/GetWarehouses",
+        box: "http://212.200.54.246:5001/api/Box/GetBoxes",
+        stock: "http://212.200.54.246:5001/api/Stock/GetStocks"
     },
     kartoteka: {
-        product: "http://46.101.103.32/api/Product/GetProducts",
+        product: "http://212.200.54.246:5001/api/Product/GetProducts",
         animal: "To be",
         subAnimal: "To be"
     },
     poslovniPartner: {
-        businessPartner: "http://46.101.103.32/api/BusinessPartner/GetBusinessPartners"
+        businessPartner: "http://212.200.54.246:5001/api/BusinessPartner/GetBusinessPartners"
     },
     company : {
-        company: "http://46.101.103.32/api/Company/GetCompanies"
+        company: "http://212.200.54.246:5001/api/Company/GetCompanies"
     }
 }
 
