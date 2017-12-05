@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, ScrollView, View, Image, Dimensions } from 'react-native';
 import { Button } from 'react-native-elements'
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AppHeader from '../components/AppHeader';
 import AppSearch from '../components/AppSearch';
 import { Constants } from 'expo';
@@ -43,6 +42,15 @@ class HomeScreen extends Component {
                     <Button
                         title='Dokumenti'
                         onPress={()=>navigate('Kartoteka')}
+                        large
+                        icon={{name: 'archive', type: 'entypo'}}
+                        backgroundColor={'#93d9f0'}
+                        containerViewStyle={ button }
+                        borderRadius={40}
+                    />
+                    <Button
+                        title='Company'
+                        onPress={()=>navigate('Company')}
                         large
                         icon={{name: 'archive', type: 'entypo'}}
                         backgroundColor={'#93d9f0'}

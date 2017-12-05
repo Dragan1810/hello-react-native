@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, ScrollView, View, Image, Dimensions } from 'react-native';
-import { Button } from 'react-native-elements'
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { Button } from 'react-native-elements';
 import AppHeader from '../../components/AppHeader';
 import AppSearch from '../../components/AppSearch';
 import { Constants } from 'expo';
