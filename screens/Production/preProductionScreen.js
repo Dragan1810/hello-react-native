@@ -10,7 +10,6 @@ class Pre extends Component {
 constructor() {
     super();
 }
-
         render() {
           const { width,height } = Dimensions.get('window');
           const { navigate } = this.props.navigation;

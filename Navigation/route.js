@@ -21,6 +21,7 @@ import BoxesScreen from '../screens/Magacin/BoxesScreen';
 import preLambScreen from '../screens/Production/Lamb/preLambScreen'
 import prePigScreen from '../screens/Production/Pig/prePigScreen'
 import preGovedaScreen from '../screens/Production/Goveda/preGovedaScreen'
+import PKlanja from '../screens/Production/Goveda/Pklanja'
 
 import CompanyDrawer from '../screens/Company/CompanyDrawer';
 import DocumentsDrawer from '../screens/Documents/DocumentsDrawer';
@@ -47,7 +48,7 @@ const PigNavigation = DrawerNavigator({
 
 const GovedaNavigation = DrawerNavigator({
   preGovedaScreen: { screen: preGovedaScreen },
-  inputNote: { screen: InputNoteScreen } // aktivna predhodna klanja toDO
+  preGovedaKlanja: { screen: PKlanja } // aktivna predhodna klanja toDO
 
 }, {
   contentComponent: govedaDrawer,

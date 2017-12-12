@@ -16,20 +16,14 @@ export default class ProductionDrawer extends Component {
 
                     <TouchableOpacity onPress={() => navigate('klanje')}>
                         <ListItem
-                            title={'Klanje'}
+                            title={'Aktivna klanja'}
                             leftIcon={{ name: 'account-balance' }}
                         />
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => navigate('cetvrtanje')}>
+                    <TouchableOpacity onPress={() => navigate('preGovedaKlanja')}>
                         <ListItem
-                            title={'Cetvrtanje'}
-                            leftIcon={{ name: 'account-balance' }}
-                        />
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigate('ekspedicija')}>
-                        <ListItem
-                            title={'Ekspedicija'}
+                            title={'Predhodna klanja'}
                             leftIcon={{ name: 'account-balance' }}
                         />
                     </TouchableOpacity>
