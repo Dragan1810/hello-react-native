@@ -1,8 +1,17 @@
 export const data = {
     production: {
-        klanje : "http://212.200.54.246:5001/api/Slaughter/GetSlaughters",
-        cetvrtanje: "To be",
-        ekspedicija: "To be"
+        goveda : {
+            Aklanja: "http://212.200.54.246:5001/api/Slaughter/GetSlaughterItemTmpsByDate?slaughterDate=201712120000&CompanyId=95",
+            Pklanja: "http://212.200.54.246:5001/api/Slaughter/GetSlaughtersByPage?CompanyId=95&CurrentPage=1&ItemsPerPage=20"
+        },
+        Pig : {
+            Aklanja: "http://212.200.54.246:5001/api/PigSlaughter/GetPigSlaughterItemTmpsByDate?pigSlaughterDate=201712120000&CompanyId=95",
+            Pklanja: "http://212.200.54.246:5001/api/PigSlaughter/GetPigSlaughtersByPage?CompanyId=95&CurrentPage=1&ItemsPerPage=20"
+        },
+        Lamb : {
+            Aklanja: "http://212.200.54.246:5001/api/LambSlaughter/GetLambSlaughterItemTmpsByDate?lambSlaughterDate=201712120000&CompanyId=95",
+            Pklanja: "http://212.200.54.246:5001/api/LambSlaughter/GetLambSlaughtersByPage?CompanyId=95&CurrentPage=1&ItemsPerPage=20"
+        }
     },
     documents: {
         inputNote : "http://212.200.54.246:5001/api/InputNote/GetInputNotes"
