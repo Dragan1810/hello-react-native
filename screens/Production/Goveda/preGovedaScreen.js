@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, ScrollView, View, Image, Dimensions } from 'react-native';
 import { Button } from 'react-native-elements';
-import AppHeader from '../../components/AppHeader';
-import AppSearch from '../../components/AppSearch';
-import { Constants } from 'expo';
+import AppHeader from '../../../components/AppHeader';
 
 
 class Pre extends Component {
@@ -19,38 +17,17 @@ constructor() {
                 <View style={text}>
                   <AppHeader navigate={navigate} />
                   <View style={[searchBar, { width }]}>
-                    <AppSearch />
                   </View>
                   <Button
-                        title='Goveda'
+                        title='Govedaaaaaa'
                         large
-                        onPress={()=>navigate('goveda')}
+                        onPress={()=>navigate('govedo')}
                         borderRadius={40}
                         backgroundColor={'#93d9f0'}
                         icon={{name: 'archive', type: 'entypo'}}
                         containerViewStyle={ button }
-
                     />
 
-                    <Button
-                        title='Svinje'
-                        large
-                        onPress={()=>navigate('pig')}
-                        borderRadius={40}
-                        backgroundColor={'#93d9f0'}
-                        icon={{name: 'industry', type: 'font-awesome'}}
-                        containerViewStyle={ button }
-                    />
-
-                    <Button
-                        title='Jagnjad'
-                        onPress={()=>navigate('lamb')}
-                        large
-                        icon={{name: 'archive', type: 'entypo'}}
-                        backgroundColor={'#93d9f0'}
-                        containerViewStyle={ button }
-                        borderRadius={40}
-                    />
                 </View>
               );
         }

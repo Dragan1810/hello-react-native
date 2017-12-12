@@ -2,9 +2,7 @@ import React from 'react';
 import { DrawerNavigator,StackNavigator } from 'react-navigation';
 import HomeScreen from '../screens/HomeScreen';
 import preProductionScreen from '../screens/Production/preProductionScreen';
-import KlanjeScreen from '../screens/Production/KlanjeScreen';
 import CetvrtanjeScreen from '../screens/Production/CetvrtanjeScreen';
-import EkspedicijaScreen from '../screens/Production/EkspedicijaScreen';
 import preRobniPrometScreen from '../screens/Documents/preRobniPrometScreen';
 import InputNoteScreen from '../screens/Documents/InputNoteScreen';
 import preMagacinScreen from '../screens/Magacin/preMagacinScreen';
@@ -20,30 +18,63 @@ import BusinessPartnerScreen from '../screens/PoslovniPartner/BusinessPartnerScr
 import CompanyScreen from '../screens/Company/CompanyScreen';
 import preCompanyScreen from '../screens/Company/preCompanyScreen';
 import BoxesScreen from '../screens/Magacin/BoxesScreen';
+import preLambScreen from '../screens/Production/Lamb/preLambScreen'
+import prePigScreen from '../screens/Production/Pig/prePigScreen'
+import preGovedaScreen from '../screens/Production/Goveda/preGovedaScreen'
 
 import CompanyDrawer from '../screens/Company/CompanyDrawer';
 import DocumentsDrawer from '../screens/Documents/DocumentsDrawer';
 import KartotekaDrawer from '../screens/Kartoteka/KartotekaDrawer';
 import MagacinDrawer from '../screens/Magacin/MagacinDrawer';
 import ProductionDrawer from '../screens/Production/ProductionDrawer';
-import PoslovniPartnerDrawer from '../screens/PoslovniPartner/PoslovniPartnerDrawer';
+import PoslovniPartnerDrawer from '../screens/PoslovniPartner/PoslovniPartnerDrawer'
+import govedaDrawer from '../screens/Production/Goveda/govedaDrawer'
+import pigDrawer from '../screens/Production/Pig/pigDrawer'
+import lambDrawer from '../screens/Production/Lamb/lambDrawer'
 
 
 // Route za navigaciju
 // prvo se importuju svi screenovi i draweri
-
-
-
-const productionNavigation = DrawerNavigator({  // primer navigacije
-  preProduction: { screen: preProductionScreen }, // routa : { ime screena gde vodi}
-  klanje: { screen: KlanjeScreen },
-  cetvrtanje: { screen: CetvrtanjeScreen },
-  ekspedicija: { screen: EkspedicijaScreen }
+const PigNavigation = DrawerNavigator({
+  prePigScreen: { screen: prePigScreen },
+  inputNote: { screen: InputNoteScreen } // aktivna predhodna klanja toDO
 
 }, {
-  contentComponent: ProductionDrawer,  // komponenta drawera
+  contentComponent: pigDrawer,
 },{
-  initialRouteName: 'preProduction'  //inicijalna routa gde se postavlja pre prikazivanja opcija
+  initialRouteName: 'prePigScreen'
+});
+
+const GovedaNavigation = DrawerNavigator({
+  preGovedaScreen: { screen: preGovedaScreen },
+  inputNote: { screen: InputNoteScreen } // aktivna predhodna klanja toDO
+
+}, {
+  contentComponent: govedaDrawer,
+},{
+  initialRouteName: 'preGovedaScreen'
+});
+
+
+const LambNavigation = DrawerNavigator({
+  preLambScreen: { screen: preLambScreen },
+  inputNote: { screen: InputNoteScreen } // aktivna predhodna klanja toDO
+
+}, {
+  contentComponent: lambDrawer,
+},{
+  initialRouteName: 'preLambScreen'
+});
+
+const productionNavigation = StackNavigator({  // primer navigacije
+  preProduction: { screen: preProductionScreen }, // routa : { ime screena gde vodi}
+  goveda: { screen: GovedaNavigation },
+  lamb: { screen: LambNavigation },
+  pig: { screen: PigNavigation }
+
+},{
+  initialRouteName: 'preProduction',
+  headerMode: 'none'
 });
 
 const robniPrometNavigation = DrawerNavigator({
