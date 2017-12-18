@@ -14,7 +14,7 @@ export const data = {
         }
     },
     documents: {
-        inputNote : "http://212.200.54.246:5001/api/InputNote/GetInputNotes"
+        inputNote : "http://212.200.54.246:5001/api/InputNote/GetInputNotesByPage?CompanyId=95&CurrentPage=1&ItemsPerPage=1"
     },
     magacin: {
         depot: "http://212.200.54.246:5001/api/Depot/GetDepots",
