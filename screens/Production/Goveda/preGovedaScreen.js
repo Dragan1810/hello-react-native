@@ -18,15 +18,7 @@ constructor() {
                   <AppHeader navigate={navigate} />
                   <View style={[searchBar, { width }]}>
                   </View>
-                  <Button
-                        title='Govedaaaaaa'
-                        large
-                        onPress={()=>navigate('govedo')}
-                        borderRadius={40}
-                        backgroundColor={'#93d9f0'}
-                        icon={{name: 'archive', type: 'entypo'}}
-                        containerViewStyle={ button }
-                    />
+                  <Text>Slide from left</Text>
 
                 </View>
               );
