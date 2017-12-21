@@ -5,12 +5,12 @@ import { Card, List, ListItem } from 'react-native-elements';
 
 const ProductItem = ({data}) => {
     return(
-        <Card title={data.CompanyName}>
-            <ListItem title={data.ProductName} />
+        <Card title={data.ProductName}>
             <ListItem title={data.ProductCode} />
             <ListItem title={data.BarCode} />
             <ListItem title={data.MinQuantity} />
             <ListItem title={data.ProductGroupName} />
+            <ListItem title={data.CompanyName} />
         </Card>
     )
 }

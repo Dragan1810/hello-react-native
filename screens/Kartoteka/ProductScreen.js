@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, FlatList, View, Dimensions, ActivityIndicator } from 'react-native';
-import { Card, List, ListItem, SearchBar } from 'react-native-elements';
+import { Card, List, ListItem, SearchBar, Icon } from 'react-native-elements';
 import AppHeader from '../../components/AppHeader';
 import AppSearch from '../../components/AppSearch';
 import Activity from '../../components/ActivityIndicator';
 import ProductItem from '../../components/ProductItem';
 import { getData, filterData } from '../../helpers/index';
 import { data } from '../../helpers/Data';
+import { Constants } from 'expo'
 
 
 class ProductScreen extends Component {
@@ -24,13 +25,20 @@ class ProductScreen extends Component {
   }
 
   componentDidMount() {
-    getData(data.kartoteka.product).then(data => this.setState({ data }));
+    getData(data.kartoteka.product).then(data => {
+      this.setState({ data: data.Products })
+      //console.log(data);
+      console.log(this.state.data);
+    });
   }
 
   handleRefresh() {
     this.setState({
       refreshing: true
-    }, ()=> getData(data.kartoteka.product).then(data => this.setState({ data, refreshing: false })))
+    }, ()=> getData(data.kartoteka.product).then(dt => {
+      this.setState({ data: dt.Products, refreshing: false })
+      console.log(data)
+    }))
   }
 
   search(e) {
@@ -38,23 +46,40 @@ class ProductScreen extends Component {
   }
 
         render() {
+          let data = this.state.data;
+          if (this.state.data.length>1){
+            const filteredData = filterData(this.state.data, this.state.search);
+            data = filteredData;
+          }
           const { width, height } = Dimensions.get('window');
-          const { navigate } = this.props.navigation;
-          const { text, searchBar } = styles;
+          const { navigate, goBack } = this.props.navigation;
+          const { text, searchBar, search, list, icon, container, title } = styles;
           const rdy =  <Activity />
 
             return (
-              <View>
+
+            <View style={[container]}>
+              <View style={[title, {height: 50 }]}>
+                <Icon
+                  containerStyle={[icon, {width:width*(1/5), height: 50 }]}
+                  name='chevron-left'
+                  type='font-awesome'
+                  color='#fff'
+                  size={32}
+                  onPress={()=>goBack()}
+                />
                 <SearchBar
+                  containerStyle={[search,{width:width*(4/5)}]}
                   round
                   lightTheme
                   onSubmitEditing={e=>this.search(e)}
                   placeholder='Type Here...'
                 />
-                {this.state.data.length < 1 && rdy}
+              </View>
+              {this.state.data.length < 1 && rdy}
               <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
                 <FlatList
-                  data={this.state.data}
+                  data={data}
                   renderItem={({ item }) => (
                     <ProductItem data={item} />
                   )}
@@ -63,28 +88,46 @@ class ProductScreen extends Component {
                   onRefresh={this.handleRefresh}
                 />
               </List>
-              </View>
+            </View>
           );
         }
 }
 
 const styles = StyleSheet.create({
   icon: {
-    width: 24,
-    height: 24,
+    alignSelf:'flex-start',
+    margin:0,
+    padding:0,
+    backgroundColor:'#517fa4',
   },
   container: {
     flex: 1,
+    paddingTop: Constants.statusBarHeight
+  },
+  title: {
+    flexDirection:'row'
   },
   searchBar: {
     alignSelf: 'flex-start',
-    height: 100
   },
   text: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-start',
     paddingTop: 65
+  },
+  search: {
+    alignSelf:'flex-end',
+    margin:0,
+    padding:0,
+    backgroundColor:'#517fa4',
+    borderBottomWidth:0,
+    borderTopWidth:0
+  },
+  list: {
+    borderTopWidth: 0,
+    borderBottomWidth: 0,
+    backgroundColor: '#C7BE9F'
   }
 });
 

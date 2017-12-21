@@ -32,7 +32,7 @@ class CompanyScreen extends Component {
   handleRefresh() {
     this.setState({
       refreshing: true
-    }, ()=> getData(data.company.company).then(data => this.setState({ data, refreshing: false })))
+    }, ()=> getData(data.company.company).then(data => this.setState({ data: data.Companies, refreshing: false })))
   }
 
   search(e) {
@@ -66,6 +66,7 @@ class CompanyScreen extends Component {
             <SearchBar
               containerStyle={[search,{width:width*(4/5)}]}
               round
+              lightTheme
               onSubmitEditing={e=>this.search(e)}
               placeholder='Type Here...'
             />

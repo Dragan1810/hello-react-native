@@ -26,13 +26,13 @@ class StockScreen extends Component {
   }
 
   componentDidMount() {
-    getData(data.magacin.stock).then(data => this.setState({ data }));
+    getData(data.magacin.stock).then(data => this.setState({ data: data.Stocks }));
   }
 
   handleRefresh() {
     this.setState({
       refreshing: true
-    }, ()=> getData(data.kartoteka.stock).then(data => this.setState({ data, refreshing: false })))
+    }, ()=> getData(data.kartoteka.stock).then(data => this.setState({ data: data.Stocks, refreshing: false })))
   }
 
   search(e) {

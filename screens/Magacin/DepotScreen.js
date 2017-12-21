@@ -26,13 +26,17 @@ class DepotScreen extends Component {
   }
 
   componentDidMount() {
-    getData(data.magacin.depot).then(data => this.setState({ data }));
+    getData(data.magacin.depot).then(data => {
+      this.setState({ data: data.Depots, refreshing: false })
+      console.log(data.Depots)
+    });
   }
 
   handleRefresh() {
-    this.setState({
-      refreshing: true
-    }, ()=> getData(data.kartoteka.product).then(data => this.setState({ data, refreshing: false })))
+    this.setState({ refreshing: true })
+    getData(data.magacin.depot).then(data => {
+      this.setState({ data, refreshing: false })
+    })
   }
 
   search(e) {
@@ -66,6 +70,7 @@ class DepotScreen extends Component {
             <SearchBar
               containerStyle={[search,{width:width*(4/5)}]}
               round
+              lightTheme
               onSubmitEditing={e=>this.search(e)}
               placeholder='Type Here...'
             />
