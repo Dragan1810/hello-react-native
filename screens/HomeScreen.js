@@ -1,90 +1,86 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, ScrollView, View, Image, Dimensions } from 'react-native';
+import { RkText, RkButton, RkStyleSheet } from 'react-native-ui-kitten';
 import { Button } from 'react-native-elements'
 import AppHeader from '../components/AppHeader';
-import AppSearch from '../components/AppSearch';
 import { Constants } from 'expo';
+import { MainRoutes } from '../Config/index'
 
 
-class HomeScreen extends Component {
+export default class GridV2 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {dimensions: undefined}
+  };
 
-        render() {
-          const { width,height } = Dimensions.get('window');
-          const { navigate } = this.props.navigation;
-          const { icon, container, text, searchBar, button } = styles;
-            return (
-                <View style={text}>
-                  <AppHeader navigate={navigate} />
-                  <View style={[searchBar, { width }]}>
-                    <AppSearch />
-                  </View>
-                    <Button
-                        title='Magacin'
-                        large
-                        onPress={()=>navigate('Magacin')}
-                        borderRadius={40}
-                        backgroundColor={'#93d9f0'}
-                        icon={{name: 'archive', type: 'entypo'}}
-                        containerViewStyle={ button }
+  _onLayout = event => {
+    if (this.state.height)
+      return;
+    let dimensions = event.nativeEvent.layout;
+    this.setState({ dimensions })
+  };
 
-                    />
+  _getEmptyCount(size) {
+    let rowCount = Math.ceil((this.state.dimensions.height - 20) / size);
+    return rowCount * 3 - MainRoutes.length;
+  };
 
-                    <Button
-                        title='Proizvodnja'
-                        large
-                        onPress={()=>navigate('Production')}
-                        borderRadius={40}
-                        backgroundColor={'#93d9f0'}
-                        icon={{name: 'industry', type: 'font-awesome'}}
-                        containerViewStyle={ button }
-                    />
+  render() {
+    let navigate = this.props.navigation.navigate;
+    let items = <View/>;
 
-                    <Button
-                        title='Dokumenti'
-                        onPress={()=>navigate('Kartoteka')}
-                        large
-                        icon={{name: 'archive', type: 'entypo'}}
-                        backgroundColor={'#93d9f0'}
-                        containerViewStyle={ button }
-                        borderRadius={40}
-                    />
-                    <Button
-                        title='Company'
-                        onPress={()=>navigate('Company')}
-                        large
-                        icon={{name: 'archive', type: 'entypo'}}
-                        backgroundColor={'#93d9f0'}
-                        containerViewStyle={ button }
-                        borderRadius={40}
-                    />
+    if (this.state.dimensions) {
+      let size = this.state.dimensions.width / 3;
+      let emptyCount = this._getEmptyCount(size);
 
-                </View>
-              );
-        }
-}
+      items = MainRoutes.map(function (route, index) {
+        return (
+          <RkButton rkType='tile'
+                    style={{height: size, width: size}}
+                    key={index}
+                    onPress={() => {
+                      navigate(route.id)
+                    }}>
+            <RkText style={styles.icon} rkType='primary moon xxlarge'>
+              {route.icon}
+            </RkText>
+            <RkText rkType='small'>{route.title}</RkText>
+          </RkButton>
+        )
+      });
 
-const styles = StyleSheet.create({
-    icon: {
-      width: 24,
-      height: 24,
-    },
-    container: {
-      flex: 1,
-    },
-    searchBar: {
-      alignSelf: 'flex-start',
-      height: 100
-    },
-    text: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-      paddingTop: 65
-    },
-    button: {
-      paddingTop:5,
-      width: 300
+      for (let i = 0; i < emptyCount; i++) {
+        items.push(<View key={'empty' + i} style={[{height: size, width: size}, styles.empty]}/>)
+      }
     }
-  });
 
-export default HomeScreen;
+    return (
+      <View>
+      <AppHeader/>
+      <ScrollView
+        style={styles.root}
+        onLayout={this._onLayout}
+        contentContainerStyle={styles.rootContainer}>
+
+        {items}
+      </ScrollView>
+      </View>
+    );
+  }
+}
+let styles = StyleSheet.create({
+  root: {
+    backgroundColor: '#fff'
+  },
+  rootContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  empty: {
+    borderColor: '#000',
+    borderWidth: 1
+  },
+  icon: {
+    marginBottom: 16
+  }
+});
