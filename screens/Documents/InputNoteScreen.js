@@ -5,7 +5,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AppHeader from '../../components/AppHeader';
 import AppSearch from '../../components/AppSearch';
 import Activity from '../../components/ActivityIndicator';
-import InputNote from '../../components/InputNoteItem';
+import ListItems from '../../components/InputNoteItem';
 import { getData, filterData } from '../../helpers/index';
 import { data } from '../../helpers/Data';
 import { Constants } from 'expo'
@@ -53,10 +53,11 @@ class CompanyScreen extends Component {
           const { text, searchBar, search, list, icon, container, title } = styles;
             return (
 
-          <View style={[container]}>
-          <View style={[title, {height: 50 }]}>
+
+              <View style={[container]}>
+          <View style={title}>
             <Icon
-              containerStyle={[icon, {width:width*(1/5), height: 50 }]}
+              containerStyle={icon}
               name='chevron-left'
               type='font-awesome'
               color='#fff'
@@ -64,8 +65,9 @@ class CompanyScreen extends Component {
               onPress={()=>goBack()}
             />
             <SearchBar
-              containerStyle={[search,{width:width*(4/5)}]}
+              containerStyle={search}
               round
+              lightTheme
               onSubmitEditing={e=>this.search(e)}
               placeholder='Type Here...'
             />
@@ -75,7 +77,7 @@ class CompanyScreen extends Component {
               <FlatList
                 data={data}
                 renderItem={({ item }) => (
-                  <InputNote data={item} />
+                  <ListItems data={item} />
                 )}
                 keyExtractor={item => item.Id}
                 refreshing={this.state.refreshing}
@@ -89,10 +91,12 @@ class CompanyScreen extends Component {
 
 const styles = StyleSheet.create({
     icon: {
+      flex: 1,
       alignSelf:'flex-start',
       margin:0,
       padding:0,
-      backgroundColor:'#517fa4',
+      backgroundColor:'#009688',
+      height: 56
     },
     container: {
       flex: 1,
@@ -111,10 +115,11 @@ const styles = StyleSheet.create({
       paddingTop: 65
     },
     search: {
+      flex: 3,
       alignSelf:'flex-end',
       margin:0,
       padding:0,
-      backgroundColor:'#517fa4',
+      backgroundColor:'#009688',
       borderBottomWidth:0,
       borderTopWidth:0
     },

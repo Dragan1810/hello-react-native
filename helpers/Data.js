@@ -1,20 +1,19 @@
-const currentHostName = "192.168.0.126:5001"
-//const currentHostName = "192.168.0.118:5001"
-const currentCompanyID = 3
+const currentHostName = "212.200.54.246:5001"
+const currentCompanyID = 62
 
 export const data = {
     production: {
         goveda : {
-            Aklanja: "http://" + currentHostName + "/api/Slaughter/GetSlaughterItemTmpsByDate?slaughterDate=201712120000&" + currentCompanyID + "",
-            Pklanja: "http://" + currentHostName + "/api/Slaughter/GetSlaughtersByPage?" + currentCompanyID + "&CurrentPage=1&ItemsPerPage=20"
+            Aklanja: `http://${currentHostName}/api/Slaughter/GetSlaughterItemTmpsByDate?slaughterDate=201712120000&${currentCompanyID}`,
+            Pklanja: `http://${currentHostName}/api/Slaughter/GetSlaughtersByPage?CompanyId=${currentCompanyID}`
         },
         Pig : {
-            Aklanja: "http://" + currentHostName + "/api/PigSlaughter/GetPigSlaughterItemTmpsByDate?pigSlaughterDate=201712120000&" + currentCompanyID + "",
-            Pklanja: "http://" + currentHostName + "/api/PigSlaughter/GetPigSlaughtersByPage?" + currentCompanyID + "&CurrentPage=1&ItemsPerPage=20"
+            Aklanja: `http://${currentHostName}/api/PigSlaughter/GetPigSlaughterItemTmpsByDate?pigSlaughterDate=201712120000&${currentCompanyID}`,
+            Pklanja: `http://${currentHostName}/api/PigSlaughter/GetPigSlaughtersByPage?${currentCompanyID}&CurrentPage=1&ItemsPerPage=20`
         },
         Lamb : {
-            Aklanja: "http://" + currentHostName + "/api/LambSlaughter/GetLambSlaughterItemTmpsByDate?lambSlaughterDate=201712120000&" + currentCompanyID + "",
-            Pklanja: "http://" + currentHostName + "/api/LambSlaughter/GetLambSlaughtersByPage?" + currentCompanyID + "&CurrentPage=1&ItemsPerPage=20"
+            Aklanja: `http://${currentHostName}/api/LambSlaughter/GetLambSlaughterItemTmpsByDate?lambSlaughterDate=201712120000&${currentCompanyID}`,
+            Pklanja: `http://${currentHostName}/api/LambSlaughter/GetLambSlaughtersByPage?CompanyId=${currentCompanyID}`
         }
     },
     documents: {

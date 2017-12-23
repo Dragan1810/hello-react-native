@@ -1,7 +1,6 @@
 import React from 'react';
 import { DrawerNavigator,StackNavigator } from 'react-navigation';
 import HomeScreen from '../screens/HomeScreen';
-import CetvrtanjeScreen from '../screens/Production/CetvrtanjeScreen';
 import InputNoteScreen from '../screens/Documents/InputNoteScreen';
 import StockScreen from '../screens/Magacin/StockScreen';
 import DepotScreen from '../screens/Magacin/DepotScreen';
@@ -12,7 +11,9 @@ import SubAnimalScreen from '../screens/Kartoteka/SubAnimalScreen';
 import BusinessPartnerScreen from '../screens/PoslovniPartner/BusinessPartnerScreen';
 import CompanyScreen from '../screens/Company/CompanyScreen';
 import BoxesScreen from '../screens/Magacin/BoxesScreen';
-import PKlanja from '../screens/Production/Goveda/Pklanja'
+import GovedaPKlanja from '../screens/Production/Goveda/Pklanja'
+import LambPKlanja from '../screens/Production/Lamb/Pklanja'
+import PigPKlanja from '../screens/Production/Pig/Pklanja'
 
 import CompanyDrawer from '../screens/Company/CompanyDrawer';
 import DocumentsDrawer from '../screens/Documents/DocumentsDrawer';
@@ -27,8 +28,10 @@ import lambDrawer from '../screens/Production/Lamb/lambDrawer'
 
 const PigNavigation = StackNavigator({
   prePigScreen: { screen: pigDrawer },
-  inputNote: { screen: InputNoteScreen } // aktivna predhodna klanja toDO
+  prePigKlanja: { screen: PigPKlanja } // aktivna predhodna klanja toDO
 
+},{
+  headerMode:'none'
 },
 {
   initialRouteName: 'prePigScreen'
@@ -36,8 +39,10 @@ const PigNavigation = StackNavigator({
 
 const GovedaNavigation = StackNavigator({
   preGovedaScreen: { screen: govedaDrawer },
-  preGovedaKlanja: { screen: PKlanja } // aktivna predhodna klanja toDO
+  preGovedaKlanja: { screen: GovedaPKlanja } // aktivna predhodna klanja toDO
 
+},{
+  headerMode:'none'
 },
 {
   initialRouteName: 'preGovedaScreen'
@@ -46,8 +51,10 @@ const GovedaNavigation = StackNavigator({
 
 const LambNavigation = StackNavigator({
   preLambScreen: { screen: lambDrawer },
-  inputNote: { screen: InputNoteScreen } // aktivna predhodna klanja toDO
+  preLambKlanja: { screen: LambPKlanja } // aktivna predhodna klanja toDO
 
+},{
+  headerMode:'none'
 },
 {
   initialRouteName: 'preLambScreen'
@@ -60,6 +67,8 @@ const productionNavigation = StackNavigator({  // primer navigacije
   pig: { screen: PigNavigation }
 
 },{
+  headerMode:'none'
+},{
   initialRouteName: 'preProduction'
 });
 
@@ -67,6 +76,8 @@ const robniPrometNavigation = StackNavigator({
       preRobniPromet: { screen: DocumentsDrawer },
       inputNote: { screen: InputNoteScreen }
 
+    },{
+      headerMode:'none'
     },
     {
       initialRouteName: 'preRobniPromet'
@@ -79,6 +90,8 @@ const magacinNavigation = StackNavigator({
       warehouse: { screen: WarehouseScreen },
       box: { screen: BoxesScreen}
 
+    },{
+      headerMode:'none'
     },
     {
       initialRouteName: 'preMagacin'
@@ -90,6 +103,8 @@ const kartotekaNavigation = StackNavigator({
       animal: { screen: AnimalScreen },
       subAnimal: { screen: SubAnimalScreen }
 
+    },{
+      headerMode:'none'
     },
     {
       initialRouteName: 'preKartoteka'

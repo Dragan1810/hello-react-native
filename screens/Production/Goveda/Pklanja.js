@@ -11,7 +11,7 @@ import { data } from '../../../helpers/Data';
 import { Constants } from 'expo'
 
 const { Pklanja: PreKlanja } = data.production.goveda
-class CompanyScreen extends Component {
+export default class CompanyScreen extends Component {
   constructor() {
     super();
 
@@ -54,9 +54,9 @@ class CompanyScreen extends Component {
             return (
 
           <View style={[container]}>
-          <View style={[title, {height: 50 }]}>
+          <View style={title}>
             <Icon
-              containerStyle={[icon, {width:width*(1/5), height: 50 }]}
+              containerStyle={icon}
               name='chevron-left'
               type='font-awesome'
               color='#fff'
@@ -64,8 +64,9 @@ class CompanyScreen extends Component {
               onPress={()=>goBack()}
             />
             <SearchBar
-              containerStyle={[search,{width:width*(4/5)}]}
+              containerStyle={search}
               round
+              lightTheme
               onSubmitEditing={e=>this.search(e)}
               placeholder='Type Here...'
             />
@@ -89,10 +90,12 @@ class CompanyScreen extends Component {
 
 const styles = StyleSheet.create({
     icon: {
+      flex: 1,
       alignSelf:'flex-start',
       margin:0,
       padding:0,
-      backgroundColor:'#517fa4',
+      backgroundColor:'#009688',
+      height: 56
     },
     container: {
       flex: 1,
@@ -111,10 +114,11 @@ const styles = StyleSheet.create({
       paddingTop: 65
     },
     search: {
+      flex: 3,
       alignSelf:'flex-end',
       margin:0,
       padding:0,
-      backgroundColor:'#517fa4',
+      backgroundColor:'#009688',
       borderBottomWidth:0,
       borderTopWidth:0
     },
@@ -125,4 +129,3 @@ const styles = StyleSheet.create({
     }
   });
 
-export default CompanyScreen;

@@ -2,9 +2,14 @@ import { Icon } from './icons'
 
 export const MainRoutes = [
   {
-    id: 'Company',
-    title: 'Kompanje',
-    icon: Icon.steak
+    id: 'Production',
+    title: 'Proizvodnja',
+    icon: Icon.pig
+  },
+  {
+    id: 'Kartoteka',
+    title: 'Kartateka',
+    icon: Icon.pig
   },
   {
     id: 'Magacin',
@@ -12,8 +17,15 @@ export const MainRoutes = [
     icon: Icon.lager
   },
   {
-    id: 'Kartoteka',
-    title: 'Kartateka',
-    icon: Icon.pig
+    id: 'Company',
+    title: 'Kompanije',
+    icon: Icon.steak
+  },
+  {
+    id: 'RobniPromet',
+    title:'Dokumenti'
   }
+
+
+
 ];

@@ -6,81 +6,46 @@ import AppHeader from '../components/AppHeader';
 import { Constants } from 'expo';
 import { MainRoutes } from '../Config/index'
 
+export default class HomeScreen extends Component {
 
-export default class GridV2 extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {dimensions: undefined}
-  };
-
-  _onLayout = event => {
-    if (this.state.height)
-      return;
-    let dimensions = event.nativeEvent.layout;
-    this.setState({ dimensions })
-  };
-
-  _getEmptyCount(size) {
-    let rowCount = Math.ceil((this.state.dimensions.height - 20) / size);
-    return rowCount * 3 - MainRoutes.length;
-  };
-
+  constructor(props){
+    super(props)
+  }
   render() {
-    let navigate = this.props.navigation.navigate;
-    let items = <View/>;
-
-    if (this.state.dimensions) {
-      let size = this.state.dimensions.width / 3;
-      let emptyCount = this._getEmptyCount(size);
-
-      items = MainRoutes.map(function (route, index) {
-        return (
-          <RkButton rkType='tile'
-                    style={{height: size, width: size}}
-                    key={index}
-                    onPress={() => {
-                      navigate(route.id)
-                    }}>
-            <RkText style={styles.icon} rkType='primary moon xxlarge'>
-              {route.icon}
-            </RkText>
-            <RkText rkType='small'>{route.title}</RkText>
-          </RkButton>
-        )
-      });
-
-      for (let i = 0; i < emptyCount; i++) {
-        items.push(<View key={'empty' + i} style={[{height: size, width: size}, styles.empty]}/>)
-      }
-    }
-
+    let { navigate } = this.props.navigation
+    let { layout, button } = styles
+    console.log(this.props.navigation.state.routeName)
     return (
-      <View>
-      <AppHeader/>
-      <ScrollView
-        style={styles.root}
-        onLayout={this._onLayout}
-        contentContainerStyle={styles.rootContainer}>
-
-        {items}
-      </ScrollView>
+      <View style={ layout }>
+        <AppHeader navigation={this.props.navigation} title={'Glavni Meni'}/>
+        {MainRoutes.map((route, i) => {
+          return (
+            <View key={i}>
+              <Button
+               large
+               title={route.title}
+               borderRadius={40}
+               containerViewStyle={ button }
+               icon={{name: 'archive', type: 'entypo'}}
+               onPress={()=> navigate(route.id)}
+              />
+            </View>
+          )
+          })}
       </View>
-    );
+    )
   }
 }
-let styles = StyleSheet.create({
-  root: {
-    backgroundColor: '#fff'
+
+const styles = StyleSheet.create({
+  layout: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingTop: 85
   },
-  rootContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-  empty: {
-    borderColor: '#000',
-    borderWidth: 1
-  },
-  icon: {
-    marginBottom: 16
+  button: {
+    paddingTop: 8,
+    width: 300
   }
-});
+})
