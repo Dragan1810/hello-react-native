@@ -1,18 +1,21 @@
+import format from 'date-fns/format'
+
 const currentHostName = "212.200.54.246:5001"
-const currentCompanyID = 621
+const currentCompanyID = 62
+let date = format(Date.now(),'YYYYMMDD');
 
 export const data = {
     production: {
         goveda : {
-            Aklanja: `http://212.200.54.246:5001/api/Slaughter/GetSlaughterItemTmpsByDate?slaughterDate=201712240000&62`,
+            Aklanja: `http://${currentHostName}/api/Slaughter/GetSlaughterItemTmpsByDate?slaughterDate=${date}0000&${currentCompanyID}`,
             Pklanja: `http://${currentHostName}/api/Slaughter/GetSlaughtersByPage?CompanyId=${currentCompanyID}`
         },
         Pig : {
-            Aklanja: `http://${currentHostName}/api/PigSlaughter/GetPigSlaughterItemTmpsByDate?pigSlaughterDate=201712120000&${currentCompanyID}`,
+            Aklanja: `http://${currentHostName}/api/PigSlaughter/GetpigSlaughterItemTmpsByDate?PigSlaughterDate=${date}0000&${currentCompanyID}`,
             Pklanja: `http://${currentHostName}/api/PigSlaughter/GetPigSlaughtersByPage?CompanyId=${currentCompanyID}`
         },
         Lamb : {
-            Aklanja: `http://${currentHostName}/api/LambSlaughter/GetLambSlaughterItemTmpsByDate?lambSlaughterDate=201712120000&${currentCompanyID}`,
+            Aklanja: `http://${currentHostName}/api/LambSlaughter/GetlambSlaughterItemTmpsByDate?LambSlaughterDate=${date}0000&${currentCompanyID}`,
             Pklanja: `http://${currentHostName}/api/LambSlaughter/GetLambSlaughtersByPage?CompanyId=${currentCompanyID}`
         }
     },

@@ -18,7 +18,8 @@ class CompanyScreen extends Component {
     this.state = {
       data:[],
       search: '',
-      refreshing: false
+      refreshing: false,
+      noData: false
     };
 
     this.search = this.search.bind(this);
