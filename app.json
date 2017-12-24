@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "react-native-basepre",
+    "name": "erp-mobile",
     "description": "Managment tool",
-    "slug": "react-native-basepre",
+    "slug": "erp-mobile",
     "privacy": "public",
     "sdkVersion": "24.0.0",
     "version": "1.0.0",
@@ -13,6 +13,9 @@
       "image": "./assets/splash.png",
       "resizeMode": "cover",
       "backgroundColor": "#000000"
+    },
+    "android": {
+      "package": "com.erpsirmium.erpmobile"
     },
     "packagerOpts": {
       "assetExts": ["ttf", "mp4"]

@@ -5,8 +5,8 @@ export const MainRoutes = [
     id: 'Production',
     title: 'Proizvodnja',
     icon: Icon.pig
-  },
-  {
+  }
+ /* {
     id: 'Kartoteka',
     title: 'Kartateka',
     icon: Icon.pig
@@ -26,6 +26,6 @@ export const MainRoutes = [
     title:'Dokumenti'
   }
 
-
+*/
 
 ];

@@ -11,7 +11,7 @@ export const data = {
             Pklanja: `http://${currentHostName}/api/Slaughter/GetSlaughtersByPage?CompanyId=${currentCompanyID}`
         },
         Pig : {
-            Aklanja: `http://${currentHostName}/api/PigSlaughter/GetpigSlaughterItemTmpsByDate?PigSlaughterDate=${date}0000&${currentCompanyID}`,
+            Aklanja: `http://${currentHostName}/api/PigSlaughter/GetPigSlaughterItemTmpsByDate?PigSlaughterDate=${date}0000&${currentCompanyID}`,
             Pklanja: `http://${currentHostName}/api/PigSlaughter/GetPigSlaughtersByPage?CompanyId=${currentCompanyID}`
         },
         Lamb : {
