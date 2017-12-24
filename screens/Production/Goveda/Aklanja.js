@@ -10,7 +10,7 @@ import { getData, filterData } from '../../../helpers/index';
 import { data } from '../../../helpers/Data';
 import { Constants } from 'expo'
 
-const { Aklanja: PreKlanja } = data.production.goveda
+const { Aklanja: Klanja } = data.production.goveda
 class CompanyScreen extends Component {
   constructor() {
     super();
@@ -26,13 +26,13 @@ class CompanyScreen extends Component {
   }
 
   componentDidMount() {
-    getData(PreKlanja).then(data => this.setState({ data: data.SlaughtersByPage }));
+    getData(Klanja).then(data => this.setState({ data: data.SlaughterItemTmps }));
   }
 
   handleRefresh() {
     this.setState({
       refreshing: true
-    }, ()=> getData(PreKlanja).then(data => this.setState({ data: data.SlaughtersByPage, refreshing: false })))
+    }, ()=> getData(Klanja).then(data => this.setState({ data: data.SlaughterItemTmps, refreshing: false })))
   }
 
   search(e) {

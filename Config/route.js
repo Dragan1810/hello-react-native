@@ -12,8 +12,11 @@ import BusinessPartnerScreen from '../screens/PoslovniPartner/BusinessPartnerScr
 import CompanyScreen from '../screens/Company/CompanyScreen';
 import BoxesScreen from '../screens/Magacin/BoxesScreen';
 import GovedaPKlanja from '../screens/Production/Goveda/Pklanja'
+import GovedaAKlanja from '../screens/Production/Goveda/Aklanja'
 import LambPKlanja from '../screens/Production/Lamb/Pklanja'
+import LambAKlanja from '../screens/Production/Lamb/Aklanja'
 import PigPKlanja from '../screens/Production/Pig/Pklanja'
+import PigAKlanja from '../screens/Production/Pig/Aklanja'
 
 import CompanyDrawer from '../screens/Company/CompanyDrawer';
 import DocumentsDrawer from '../screens/Documents/DocumentsDrawer';
@@ -28,7 +31,8 @@ import lambDrawer from '../screens/Production/Lamb/lambDrawer'
 
 const PigNavigation = StackNavigator({
   prePigScreen: { screen: pigDrawer },
-  prePigKlanja: { screen: PigPKlanja } // aktivna predhodna klanja toDO
+  prePigKlanja: { screen: PigPKlanja },
+  aktPigKlanja: { screen: PigAKlanja } // aktivna predhodna klanja toDO
 
 },{
   headerMode:'none'
@@ -39,7 +43,8 @@ const PigNavigation = StackNavigator({
 
 const GovedaNavigation = StackNavigator({
   preGovedaScreen: { screen: govedaDrawer },
-  preGovedaKlanja: { screen: GovedaPKlanja } // aktivna predhodna klanja toDO
+  preGovedaKlanja: { screen: GovedaPKlanja },
+  aktGovedaKlanja:{ screen: GovedaAKlanja } // aktivna predhodna klanja toDO
 
 },{
   headerMode:'none'
@@ -51,7 +56,8 @@ const GovedaNavigation = StackNavigator({
 
 const LambNavigation = StackNavigator({
   preLambScreen: { screen: lambDrawer },
-  preLambKlanja: { screen: LambPKlanja } // aktivna predhodna klanja toDO
+  preLambKlanja: { screen: LambPKlanja },
+  aktLambKlanja: { screen: LambAKlanja } // aktivna predhodna klanja toDO
 
 },{
   headerMode:'none'

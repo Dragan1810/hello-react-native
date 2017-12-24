@@ -16,7 +16,7 @@ export default class ProductionDrawer extends Component {
                             leftIcon={{ name: 'account-balance' }}
                         />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigate('klanje')}>
+                    <TouchableOpacity onPress={() => navigate('aktGovedaKlanja')}>
                         <ListItem
                             title={'Aktivna klanja'}
                             leftIcon={{ name: 'account-balance' }}

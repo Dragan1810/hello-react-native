@@ -26,7 +26,10 @@ class CompanyScreen extends Component {
   }
 
   componentDidMount() {
-    getData(PreKlanja).then(data => this.setState({ data: data.LambSlaughtersByPage }));
+    getData(PreKlanja).then(data => {
+      data.TotalItems === 0 ? this.setState({noData: true})
+      : this.setState({ data: data.LambSlaughtersByPage })
+    })
   }
 
   handleRefresh() {
@@ -47,7 +50,7 @@ class CompanyScreen extends Component {
             const filteredData = filterData(this.state.data, this.state.search);
             data = filteredData;
           }
-          const rdy =  <Activity />
+          const rdy =  this.state.noData ? <Text style={{textAlign:'center', paddingTop: 20}}>Network Error...</Text> : <Activity />
           const { width, height } = Dimensions.get('window');
           const { navigate, goBack } = this.props.navigation;
           const { text, searchBar, search, list, icon, container, title } = styles;
