@@ -14,7 +14,7 @@ export function filterData(data, searchItem) {
   return data.filter(item => {
     let keys = Object.keys(item);
     for (let i = 0; i < keys.length; i++) {
-      if(item[keys[i]] !==null && item[keys[i]].toString().includes(searchItem)){return item;}
+      if(item[keys[i]] !==null && item[keys[i]].toString().toLowerCase().includes(searchItem.toLowerCase())){return item;}
     }
   });
 }

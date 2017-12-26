@@ -1,8 +1,10 @@
 import format from 'date-fns/format'
 
 const currentHostName = "212.200.54.246:5001"
-const currentCompanyID = 62
+const currentCompanyID = 7
 let date = format(Date.now(),'YYYYMMDD');
+
+//let Id = () => fetch(`http://212.200.54.246:5001/api/Company/GetCompanies`).then(res => res.json()).then(x =>{return x.Companies[0]['CompanyCode']} );
 
 export const data = {
     production: {

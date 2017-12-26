@@ -15,7 +15,8 @@
       "backgroundColor": "#000000"
     },
     "android": {
-      "package": "com.erpsirmium.erpmobile"
+      "package": "com.erpsirmium.erpmobile",
+      "versionCode": 2
     },
     "packagerOpts": {
       "assetExts": ["ttf", "mp4"]

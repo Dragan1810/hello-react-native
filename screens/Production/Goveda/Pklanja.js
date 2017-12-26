@@ -27,6 +27,7 @@ export default class CompanyScreen extends Component {
   }
 
   componentDidMount() {
+    console.log(PreKlanja)
     getData(PreKlanja).then(data => {
       data.TotalItems === 0 ? this.setState({noData: true})
       : this.setState({ data: data.SlaughtersByPage })

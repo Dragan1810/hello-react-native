@@ -30,7 +30,8 @@ class CompanyScreen extends Component {
     getData(Klanja).then(data => {
       !data.SlaughterItemTmps.length ? this.setState({noData: true})
       : this.setState({ data: data.SlaughterItemTmps })
-    });
+    })
+    .catch(err => console.error(err))
   }
 
   handleRefresh() {
