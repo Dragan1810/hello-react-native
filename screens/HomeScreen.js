@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, ScrollView, View, Image, Dimensions } from 'react-native';
-import { RkText, RkButton, RkStyleSheet } from 'react-native-ui-kitten';
-import { Button } from 'react-native-elements'
-import AppHeader from '../components/AppHeader';
+import { StyleSheet, Text, ScrollView, View, Image, Dimensions } from 'react-native'
+import { Button, Icon } from 'react-native-elements'
+import { Wrapper, WrapperHeader } from '../styled-components/Wrapper'
 import { Constants } from 'expo';
 import { MainRoutes } from '../Config/index'
 
@@ -14,10 +13,13 @@ export default class HomeScreen extends Component {
   render() {
     let { navigate } = this.props.navigation
     let { layout, button } = styles
-    console.log(this.props.navigation.state.routeName)
     return (
-      <View style={ layout }>
-        <AppHeader navigation={this.props.navigation} title={'Glavni Meni'}/>
+      <Wrapper>
+        <WrapperHeader>
+        <Icon name='arrow-back' color='#fff' onPress={() => navigate.goBack(null)} />
+        <Text>jgoeigjn</Text>
+        <Icon name='arrow-back' color='#fff' onPress={() => navigate.goBack(null)} />
+        </WrapperHeader>
         {MainRoutes.map((route, i) => {
           return (
             <View key={i}>
@@ -32,18 +34,12 @@ export default class HomeScreen extends Component {
             </View>
           )
           })}
-      </View>
+      </Wrapper>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  layout: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    paddingTop: 85
-  },
   button: {
     paddingTop: 8,
     width: 300
