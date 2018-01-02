@@ -1,8 +1,7 @@
+const steak = require('../assets/Icons/steak.png')
+const knife = require('../assets/Icons/knife.png')
 
 export const Icon = {
-    steak: '../assets/Icons/steak.png',
-    knife: '../assets/Icons/knife.png',
-    pig: '../assets/Icons/pig.png',
-    lager: '../assets/Icons/lager.png',
-    truck: '../assets/Icons/trucking.png'
+    steak,
+    knife
 }

@@ -4,17 +4,17 @@ export const MainRoutes = [
   {
     id: 'Production',
     title: 'Proizvodnja',
-    icon: Icon.pig
+    icon: Icon.steak
   },
   {
     id: 'Kartoteka',
     title: 'Kartateka',
-    icon: Icon.pig
+    icon: Icon.knife
   },
   {
     id: 'Magacin',
     title: 'Magacin',
-    icon: Icon.lager
+    icon: Icon.steak
   },
   {
     id: 'Company',
@@ -23,6 +23,7 @@ export const MainRoutes = [
   },
   {
     id: 'RobniPromet',
-    title:'Dokumenti'
+    title:'Dokumenti',
+    icon: Icon.knife
   }
 ];

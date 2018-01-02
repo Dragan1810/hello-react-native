@@ -4,7 +4,7 @@ import { Constants } from 'expo'
 
 
 export const Wrapper = styled.View`
-    background-color: white;
+    background-color: #eae7e3;
     flex: 1;
     align-items: center;
     justify-content: flex-start;

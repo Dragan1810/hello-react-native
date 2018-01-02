@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, ScrollView, View, Image, Dimensions } from 'react-native'
+import { StyleSheet, Text, ScrollView, View, Image, Dimensions, TouchableOpacity } from 'react-native'
 import { Button, Icon } from 'react-native-elements'
 import { Wrapper, WrapperHeader, TitleText } from '../styled-components/Wrapper'
 import { Constants } from 'expo';
@@ -19,20 +19,18 @@ export default class HomeScreen extends Component {
         <TitleText>Glavni Meni</TitleText>
         <Icon name='home' color='#fff' onPress={() => goBack()} />
         </WrapperHeader>
+        <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
         {MainRoutes.map((route, i) => {
           return (
-            <View key={i}>
-              <Button
-               large
-               title={route.title}
-               borderRadius={40}
-               containerViewStyle={ button }
-               icon={{name: 'archive', type: 'entypo'}}
-               onPress={()=> navigate(route.id)}
+            <TouchableOpacity key={i} style={[button]} onPress={()=> navigate(route.id)}>
+              <Image
+                source={route.icon}
               />
-            </View>
+              <Text style={{textAlign: 'center'}}>Hi</Text>
+            </TouchableOpacity>
           )
           })}
+          </View>
       </Wrapper>
     )
   }
@@ -41,6 +39,7 @@ export default class HomeScreen extends Component {
 const styles = StyleSheet.create({
   button: {
     paddingTop: 8,
-    width: '25%'
+    width: '33%',
+    alignItems: 'center'
   }
 })
