@@ -147,6 +147,7 @@ const MainNavigation = StackNavigator({   //main navigacija u koju su ubacene sv
   RobniPromet: { screen: robniPrometNavigation },
   Kartoteka: { screen: kartotekaNavigation },
   PoslovniPartner: { screen: poslovniPartnerNavigation }
+  // dodati drawer sa strane podesavanje strana
 
 },{
   headerMode: 'none'

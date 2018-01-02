@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, Dimensions, FlatList } from 'react-native';
-import { Card, List, ListItem, SearchBar, Icon } from 'react-native-elements';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import AppHeader from '../../../components/AppHeader';
-import AppSearch from '../../../components/AppSearch';
-import Activity from '../../../components/ActivityIndicator';
-import ListItems from '../../../components/PredhodnaKlanja/PreGovedaKlanja';
-import { getData, filterData } from '../../../helpers/index';
-import { data } from '../../../helpers/Data';
+import React, { Component } from 'react'
+import { StyleSheet, Text, View, Dimensions, FlatList } from 'react-native'
+import { Card, List, ListItem, SearchBar, Icon } from 'react-native-elements'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import { Wrapper, WrapperHeader } from '../../../styled-components/Wrapper'
+import AppSearch from '../../../components/AppSearch'
+import Activity from '../../../components/ActivityIndicator'
+import ListItems from '../../../components/PredhodnaKlanja/PreGovedaKlanja'
+import { getData, filterData } from '../../../helpers/index'
+import { data } from '../../../helpers/Data'
 import { Constants } from 'expo'
 
 const { Pklanja: PreKlanja } = data.production.goveda
@@ -55,28 +55,30 @@ export default class CompanyScreen extends Component {
           const rdy =  this.state.noData ? <Text style={{textAlign:'center', paddingTop: 20}}>Network Error...</Text> : <Activity />
           const { width, height } = Dimensions.get('window');
           const { navigate, goBack } = this.props.navigation;
-          const { text, searchBar, search, list, icon, container, title } = styles;
+          const { text, searchBar, search, list, icon } = styles;
             return (
 
-          <View style={[container]}>
-          <View style={title}>
+          <Wrapper>
+            <WrapperHeader>
             <Icon
               containerStyle={icon}
               name='chevron-left'
               type='font-awesome'
               color='#fff'
-              size={32}
+              size={30}
               onPress={()=>goBack()}
             />
             <SearchBar
               containerStyle={search}
+              inputStyle={{paddingTop: 5, paddingBottom: 5}}
               round
               lightTheme
               onSubmitEditing={e=>this.search(e)}
               placeholder='Type Here...'
             />
 
-            </View>
+            </WrapperHeader>
+
               {this.state.data.length < 1 && rdy}
               <FlatList
                 data={data}
@@ -87,7 +89,7 @@ export default class CompanyScreen extends Component {
                 refreshing={this.state.refreshing}
                 onRefresh={this.handleRefresh}
               />
-            </View>
+            </Wrapper>
 
           );
         }
@@ -98,16 +100,8 @@ const styles = StyleSheet.create({
       flex: 1,
       alignSelf:'flex-start',
       margin:0,
-      padding:0,
-      backgroundColor:'#009688',
-      height: 56
-    },
-    container: {
-      flex: 1,
-      paddingTop: Constants.statusBarHeight
-    },
-    title: {
-      flexDirection:'row'
+      paddingTop: 5,
+      backgroundColor:'#009688'
     },
     searchBar: {
       alignSelf: 'flex-start',
