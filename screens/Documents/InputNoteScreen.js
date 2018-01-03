@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Dimensions, FlatList } from 'react-native';
 import { Card, List, ListItem, SearchBar, Icon } from 'react-native-elements';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import AppHeader from '../../components/AppHeader';
-import AppSearch from '../../components/AppSearch';
+import { Wrapper, WrapperHeader } from '../../styled-components/Wrapper'
 import Activity from '../../components/ActivityIndicator';
 import ListItems from '../../components/InputNoteItem';
 import { getData, filterData } from '../../helpers/index';
 import { data } from '../../helpers/Data';
-import { Constants } from 'expo'
 
 
 class CompanyScreen extends Component {
@@ -50,12 +48,12 @@ class CompanyScreen extends Component {
           const rdy =  <Activity />
           const { width, height } = Dimensions.get('window');
           const { navigate, goBack } = this.props.navigation;
-          const { text, searchBar, search, list, icon, container, title } = styles;
+          const { search, icon } = styles;
             return (
 
 
-              <View style={[container]}>
-          <View style={title}>
+          <Wrapper>
+            <WrapperHeader>
             <Icon
               containerStyle={icon}
               name='chevron-left'
@@ -72,7 +70,7 @@ class CompanyScreen extends Component {
               placeholder='Type Here...'
             />
 
-            </View>
+            </WrapperHeader>
               {this.state.data.length < 1 && rdy}
               <FlatList
                 data={data}
@@ -83,7 +81,7 @@ class CompanyScreen extends Component {
                 refreshing={this.state.refreshing}
                 onRefresh={this.handleRefresh}
               />
-            </View>
+            </Wrapper>
 
           );
         }
@@ -97,10 +95,6 @@ const styles = StyleSheet.create({
       padding:0,
       backgroundColor:'#009688',
       height: 56
-    },
-    container: {
-      flex: 1,
-      paddingTop: Constants.statusBarHeight
     },
     title: {
       flexDirection:'row'

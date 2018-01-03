@@ -8,7 +8,6 @@ import Activity from '../../../components/ActivityIndicator'
 import ListItems from '../../../components/PredhodnaKlanja/PreGovedaKlanja'
 import { getData, filterData } from '../../../helpers/index'
 import { data } from '../../../helpers/Data'
-import { Constants } from 'expo'
 
 const { Pklanja: PreKlanja } = data.production.goveda
 export default class CompanyScreen extends Component {
@@ -57,7 +56,7 @@ export default class CompanyScreen extends Component {
           const rdy =  this.state.noData ? <Text style={{textAlign:'center', paddingTop: 20}}>Nema Podataka...</Text> : <Activity />
           const { width, height } = Dimensions.get('window');
           const { navigate, goBack } = this.props.navigation;
-          const { text, searchBar, search, list, icon } = styles;
+          const { search, icon } = styles;
             return (
 
           <Wrapper>

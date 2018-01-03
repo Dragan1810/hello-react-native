@@ -1,7 +1,7 @@
 import format from 'date-fns/format'
 
 const currentHostName = "212.200.54.246:5001"
-const currentCompanyID = 7
+const currentCompanyID = 1
 let date = format(Date.now(),'YYYYMMDD');
 
 //let Id = () => fetch(`http://212.200.54.246:5001/api/Company/GetCompanies`).then(res => res.json()).then(x =>{return x.Companies[0]['CompanyCode']} );
@@ -22,7 +22,7 @@ export const data = {
         }
     },
     documents: {
-        inputNote : "http://" + currentHostName + "/api/InputNote/GetInputNotesByPage?" + currentCompanyID + "&CurrentPage=1&ItemsPerPage=1"
+        inputNote : `http://${currentHostName}/api/InputNote/GetInputNotesByPage?${currentCompanyID}&CurrentPage=1&ItemsPerPage=1`
     },
     magacin: {
         depot: "http://" + currentHostName + "/api/Depot/GetDepots?CompanyId=" + currentCompanyID,
@@ -39,7 +39,7 @@ export const data = {
         businessPartner: "http://" + currentHostName + "/api/BusinessPartner/GetBusinessPartners?CompanyId=" + currentCompanyID,
     },
     company : {
-        company: "http://" + currentHostName + "/api/Company/GetCompanies"
+        company: `http://${currentHostName}/api/Company/GetCompanies`
     }
 }
 
