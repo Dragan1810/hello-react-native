@@ -6,7 +6,9 @@ import { Card, List, ListItem } from 'react-native-elements';
 const ListItems = ({data}) => {
     const { basic } = styles
     return(
-        <Card title={data.CompanyName}>
+        <Card
+            title={data.CompanyName}
+        >
         <ListItem
             title={
                 <View style={basic}>

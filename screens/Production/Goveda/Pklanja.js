@@ -83,6 +83,7 @@ export default class CompanyScreen extends Component {
               {this.state.data.length < 1 && rdy}
               {!!!this.state.message && <Text>{this.state.message}</Text>}
               <FlatList
+                style={{width:'100%'}}
                 data={data}
                 renderItem={({ item }) => (
                   <ListItems data={item} />
@@ -105,15 +106,6 @@ const styles = StyleSheet.create({
       paddingTop: 5,
       backgroundColor:'#009688'
     },
-    searchBar: {
-      alignSelf: 'flex-start',
-    },
-    text: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-      paddingTop: 65
-    },
     search: {
       flex: 3,
       alignSelf:'flex-end',
@@ -122,11 +114,6 @@ const styles = StyleSheet.create({
       backgroundColor:'#009688',
       borderBottomWidth:0,
       borderTopWidth:0
-    },
-    list: {
-      borderTopWidth: 0,
-      borderBottomWidth: 0,
-      backgroundColor: '#C7BE9F'
     }
   });
 
