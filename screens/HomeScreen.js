@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, FlatList, View, Image, Dimensions, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, FlatList, View, Dimensions, TouchableOpacity } from 'react-native'
 import { Button, Icon } from 'react-native-elements'
 import { Wrapper, WrapperHeader, TitleText } from '../styled-components/Wrapper'
 import { Constants } from 'expo';
 import { MainRoutes } from '../Config/index'
+import Image from 'react-native-remote-svg'
 
 export default class HomeScreen extends Component {
   constructor(props){
