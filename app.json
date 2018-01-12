@@ -10,7 +10,7 @@
     "primaryColor": "#cccccc",
     "icon": "./assets/logo2.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/1.png",
       "resizeMode": "cover",
       "backgroundColor": "#000000"
     },
