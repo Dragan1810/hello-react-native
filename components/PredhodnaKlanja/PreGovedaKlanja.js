@@ -3,12 +3,13 @@ import { StyleSheet, Text, FlatList, View, Dimensions } from 'react-native';
 import { Card, List, ListItem } from 'react-native-elements';
 
 
-const ListItems = ({data}) => {
+const ListItems = ({data, navigate}) => {
     const { basic } = styles
     return(
         <Card
-            title={data.CompanyName}
+            title={data.SupplierName}
         >
+        <Text onPress={() => navigate('details', { url : data.SupplierName })}>Click</Text>
         <ListItem
             title={
                 <View style={basic}>

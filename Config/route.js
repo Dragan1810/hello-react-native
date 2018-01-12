@@ -28,11 +28,14 @@ import govedaDrawer from '../screens/Production/Goveda/govedaDrawer'
 import pigDrawer from '../screens/Production/Pig/pigDrawer'
 import lambDrawer from '../screens/Production/Lamb/lambDrawer'
 
+import Details from '../components/Grid'
+
 
 const PigNavigation = StackNavigator({
   prePigScreen: { screen: pigDrawer },
   prePigKlanja: { screen: PigPKlanja },
-  aktPigKlanja: { screen: PigAKlanja } // aktivna predhodna klanja toDO
+  aktPigKlanja: { screen: PigAKlanja },
+  details: { screen: Details } // aktivna predhodna klanja toDO
 
 },{
   headerMode:'none'

@@ -86,7 +86,7 @@ export default class CompanyScreen extends Component {
                 style={{width:'100%'}}
                 data={data}
                 renderItem={({ item }) => (
-                  <ListItems data={item} />
+                  <ListItems data={item} navigate={navigate} />
                 )}
                 keyExtractor={item => item.Id}
                 refreshing={this.state.refreshing}
