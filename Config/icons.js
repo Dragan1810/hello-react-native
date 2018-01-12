@@ -1,8 +1,8 @@
-const steak = require('../assets/svg/steak.svg')
-const knife = require('../assets/svg/knife.svg')
-const lager = require('../assets/svg/lager.svg')
-const warehouse = require('../assets/svg/warehouse.svg')
-const organization = require('../assets/svg/organization.svg')
+const steak = require('../assets/Icons/steak.png')
+const knife = require('../assets/Icons/cleaver.png')
+const lager = require('../assets/Icons/libra.png')
+const warehouse = require('../assets/Icons/warehouse.png')
+const organization = require('../assets/Icons/diagram.png')
 
 
 export const Icon = {

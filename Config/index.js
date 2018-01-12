@@ -9,21 +9,21 @@ export const MainRoutes = [
   {
     id: 'Kartoteka',
     title: 'Kartateka',
-    icon: Icon.warehouse
+    icon: Icon.lager
   },
   {
     id: 'Magacin',
     title: 'Magacin',
-    icon: Icon.lager
+    icon: Icon.warehouse
   },
   {
     id: 'Company',
     title: 'Kompanije',
-    icon: Icon.steak
+    icon: Icon.organization
   },
   {
     id: 'RobniPromet',
     title:'Dokumenti',
-    icon: Icon.organization
+    icon: Icon.steak
   }
 ];
