@@ -7,5 +7,6 @@ import { Wrapper } from './Wrapper'
 export const GridWrapper = Wrapper.extend`
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    border:1px solid black;
 `;
