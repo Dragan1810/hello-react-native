@@ -101,18 +101,6 @@ const styles = StyleSheet.create({
       backgroundColor:'#009688',
       height: 56
     },
-    title: {
-      flexDirection:'row'
-    },
-    searchBar: {
-      alignSelf: 'flex-start',
-    },
-    text: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-      paddingTop: 65
-    },
     search: {
       flex: 3,
       alignSelf:'flex-end',
@@ -121,11 +109,6 @@ const styles = StyleSheet.create({
       backgroundColor:'#009688',
       borderBottomWidth:0,
       borderTopWidth:0
-    },
-    list: {
-      borderTopWidth: 0,
-      borderBottomWidth: 0,
-      backgroundColor: '#C7BE9F'
     }
   });
 
