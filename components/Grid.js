@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { View, Text, ScrollView } from 'react-native'
+import { Icon } from 'react-native-elements'
 import { GridWrapper } from '../styled-components/Grid'
-import { TitleText } from '../styled-components/Wrapper'
+import { TitleText, WrapperHeader, Wrapper } from '../styled-components/Wrapper'
 import { getData } from '../helpers/index'
 
 const URL = `https://my.api.mockaroo.com/GridTest?key=51de2ad0`
@@ -20,9 +21,17 @@ export default class Grid extends Component {
         getData(URL).then(data => this.setState({ data }))
     }
     render() {
-       const { data } = this.state
+        const { navigate, goBack } = this.props.navigation
+        const { data } = this.state
         return (
+            <Wrapper>
+        <WrapperHeader>
+            <Icon name='arrow-back' color='#fff' onPress={() => goBack(null)} />
+            <TitleText>Magacin</TitleText>
+            <Icon name='home' color='#fff' onPress={() => navigate('Home')} />
+        </WrapperHeader>
             <ScrollView>
+
             <GridWrapper>
                 <View>
                     <Text>First Name</Text>
@@ -44,6 +53,7 @@ export default class Grid extends Component {
                 </View>
             </GridWrapper>
             </ScrollView>
+            </Wrapper>
         )
     }
 }

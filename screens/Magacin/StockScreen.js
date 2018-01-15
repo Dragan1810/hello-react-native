@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Dimensions, FlatList } from 'react-native';
 import { Card, List, ListItem, SearchBar, Icon } from 'react-native-elements';
+import { Wrapper, WrapperHeader } from '../../styled-components/Wrapper'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AppHeader from '../../components/AppHeader';
 import AppSearch from '../../components/AppSearch';
@@ -53,8 +54,8 @@ export default class StockScreen extends Component {
           const { text, searchBar, search, list, icon, container, title } = styles;
             return (
 
-              <View style={[container]}>
-          <View style={title}>
+            <Wrapper>
+              <WrapperHeader>
             <Icon
               containerStyle={icon}
               name='chevron-left'
@@ -71,7 +72,7 @@ export default class StockScreen extends Component {
               placeholder='Type Here...'
             />
 
-            </View>
+              </WrapperHeader>
               {this.state.data.length < 1 && rdy}
               <FlatList
                 data={data}
@@ -82,7 +83,7 @@ export default class StockScreen extends Component {
                 refreshing={this.state.refreshing}
                 onRefresh={this.handleRefresh}
               />
-            </View>
+              </Wrapper>
 
           );
         }
