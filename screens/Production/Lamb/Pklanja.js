@@ -77,6 +77,7 @@ class CompanyScreen extends Component {
             </WrapperHeader>
               {this.state.data.length < 1 && rdy}
               <FlatList
+                style={{width:'100%'}}
                 data={data}
                 renderItem={({ item }) => (
                   <ListItems data={item} />

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, FlatList, View, Dimensions, ActivityIndicator } from 'react-native';
 import { Card, List, ListItem, SearchBar, Icon } from 'react-native-elements';
+import { Wrapper, WrapperHeader } from '../../styled-components/Wrapper'
 import AppHeader from '../../components/AppHeader';
 import AppSearch from '../../components/AppSearch';
 import Activity from '../../components/ActivityIndicator';
@@ -27,8 +28,6 @@ class ProductScreen extends Component {
   componentDidMount() {
     getData(data.kartoteka.product).then(data => {
       this.setState({ data: data.Products })
-      //console.log(data);
-      console.log(this.state.data);
     });
   }
 
@@ -59,8 +58,8 @@ class ProductScreen extends Component {
             return (
 
 
-              <View style={[container]}>
-          <View style={title}>
+            <Wrapper>
+            <WrapperHeader>
             <Icon
               containerStyle={icon}
               name='chevron-left'
@@ -77,9 +76,10 @@ class ProductScreen extends Component {
               placeholder='Type Here...'
             />
 
-            </View>
+              </WrapperHeader>
               {this.state.data.length < 1 && rdy}
               <FlatList
+                style={{width:'100%'}}
                 data={data}
                 renderItem={({ item }) => (
                   <ListItems data={item} />
@@ -88,7 +88,7 @@ class ProductScreen extends Component {
                 refreshing={this.state.refreshing}
                 onRefresh={this.handleRefresh}
               />
-            </View>
+              </Wrapper>
 
           );
         }

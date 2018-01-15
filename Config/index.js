@@ -8,7 +8,7 @@ export const MainRoutes = [
   },
   {
     id: 'Kartoteka',
-    title: 'Kartateka',
+    title: 'Kartoteka',
     icon: Icon.lager
   },
   {

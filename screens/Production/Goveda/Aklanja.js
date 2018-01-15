@@ -26,6 +26,7 @@ class CompanyScreen extends Component {
   }
 
   componentDidMount() {
+    console.log(Klanja);
     getData(Klanja).then(data => {
       !data.SlaughterItemTmps.length ? this.setState({noData: true})
       : this.setState({ data: data.SlaughterItemTmps })
@@ -78,6 +79,7 @@ class CompanyScreen extends Component {
             </WrapperHeader>
               {this.state.data.length < 1 && rdy}
               <FlatList
+              style={{width:'100%'}}
                 data={data}
                 renderItem={({ item }) => (
                   <ListItems data={item} />
