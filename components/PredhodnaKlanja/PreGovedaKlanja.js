@@ -9,7 +9,6 @@ const ListItems = ({data, navigate}) => {
         <Card
             title={data.SupplierName}
         >
-        <Text onPress={() => navigate('details', { url : data.SupplierName })}>Click</Text>
         <ListItem
             title={
                 <View style={basic}>
@@ -73,6 +72,7 @@ const ListItems = ({data, navigate}) => {
             }
             hideChevron={true}
         />
+        <Text style={{justifyContent: 'center', margin: 'auto', paddingTop: 5}} onPress={() => navigate('details', { url : data.SupplierName })}>Detalji..</Text>
 
     </Card>
     )

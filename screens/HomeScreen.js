@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, FlatList, View, Dimensions, TouchableOpacity } from 'react-native'
-import { Button, Icon } from 'react-native-elements'
-import { Wrapper, WrapperHeader, TitleText } from '../styled-components/Wrapper'
-import { Constants } from 'expo';
+import React, { Component } from 'react'
 import { MainRoutes } from '../Config/index'
-import Image from 'react-native-remote-svg'
+import { Wrapper } from '../styled-components/Wrapper'
+import GridList from '../reusable-components/GridLista'
+import Header from '../reusable-components/Header'
 
 export default class HomeScreen extends Component {
   constructor(props){
@@ -12,41 +10,11 @@ export default class HomeScreen extends Component {
   }
   render() {
     let { navigate, goBack } = this.props.navigation
-    let { div } = styles
     return (
       <Wrapper>
-        <WrapperHeader>
-        <Icon name='menu' color='#fff' onPress={() => alert()} />
-        <TitleText>Glavni Meni</TitleText>
-        <Icon name='home' color='#fff' onPress={() => goBack()} />
-        </WrapperHeader>
-
-        <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent:'center'}}>
-        {MainRoutes.map((route, i) => {
-          return (
-            <TouchableOpacity key={i} style={[div]} onPress={()=> navigate(route.id)}>
-              <Image
-                style={{width:50,height:50}}
-                source={route.icon}
-              />
-              <Text style={{textAlign: 'center',paddingTop: 8, fontWeight: 'bold'}}>{route.title}</Text>
-            </TouchableOpacity>
-          )
-          })}
-          </View>
+        <Header title={'Glavni Meni'} goBack={goBack} />
+        <GridList navigate={navigate} MainRoutes={MainRoutes}/>
       </Wrapper>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  div: {
-    borderRadius:12,
-    paddingTop: 20,
-    paddingBottom: 20,
-    minWidth: '27%',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    margin: 10
-  }
-})

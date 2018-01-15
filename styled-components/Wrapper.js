@@ -24,3 +24,31 @@ export const TitleText = styled.Text`
     font-size: 18px;
     color: white;
 `;
+
+export const Kocka = styled.TouchableOpacity`
+    border-radius: 25px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-width: 27%;
+    align-items: center;
+    background-color: white;
+    margin: 10px;
+`;
+
+export const KockaText = styled.Text`
+    font-weight: bold;
+    padding-top: 8px;
+    text-align: center;
+`;
+
+export const KockaImage = styled.Image`
+    width: 50px;
+    height: 50px;
+`;
+
+export const KockaWrapper = styled.View`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+`;
