@@ -4,6 +4,7 @@ import { Icon } from 'react-native-elements'
 import { GridWrapper } from '../styled-components/Grid'
 import { TitleText, WrapperHeader, Wrapper } from '../styled-components/Wrapper'
 import { getData } from '../helpers/index'
+import Header from '../reusable-components/Header'
 
 const URL = `https://my.api.mockaroo.com/GridTest?key=51de2ad0`
 
@@ -25,13 +26,8 @@ export default class Grid extends Component {
         const { data } = this.state
         return (
             <Wrapper>
-        <WrapperHeader>
-            <Icon name='arrow-back' color='#fff' onPress={() => goBack(null)} />
-            <TitleText>Magacin</TitleText>
-            <Icon name='home' color='#fff' onPress={() => navigate('Home')} />
-        </WrapperHeader>
+                <Header navigate={navigate} title={'Detalji-'} goBack={goBack}/>
             <ScrollView>
-
             <GridWrapper>
                 <View>
                     <Text>First Name</Text>

@@ -24,6 +24,19 @@ export const MainRoutes = [
   {
     id: 'RobniPromet',
     title:'Dokumenti',
-    icon: Icon.steak
+    icon: require('../assets/Icons/steak.png')
   }
 ];
+
+export const ProizvodnjaRoutes = [
+  {
+    id: 'Production',
+    title: 'Proizvodnja',
+    icon: Icon.knife
+  },
+  {
+    id: 'Kartoteka',
+    title: 'Kartoteka',
+    icon: Icon.lager
+  }
+]

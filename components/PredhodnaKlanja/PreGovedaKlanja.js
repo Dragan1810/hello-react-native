@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, FlatList, View, Dimensions } from 'react-native';
-import { Card, List, ListItem } from 'react-native-elements';
+import { Card, List, ListItem, Button } from 'react-native-elements';
 
 
 const ListItems = ({data, navigate}) => {
@@ -72,7 +72,13 @@ const ListItems = ({data, navigate}) => {
             }
             hideChevron={true}
         />
-        <Text style={{justifyContent: 'center', margin: 'auto', paddingTop: 5}} onPress={() => navigate('details', { url : data.SupplierName })}>Detalji..</Text>
+        <Button
+            containerViewStyle={{paddingTop: 12}}
+            icon={{name: 'code'}}
+            onPress={() => navigate('details', { url : data.SupplierName })}
+            backgroundColor='#03A9F4'
+            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+            title='Detalji' />
 
     </Card>
     )
