@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { View, Text, ScrollView, TouchableOpacity, StatusBar, FlatList } from 'react-native'
-import { Card, List, ListItem, Icon } from 'react-native-elements'
+import { View, Text, ScrollView } from 'react-native'
 import Header from '../../reusable-components/Header'
+import GridList from '../../reusable-components/GridLista'
+import { ProizvodnjaRoutes } from '../../Config/index'
 
 export default class ProductionDrawer extends Component {
     render() {
@@ -9,26 +10,7 @@ export default class ProductionDrawer extends Component {
         return (
             <ScrollView>
                 <Header title={'Proizvodnja'} navigate={navigate} goBack={goBack}/>
-                <List style={{ marginTop: 0 }}>
-                    <TouchableOpacity onPress={() => navigate('goveda')}>
-                        <ListItem
-                            title={'Goveda'}
-                            leftIcon={{ name: 'account-balance' }}
-                        />
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigate('lamb')}>
-                        <ListItem
-                            title={'Jagnjad'}
-                            leftIcon={{ name: 'account-balance' }}
-                        />
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigate('pig')}>
-                        <ListItem
-                            title={'Svinje'}
-                            leftIcon={{ name: 'account-balance' }}
-                        />
-                    </TouchableOpacity>
-                </List>
+                <GridList navigate={navigate} MainRoutes={ProizvodnjaRoutes}/>
             </ScrollView>
         );
     }

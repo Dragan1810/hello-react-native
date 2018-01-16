@@ -30,13 +30,57 @@ export const MainRoutes = [
 
 export const ProizvodnjaRoutes = [
   {
-    id: 'Production',
-    title: 'Proizvodnja',
-    icon: Icon.knife
+    id: 'goveda',
+    title: 'Goveda',
+    icon: require('../assets/Icons/calendar.png')
   },
   {
-    id: 'Kartoteka',
-    title: 'Kartoteka',
-    icon: Icon.lager
+    id: 'lamb',
+    title: 'Jagnjad',
+    icon: require('../assets/Icons/calendar.png')
+  },
+  {
+    id: 'pig',
+    title: 'Svinje',
+    icon: require('../assets/Icons/calendar.png')
+  }
+]
+
+export const GovedaRoutes = [
+  {
+    id: 'preGovedaKlanja',
+    title: 'Predhodna klanja',
+    icon: require('../assets/Icons/calendar.png')
+  },
+  {
+    id: 'aktGovedaKlanja',
+    title: 'Aktivna klanja',
+    icon: require('../assets/Icons/calendar.png')
+  }
+]
+
+export const LambRoutes = [
+  {
+    id: 'preLambKlanja',
+    title: 'Predhodna Klanja',
+    icon: require('../assets/Icons/calendar.png')
+  },
+  {
+    id: 'aktLambKlanja',
+    title: 'Aktivna Klanja',
+    icon: require('../assets/Icons/calendar.png')
+  }
+]
+
+export const PigRoutes = [
+  {
+    id: 'prePigKlanja',
+    title: 'Prethodna Klanja',
+    icon: require('../assets/Icons/calendar.png')
+  },
+  {
+    id: 'aktPigKlanja',
+    title: 'Aktivna Klanja',
+    icon: require('../assets/Icons/calendar.png')
   }
 ]
