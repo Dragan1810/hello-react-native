@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
-import { Card, List, ListItem, Icon } from 'react-native-elements';
-import { Wrapper, WrapperHeader, TitleText } from '../../../styled-components/Wrapper'
+import { View, Text, ScrollView } from 'react-native'
 import Header from '../../../reusable-components/Header'
 import GridList from '../../../reusable-components/GridLista'
 import { PigRoutes } from '../../../Config/index'

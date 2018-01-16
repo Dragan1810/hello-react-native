@@ -84,3 +84,44 @@ export const PigRoutes = [
     icon: require('../assets/Icons/calendar.png')
   }
 ]
+
+export const KartotekaRoutes = [
+  {
+    id: 'product',
+    title: 'Products',
+    icon: require('../assets/Icons/calendar.png')
+  },
+  {
+    id: 'animal',
+    title: 'Animal',
+    icon: require('../assets/Icons/calendar.png')
+  },
+  {
+    id: 'subAnimal',
+    title: 'SubAnimal',
+    icon: require('../assets/Icons/calendar.png')
+  }
+]
+
+export const MagacinRoutes = [
+  {
+    id: 'stock',
+    title: 'Lager',
+    icon: require('../assets/Icons/calendar.png')
+  },
+  {
+    id: 'warehouse',
+    title: 'Warehouse',
+    icon: require('../assets/Icons/calendar.png')
+  },
+  {
+    id: 'depot',
+    title: 'Depot',
+    icon: require('../assets/Icons/calendar.png')
+  },
+  {
+    id: 'box',
+    title: 'Boxes',
+    icon: require('../assets/Icons/calendar.png')
+  }
+]
