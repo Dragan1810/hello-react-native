@@ -9,6 +9,7 @@ import { getData } from '../../helpers/index';
 import { data } from '../../helpers/Data';
 
 const URL = `http://212.200.54.246:5001/api/Product/GetProductsByPage?CompanyId=1&CurrentPage=1&ItemsPerPage=20`
+const URLmini = `http://212.200.54.246:5001/api/Product/GetProductsByPage?CompanyId=1`
 export default class StockScreen extends Component {
   constructor() {
     super();
@@ -37,14 +38,22 @@ export default class StockScreen extends Component {
 
   search(e) {
     this.setState({search:e.nativeEvent.text},
-    ()=> getData(`http://212.200.54.246:5001/api/Product/GetProductsByPage?CompanyId=1&CurrentPage=${this.state.page}&ItemsPerPage=20&ProductName=${this.state.search}`)
+    ()=> getData(`${URLmini}&CurrentPage=1&ItemsPerPage=20&ProductName=${this.state.search}`)
         .then(data => this.setState({data : data.ProductsByPage })))
   }
 
-  handleLoadMore(){
-    this.setState({ page: page++ },
-    () => getData(`http://212.200.54.246:5001/api/Product/GetProductsByPage?CompanyId=1&CurrentPage=${this.state.page}&ItemsPerPage=20`)
-          .then(data => this.setState({ data: [...this.state.data, ...data.ProductsByPage]})))
+  async handleLoadMore(){
+    let { page } = this.state
+    page = page + 1;
+
+    await this.setState({ page })
+
+    let Data = await getData(`${URLmini}&CurrentPage=${this.state.page}&ItemsPerPage=20`)
+          console.log(Data.ProductsByPage[0].ProductCode, this.state.page);
+          let data = [...this.state.data, ...Data.ProductsByPage]
+          await this.setState({ data })
+
+
   }
 
         render() {
@@ -82,7 +91,7 @@ export default class StockScreen extends Component {
                 refreshing={this.state.refreshing}
                 onRefresh={this.handleRefresh}
                 onEndReached={this.handleLoadMore}
-                onEndReachedThreshold={100}
+                onEndThreshold={0}
               />
               </Wrapper>
 

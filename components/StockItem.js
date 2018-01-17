@@ -4,11 +4,12 @@ import { Card, List, ListItem } from 'react-native-elements';
 
 
 const StockItem = ({data}) => {
+    const { basic } = styles
     return(
         <Card title={data.ProductName}>
             <ListItem
                 title={
-                    <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
+                    <View style={basic}>
                         <Text>Sifra Proizvoda:</Text>
                         <Text>{data.ProductCode}</Text>
                     </View>
@@ -17,19 +18,25 @@ const StockItem = ({data}) => {
             />
             <ListItem
                 title={
-                <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
+                <View style={basic}>
                     <Text>Grupa Proizvoda:</Text>
                     <Text>{data.ProductGroup.Name}</Text>
                 </View>
                 }
                 hideChevron={true}
             />
-
         </Card>
     )
 }
-export default StockItem;
 
+
+const styles = StyleSheet.create({
+    basic: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    }
+})
+export default StockItem;
 /*
 "Id": 9,
 "Code": 1002,

@@ -89,12 +89,12 @@ export const KartotekaRoutes = [
   {
     id: 'product',
     title: 'Artikli',
-    icon: require('../assets/Icons/calendar.png')
+    icon: require('../assets/Icons/steak.png')
   },
   {
     id: 'animal',
     title: 'Animal',
-    icon: require('../assets/Icons/calendar.png')
+    icon: require('../assets/png/032-cow.png')
   },
   {
     id: 'subAnimal',
@@ -107,21 +107,21 @@ export const MagacinRoutes = [
   {
     id: 'stock',
     title: 'Lager',
-    icon: require('../assets/Icons/calendar.png')
+    icon: require('../assets/Icons/warehouse.png')
   },
   {
     id: 'warehouse',
-    title: 'Warehouse',
-    icon: require('../assets/Icons/calendar.png')
+    title: 'Skladista',
+    icon: require('../assets/png/004-warehouse-1.png')
   },
   {
     id: 'depot',
-    title: 'Depot',
-    icon: require('../assets/Icons/calendar.png')
+    title: 'Depoi',
+    icon: require('../assets/png/042-barn.png')
   },
   {
     id: 'box',
     title: 'Boxes',
-    icon: require('../assets/Icons/calendar.png')
+    icon: require('../assets/png/040-boxes.png')
   }
 ]
