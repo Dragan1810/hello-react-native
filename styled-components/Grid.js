@@ -1,12 +1,17 @@
-import React from 'react'
 import styled from 'styled-components/native'
-import { Constants } from 'expo'
-import { Wrapper } from './Wrapper'
 
 
-export const GridWrapper = Wrapper.extend`
+export const GridWrapper = styled.View`
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+`;
+
+export const GridMiniView = styled.View`
     border:1px solid black;
+`;
+
+export const GridText = styled.Text`
+    font-size: 5px;
 `;
