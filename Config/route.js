@@ -47,7 +47,8 @@ const PigNavigation = StackNavigator({
 const GovedaNavigation = StackNavigator({
   preGovedaScreen: { screen: govedaDrawer },
   preGovedaKlanja: { screen: GovedaPKlanja },
-  aktGovedaKlanja:{ screen: GovedaAKlanja } // aktivna predhodna klanja toDO
+  aktGovedaKlanja:{ screen: GovedaAKlanja },
+  //details: { screen: Details }
 
 },{
   headerMode:'none'
@@ -60,7 +61,8 @@ const GovedaNavigation = StackNavigator({
 const LambNavigation = StackNavigator({
   preLambScreen: { screen: lambDrawer },
   preLambKlanja: { screen: LambPKlanja },
-  aktLambKlanja: { screen: LambAKlanja } // aktivna predhodna klanja toDO
+  aktLambKlanja: { screen: LambAKlanja },
+  //details: { screen: Details }
 
 },{
   headerMode:'none'

@@ -6,7 +6,6 @@ import { TitleText, WrapperHeader, Wrapper } from '../styled-components/Wrapper'
 import { getData } from '../helpers/index'
 import Header from '../reusable-components/Header'
 
-const URL = `https://my.api.mockaroo.com/GridTest?key=51de2ad0`
 
 export default class Grid extends Component {
     constructor(){
@@ -18,8 +17,14 @@ export default class Grid extends Component {
     }
 
     componentDidMount(){
-       // console.log(this.props.navigation.state.params)
-        getData(URL).then(data => this.setState({ data }))
+        const { url } = this.props.navigation.state.params
+        getData(url).then(data => {
+           data.hasOwnProperty('SlaughterItems') && this.setState({ data: data.SlaughterItems })
+           data.hasOwnProperty('PigSlaughterItems') && this.setState({ data: data.PigSlaughterItems })
+           data.hasOwnProperty('LambSlaughterItems') && this.setState({ data: data.LambSlaughterItems })
+
+        })
+            .catch(err => console.log(err))
     }
     render() {
         const { navigate, goBack } = this.props.navigation
@@ -30,21 +35,33 @@ export default class Grid extends Component {
             <ScrollView>
             <GridWrapper>
                 <View>
-                    <Text>First Name</Text>
+                    <Text>Redni br.</Text>
                     {data.length>0 && data.map((item, i) => (
-                        <Text key={item.first_name}>{item.first_name}</Text>
+                        <Text key={item.Id}>{item.OrderNumber}</Text>
                     ))}
                 </View>
                 <View>
-                <Text>Last Name</Text>
+                <Text>Sifra</Text>
                     {data.length>0 && data.map((item, i) => (
-                        <Text key={item.last_name}>{item.last_name}</Text>
+                        <Text key={item.Product.ProductCode}>{item.Product.ProductCode}</Text>
                     ))}
                 </View>
                 <View>
-                <Text>Email</Text>
+                <Text>Artikal</Text>
                     {data.length>0 && data.map((item, i) => (
-                        <Text key={item.email}>{item.email}</Text>
+                        <Text key={item.Product.ProductName}>{item.Product.ProductName}</Text>
+                    ))}
+                </View>
+                <View>
+                <Text>Komora</Text>
+                    {data.length>0 && data.map((item, i) => (
+                        <Text key={item.WarehouseChamber.Name}>{item.WarehouseChamber.Name}</Text>
+                    ))}
+                </View>
+                <View>
+                <Text>Tezina</Text>
+                    {data.length>0 && data.map((item, i) => (
+                        <Text key={item.Weight}>{item.Weight}</Text>
                     ))}
                 </View>
             </GridWrapper>

@@ -7,13 +7,13 @@ const ListItems = ({data, navigate}) => {
     const { basic } = styles
     return(
         <Card
-            title={data.SupplierName}
+            title={data.Supplier.Name}
         >
         <ListItem
             title={
                 <View style={basic}>
                     <Text>Dobavljač:</Text>
-                    <Text>{data.SupplierName}</Text>
+                    <Text>{data.Supplier.Address}</Text>
                 </View>
             }
             hideChevron={true}
@@ -39,33 +39,6 @@ const ListItems = ({data, navigate}) => {
         <ListItem
             title={
             <View style={basic}>
-                <Text>Vrsta životinje:</Text>
-                <Text>{data.AnimalSubTypeName}</Text>
-            </View>
-            }
-            hideChevron={true}
-        />
-        <ListItem
-            title={
-            <View style={basic}>
-                <Text>Težina pre klanja:</Text>
-                <Text>{data.WeightBeforeSlaughter}</Text>
-            </View>
-            }
-            hideChevron={true}
-        />
-        <ListItem
-            title={
-            <View style={basic}>
-                <Text>Težina posle klanja:</Text>
-                <Text>{data.WeightAfterSlaughter}</Text>
-            </View>
-            }
-            hideChevron={true}
-        />
-        <ListItem
-            title={
-            <View style={basic}>
                 <Text>Randman:</Text>
                 <Text>{data.Randman}</Text>
             </View>
@@ -75,10 +48,11 @@ const ListItems = ({data, navigate}) => {
         <Button
             containerViewStyle={{paddingTop: 12}}
             icon={{name: 'code'}}
-            onPress={() => navigate('details', { url : data.SupplierName })}
+            onPress={() => navigate('details', { url : `http://212.200.54.246:5001/api/Slaughter/GetAllBySlaughter?SlaughterId=${data.Id}` })}
             backgroundColor='#03A9F4'
             buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-            title='Detalji' />
+            title='Detalji'
+        />
 
     </Card>
     )

@@ -1,12 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text, FlatList, View, Dimensions } from 'react-native';
-import { Card, List, ListItem } from 'react-native-elements';
+import { Card, List, ListItem, Button } from 'react-native-elements';
 
 
-const ListItems = ({data}) => {
+const ListItems = ({data, navigate}) => {
     const { basic } = styles
     return(
-        <Card title={data.CompanyName}>
+        <Card title={'Dobavljac'}>
+        <ListItem
+            title={
+                <View style={basic}>
+                    <Text>Dobavljač:</Text>
+                    <Text>{'Adressa'}</Text>
+                </View>
+            }
+            hideChevron={true}
+        />
         <ListItem
             title={
                 <View style={basic}>
@@ -25,24 +34,7 @@ const ListItems = ({data}) => {
             }
             hideChevron={true}
         />
-        <ListItem
-            title={
-            <View style={basic}>
-                <Text>Težina pre klanja:</Text>
-                <Text>{data.WeightBeforeSlaughter}</Text>
-            </View>
-            }
-            hideChevron={true}
-        />
-        <ListItem
-            title={
-            <View style={basic}>
-                <Text>Težina posle klanja:</Text>
-                <Text>{data.WeightAfterSlaughter}</Text>
-            </View>
-            }
-            hideChevron={true}
-        />
+
         <ListItem
             title={
             <View style={basic}>
@@ -51,6 +43,14 @@ const ListItems = ({data}) => {
             </View>
             }
             hideChevron={true}
+        />
+        <Button
+            containerViewStyle={{paddingTop: 12}}
+            icon={{name: 'code'}}
+            onPress={() => navigate('details', { url : `http://212.200.54.246:5001/api/PigSlaughter/GetAllBySlaughter?SlaughterId=${data.Id}` })}
+            backgroundColor='#03A9F4'
+            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+            title='Detalji'
         />
 
     </Card>

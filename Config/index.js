@@ -32,17 +32,17 @@ export const ProizvodnjaRoutes = [
   {
     id: 'goveda',
     title: 'Goveda',
-    icon: require('../assets/Icons/calendar.png')
+    icon: require('../assets/Icons/cow.png')
   },
   {
     id: 'lamb',
     title: 'Jagnjad',
-    icon: require('../assets/Icons/calendar.png')
+    icon: require('../assets/Icons/Ram.png')
   },
   {
     id: 'pig',
     title: 'Svinje',
-    icon: require('../assets/Icons/calendar.png')
+    icon: require('../assets/Icons/Pig.png')
   }
 ]
 
@@ -50,12 +50,12 @@ export const GovedaRoutes = [
   {
     id: 'preGovedaKlanja',
     title: 'Predhodna klanja',
-    icon: require('../assets/Icons/calendar.png')
+    icon: require('../assets/Icons/pred.png')
   },
   {
     id: 'aktGovedaKlanja',
     title: 'Aktivna klanja',
-    icon: require('../assets/Icons/calendar.png')
+    icon: require('../assets/Icons/aktivnok.png')
   }
 ]
 
@@ -63,12 +63,12 @@ export const LambRoutes = [
   {
     id: 'preLambKlanja',
     title: 'Predhodna Klanja',
-    icon: require('../assets/Icons/calendar.png')
+    icon: require('../assets/Icons/pred.png')
   },
   {
     id: 'aktLambKlanja',
     title: 'Aktivna Klanja',
-    icon: require('../assets/Icons/calendar.png')
+    icon: require('../assets/Icons/aktivnok.png')
   }
 ]
 
@@ -76,19 +76,19 @@ export const PigRoutes = [
   {
     id: 'prePigKlanja',
     title: 'Prethodna Klanja',
-    icon: require('../assets/Icons/calendar.png')
+    icon: require('../assets/Icons/pred.png')
   },
   {
     id: 'aktPigKlanja',
     title: 'Aktivna Klanja',
-    icon: require('../assets/Icons/calendar.png')
+    icon: require('../assets/Icons/aktivnok.png')
   }
 ]
 
 export const KartotekaRoutes = [
   {
     id: 'product',
-    title: 'Products',
+    title: 'Artikli',
     icon: require('../assets/Icons/calendar.png')
   },
   {

@@ -3,15 +3,12 @@ import { StyleSheet, Text, View, Dimensions, FlatList } from 'react-native';
 import { Card, List, ListItem, SearchBar, Icon } from 'react-native-elements';
 import { Wrapper, WrapperHeader } from '../../styled-components/Wrapper'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import AppHeader from '../../components/AppHeader';
-import AppSearch from '../../components/AppSearch';
 import Activity from '../../components/ActivityIndicator';
 import ListItems from '../../components/StockItem';
 import { getData, filterData } from '../../helpers/index';
 import { data } from '../../helpers/Data';
-import { Constants } from 'expo'
 
-
+const URL = `http://212.200.54.246:5001/api/Product/GetProductsByPage?CompanyId=1&CurrentPage=1&ItemsPerPage=20`
 export default class StockScreen extends Component {
   constructor() {
     super();
@@ -27,7 +24,7 @@ export default class StockScreen extends Component {
   }
 
   componentDidMount() {
-    getData(data.magacin.stock).then(data => this.setState({ data: data.Stocks }));
+    getData(URL).then(data => this.setState({ data: data.Stocks }));
   }
 
   handleRefresh() {
@@ -49,9 +46,8 @@ export default class StockScreen extends Component {
             data = filteredData;
           }
           const rdy =  <Activity />
-          const { width, height } = Dimensions.get('window');
           const { navigate, goBack } = this.props.navigation;
-          const { text, searchBar, search, list, icon, container, title } = styles;
+          const { search, icon } = styles;
             return (
 
             <Wrapper>
@@ -98,22 +94,6 @@ const styles = StyleSheet.create({
       backgroundColor:'#009688',
       height: 56
     },
-    container: {
-      flex: 1,
-      paddingTop: Constants.statusBarHeight
-    },
-    title: {
-      flexDirection:'row'
-    },
-    searchBar: {
-      alignSelf: 'flex-start',
-    },
-    text: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-      paddingTop: 65
-    },
     search: {
       flex: 3,
       alignSelf:'flex-end',
@@ -122,10 +102,5 @@ const styles = StyleSheet.create({
       backgroundColor:'#009688',
       borderBottomWidth:0,
       borderTopWidth:0
-    },
-    list: {
-      borderTopWidth: 0,
-      borderBottomWidth: 0,
-      backgroundColor: '#C7BE9F'
     }
   });

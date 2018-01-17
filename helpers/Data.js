@@ -28,7 +28,7 @@ export const data = {
         depot: "http://" + currentHostName + "/api/Depot/GetDepots?CompanyId=" + currentCompanyID,
         warehouse: "http://" + currentHostName + "/api/Warehouse/GetWarehouses?CompanyId=" + currentCompanyID,
         box: "http://" + currentHostName + "/api/Box/GetBoxes?CompanyId=" + currentCompanyID,
-        stock: "http://" + currentHostName + "/api/Stock/GetStocks?CompanyId=" + currentCompanyID
+        stock: `http://${currentHostName}/api/Product/GetProductsByPage?CompanyId=${currentCompanyID}&CurrentPage=1&ItemsPerPage=20`
     },
     kartoteka: {
         product: "http://" + currentHostName + "/api/Product/GetProducts?CompanyId=" + currentCompanyID,
