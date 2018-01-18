@@ -1,58 +1,68 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Dimensions, FlatList } from 'react-native';
-import { Card, List, ListItem, SearchBar, Icon } from 'react-native-elements';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { SearchBar, Icon } from 'react-native-elements';
 import { Wrapper, WrapperHeader } from '../../styled-components/Wrapper'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Activity from '../../components/ActivityIndicator';
 import ListItems from '../../components/InputNoteItem';
-import { getData, filterData } from '../../helpers/index';
-import { data } from '../../helpers/Data';
+import { getData } from '../../helpers/index';
 
-
-class CompanyScreen extends Component {
+const URL = `http://212.200.54.246:5001/api/InputNote/GetInputNotesByPage?CompanyId=1&CurrentPage=1&ItemsPerPage=5`
+const URLmini = `http://212.200.54.246:5001/api/InputNote/GetInputNotesByPage?CompanyId=1`
+export default class StockScreen extends Component {
   constructor() {
     super();
 
     this.state = {
       data:[],
       search: '',
+      page: 1,
       refreshing: false
     };
 
-    this.search = this.search.bind(this);
-    this.handleRefresh = this.handleRefresh.bind(this);
+    this.search = this.search.bind(this)
+    this.handleRefresh = this.handleRefresh.bind(this)
+    this.handleLoadMore = this.handleLoadMore.bind(this)
   }
 
   componentDidMount() {
-    getData(data.documents.inputNote).then(data => this.setState({ data: data.Companies }));
+    getData(URL).then(data => this.setState({ data: data.InputNotesByPage }))
+                .catch(err=> console.log(err))
   }
 
   handleRefresh() {
     this.setState({
       refreshing: true
-    }, ()=> getData(data.documents.inputNote).then(data => this.setState({ data, refreshing: false })))
+    }, ()=> getData(URL).then(data => this.setState({ data: data.InputNotesByPage, refreshing: false })))
   }
 
   search(e) {
-    this.setState({search:e.nativeEvent.text})
+    this.setState({search:e.nativeEvent.text},
+    ()=> getData(`${URLmini}&CurrentPage=1&ItemsPerPage=20&ProductName=${this.state.search}`)
+        .then(data => this.setState({data : data.InputNotesByPage })))
   }
 
+  async handleLoadMore(){
+    let { page } = this.state
+    page = page + 1;
 
+    await this.setState({ page })
+
+    let Data = await getData(`${URLmini}&CurrentPage=${this.state.page}&ItemsPerPage=5`)
+          console.log(Data.InputNotesByPage[0], this.state.page);
+          let data = [...this.state.data, ...Data.InputNotesByPage]
+          await this.setState({ data })
+
+
+  }
 
         render() {
-          let data = this.state.data;
-          if (this.state.data.length>1){
-            const filteredData = filterData(this.state.data, this.state.search);
-            data = filteredData;
-          }
           const rdy =  <Activity />
-          const { width, height } = Dimensions.get('window');
           const { navigate, goBack } = this.props.navigation;
           const { search, icon } = styles;
             return (
 
-
-          <Wrapper>
+            <Wrapper>
             <WrapperHeader>
             <Icon
               containerStyle={icon}
@@ -66,14 +76,14 @@ class CompanyScreen extends Component {
               containerStyle={search}
               round
               lightTheme
-              onSubmitEditing={e=>this.search(e)}
               placeholder='Type Here...'
             />
 
-            </WrapperHeader>
+              </WrapperHeader>
               {this.state.data.length < 1 && rdy}
               <FlatList
-                data={data}
+                style={{width:'100%'}}
+                data={this.state.data}
                 renderItem={({ item }) => (
                   <ListItems data={item} />
                 )}
@@ -81,7 +91,7 @@ class CompanyScreen extends Component {
                 refreshing={this.state.refreshing}
                 onRefresh={this.handleRefresh}
               />
-            </Wrapper>
+              </Wrapper>
 
           );
         }
@@ -96,18 +106,6 @@ const styles = StyleSheet.create({
       backgroundColor:'#009688',
       height: 56
     },
-    title: {
-      flexDirection:'row'
-    },
-    searchBar: {
-      alignSelf: 'flex-start',
-    },
-    text: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-      paddingTop: 65
-    },
     search: {
       flex: 3,
       alignSelf:'flex-end',
@@ -116,12 +114,5 @@ const styles = StyleSheet.create({
       backgroundColor:'#009688',
       borderBottomWidth:0,
       borderTopWidth:0
-    },
-    list: {
-      borderTopWidth: 0,
-      borderBottomWidth: 0,
-      backgroundColor: '#C7BE9F'
     }
   });
-
-export default CompanyScreen;

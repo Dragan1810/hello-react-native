@@ -83,16 +83,6 @@ const productionNavigation = StackNavigator({  // primer navigacije
   initialRouteName: 'preProduction'
 });
 
-const robniPrometNavigation = StackNavigator({
-      preRobniPromet: { screen: DocumentsDrawer },
-      inputNote: { screen: InputNoteScreen }
-
-    },{
-      headerMode:'none'
-    },
-    {
-      initialRouteName: 'preRobniPromet'
-    });
 
 const magacinNavigation = StackNavigator({
       preMagacin: { screen: MagacinDrawer },
@@ -138,7 +128,7 @@ const MainNavigation = StackNavigator({
   Home: { screen: HomeScreen },
   Magacin: { screen: magacinNavigation },
   Production: { screen: productionNavigation },
-  RobniPromet: { screen: robniPrometNavigation },
+  RobniPromet: { screen: InputNoteScreen },
   Kartoteka: { screen: kartotekaNavigation },
   PoslovniPartner: { screen: poslovniPartnerNavigation }
   // dodati drawer sa strane podesavanje strana

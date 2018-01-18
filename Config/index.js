@@ -88,13 +88,8 @@ export const KartotekaRoutes = [
   },
   {
     id: 'animal',
-    title: 'Animal',
+    title: 'Zivotinje',
     icon: require('../assets/png/032-cow.png')
-  },
-  {
-    id: 'subAnimal',
-    title: 'SubAnimal',
-    icon: require('../assets/Icons/calendar.png')
   }
 ]
 

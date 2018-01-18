@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Dimensions, FlatList } from 'react-native';
 import { Card, List, ListItem, SearchBar, Icon } from 'react-native-elements';
+import { WrapperHeader, Wrapper } from '../../styled-components/Wrapper'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AppHeader from '../../components/AppHeader';
 import AppSearch from '../../components/AppSearch';
@@ -51,8 +52,8 @@ export default class WarehouseScreen extends Component {
           const { text, searchBar, search, list, icon, container, title } = styles;
             return (
 
-              <View style={[container]}>
-          <View style={title}>
+          <Wrapper>
+          <WrapperHeader>
             <Icon
               containerStyle={icon}
               name='chevron-left'
@@ -69,9 +70,10 @@ export default class WarehouseScreen extends Component {
               placeholder='Type Here...'
             />
 
-            </View>
+              </WrapperHeader>
               {this.state.data.length < 1 && rdy}
               <FlatList
+                style={{width:'100%'}}
                 data={data}
                 renderItem={({ item }) => (
                   <ListItems data={item} />
@@ -80,7 +82,7 @@ export default class WarehouseScreen extends Component {
                 refreshing={this.state.refreshing}
                 onRefresh={this.handleRefresh}
               />
-            </View>
+            </Wrapper>
 
           );
         }
@@ -95,22 +97,6 @@ const styles = StyleSheet.create({
       backgroundColor:'#009688',
       height: 56
     },
-    container: {
-      flex: 1,
-      paddingTop: Constants.statusBarHeight
-    },
-    title: {
-      flexDirection:'row'
-    },
-    searchBar: {
-      alignSelf: 'flex-start',
-    },
-    text: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-      paddingTop: 65
-    },
     search: {
       flex: 3,
       alignSelf:'flex-end',
@@ -119,10 +105,5 @@ const styles = StyleSheet.create({
       backgroundColor:'#009688',
       borderBottomWidth:0,
       borderTopWidth:0
-    },
-    list: {
-      borderTopWidth: 0,
-      borderBottomWidth: 0,
-      backgroundColor: '#C7BE9F'
     }
   });

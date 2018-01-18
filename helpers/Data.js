@@ -32,8 +32,7 @@ export const data = {
     },
     kartoteka: {
         product: "http://" + currentHostName + "/api/Product/GetProducts?CompanyId=" + currentCompanyID,
-        animal: "http://" + currentHostName + "/api/AnimalType/GetAnimalTypes?CompanyId=" + currentCompanyID,
-        subAnimal: "http://" + currentHostName + "/api/AnimalSubType/GetProducts?CompanyId=" + currentCompanyID,
+        animal: "http://" + currentHostName + "/api/AnimalType/GetAnimalTypes?CompanyId=" + currentCompanyID
     },
     poslovniPartner: {
         businessPartner: "http://" + currentHostName + "/api/BusinessPartner/GetBusinessPartners?CompanyId=" + currentCompanyID,

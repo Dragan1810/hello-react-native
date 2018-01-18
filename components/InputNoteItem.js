@@ -1,9 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, FlatList, View, Dimensions } from 'react-native';
 import { Card, List, ListItem } from 'react-native-elements';
+import { format } from 'date-fns'
 
 
-const DepotItem = ({data}) => {
+const InputNoteItem = ({data}) => {
     const { basic } = styles
     return(
         <Card title={data.Name}>
@@ -20,7 +21,7 @@ const DepotItem = ({data}) => {
                 title={
                 <View style={ basic }>
                     <Text>Datum:</Text>
-                    <Text>{data.InputNoteDate}</Text>
+                    <Text>{format(data.InputNoteDate, 'DD/MM/YYYY')}</Text>
                 </View>
                 }
                 hideChevron={true}
@@ -28,8 +29,17 @@ const DepotItem = ({data}) => {
              <ListItem
                 title={
                 <View style={ basic }>
-                    <Text>Količina:</Text>
-                    <Text>{data.Quantity}</Text>
+                    <Text>Depo:</Text>
+                    <Text>{data.Depot.Name}</Text>
+                </View>
+                }
+                hideChevron={true}
+            />
+             <ListItem
+                title={
+                <View style={ basic }>
+                    <Text>Box:</Text>
+                    <Text>{data.Box.Name}</Text>
                 </View>
                 }
                 hideChevron={true}
@@ -38,7 +48,7 @@ const DepotItem = ({data}) => {
                 title={
                 <View style={ basic }>
                     <Text>Životinja:</Text>
-                    <Text>{data.AnimalSubTypeName}</Text>
+                    <Text>{data.AnimalSubType.Name}</Text>
                 </View>
                 }
                 hideChevron={true}
@@ -47,7 +57,7 @@ const DepotItem = ({data}) => {
                 title={
                 <View style={ basic }>
                     <Text>Dobavljač:</Text>
-                    <Text>{data.BusinessPartnerName}</Text>
+                    <Text>{data.BusinessPartner.Name}</Text>
                 </View>
                 }
                 hideChevron={true}
@@ -55,8 +65,8 @@ const DepotItem = ({data}) => {
              <ListItem
                 title={
                 <View style={ basic }>
-                    <Text>Tip plaćanja:</Text>
-                    <Text>{data.PaymentType}</Text>
+                    <Text>Tezina na farmi:</Text>
+                    <Text>{data.FarmWeight}</Text>
                 </View>
                 }
                 hideChevron={true}
@@ -64,8 +74,8 @@ const DepotItem = ({data}) => {
              <ListItem
                 title={
                 <View style={ basic }>
-                    <Text>Jedinična cena:</Text>
-                    <Text>{data.UnitPrice}</Text>
+                    <Text>Tezina kod prijema:</Text>
+                    <Text>{data.ReceivedWeight}</Text>
                 </View>
                 }
                 hideChevron={true}
@@ -73,8 +83,17 @@ const DepotItem = ({data}) => {
              <ListItem
                 title={
                 <View style={ basic }>
-                    <Text>Ukupna cena:</Text>
-                    <Text>{data.TotalValue}</Text>
+                    <Text>Kalo transporta:</Text>
+                    <Text>{data.TransportShrinkage}</Text>
+                </View>
+                }
+                hideChevron={true}
+            />
+              <ListItem
+                title={
+                <View style={ basic }>
+                    <Text>Broj grla:</Text>
+                    <Text>{data.Quantity}</Text>
                 </View>
                 }
                 hideChevron={true}
@@ -88,7 +107,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     }
 })
-export default DepotItem;
+export default InputNoteItem;
 
 /*
 "Id": 9,
