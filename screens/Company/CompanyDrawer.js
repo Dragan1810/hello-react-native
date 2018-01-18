@@ -17,7 +17,6 @@ export default class CompanyDrawer extends Component {
                     title='SZTR Djurdjevic'
                     image={require('../../assets/logo2.png')}>
                     <Text style={{marginBottom: 10}}>
-                        The idea with React Native Elements is more about component structure than actual design.
                     </Text>
                     <Button
                         onPress={()=> navigate('Home')}
@@ -31,35 +30,20 @@ export default class CompanyDrawer extends Component {
                     <Text style={{marginBottom: 10}}>
                         U izradi...
                     </Text>
-                    <Button
-                        icon={{name: 'code'}}
-                        backgroundColor='#009688'
-                        buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                        title='U izradi...' />
                 </Card>
                 <Card
                     title='Djurdjevic 2010 d.o.o'
                     image={require('../../assets/logo2.png')}>
                     <Text style={{marginBottom: 10}}>
-                        The idea with React Native Elements is more about component structure than actual design.
+                        U izradi...
                     </Text>
-                    <Button
-                        icon={{name: 'code'}}
-                        backgroundColor='#009688'
-                        buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                        title='VIEW NOW' />
                 </Card>
                 <Card
                     title='Djurdjevic Energo 2016 d.o.o'
                     image={require('../../assets/logo2.png')}>
                     <Text style={{marginBottom: 10}}>
-                        The idea with React Native Elements is more about component structure than actual design.
+                        U izradi...
                     </Text>
-                    <Button
-                        icon={{name: 'code'}}
-                        backgroundColor='#009688'
-                        buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                        title='VIEW NOW' />
                 </Card>
             </ScrollView>
         );

@@ -6,12 +6,12 @@ import { Card, List, ListItem } from 'react-native-elements';
 const ListItems = ({data}) => {
     const { basic } = styles
     return(
-        <Card title={data.CompanyName}>
+        <Card title={data.Product.ProductName}>
         <ListItem
             title={
                 <View style={basic}>
                     <Text>Magacin:</Text>
-                    <Text>{data.WarehouseName}</Text>
+                    <Text>{data.Warehouse.WarehouseName}</Text>
                 </View>
             }
             hideChevron={true}
@@ -20,16 +20,7 @@ const ListItems = ({data}) => {
             title={
             <View style={basic}>
                 <Text>Komora:</Text>
-                <Text>{data.WarehouseChamberName}</Text>
-            </View>
-            }
-            hideChevron={true}
-        />
-        <ListItem
-            title={
-            <View style={basic}>
-                <Text>Artikal:</Text>
-                <Text>{data.ProductName}</Text>
+                <Text>{data.WarehouseChamber.Name}</Text>
             </View>
             }
             hideChevron={true}
@@ -38,7 +29,7 @@ const ListItems = ({data}) => {
             title={
             <View style={basic}>
                 <Text>Pasoš:</Text>
-                <Text>{data.PassportCode}</Text>
+                <Text>{data.Passport.AnimalId}</Text>
             </View>
             }
             hideChevron={true}
@@ -65,7 +56,7 @@ const ListItems = ({data}) => {
             title={
             <View style={basic}>
                 <Text>Količina:</Text>
-                <Text>{data.NumOfWeightedItems}</Text>
+                <Text>{data.NumOfWeightItems}</Text>
             </View>
             }
             hideChevron={true}
