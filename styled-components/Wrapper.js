@@ -19,6 +19,9 @@ export const WrapperHeader = styled.View`
     padding: ${Constants.statusBarHeight+5}px 12px 15px 12px;
 
 `;
+export const WrapperHeaderCentar = WrapperHeader.extend`
+    justify-content: center;
+`;
 
 export const TitleText = styled.Text`
     font-size: 18px;

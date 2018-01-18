@@ -131,23 +131,12 @@ const poslovniPartnerNavigation = StackNavigator({
       initialRouteName: 'prePoslovniPartner'
     });
 
-const companyNavigation = StackNavigator({
-      preCompany: { screen: CompanyDrawer },
-      company: { screen: CompanyScreen },
-
-    },
-    {
-      headerMode: 'none'
-    },
-    {
-      initialRouteName: 'preCompany'
-    });
 
 
-const MainNavigation = StackNavigator({   //main navigacija u koju su ubacene sve sub navigacije
+const MainNavigation = StackNavigator({
+  preCompany: { screen: CompanyDrawer },   //main navigacija u koju su ubacene sve sub navigacije
   Home: { screen: HomeScreen },
   Magacin: { screen: magacinNavigation },
-  Company: { screen: companyNavigation },
   Production: { screen: productionNavigation },
   RobniPromet: { screen: robniPrometNavigation },
   Kartoteka: { screen: kartotekaNavigation },
@@ -157,7 +146,7 @@ const MainNavigation = StackNavigator({   //main navigacija u koju su ubacene sv
 },{
   headerMode: 'none'
 },{
-  initialRouteName: 'Home'
+  initialRouteName: 'preCompany'
 })
 
 

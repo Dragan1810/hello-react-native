@@ -17,13 +17,8 @@ export const MainRoutes = [
     icon: Icon.warehouse
   },
   {
-    id: 'Company',
-    title: 'Kompanije',
-    icon: Icon.organization
-  },
-  {
     id: 'RobniPromet',
-    title:'Dokumenti',
+    title:'Prijemnice',
     icon: require('../assets/Icons/steak.png')
   }
 ];
