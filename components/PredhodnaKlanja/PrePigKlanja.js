@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, FlatList, View, Dimensions } from 'react-native';
 import { Card, List, ListItem, Button } from 'react-native-elements';
+import { format } from 'date-fns'
+
 
 
 const ListItems = ({data, navigate}) => {
@@ -10,17 +12,8 @@ const ListItems = ({data, navigate}) => {
         <ListItem
             title={
                 <View style={basic}>
-                    <Text>Dobavljač:</Text>
-                    <Text>{'Adressa'}</Text>
-                </View>
-            }
-            hideChevron={true}
-        />
-        <ListItem
-            title={
-                <View style={basic}>
                     <Text>Datum klanja:</Text>
-                    <Text>{data.PigSlaughterDate}</Text>
+                    <Text>{format(data.PigSlaughterDate, 'DD/MM/YYYY')}</Text>
                 </View>
             }
             hideChevron={true}

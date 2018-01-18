@@ -10,6 +10,15 @@ const ListItems = ({data}) => {
         <ListItem
             title={
                 <View style={basic}>
+                    <Text>Redni br:</Text>
+                    <Text>{data.OrderNumber}</Text>
+                </View>
+            }
+            hideChevron={true}
+        />
+        <ListItem
+            title={
+                <View style={basic}>
                     <Text>Magacin:</Text>
                     <Text>{data.Warehouse.WarehouseName}</Text>
                 </View>

@@ -110,7 +110,7 @@ const magacinNavigation = StackNavigator({
 
 const kartotekaNavigation = StackNavigator({
       preKartoteka: { screen: KartotekaDrawer },
-      product: { screen: ProductScreen },
+      product: { screen: StockScreen },
       animal: { screen: AnimalScreen },
       subAnimal: { screen: SubAnimalScreen }
 
