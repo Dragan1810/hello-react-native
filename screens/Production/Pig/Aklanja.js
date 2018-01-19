@@ -49,7 +49,7 @@ class CompanyScreen extends Component {
             const filteredData = filterData(this.state.data, this.state.search);
             data = filteredData;
           }
-          const rdy =  this.state.noData ? <Text style={{textAlign:'center', paddingTop: 20}}>Network Error...</Text> : <Activity />
+          const rdy =  this.state.noData ? <Text style={{textAlign:'center', paddingTop: 20}}>Nema Podataka...</Text> : <Activity />
           const { width, height } = Dimensions.get('window');
           const { navigate, goBack } = this.props.navigation;
           const { search, icon } = styles;

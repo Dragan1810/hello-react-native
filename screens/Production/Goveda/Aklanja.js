@@ -18,7 +18,8 @@ class CompanyScreen extends Component {
       data:[],
       search: '',
       refreshing: false,
-      noData: false
+      noData: false,
+      message: ''
     };
 
     this.search = this.search.bind(this);
@@ -28,6 +29,7 @@ class CompanyScreen extends Component {
   componentDidMount() {
     console.log(Klanja);
     getData(Klanja).then(data => {
+      !data.Success && this.setState({ message: data.Message })
       !data.SlaughterItemTmps.length ? this.setState({noData: true})
       : this.setState({ data: data.SlaughterItemTmps })
     })
@@ -52,7 +54,7 @@ class CompanyScreen extends Component {
             const filteredData = filterData(this.state.data, this.state.search);
             data = filteredData;
           }
-          const rdy =  this.state.noData ? <Text style={{textAlign:'center', paddingTop: 20}}>Network Error...</Text> : <Activity />
+          const rdy =  this.state.noData ? <Text style={{textAlign:'center', paddingTop: 20}}>Nema Podataka...</Text> : <Activity />
           const { width, height } = Dimensions.get('window');
           const { navigate, goBack } = this.props.navigation;
           const { text, searchBar, search, list, icon, container, title } = styles;
@@ -78,6 +80,8 @@ class CompanyScreen extends Component {
 
             </WrapperHeader>
               {this.state.data.length < 1 && rdy}
+              {!!!this.state.message && <Text>{this.state.message}</Text>}
+
               <FlatList
               style={{width:'100%'}}
                 data={data}

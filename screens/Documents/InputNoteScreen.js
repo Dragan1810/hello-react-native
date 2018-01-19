@@ -8,7 +8,7 @@ import ListItems from '../../components/InputNoteItem';
 import { getData } from '../../helpers/index';
 
 const URL = `http://212.200.54.246:5001/api/InputNote/GetInputNotesByPage?CompanyId=1&CurrentPage=1&ItemsPerPage=5`
-const URLmini = `http://212.200.54.246:5001/api/InputNote/GetInputNotesByPage?CompanyId=1`
+const URLmini = `http://212.200.54.246:5001/api/InputNote/GetInputNotesByPage?CompanyId=1&CurrentPage=1`
 export default class StockScreen extends Component {
   constructor() {
     super();
@@ -90,6 +90,8 @@ export default class StockScreen extends Component {
                 keyExtractor={item => item.Id}
                 refreshing={this.state.refreshing}
                 onRefresh={this.handleRefresh}
+                onEndReached={this.handleLoadMore}
+                onEndReachedThreshold={0}
               />
               </Wrapper>
 
