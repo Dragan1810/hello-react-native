@@ -7,7 +7,7 @@ import Activity from '../../components/ActivityIndicator';
 import ListItems from '../../components/InputNoteItem';
 import { getData } from '../../helpers/index';
 
-const URL = `http://212.200.54.246:5001/api/InputNote/GetInputNotesByPage?CompanyId=1&CurrentPage=1&ItemsPerPage=5`
+const URL = `http://212.200.54.246:5001/api/InputNote/GetInputNotesByPage?CompanyId=1&CurrentPage=1&ItemsPerPage=9`
 const URLmini = `http://212.200.54.246:5001/api/InputNote/GetInputNotesByPage?CompanyId=1&CurrentPage=1`
 export default class StockScreen extends Component {
   constructor() {
@@ -48,7 +48,7 @@ export default class StockScreen extends Component {
 
     await this.setState({ page })
 
-    let Data = await getData(`${URLmini}&CurrentPage=${this.state.page}&ItemsPerPage=5`)
+    let Data = await getData(`${URLmini}&CurrentPage=${this.state.page}&ItemsPerPage=7`)
           console.log(Data.InputNotesByPage[0], this.state.page);
           let data = [...this.state.data, ...Data.InputNotesByPage]
           await this.setState({ data })
@@ -90,8 +90,6 @@ export default class StockScreen extends Component {
                 keyExtractor={item => item.Id}
                 refreshing={this.state.refreshing}
                 onRefresh={this.handleRefresh}
-                onEndReached={this.handleLoadMore}
-                onEndReachedThreshold={0}
               />
               </Wrapper>
 

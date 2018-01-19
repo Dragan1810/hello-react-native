@@ -1,74 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text, FlatList, View, Dimensions } from 'react-native';
-import { Card, List, ListItem } from 'react-native-elements';
+import { Card, List, ListItem, Button } from 'react-native-elements';
 
 
-const DepotItem = ({data}) => {
+const DepotItem = ({data, navigate}) => {
     return(
         <Card title={data.Name}>
-            <ListItem 
-                title={
-                <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                    <Text>Name:</Text>
-                    <Text>{data.Name}</Text>                        
-                </View>
-                } 
-                hideChevron={true} 
-            />
-            <ListItem 
-                title={
-                <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                    <Text>Description:</Text>
-                    <Text>{data.Description}</Text>                        
-                </View>
-                } 
-                hideChevron={true} 
-            />
-            <ListItem 
-                title={
-                <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                    <Text>Boxes:</Text>
-                    <Text>{data.Boxes}</Text>                        
-                </View>
-                } 
-                hideChevron={true} 
-            />
             <ListItem
                 title={
-                    <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                        <Text>CompanyId:</Text>
-                        <Text>{data.CompanyId}</Text>                        
-                    </View>
+                <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
+                    <Text>Boksevi:</Text>
+                    <Button title={'Prikazi'} onPress={()=>navigate('box',{Id: data.Id})}/>
+                </View>
                 }
                 hideChevron={true}
             />
-            <ListItem 
-                title={
-                <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                    <Text>CompanyName:</Text>
-                    <Text>{data.CompanyName}</Text>                        
-                </View>
-                } 
-                hideChevron={true} 
-            />
-            <ListItem 
-                title={
-                <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                    <Text>CreatedById:</Text>
-                    <Text>{data.CreatedById}</Text>                        
-                </View>
-                } 
-                hideChevron={true} 
-            />
-            <ListItem 
-                title={
-                <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                    <Text>CreatedByName:</Text>
-                    <Text>{data.CreatedByName}</Text>                        
-                </View>
-                } 
-                hideChevron={true} 
-            />
+
         </Card>
     )
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Dimensions, FlatList } from 'react-native';
 import { Card, List, ListItem, SearchBar, Icon } from 'react-native-elements';
+import { WrapperHeader, Wrapper } from '../../styled-components/Wrapper'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AppHeader from '../../components/AppHeader';
 import AppSearch from '../../components/AppSearch';
@@ -10,6 +11,7 @@ import { getData, filterData } from '../../helpers/index';
 import { data } from '../../helpers/Data';
 import { Constants } from 'expo'
 
+const URLmini = 'http://212.200.54.246:5001/api/Box/GetBoxes?CompanyId=1';
 
 export default class BoxesScreen extends Component {
   constructor() {
@@ -30,16 +32,15 @@ export default class BoxesScreen extends Component {
 
   handleRefresh() {
     this.setState({ refreshing: true })
-    getData(data.magacin.box).then(data => {
+    getData(`${URLmini}&DepotId=${Id}`).then(data => {
       this.setState({ data: data.Boxes, refreshing: false })
     })
   }
 
   componentDidMount() {
-    getData(data.magacin.box).then(data => {
-      this.setState({ data: data.Boxes, refreshing: false })
-
-      console.log(data.Boxes)
+    const { Id } = this.props.navigation.state.params
+    getData(`${URLmini}&DepotId=${Id}`).then(data => {
+      this.setState({ data: data.Boxes, refreshing: false },()=> console.log(this.state.data))
     });
   }
 
@@ -51,13 +52,13 @@ export default class BoxesScreen extends Component {
             data = filteredData;
           }
           const rdy =  <Activity />
-          const { width, height } = Dimensions.get('window');
           const { navigate, goBack } = this.props.navigation;
-          const { text, searchBar, search, list, icon, container, title } = styles;
+          const { search, icon } = styles;
+          console.log(data,this.props.navigation.state.params)
             return (
 
-              <View style={[container]}>
-          <View style={title}>
+          <Wrapper>
+          <WrapperHeader>
             <Icon
               containerStyle={icon}
               name='chevron-left'
@@ -74,9 +75,10 @@ export default class BoxesScreen extends Component {
               placeholder='Type Here...'
             />
 
-            </View>
-              {this.state.data.length < 1 && rdy}
+              </WrapperHeader>
+              {this.state.data.hasOwnProperty('AnimalSubType') ? rdy :
               <FlatList
+                style={{width: '100%'}}
                 data={data}
                 renderItem={({ item }) => (
                   <ListItems data={item} />
@@ -84,8 +86,8 @@ export default class BoxesScreen extends Component {
                 keyExtractor={item => item.Id}
                 refreshing={this.state.refreshing}
                 onRefresh={this.handleRefresh}
-              />
-            </View>
+              />}
+            </Wrapper>
 
           );
         }
@@ -100,22 +102,6 @@ const styles = StyleSheet.create({
       backgroundColor:'#009688',
       height: 56
     },
-    container: {
-      flex: 1,
-      paddingTop: Constants.statusBarHeight
-    },
-    title: {
-      flexDirection:'row'
-    },
-    searchBar: {
-      alignSelf: 'flex-start',
-    },
-    text: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-      paddingTop: 65
-    },
     search: {
       flex: 3,
       alignSelf:'flex-end',
@@ -124,10 +110,5 @@ const styles = StyleSheet.create({
       backgroundColor:'#009688',
       borderBottomWidth:0,
       borderTopWidth:0
-    },
-    list: {
-      borderTopWidth: 0,
-      borderBottomWidth: 0,
-      backgroundColor: '#C7BE9F'
     }
   });

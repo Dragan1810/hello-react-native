@@ -32,38 +32,38 @@ export default class Grid extends Component {
         return (
             <Wrapper>
                 <Header navigate={navigate} title={'Detalji-'} goBack={goBack}/>
-            <ScrollView>
+            <ScrollView style={{margin:0, padding:0}}>
             <GridWrapper>
-                <View>
-                    <Text>Redni br.</Text>
+                <GridMiniView>
+                    <GridText>Redni br.</GridText>
                     {data.length>0 && data.map((item, i) => (
-                        <Text key={item.Id}>{item.OrderNumber}</Text>
+                        <GridText key={item.Id}>{item.OrderNumber}</GridText>
                     ))}
-                </View>
-                <View>
-                <Text>Sifra</Text>
+                </GridMiniView>
+                <GridMiniView>
+                <GridText>Sifra</GridText>
                     {data.length>0 && data.map((item, i) => (
-                        <Text key={item.Id}>{item.Product.ProductCode}</Text>
+                        <GridText key={item.Id}>{item.Product.ProductCode}</GridText>
                     ))}
-                </View>
-                <View>
-                <Text>Artikal</Text>
+                </GridMiniView>
+                <GridMiniView>
+                <GridText>Artikal</GridText>
                     {data.length>0 && data.map((item, i) => (
-                        <Text key={item.Id}>{item.Product.ProductName}</Text>
+                        <GridText key={item.Id}>{item.Product.ProductName.split(' ')[0]}</GridText>
                     ))}
-                </View>
-                <View>
-                <Text>Komora</Text>
+                </GridMiniView>
+                <GridMiniView>
+                <GridText>Komora</GridText>
                     {data.length>0 && data.map((item, i) => (
-                        <Text key={item.Id}>{item.WarehouseChamber.Name}</Text>
+                        <GridText key={item.Id}>{item.WarehouseChamber.Name}</GridText>
                     ))}
-                </View>
-                <View>
-                <Text>Tezina</Text>
+                </GridMiniView>
+                <GridMiniView>
+                <GridText>Tezina</GridText>
                     {data.length>0 && data.map((item, i) => (
-                        <Text key={item.Id}>{item.Weight}</Text>
+                        <GridText key={item.Id}>{item.Weight}</GridText>
                     ))}
-                </View>
+                </GridMiniView>
             </GridWrapper>
             </ScrollView>
             </Wrapper>

@@ -108,10 +108,5 @@ export const MagacinRoutes = [
     id: 'depot',
     title: 'Depoi',
     icon: require('../assets/png/042-barn.png')
-  },
-  {
-    id: 'box',
-    title: 'Boxes',
-    icon: require('../assets/png/040-boxes.png')
   }
 ]

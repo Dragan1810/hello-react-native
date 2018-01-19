@@ -9,8 +9,8 @@ const BoxItem = ({data}) => {
             <ListItem
                 title={
                     <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                        <Text>Id:</Text>
-                        <Text>{data.Id}</Text>                        
+                        <Text>Trenutno u boksu:</Text>
+                        <Text>{data.CurrentlyInBox}</Text>
                     </View>
                 }
                 hideChevron={true}
@@ -18,8 +18,8 @@ const BoxItem = ({data}) => {
             <ListItem
                 title={
                     <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                        <Text>Code:</Text>
-                        <Text>{data.Code}</Text>                        
+                        <Text>Zivotinje:</Text>
+                        {/* <Text>{!!data.AnimalSubType.Name}</Text> */}
                     </View>
                 }
                 hideChevron={true}
@@ -27,8 +27,8 @@ const BoxItem = ({data}) => {
             <ListItem
                 title={
                     <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                        <Text>Capacity:</Text>
-                        <Text>{data.Capacity}</Text>                        
+                        <Text>Dobavljac:</Text>
+                        {/* <Text>{data.BusinessPartner.Name}</Text> */}
                     </View>
                 }
                 hideChevron={true}
@@ -36,67 +36,15 @@ const BoxItem = ({data}) => {
             <ListItem
                 title={
                     <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                        <Text>CurrentlyInBox:</Text>
-                        <Text>{data.CurrentlyInBox}</Text>                        
+                        <Text>Datum Prijema:</Text>
+                        {/* <Text>{data.InputNote.InputNoteDate}</Text> */}
                     </View>
                 }
                 hideChevron={true}
             />
-            <ListItem
-                title={
-                    <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                        <Text>ReceiveNoteId:</Text>
-                        <Text>{data.ReceiveNoteId}</Text>                        
-                    </View>
-                }
-                hideChevron={true}
-            />
-            <ListItem
-                title={
-                    <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                        <Text>ReceiveNoteCode:</Text>
-                        <Text>{data.ReceiveNoteCode}</Text>                        
-                    </View>
-                }
-                hideChevron={true}
-            />
-            <ListItem
-                title={
-                    <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                        <Text>AnimalType:</Text>
-                        <Text>{data.AnimalType}</Text>                        
-                    </View>
-                }
-                hideChevron={true}
-            />
-            <ListItem
-                title={
-                    <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                        <Text>BusinessPartner:</Text>
-                        <Text>{data.BusinessPartnerName}</Text>                        
-                    </View>
-                }
-                hideChevron={true}
-            />
-            <ListItem
-                title={
-                    <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                        <Text>CreatedById:</Text>
-                        <Text>{data.CreatedById}</Text>                        
-                    </View>
-                }
-                hideChevron={true}
-            />
-            <ListItem
-                title={
-                    <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-                        <Text>CreatedByName:</Text>
-                        <Text>{data.CreatedByName}</Text>                        
-                    </View>
-                }
-                hideChevron={true}
-            />
-            
+
+
+
         </Card>
     )
 }

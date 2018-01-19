@@ -6,12 +6,15 @@ export const GridWrapper = styled.View`
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    width:90%;
+    margin:0;
+    padding:0;
 `;
 
 export const GridMiniView = styled.View`
-    border:1px solid black;
+    flex: 1;
 `;
 
 export const GridText = styled.Text`
-    font-size: 5px;
+    font-size: 13px;
 `;

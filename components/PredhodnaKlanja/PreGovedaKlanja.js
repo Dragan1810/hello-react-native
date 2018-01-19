@@ -41,7 +41,7 @@ const ListItems = ({data, navigate}) => {
             containerViewStyle={{paddingTop: 12}}
             icon={{name: 'code'}}
             onPress={() => navigate('details', { url : `http://212.200.54.246:5001/api/Slaughter/GetAllBySlaughter?SlaughterId=${data.Id}` })}
-            backgroundColor='#03A9F4'
+            backgroundColor='#009688'
             buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
             title='Detalji'
         />
