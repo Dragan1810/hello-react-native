@@ -19,7 +19,7 @@ const BoxItem = ({data}) => {
                 title={
                     <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
                         <Text>Zivotinje:</Text>
-                        {/* <Text>{!!data.AnimalSubType.Name}</Text> */}
+                        <Text>{data.AnimalSubType.Name}</Text>
                     </View>
                 }
                 hideChevron={true}

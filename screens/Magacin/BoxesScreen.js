@@ -9,7 +9,8 @@ import Activity from '../../components/ActivityIndicator';
 import ListItems from '../../components/BoxItem';
 import { getData, filterData } from '../../helpers/index';
 import { data } from '../../helpers/Data';
-import { Constants } from 'expo'
+import {OptimizedFlatList} from 'react-native-optimized-flatlist'
+var flattenObject = require('flatten-object')
 
 const URLmini = 'http://212.200.54.246:5001/api/Box/GetBoxes?CompanyId=1';
 
@@ -20,12 +21,18 @@ export default class BoxesScreen extends Component {
     this.state = {
       data:[],
       search: '',
-      refreshing: false
+      refreshing: false,
+      loaded: false
     };
     this.search = this.search.bind(this);
     this.handleRefresh = this.handleRefresh.bind(this);
   }
-
+componentDidMount() {
+    const { Id } = this.props.navigation.state.params
+    getData(`${URLmini}&DepotId=${Id}`)
+      .then(data => this.setState({ data: [...data.Boxes] }))
+      .then(()=> {this.setState({loaded: true}); this.forceUpdate()})
+  }
   search(e) {
     this.setState({search:e.nativeEvent.text})
   }
@@ -37,24 +44,24 @@ export default class BoxesScreen extends Component {
     })
   }
 
-  componentDidMount() {
-    const { Id } = this.props.navigation.state.params
-    getData(`${URLmini}&DepotId=${Id}`).then(data => {
-      this.setState({ data: data.Boxes, refreshing: false },()=> console.log(this.state.data))
-    });
-  }
+
 
         render() {
 
-          let data = this.state.data;
-          if (this.state.data.length>1){
-            const filteredData = filterData(this.state.data, this.state.search);
-            data = filteredData;
-          }
           const rdy =  <Activity />
           const { navigate, goBack } = this.props.navigation;
           const { search, icon } = styles;
-          console.log(data,this.props.navigation.state.params)
+          const List = (
+            <FlatList
+                style={{width: '100%'}}
+                data={data}
+                renderItem={({ item }) => (
+                  <ListItems data={item} />
+                )}
+                keyExtractor={item => item.Id}
+              />
+          )
+          let data = this.state.loaded && this.state.data.map((item, i) => flattenObject(item, 0, '-'));
             return (
 
           <Wrapper>
@@ -74,19 +81,9 @@ export default class BoxesScreen extends Component {
               onSubmitEditing={e=>this.search(e)}
               placeholder='Type Here...'
             />
-
               </WrapperHeader>
-              {this.state.data.hasOwnProperty('AnimalSubType') ? rdy :
-              <FlatList
-                style={{width: '100%'}}
-                data={data}
-                renderItem={({ item }) => (
-                  <ListItems data={item} />
-                )}
-                keyExtractor={item => item.Id}
-                refreshing={this.state.refreshing}
-                onRefresh={this.handleRefresh}
-              />}
+              {console.log(data)}
+              {this.state.loaded ?  List : rdy }
             </Wrapper>
 
           );
