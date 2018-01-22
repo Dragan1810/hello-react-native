@@ -8,15 +8,7 @@ const InputNoteItem = ({data}) => {
     const { basic } = styles
     return(
         <Card title={data.Name}>
-            <ListItem
-                title={
-                    <View style={ basic }>
-                        <Text>Ime:</Text>
-                        <Text>{data.Name}</Text>
-                    </View>
-                }
-                hideChevron={true}
-            />
+
             <ListItem
                 title={
                 <View style={ basic }>
@@ -29,8 +21,8 @@ const InputNoteItem = ({data}) => {
              <ListItem
                 title={
                 <View style={ basic }>
-                    <Text>Depo:</Text>
-                    <Text>{data.Depot.Name}</Text>
+                    <Text>Cena po Komadu:</Text>
+                    <Text>{data.UnitPrice}</Text>
                 </View>
                 }
                 hideChevron={true}
@@ -38,8 +30,8 @@ const InputNoteItem = ({data}) => {
              <ListItem
                 title={
                 <View style={ basic }>
-                    <Text>Box:</Text>
-                    <Text>{data.Box.Name}</Text>
+                    <Text>Ukupna cena:</Text>
+                    <Text>{data.TotalValue}</Text>
                 </View>
                 }
                 hideChevron={true}

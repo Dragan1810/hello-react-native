@@ -26,21 +26,21 @@ export default class CompanyDrawer extends Component {
                 </Card>
                 <Card
                     title='Pet MB Agrar d.o.o'
-                    image={require('../../assets/logo2.png')}>
+                    image={require('../../assets/petmb.jpg')}>
                     <Text style={{marginBottom: 10}}>
                         U izradi...
                     </Text>
                 </Card>
                 <Card
                     title='Djurdjevic 2010 d.o.o'
-                    image={require('../../assets/logo2.png')}>
+                    image={require('../../assets/dj2010.png')}>
                     <Text style={{marginBottom: 10}}>
                         U izradi...
                     </Text>
                 </Card>
                 <Card
                     title='Djurdjevic Energo 2016 d.o.o'
-                    image={require('../../assets/logo2.png')}>
+                    image={require('../../assets/energ.png')}>
                     <Text style={{marginBottom: 10}}>
                         U izradi...
                     </Text>
