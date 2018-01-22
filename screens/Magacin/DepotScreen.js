@@ -27,6 +27,7 @@ export default class DepotScreen extends Component {
   }
 
   componentDidMount() {
+    console.log(data.magacin.depot)
     getData(data.magacin.depot).then(data => {
       this.setState({ data: data.Depots })
     });

@@ -24,26 +24,13 @@ export default class BoxesScreen extends Component {
       refreshing: false,
       loaded: false
     };
-    this.search = this.search.bind(this);
-    this.handleRefresh = this.handleRefresh.bind(this);
   }
 componentDidMount() {
     const { Id } = this.props.navigation.state.params
     getData(`${URLmini}&DepotId=${Id}`)
-      .then(data => this.setState({ data: [...data.Boxes] }))
-      .then(()=> {this.setState({loaded: true}); this.forceUpdate()})
+      .then(data => this.setState({ data: data.Boxes }))
+      .then(()=> {this.setState({loaded: true})})
   }
-  search(e) {
-    this.setState({search:e.nativeEvent.text})
-  }
-
-  handleRefresh() {
-    this.setState({ refreshing: true })
-    getData(`${URLmini}&DepotId=${Id}`).then(data => {
-      this.setState({ data: data.Boxes, refreshing: false })
-    })
-  }
-
 
 
         render() {
@@ -54,18 +41,17 @@ componentDidMount() {
           const List = (
             <FlatList
                 style={{width: '100%'}}
-                data={data}
+                data={this.state.data}
                 renderItem={({ item }) => (
                   <ListItems data={item} />
                 )}
                 keyExtractor={item => item.Id}
               />
           )
-          let data = this.state.loaded && this.state.data.map((item, i) => flattenObject(item, 0, '-'));
+      //    let data = this.state.loaded && this.state.data.map((item, i) => flattenObject(item, 0, '-'));
             return (
-
           <Wrapper>
-          <WrapperHeader>
+            <WrapperHeader>
             <Icon
               containerStyle={icon}
               name='chevron-left'
@@ -81,10 +67,9 @@ componentDidMount() {
               onSubmitEditing={e=>this.search(e)}
               placeholder='Type Here...'
             />
-              </WrapperHeader>
-              {console.log(data)}
+            </WrapperHeader>
               {this.state.loaded ?  List : rdy }
-            </Wrapper>
+          </Wrapper>
 
           );
         }

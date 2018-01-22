@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, FlatList, View, Dimensions } from 'react-native';
 import { Card, List, ListItem } from 'react-native-elements';
+import { format } from 'date-fns'
 
 
 const BoxItem = ({data}) => {
@@ -28,7 +29,7 @@ const BoxItem = ({data}) => {
                 title={
                     <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
                         <Text>Dobavljac:</Text>
-                        {/* <Text>{data.BusinessPartner.Name}</Text> */}
+                        <Text>{data.BusinessPartner.Name}</Text>
                     </View>
                 }
                 hideChevron={true}
@@ -37,7 +38,7 @@ const BoxItem = ({data}) => {
                 title={
                     <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
                         <Text>Datum Prijema:</Text>
-                        {/* <Text>{data.InputNote.InputNoteDate}</Text> */}
+                        <Text>{format(data.InputNote.InputNoteDate, 'DD/MM/YYYY')}</Text>
                     </View>
                 }
                 hideChevron={true}

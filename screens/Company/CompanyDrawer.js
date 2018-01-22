@@ -26,7 +26,9 @@ export default class CompanyDrawer extends Component {
                 </Card>
                 <Card
                     title='Pet MB Agrar d.o.o'
-                    image={require('../../assets/petmb.jpg')}>
+                    image={require('../../assets/petmb.jpg')}
+                    imageStyle={{height: 210}}
+                    >
                     <Text style={{marginBottom: 10}}>
                         U izradi...
                     </Text>
