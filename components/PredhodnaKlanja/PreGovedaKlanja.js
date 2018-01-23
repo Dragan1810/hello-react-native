@@ -22,8 +22,8 @@ const ListItems = ({data, navigate}) => {
         <ListItem
             title={
             <View style={basic}>
-                <Text>LOT broj:</Text>
-                <Text>{data.Code}</Text>
+                <Text>Cena po Kg:</Text>
+                <Text>{data.BuyingPrice/data.WeightBeforeSlaughter}</Text>
             </View>
             }
             hideChevron={true}

@@ -19,9 +19,28 @@ export default class Grid extends Component {
     componentDidMount(){
         const { url } = this.props.navigation.state.params
         console.log(url)
-        getData(url).then(data => {
-         this.setState({ data: data.Stocks })
-        })
+            getData(url)
+                .then(data => data.Stocks.map(item => ({
+                    Id: item.Id,
+                    ProductCode: item.Product.ProductCode,
+                    Quantity: item.Quantity,
+                    Weight: item.Weight
+                    })
+                ))
+            .then(data => {
+                let keys = [...new Set(data.map(item => item.ProductCode))]
+
+                return keys.map((item,i) =>  data
+                    .filter(obj => obj.ProductCode === item)
+                    .reduce((acc, obj) => ({
+                        Id: obj.Id,
+                        ProductCode: obj.ProductCode,
+                        Quantity: acc.Quantity + obj.Quantity,
+                        Weight: acc.Weight + obj.Weight
+                    }))
+                )
+            })
+            .then(data => this.setState({data}))
             .catch(err => console.log(err))
     }
     render() {
@@ -35,7 +54,7 @@ export default class Grid extends Component {
                 <GridMiniView>
                     <GridText>Šifra artikla:</GridText>
                     {data.length>0 && data.map((item, i) => (
-                        <GridText key={item.Id}>{item.Product.ProductCode}</GridText>
+                        <GridText key={item.Id}>{item.ProductCode}</GridText>
                     ))}
                 </GridMiniView>
                 <GridMiniView>
