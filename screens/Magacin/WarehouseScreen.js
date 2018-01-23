@@ -9,7 +9,6 @@ import Activity from '../../components/ActivityIndicator';
 import ListItems from '../../components/WarehouseItem';
 import { getData, filterData } from '../../helpers/index';
 import { data } from '../../helpers/Data';
-import { Constants } from 'expo'
 
 export default class WarehouseScreen extends Component {
   constructor() {
@@ -47,9 +46,8 @@ export default class WarehouseScreen extends Component {
             data = filteredData;
           }
           const rdy =  <Activity />
-          const { width, height } = Dimensions.get('window');
           const { navigate, goBack } = this.props.navigation;
-          const { text, searchBar, search, list, icon, container, title } = styles;
+          const { search, icon } = styles;
             return (
 
           <Wrapper>
@@ -76,7 +74,7 @@ export default class WarehouseScreen extends Component {
                 style={{width:'100%'}}
                 data={data}
                 renderItem={({ item }) => (
-                  <ListItems data={item} />
+                  <ListItems data={item} navigate={navigate} />
                 )}
                 keyExtractor={item => item.Id}
                 refreshing={this.state.refreshing}

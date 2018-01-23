@@ -3,7 +3,7 @@ import { StyleSheet, Text, FlatList, View, Dimensions } from 'react-native';
 import { Card, List, ListItem, Button } from 'react-native-elements';
 
 
-const WarehouseItem = ({data}) => {
+const WarehouseItem = ({data, navigate}) => {
     const { basic } = styles
     return(
         <Card title={data.WarehouseName}>
@@ -16,14 +16,13 @@ const WarehouseItem = ({data}) => {
             }
             hideChevron={true}
         />
-        <ListItem
-            title={
-                <View style={basic}>
-                    <Text>Sadrzaj Magacina:</Text>
-                    <Button title='Prikazi' />
-                </View>
-            }
-            hideChevron={true}
+        <Button
+            containerViewStyle={{paddingTop: 12}}
+            icon={{name: 'code'}}
+            onPress={() => navigate('warehouseArtikli', { url : `http://212.200.54.246:5001/api/Stock/GetStocksByWarehouse?warehouseId=${data.Id}` })}
+            backgroundColor='#009688'
+            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+            title='Prikazi'
         />
         </Card>
     )

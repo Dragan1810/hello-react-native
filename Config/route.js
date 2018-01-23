@@ -29,6 +29,8 @@ import pigDrawer from '../screens/Production/Pig/pigDrawer'
 import lambDrawer from '../screens/Production/Lamb/lambDrawer'
 
 import Details from '../components/Grid'
+import ArtikliDetaljiScreen from '../components/ArtikliDetalji'
+import WarehouseArtikliScreen from '../components/WarehouseDetails'
 
 
 const PigNavigation = StackNavigator({
@@ -86,10 +88,12 @@ const productionNavigation = StackNavigator({  // primer navigacije
 
 const magacinNavigation = StackNavigator({
       preMagacin: { screen: MagacinDrawer },
-      stock: { screen: StockScreen },
+      stock: { screen: ProductScreen },  //zamenjeno sa Stock Screenom to be fixed....
       depot: { screen: DepotScreen },
       warehouse: { screen: WarehouseScreen },
-      box: { screen: BoxesScreen}
+      box: { screen: BoxesScreen},
+      detailsArtikli: { screen: ArtikliDetaljiScreen },
+      warehouseArtikli: { screen: WarehouseArtikliScreen }
 
     },{
       headerMode:'none'

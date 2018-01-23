@@ -26,17 +26,16 @@ class ProductScreen extends Component {
   }
 
   componentDidMount() {
-    getData(data.kartoteka.product).then(data => {
-      this.setState({ data: data.Products })
+    getData(data.kartoteka.stock).then(data => {
+      this.setState({ data: data.StockByProducts })
     });
   }
 
   handleRefresh() {
     this.setState({
       refreshing: true
-    }, ()=> getData(data.kartoteka.product).then(dt => {
-      this.setState({ data: dt.Products, refreshing: false })
-      console.log(data)
+    }, ()=> getData(data.kartoteka.stock).then(dt => {
+      this.setState({ data: data.StockByProducts, refreshing: false })
     }))
   }
 
@@ -50,9 +49,8 @@ class ProductScreen extends Component {
             const filteredData = filterData(this.state.data, this.state.search);
             data = filteredData;
           }
-          const { width, height } = Dimensions.get('window');
           const { navigate, goBack } = this.props.navigation;
-          const { text, searchBar, search, list, icon, container, title } = styles;
+          const { search, icon } = styles;
           const rdy =  <Activity />
 
             return (
@@ -82,9 +80,9 @@ class ProductScreen extends Component {
                 style={{width:'100%'}}
                 data={data}
                 renderItem={({ item }) => (
-                  <ListItems data={item} />
+                  <ListItems data={item} navigate={navigate} />
                 )}
-                keyExtractor={item => item.Id}
+                keyExtractor={item => item.Product.Id}
                 refreshing={this.state.refreshing}
                 onRefresh={this.handleRefresh}
               />
@@ -103,22 +101,6 @@ const styles = StyleSheet.create({
       backgroundColor:'#009688',
       height: 56
     },
-    container: {
-      flex: 1,
-      paddingTop: Constants.statusBarHeight
-    },
-    title: {
-      flexDirection:'row'
-    },
-    searchBar: {
-      alignSelf: 'flex-start',
-    },
-    text: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-      paddingTop: 65
-    },
     search: {
       flex: 3,
       alignSelf:'flex-end',
@@ -127,11 +109,6 @@ const styles = StyleSheet.create({
       backgroundColor:'#009688',
       borderBottomWidth:0,
       borderTopWidth:0
-    },
-    list: {
-      borderTopWidth: 0,
-      borderBottomWidth: 0,
-      backgroundColor: '#C7BE9F'
     }
   });
 

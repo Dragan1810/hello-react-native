@@ -7,7 +7,7 @@ import { format } from 'date-fns'
 const InputNoteItem = ({data}) => {
     const { basic } = styles
     return(
-        <Card title={data.Name}>
+        <Card title={data.BusinessPartner.Name}>
 
             <ListItem
                 title={
@@ -21,7 +21,7 @@ const InputNoteItem = ({data}) => {
              <ListItem
                 title={
                 <View style={ basic }>
-                    <Text>Cena po Komadu:</Text>
+                    <Text>Cena po Kg:</Text>
                     <Text>{data.UnitPrice}</Text>
                 </View>
                 }
@@ -45,11 +45,11 @@ const InputNoteItem = ({data}) => {
                 }
                 hideChevron={true}
             />
-             <ListItem
+            <ListItem
                 title={
                 <View style={ basic }>
-                    <Text>Dobavljač:</Text>
-                    <Text>{data.BusinessPartner.Name}</Text>
+                    <Text>Broj grla:</Text>
+                    <Text>{data.Quantity}</Text>
                 </View>
                 }
                 hideChevron={true}
@@ -81,15 +81,7 @@ const InputNoteItem = ({data}) => {
                 }
                 hideChevron={true}
             />
-              <ListItem
-                title={
-                <View style={ basic }>
-                    <Text>Broj grla:</Text>
-                    <Text>{data.Quantity}</Text>
-                </View>
-                }
-                hideChevron={true}
-            />
+
         </Card>
     )
 }

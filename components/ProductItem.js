@@ -1,19 +1,57 @@
 import React from 'react';
 import { StyleSheet, Text, FlatList, View, Dimensions } from 'react-native';
-import { Card, List, ListItem } from 'react-native-elements';
+import { Card, List, ListItem, Button } from 'react-native-elements';
 
 
-const ProductItem = ({data}) => {
+const ProductItem = ({data, navigate}) => {
+    const { basic } = styles
     return(
-        <Card title={data.ProductName}>
-            <ListItem title={data.ProductCode} />
-            <ListItem title={data.BarCode} />
-            <ListItem title={data.MinQuantity} />
-            <ListItem title={data.ProductGroupName} />
-            <ListItem title={data.CompanyName} />
+        <Card title={data.Product.ProductName}>
+            <ListItem
+                title={
+                    <View style={basic}>
+                        <Text>Sifra Artikla:</Text>
+                        <Text>{data.Product.ProductCode}</Text>
+                    </View>
+                }
+                hideChevron={true}
+            />
+            <ListItem
+                title={
+                <View style={basic}>
+                    <Text>Na stanju:</Text>
+                    <Text>{data.Quantity}</Text>
+                </View>
+                }
+                hideChevron={true}
+            />
+             <ListItem
+                title={
+                <View style={basic}>
+                    <Text>Ukupna tezina:</Text>
+                    <Text>{data.Weight}</Text>
+                </View>
+                }
+                hideChevron={true}
+            />
+            <Button
+            containerViewStyle={{paddingTop: 12}}
+            icon={{name: 'code'}}
+            onPress={() => navigate('detailsArtikli', { url : `http://212.200.54.246:5001/api/Stock/GetStocksByProduct?productId=${data.Product.Id}`, name: data.Product.ProductName })}
+            backgroundColor='#009688'
+            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+            title='Detalji'
+        />
         </Card>
     )
 }
+
+const styles = StyleSheet.create({
+    basic: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    }
+})
 export default ProductItem;
 /*
 "Id": 30,

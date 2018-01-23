@@ -7,20 +7,22 @@ export const MainRoutes = [
     icon: Icon.knife
   },
   {
-    id: 'Kartoteka',
-    title: 'Kartoteka',
-    icon: Icon.lager
+    id: 'RobniPromet',
+    title:'Prijemnice',
+    icon: require('../assets/png/truck.png')
   },
-  {
+   {
     id: 'Magacin',
     title: 'Magacin',
     icon: Icon.warehouse
-  },
-  {
-    id: 'RobniPromet',
-    title:'Prijemnice',
-    icon: require('../assets/Icons/steak.png')
   }
+/* {
+    id: 'Kartoteka',
+    title: 'Kartoteka',
+    icon: Icon.lager
+ },
+*/
+
 ];
 
 export const ProizvodnjaRoutes = [

@@ -31,7 +31,7 @@ export const data = {
         stock: `http://${currentHostName}/api/Product/GetProductsByPage?CompanyId=${currentCompanyID}&CurrentPage=1&ItemsPerPage=20`
     },
     kartoteka: {
-        product: "http://" + currentHostName + "/api/Product/GetProducts?CompanyId=" + currentCompanyID,
+        stock: `http://${currentHostName}/api/Stock/GetStocks`,
         animal: "http://" + currentHostName + "/api/AnimalType/GetAnimalTypes?CompanyId=" + currentCompanyID
     },
     poslovniPartner: {
