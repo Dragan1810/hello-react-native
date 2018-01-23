@@ -17,4 +17,7 @@ export const GridMiniView = styled.View`
 
 export const GridText = styled.Text`
     font-size: 13px;
+    padding-bottom:${props => props.primary ? '8px' : '0'};
+    font-weight:${props => props.primary ? 'bold' : 'normal'};
+    padding-left:4px;
 `;

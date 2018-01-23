@@ -34,19 +34,19 @@ export default class Grid extends Component {
             <ScrollView style={{margin:0, padding:0}}>
             <GridWrapper>
                 <GridMiniView>
-                    <GridText>Magacin:</GridText>
+                    <GridText primary>Magacin:</GridText>
                     {data.length>0 && data.map((item, i) => (
                         <GridText key={item.Id}>{item.Warehouse.WarehouseName}</GridText>
                     ))}
                 </GridMiniView>
                 <GridMiniView>
-                <GridText>Kompora:</GridText>
+                <GridText primary>Kompora:</GridText>
                     {data.length>0 && data.map((item, i) => (
                         <GridText key={item.Id}>{item.WarehouseChamber.Name}</GridText>
                     ))}
                 </GridMiniView>
                 <GridMiniView>
-                <GridText>Tezina: </GridText>
+                <GridText primary>Tezina: </GridText>
                     {data.length>0 && data.map((item, i) => (
                         <GridText key={item.Id}>{item.Weight}</GridText>
                     ))}

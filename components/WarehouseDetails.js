@@ -52,19 +52,19 @@ export default class Grid extends Component {
             <ScrollView style={{margin:0, padding:0}}>
             <GridWrapper>
                 <GridMiniView>
-                    <GridText>Šifra artikla:</GridText>
+                    <GridText primary>Šifra artikla:</GridText>
                     {data.length>0 && data.map((item, i) => (
                         <GridText key={item.Id}>{item.ProductCode}</GridText>
                     ))}
                 </GridMiniView>
                 <GridMiniView>
-                <GridText>Na stanju :</GridText>
+                <GridText primary>Na stanju :</GridText>
                     {data.length>0 && data.map((item, i) => (
                         <GridText key={item.Id}>{item.Quantity}</GridText>
                     ))}
                 </GridMiniView>
                 <GridMiniView>
-                <GridText>Tezina: </GridText>
+                <GridText primary>Tezina: </GridText>
                     {data.length>0 && data.map((item, i) => (
                         <GridText key={item.Id}>{item.Weight}</GridText>
                     ))}

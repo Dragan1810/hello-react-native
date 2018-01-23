@@ -35,31 +35,31 @@ export default class Grid extends Component {
             <ScrollView style={{margin:0, padding:0}}>
             <GridWrapper>
                 <GridMiniView>
-                    <GridText>Redni br.</GridText>
+                    <GridText primary>Redni br.</GridText>
                     {data.length>0 && data.map((item, i) => (
                         <GridText key={item.Id}>{item.OrderNumber}</GridText>
                     ))}
                 </GridMiniView>
                 <GridMiniView>
-                <GridText>Sifra</GridText>
+                <GridText primary>Sifra</GridText>
                     {data.length>0 && data.map((item, i) => (
                         <GridText key={item.Id}>{item.Product.ProductCode}</GridText>
                     ))}
                 </GridMiniView>
                 <GridMiniView>
-                <GridText>Artikal</GridText>
+                <GridText primary>Artikal</GridText>
                     {data.length>0 && data.map((item, i) => (
                         <GridText key={item.Id}>{item.Product.ProductName.split(' ')[0]}</GridText>
                     ))}
                 </GridMiniView>
                 <GridMiniView>
-                <GridText>Komora</GridText>
+                <GridText primary>Komora</GridText>
                     {data.length>0 && data.map((item, i) => (
                         <GridText key={item.Id}>{item.WarehouseChamber.Name}</GridText>
                     ))}
                 </GridMiniView>
                 <GridMiniView>
-                <GridText>Tezina</GridText>
+                <GridText primary>Tezina</GridText>
                     {data.length>0 && data.map((item, i) => (
                         <GridText key={item.Id}>{item.Weight}</GridText>
                     ))}
