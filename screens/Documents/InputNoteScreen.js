@@ -7,8 +7,8 @@ import Activity from '../../components/ActivityIndicator';
 import ListItems from '../../components/InputNoteItem';
 import { getData } from '../../helpers/index';
 
-const URL = `http://212.200.54.246:5001/api/InputNote/GetInputNotesByPage?CompanyId=1&CurrentPage=1&ItemsPerPage=4`
-const URLmini = `http://212.200.54.246:5001/api/InputNote/GetInputNotesByPage?CompanyId=1&CurrentPage=1`
+const URL = `http://212.200.54.246:5001/api/InputNote/GetInputNotesByPage?CompanyId=1&CurrentPage=1&ItemsPerPage=10`
+const URLmini = `http://212.200.54.246:5001/api/InputNote/GetInputNotesByPage?CompanyId=1`
 export default class StockScreen extends Component {
   constructor() {
     super();
@@ -33,7 +33,7 @@ export default class StockScreen extends Component {
   handleRefresh() {
     this.setState({
       refreshing: true
-    }, ()=> getData(URL).then(data => this.setState({ data: data.InputNotesByPage, refreshing: false })))
+    }, ()=> getData(URL).then(data => this.setState({ data: data.InputNotesByPage, refreshing: false, page: 1 })))
   }
 
   search(e) {
@@ -46,11 +46,12 @@ export default class StockScreen extends Component {
   async handleLoadMore(){
     let { page } = this.state
     page = page + 1;
-    let Data = await getData(`${URLmini}&CurrentPage=${page}&ItemsPerPage=4`)
-          console.log(Data.InputNotesByPage[0], this.state.page);
-          let data = [...this.state.data, ...Data.InputNotesByPage]
-          await this.setState({ data, page })
-
+    let Data = await getData(`${URLmini}&CurrentPage=${page}&ItemsPerPage=10`)
+      console.log(Data.InputNotesByPage.Id, page)
+          if (Data.InputNotesByPage.length > 0) {
+            let data = [...this.state.data, ...Data.InputNotesByPage]
+            await this.setState({ data, page })
+          }
 
   }
 
