@@ -22,7 +22,7 @@ const ListItems = ({data, navigate}) => {
             title={
             <View style={basic}>
                 <Text>Cena po Kg:</Text>
-                <Text>{data.BuyingPrice/data.WeightBeforeLambSlaughter}</Text>
+                <Text>{(data.BuyingPrice/data.WeightAfterLambSlaughter).toFixed(4)}</Text>
             </View>
             }
             hideChevron={true}

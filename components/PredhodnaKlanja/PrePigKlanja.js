@@ -8,7 +8,7 @@ import { format } from 'date-fns'
 const ListItems = ({data, navigate}) => {
     const { basic } = styles
     return(
-        <Card title={'Dobavljac'}>
+        <Card title={data.Supplier && data.Supplier.Name}>
         <ListItem
             title={
                 <View style={basic}>
@@ -22,7 +22,7 @@ const ListItems = ({data, navigate}) => {
             title={
             <View style={basic}>
                 <Text>Cena po Kg:</Text>
-                <Text>{data.BuyingPrice/data.WeightBeforeSlaughter}</Text>
+                <Text>{(data.BuyingPrice/data.WeightAfterSlaughter).toFixed(4)}</Text>
             </View>
             }
             hideChevron={true}
