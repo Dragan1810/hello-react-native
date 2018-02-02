@@ -31,6 +31,9 @@ import lambDrawer from '../screens/Production/Lamb/lambDrawer'
 import Details from '../components/Grid'
 import ArtikliDetaljiScreen from '../components/ArtikliDetalji'
 import WarehouseArtikliScreen from '../components/WarehouseDetails'
+import LinkScreen from '../screens/Links/LinkScreen'
+
+import Web from '../components/Web'
 
 
 const PigNavigation = StackNavigator({
@@ -125,6 +128,15 @@ const poslovniPartnerNavigation = StackNavigator({
       initialRouteName: 'prePoslovniPartner'
     });
 
+const LinkNav = StackNavigator({
+      LinkScreen: { screen: LinkScreen },
+      web : { screen: Web },
+
+    },{
+      headerMode:'none'
+    },{
+      initialRouteName: 'LinkScreen'
+    });
 
 
 const MainNavigation = StackNavigator({
@@ -134,7 +146,8 @@ const MainNavigation = StackNavigator({
   Production: { screen: productionNavigation },
   RobniPromet: { screen: InputNoteScreen },
   Kartoteka: { screen: kartotekaNavigation },
-  PoslovniPartner: { screen: poslovniPartnerNavigation }
+  PoslovniPartner: { screen: poslovniPartnerNavigation },
+  Linkovi: { screen: LinkNav }
   // dodati drawer sa strane podesavanje strana
 
 },{

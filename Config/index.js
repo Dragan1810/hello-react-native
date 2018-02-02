@@ -15,14 +15,25 @@ export const MainRoutes = [
     id: 'Magacin',
     title: 'Magacin',
     icon: Icon.warehouse
-  }
-/* {
+  },
+  {
+    id:'Linkovi',
+    title:'Korisni Linkovi',
+    icon: Icon.organization
+  },
+  {
     id: 'Kartoteka',
     title: 'Kartoteka',
     icon: Icon.lager
- },
-*/
+ }
+];
 
+export const LinkRoutes = [
+  {
+    id: 'web',
+    title: 'Browser',
+    icon: Icon.knife
+  }
 ];
 
 export const ProizvodnjaRoutes = [
