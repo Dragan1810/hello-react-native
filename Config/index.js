@@ -31,8 +31,44 @@ export const MainRoutes = [
 export const LinkRoutes = [
   {
     id: 'web',
-    title: 'Browser',
-    icon: Icon.knife
+    title: 'Trlic',
+    icon: Icon.knife,
+    uri: 'http://trlic.com/cenovnik/'
+  },
+  {
+    id: 'web',
+    title: 'Rosselkhoznadzor',
+    icon: Icon.knife,
+    uri: 'http://www.rosselkhoznadzor.ru/fsvps/importExport/serbia/enterprises.html?product=2&productType=1&_language=en'
+
+  },
+  {
+    id: 'web',
+    title: 'Kursna Lista',
+    icon: Icon.knife,
+    uri: 'https://www.kursna-lista.com/kursna-lista-nbs'
+
+  },
+  {
+    id: 'web',
+    title: 'Pig333',
+    icon: Icon.knife,
+    uri: 'https://www.pig333.com/markets_and_prices/'
+
+  },
+  {
+    id: 'web',
+    title: 'Vet.minpolj',
+    icon: Icon.knife,
+    uri: 'http://www.vet.minpolj.gov.rs/'
+
+  },
+  {
+    id: 'web',
+    title: 'Matijevic',
+    icon: Icon.knife,
+    uri: 'https://matijevic.rs/akcije/'
+
   }
 ];
 

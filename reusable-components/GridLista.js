@@ -8,7 +8,7 @@ const GridList = ({MainRoutes, navigate}) => (
     <KockaWrapper>
         {MainRoutes.map((route, i) => {
           return (
-            <Kocka key={i} onPress={()=> navigate(route.id)}>
+            <Kocka key={i} onPress={()=> navigate(route.id, {uri: route.uri, ime: route.title})}>
               <KockaImage source={route.icon} />
               <KockaText>{route.title}</KockaText>
             </Kocka>

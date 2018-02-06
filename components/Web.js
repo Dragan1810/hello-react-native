@@ -12,8 +12,9 @@ from 'react-native'
 const {height: Dheight, width: Dwidth } = Dimensions.get('window')
 
 
-const WebViewExample = () => {
-      const { search, icon, video } = styles;
+const WebViewExample = ({ navigation }) => {
+      const { search, icon, video } = styles
+      const { uri, ime } = navigation.state.params
    return (
       <Wrapper>
       <WrapperHeader>
@@ -23,15 +24,14 @@ const WebViewExample = () => {
           type='font-awesome'
           color='#fff'
           size={32}
-          onPress={()=>props.navigation.goBack()}
+          onPress={()=> navigation.goBack()}
         />
-        <Text style={search}>Probni Link </Text>
+        <Text style={search}>{ime}</Text>
           </WrapperHeader>
          <View style = {{flex:1}}>
          <WebView
             style={video}
-            source = {{ uri:
-               'https://www.google.com/?gws_rd=cr,ssl&ei=SICcV9_EFqqk6ASA3ZaABA#q=sirmiumerp' }}
+            source = {{ uri }}
          />
       </View>
         </Wrapper>
