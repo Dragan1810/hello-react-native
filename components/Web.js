@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { WrapperHeader, Wrapper } from '../styled-components/Wrapper'
+import { WrapperHeader, Wrapper, TitleText } from '../styled-components/Wrapper'
 import { Card, List, ListItem, SearchBar, Icon } from 'react-native-elements';
 import {
    View,
@@ -26,7 +26,7 @@ const WebViewExample = ({ navigation }) => {
           size={32}
           onPress={()=> navigation.goBack()}
         />
-        <Text style={search}>{ime}</Text>
+        <TitleText style={search}>{ime}</TitleText>
           </WrapperHeader>
          <View style = {{flex:1}}>
          <WebView
@@ -57,7 +57,8 @@ const styles = StyleSheet.create({
         flex: 3,
         alignSelf:'center',
         justifyContent: 'center',
-        color: 'white'
+        color: 'white',
+        paddingLeft: 20
       }
     });
 export default WebViewExample;

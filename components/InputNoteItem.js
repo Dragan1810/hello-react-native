@@ -76,7 +76,7 @@ const InputNoteItem = ({data}) => {
                 title={
                 <View style={ basic }>
                     <Text>Kalo transporta:</Text>
-                    <Text>{data.TransportShrinkage}</Text>
+                    <Text>{data.TransportShrinkage.toFixed(4)}</Text>
                 </View>
                 }
                 hideChevron={true}

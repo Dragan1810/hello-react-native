@@ -24,7 +24,7 @@ export const WrapperHeaderCentar = WrapperHeader.extend`
 `;
 
 export const TitleText = styled.Text`
-    font-size: 18px;
+    font-size: 20px;
     color: white;
 `;
 

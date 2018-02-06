@@ -18,3 +18,7 @@ export function filterData(data, searchItem) {
     }
   });
 }
+
+export function newFilterData(data, searchItem) {
+  return data.filter(item => JSON.stringify(item).indexOf(searchItem)!== -1)
+}

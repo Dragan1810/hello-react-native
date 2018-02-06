@@ -5,7 +5,7 @@ import { Wrapper, WrapperHeader } from '../../styled-components/Wrapper'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import Activity from '../../components/ActivityIndicator'
 import ListItems from '../../components/InputNoteItem'
-import { getData, filterData } from '../../helpers/index'
+import { getData, filterData, newFilterData } from '../../helpers/index'
 
 const URL = `http://212.200.54.246:5001/api/InputNote/GetInputNotesByPage?CompanyId=1&CurrentPage=1&ItemsPerPage=10`
 const URLmini = `http://212.200.54.246:5001/api/InputNote/GetInputNotesByPage?CompanyId=1`
@@ -27,7 +27,7 @@ export default class StockScreen extends Component {
 
   componentDidMount() {
     getData(URL).then(data => this.setState({ data: data.InputNotesByPage }))
-                .catch(err=> console.log(err))
+                .catch(err => console.log(err))
   }
 
   handleRefresh() {
@@ -40,8 +40,8 @@ export default class StockScreen extends Component {
   async search(e) {
     await this.setState({search:e.nativeEvent.text})
       getData(URLmini)
-        .then(data => filterData(data.InputNotesByPage, this.state.search))
-        .then(data => this.setState({data}))
+        .then(data => newFilterData(data.InputNotesByPage, this.state.search))
+        .then(data => this.setState({ data }))
   }
 
   async handleLoadMore(){
