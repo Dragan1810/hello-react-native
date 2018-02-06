@@ -40,15 +40,16 @@ export default class Grid extends Component {
         return (
             <View>
                 <Header navigate={navigate} title={'Detalji-'} goBack={goBack}/>
-            <ScrollView style={{margin:0, padding:0}}>
             <View>
                 <Table style={styles.table} borderStyle={{borderWidth: 0.5, borderColor: '#c8e1ff'}}>
                 <Row data={tableHead} style={styles.head} textStyle={styles.text} flexArr={[1, 1, 1, 1, 1]}/>
+            <ScrollView style={{margin:0, padding:0}}>
                 <Cols data={tableData} textStyle={styles.text} heightArr={[50, 50]} flexArr={[1, 1, 1, 1, 1]}/>
+            </ScrollView>
                 </Table>
             </View>
 
-            </ScrollView>
+
             </View>
         )
     }
