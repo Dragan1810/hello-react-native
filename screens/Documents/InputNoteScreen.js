@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
-import { SearchBar, Icon } from 'react-native-elements';
+import React, { Component } from 'react'
+import { StyleSheet, Text, View, FlatList } from 'react-native'
+import { SearchBar, Icon } from 'react-native-elements'
 import { Wrapper, WrapperHeader } from '../../styled-components/Wrapper'
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Activity from '../../components/ActivityIndicator';
-import ListItems from '../../components/InputNoteItem';
-import { getData } from '../../helpers/index';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import Activity from '../../components/ActivityIndicator'
+import ListItems from '../../components/InputNoteItem'
+import { getData, filterData } from '../../helpers/index'
 
 const URL = `http://212.200.54.246:5001/api/InputNote/GetInputNotesByPage?CompanyId=1&CurrentPage=1&ItemsPerPage=10`
 const URLmini = `http://212.200.54.246:5001/api/InputNote/GetInputNotesByPage?CompanyId=1`
@@ -33,21 +33,21 @@ export default class StockScreen extends Component {
   handleRefresh() {
     this.setState({
       refreshing: true
-    }, ()=> getData(URL).then(data => this.setState({ data: data.InputNotesByPage, refreshing: false, page: 1 })))
+    }, ()=> getData(URL)
+              .then(data => this.setState({ data: data.InputNotesByPage, refreshing: false, page: 1 })))
   }
 
-  search(e) {
-    this.setState({search:e.nativeEvent.text},
-    ()=> getData(`${URLmini}&CurrentPage=1&ItemsPerPage=20&ProductName=${this.state.search}`)
-        .then(data => this.setState({data : data.InputNotesByPage })))
-        //pretraga po dobavljacima
+  async search(e) {
+    await this.setState({search:e.nativeEvent.text})
+      getData(URLmini)
+        .then(data => filterData(data.InputNotesByPage, this.state.search))
+        .then(data => this.setState({data}))
   }
 
   async handleLoadMore(){
     let { page } = this.state
     page = page + 1;
     let Data = await getData(`${URLmini}&CurrentPage=${page}&ItemsPerPage=10`)
-      console.log(Data.InputNotesByPage.Id, page)
           if (Data.InputNotesByPage.length > 0) {
             let data = [...this.state.data, ...Data.InputNotesByPage]
             await this.setState({ data, page })
@@ -75,6 +75,7 @@ export default class StockScreen extends Component {
               containerStyle={search}
               round
               lightTheme
+              onSubmitEditing={e=>this.search(e)}
               placeholder='Type Here...'
             />
 
@@ -91,6 +92,7 @@ export default class StockScreen extends Component {
                 onRefresh={this.handleRefresh}
                 onEndReached={this.handleLoadMore}
                 onEndReachedThreshold={0.5}
+
               />
               </Wrapper>
 

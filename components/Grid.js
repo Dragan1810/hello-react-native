@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import { Icon } from 'react-native-elements'
 import { GridWrapper,GridText, GridMiniView } from '../styled-components/Grid'
 import { TitleText, WrapperHeader, Wrapper } from '../styled-components/Wrapper'
 import { getData } from '../helpers/index'
 import Header from '../reusable-components/Header'
+import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 
 
 export default class Grid extends Component {
@@ -27,46 +28,34 @@ export default class Grid extends Component {
             .catch(err => console.log(err))
     }
     render() {
+        const tableHead = ['Redni br.', 'Sifra', 'Artikal', 'Komora', 'Tezina'];
+        const tableData = [
+          this.state.data.map(item => item.OrderNumber),
+          this.state.data.map(item => item.Product.ProductCode),
+          this.state.data.map(item => item.Product.ProductName.split(' ')[0]),
+          this.state.data.map(item => item.WarehouseChamber.Name),
+          this.state.data.map(item => item.Weight.toFixed(3))
+        ]
         const { navigate, goBack } = this.props.navigation
-        const { data } = this.state
         return (
-            <Wrapper>
+            <View>
                 <Header navigate={navigate} title={'Detalji-'} goBack={goBack}/>
             <ScrollView style={{margin:0, padding:0}}>
-            <GridWrapper>
-                <GridMiniView>
-                    <GridText primary>Redni br.</GridText>
-                    {data.length>0 && data.map((item, i) => (
-                        <GridText key={item.Id}>{item.OrderNumber}</GridText>
-                    ))}
-                </GridMiniView>
-                <GridMiniView>
-                <GridText primary>Sifra</GridText>
-                    {data.length>0 && data.map((item, i) => (
-                        <GridText key={item.Id}>{item.Product.ProductCode}</GridText>
-                    ))}
-                </GridMiniView>
-                <GridMiniView>
-                <GridText primary>Artikal</GridText>
-                    {data.length>0 && data.map((item, i) => (
-                        <GridText key={item.Id}>{item.Product.ProductName.split(' ')[0]}</GridText>
-                    ))}
-                </GridMiniView>
-                <GridMiniView>
-                <GridText primary>Komora</GridText>
-                    {data.length>0 && data.map((item, i) => (
-                        <GridText key={item.Id}>{item.WarehouseChamber.Name}</GridText>
-                    ))}
-                </GridMiniView>
-                <GridMiniView>
-                <GridText primary>Tezina</GridText>
-                    {data.length>0 && data.map((item, i) => (
-                        <GridText key={item.Id}>{item.Weight}</GridText>
-                    ))}
-                </GridMiniView>
-            </GridWrapper>
+            <View>
+                <Table style={styles.table} borderStyle={{borderWidth: 0.5, borderColor: '#c8e1ff'}}>
+                <Row data={tableHead} style={styles.head} textStyle={styles.text} flexArr={[1, 1, 1, 1, 1]}/>
+                <Cols data={tableData} textStyle={styles.text} heightArr={[50, 50]} flexArr={[1, 1, 1, 1, 1]}/>
+                </Table>
+            </View>
+
             </ScrollView>
-            </Wrapper>
+            </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    table: { width: '100%' },
+    head: { height: 40, backgroundColor: '#f1f8ff' },
+    text: { textAlign: 'center' }
+  })

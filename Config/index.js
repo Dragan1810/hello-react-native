@@ -25,7 +25,12 @@ export const MainRoutes = [
     id: 'Kartoteka',
     title: 'Kartoteka',
     icon: Icon.lager
- }
+ },
+ {
+  id: 'Kartoteka',
+  title: 'Ljudski Resursi',
+  icon: Icon.organization
+}
 ];
 
 export const LinkRoutes = [
@@ -37,7 +42,7 @@ export const LinkRoutes = [
   },
   {
     id: 'web',
-    title: 'Rosselkhoznadzor',
+    title: 'Rossel khoznadzor',
     icon: Icon.knife,
     uri: 'http://www.rosselkhoznadzor.ru/fsvps/importExport/serbia/enterprises.html?product=2&productType=1&_language=en'
 
@@ -88,6 +93,15 @@ export const ProizvodnjaRoutes = [
     title: 'Svinje',
     icon: require('../assets/Icons/Pig.png')
   }
+]
+
+export const HRRoutes = [
+  {
+    id: 'goveda',
+    title: 'Klanja',
+    icon: Icon.knife
+  }
+
 ]
 
 export const GovedaRoutes = [

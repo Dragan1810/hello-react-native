@@ -10,7 +10,9 @@ const GridList = ({MainRoutes, navigate}) => (
           return (
             <Kocka key={i} onPress={()=> navigate(route.id, {uri: route.uri, ime: route.title})}>
               <KockaImage source={route.icon} />
-              <KockaText>{route.title}</KockaText>
+              {route.title.split(' ').length > 1 ?
+              route.title.split(' ').map((item,i) => <KockaText sec key={i}>{item}</KockaText>)
+              : <KockaText>{route.title}</KockaText>}
             </Kocka>
           )
           })}

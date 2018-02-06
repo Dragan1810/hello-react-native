@@ -32,6 +32,7 @@ import Details from '../components/Grid'
 import ArtikliDetaljiScreen from '../components/ArtikliDetalji'
 import WarehouseArtikliScreen from '../components/WarehouseDetails'
 import LinkScreen from '../screens/Links/LinkScreen'
+import HRScreen from '../screens/HR/HR'
 
 import Web from '../components/Web'
 
@@ -147,7 +148,8 @@ const MainNavigation = StackNavigator({
   RobniPromet: { screen: InputNoteScreen },
   Kartoteka: { screen: kartotekaNavigation },
   PoslovniPartner: { screen: poslovniPartnerNavigation },
-  Linkovi: { screen: LinkNav }
+  Linkovi: { screen: LinkNav },
+  HR : { screen : HRScreen }
   // dodati drawer sa strane podesavanje strana
 
 },{

@@ -40,7 +40,7 @@ export const Kocka = styled.TouchableOpacity`
 
 export const KockaText = styled.Text`
     font-weight: bold;
-    padding-top: 8px;
+    padding-top: ${props => props.sec ? '1px': '6px'};
     text-align: center;
 `;
 
