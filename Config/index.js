@@ -64,14 +64,14 @@ export const LinkRoutes = [
   {
     id: 'web',
     title: 'Vet.minpolj',
-    icon: Icon.knife,
+    icon: require('../assets/linkovi/Min_polj_50x50.png'),
     uri: 'http://www.vet.minpolj.gov.rs/'
 
   },
   {
     id: 'web',
     title: 'Matijevic',
-    icon: Icon.knife,
+    icon: require('../assets/linkovi/IM_Matijevic_logo_2_50x35.png'),
     uri: 'https://matijevic.rs/akcije/'
 
   }
