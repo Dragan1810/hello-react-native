@@ -37,27 +37,27 @@ export const LinkRoutes = [
   {
     id: 'web',
     title: 'Trlic',
-    icon: Icon.knife,
+    icon: require('../assets/linkovi/Trlic-Ub.png'),
     uri: 'http://trlic.com/cenovnik/'
   },
   {
     id: 'web',
     title: 'Rossel khoznadzor',
-    icon: Icon.knife,
+    icon: require('../assets/linkovi/1.jpg'),
     uri: 'http://www.rosselkhoznadzor.ru/fsvps/importExport/serbia/enterprises.html?product=2&productType=1&_language=en'
 
   },
   {
     id: 'web',
     title: 'Kursna Lista',
-    icon: Icon.knife,
+    icon: require('../assets/linkovi/2.png'),
     uri: 'https://www.kursna-lista.com/kursna-lista-nbs'
 
   },
   {
     id: 'web',
     title: 'Pig333',
-    icon: Icon.knife,
+    icon: require('../assets/linkovi/3.jpg'),
     uri: 'https://www.pig333.com/markets_and_prices/'
 
   },

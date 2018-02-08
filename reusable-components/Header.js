@@ -7,7 +7,7 @@ const Header = ({title, goBack, navigate}) => (
        { title === 'Glavni Meni' ? <Icon name='menu' color='#fff' onPress={() => alert('U izradi...')} />
        : <Icon name='arrow-back' color='#fff' onPress={() => goBack(null)} />}
         <TitleText>{title}</TitleText>
-        <Icon name='home' color='#fff' onPress={() => navigate('Home')} />
+        <Icon name='home' color='#fff' onPress={() => navigate('preCompany')} />
     </WrapperHeader>
 )
 
