@@ -33,7 +33,7 @@ export default class Grid extends Component {
           this.state.data.map(item => item.OrderNumber),
           this.state.data.map(item => item.Product.ProductCode),
           this.state.data.map(item => item.Product.ProductName.split(' ')[0]),
-          this.state.data.map(item => item.WarehouseChamber.Name),
+          this.state.data.map(item => item.WarehouseChamber.Name.split(' ')[1]),
           this.state.data.map(item => item.Weight.toFixed(3))
         ]
         const { navigate, goBack } = this.props.navigation
@@ -44,7 +44,7 @@ export default class Grid extends Component {
                 <Table style={styles.table} borderStyle={{borderWidth: 0.5, borderColor: '#c8e1ff'}}>
                 <Row data={tableHead} style={styles.head} textStyle={styles.text} flexArr={[1, 1, 1, 1, 1]}/>
             <ScrollView style={{margin:0, padding:0}}>
-                <Cols data={tableData} textStyle={styles.text} heightArr={[50, 50]} flexArr={[1, 1, 1, 1, 1]}/>
+                <Cols data={tableData} textStyle={styles.text} flexArr={[1, 1, 1, 1, 1]}/>
             </ScrollView>
                 </Table>
             </View>
