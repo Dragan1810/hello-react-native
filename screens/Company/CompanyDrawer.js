@@ -44,8 +44,12 @@ export default class CompanyDrawer extends Component {
                     title='Djurdjevic Energo 2016 d.o.o'
                     image={require('../../assets/energ.png')}>
                     <Text style={{marginBottom: 10}}>
-                        U izradi...
                     </Text>
+                    <Button
+                        onPress={()=> navigate('HomeEnergo')}
+                        backgroundColor='#009688'
+                        buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                        title='Izaberi' />
                 </Card>
             </ScrollView>
         );

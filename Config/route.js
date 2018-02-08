@@ -36,6 +36,9 @@ import HRScreen from '../screens/HR/HR'
 
 import Web from '../components/Web'
 
+import HomeEnergoScreen from '../screens/Energo/HomeEnergo'
+import ElinkScreen from '../screens/Energo/ELink'
+
 
 const PigNavigation = StackNavigator({
   prePigScreen: { screen: pigDrawer },
@@ -139,6 +142,17 @@ const LinkNav = StackNavigator({
       initialRouteName: 'LinkScreen'
     });
 
+const EnergoNav = StackNavigator({
+  HomeEnergoScreen: { screen: HomeEnergoScreen },
+  Elinkovi: { screen: ElinkScreen },
+  web : { screen: Web },
+
+},{
+  headerMode:'none'
+},{
+  initialRouteName: 'HomeEnergoScreen'
+});
+
 
 const MainNavigation = StackNavigator({
   preCompany: { screen: CompanyDrawer },   //main navigacija u koju su ubacene sve sub navigacije
@@ -149,7 +163,8 @@ const MainNavigation = StackNavigator({
   Kartoteka: { screen: kartotekaNavigation },
   PoslovniPartner: { screen: poslovniPartnerNavigation },
   Linkovi: { screen: LinkNav },
-  HR : { screen : HRScreen }
+  HR : { screen : HRScreen },
+  HomeEnergo: { screen: EnergoNav }
   // dodati drawer sa strane podesavanje strana
 
 },{
