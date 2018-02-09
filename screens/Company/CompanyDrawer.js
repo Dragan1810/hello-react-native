@@ -30,15 +30,23 @@ export default class CompanyDrawer extends Component {
                     imageStyle={{height: 210}}
                     >
                     <Text style={{marginBottom: 10}}>
-                        U izradi...
                     </Text>
+                    <Button
+                        onPress={()=> navigate('PetMB')}
+                        backgroundColor='#009688'
+                        buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                        title='Izaberi' />
                 </Card>
                 <Card
                     title='Djurdjevic 2010 d.o.o'
                     image={require('../../assets/dj2010.png')}>
                     <Text style={{marginBottom: 10}}>
-                        U izradi...
                     </Text>
+                    <Button
+                        onPress={()=> navigate('Dju2010')}
+                        backgroundColor='#009688'
+                        buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                        title='Izaberi' />
                 </Card>
                 <Card
                     title='Djurdjevic Energo 2016 d.o.o'

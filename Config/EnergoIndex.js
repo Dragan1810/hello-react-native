@@ -12,7 +12,7 @@ export const LinkRoutes = [
     {
       id: 'web',
       title: 'Biogas',
-      icon: Icon.knife,
+      icon: require('../assets/linkovi/biogas.png'),
       uri: 'http://biogas.org.rs/'
     },
     {

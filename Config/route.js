@@ -39,6 +39,13 @@ import Web from '../components/Web'
 import HomeEnergoScreen from '../screens/Energo/HomeEnergo'
 import ElinkScreen from '../screens/Energo/ELink'
 
+import HomeDju2010Screen from '../screens/Dju2010/Home2010'
+import DjLink2010Screen from '../screens/Dju2010/Links'
+
+import HomePetScreen from '../screens/PetMB/HomeMB'
+import PlinkScreen from '../screens/PetMB/Links'
+
+
 
 const PigNavigation = StackNavigator({
   prePigScreen: { screen: pigDrawer },
@@ -153,6 +160,28 @@ const EnergoNav = StackNavigator({
   initialRouteName: 'HomeEnergoScreen'
 });
 
+const PetMBNav = StackNavigator({
+  HomePet: { screen: HomePetScreen },
+  Plinkovi: { screen: PlinkScreen },
+  web : { screen: Web },
+
+},{
+  headerMode:'none'
+},{
+  initialRouteName: 'HomePet'
+});
+
+const Dju2010Nav = StackNavigator({
+  HomeDju2010Screen: { screen: HomeDju2010Screen },
+  Djlinkovi: { screen: DjLink2010Screen },
+  web : { screen: Web },
+
+},{
+  headerMode:'none'
+},{
+  initialRouteName: 'HomeDju2010Screen'
+});
+
 
 const MainNavigation = StackNavigator({
   preCompany: { screen: CompanyDrawer },   //main navigacija u koju su ubacene sve sub navigacije
@@ -164,7 +193,10 @@ const MainNavigation = StackNavigator({
   PoslovniPartner: { screen: poslovniPartnerNavigation },
   Linkovi: { screen: LinkNav },
   HR : { screen : HRScreen },
-  HomeEnergo: { screen: EnergoNav }
+  HomeEnergo: { screen: EnergoNav },
+  Dju2010: { screen: Dju2010Nav },
+  PetMB : { screen: PetMBNav }
+
   // dodati drawer sa strane podesavanje strana
 
 },{
