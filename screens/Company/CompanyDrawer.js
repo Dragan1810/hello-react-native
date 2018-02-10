@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, WebView } from 'react-native';
 import { WrapperHeader, TitleText, WrapperHeaderCentar } from '../../styled-components/Wrapper'
 import { Card, List, ListItem, Button } from 'react-native-elements';
 import Header from '../../reusable-components/Header'
@@ -58,6 +58,19 @@ export default class CompanyDrawer extends Component {
                         backgroundColor='#009688'
                         buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
                         title='Izaberi' />
+                </Card>
+                <Card
+                    title='Djurdjevic Energo 2016 d.o.o'
+                >
+                <View style={{width: '100%', height:200}}>
+                    <WebView
+                        style={{flex:1}}
+                        javaScriptEnabled={true}
+                        domStorageEnabled={true}
+                        allowsInlineMediaPlayback={true}
+                        source={{uri: 'https://www.youtube.com/embed/5VCzlBF6_uI' }}
+                    />
+                </View>
                 </Card>
             </ScrollView>
         );
