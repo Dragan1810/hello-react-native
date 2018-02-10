@@ -50,7 +50,7 @@ export default class CompanyDrawer extends Component {
                 </Card>
                 <Card
                     title='Djurdjevic Energo 2016 d.o.o'
-                    image={require('../../assets/energ.png')}>
+                    image={require('../../assets/viber_image.jpg')}>
                     <Text style={{marginBottom: 10}}>
                     </Text>
                     <Button
@@ -60,7 +60,7 @@ export default class CompanyDrawer extends Component {
                         title='Izaberi' />
                 </Card>
                 <Card
-                    title='Djurdjevic Energo 2016 d.o.o'
+                    title='HALAL Standard Djurdjevic'
                 >
                 <View style={{width: '100%', height:200}}>
                     <WebView
