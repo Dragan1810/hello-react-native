@@ -74,6 +74,20 @@ export const LinkRoutes = [
     icon: require('../assets/linkovi/IM_Matijevic_logo_2_50x35.png'),
     uri: 'https://matijevic.rs/akcije/'
 
+  },
+  {
+    id: 'web',
+    title: 'Lidl Hr',
+    icon: Icon.lager,
+    uri: 'https://www.lidl.hr/hr/index.htm'
+
+  },
+  {
+    id: 'web',
+    title: 'Lidl Rs',
+    icon: Icon.lager,
+    uri: 'http://www.lidl.rs/sr/index.htm'
+
   }
 ];
 
