@@ -82,16 +82,23 @@ export const LinkRoutes = [
   },
   {
     id: 'web',
-    title: 'Lidl Hr',
-    icon: Icon.lager,
+    title: 'Lidl Hrvatska',
+    icon: require('../assets/linkovi/lidl.jpg'),
     uri: 'https://www.lidl.hr/hr/index.htm'
 
   },
   {
     id: 'web',
-    title: 'Lidl Rs',
-    icon: Icon.lager,
+    title: 'Lidl Srbija',
+    icon: require('../assets/linkovi/lidl.jpg'),
     uri: 'http://www.lidl.rs/sr/index.htm'
+
+  },
+  {
+    id: 'web',
+    title: 'Lidl Madjarska',
+    icon: require('../assets/linkovi/lidl.jpg'),
+    uri: 'https://www.lidl.hu/hu/index.htm'
 
   }
 ];

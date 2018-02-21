@@ -27,7 +27,7 @@ class ProductScreen extends Component {
 
   componentDidMount() {
     getData(data.kartoteka.stock).then(data => {
-      this.setState({ data: data.StockByProducts })
+      this.setState({ data: data.StockTotals })
     });
   }
 
@@ -35,7 +35,7 @@ class ProductScreen extends Component {
     this.setState({
       refreshing: true
     }, ()=> getData(data.kartoteka.stock).then(dt => {
-      this.setState({ data: data.StockByProducts, refreshing: false })
+      this.setState({ data: data.StockTotals, refreshing: false })
     }))
   }
 

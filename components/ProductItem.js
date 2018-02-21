@@ -16,20 +16,20 @@ const ProductItem = ({data, navigate}) => {
                 }
                 hideChevron={true}
             />
-            <ListItem
-                title={
-                <View style={basic}>
-                    <Text>Na stanju:</Text>
-                    <Text>{data.Quantity}</Text>
-                </View>
-                }
-                hideChevron={true}
-            />
              <ListItem
                 title={
                 <View style={basic}>
                     <Text>Ukupna tezina:</Text>
                     <Text>{data.Weight}</Text>
+                </View>
+                }
+                hideChevron={true}
+            />
+            <ListItem
+                title={
+                <View style={basic}>
+                    <Text>Na stanju:</Text>
+                    <Text>{data.Quantity}</Text>
                 </View>
                 }
                 hideChevron={true}
@@ -40,7 +40,7 @@ const ProductItem = ({data, navigate}) => {
             onPress={() => navigate('detailsArtikli', { url : `http://212.200.54.246:5001/api/Stock/GetStocksByProduct?productId=${data.Product.Id}`, name: data.Product.ProductName })}
             backgroundColor='#009688'
             buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-            title='Detalji'
+            title='Kartica'
         />
         </Card>
     )
