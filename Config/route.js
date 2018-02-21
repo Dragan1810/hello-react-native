@@ -45,6 +45,9 @@ import DjLink2010Screen from '../screens/Dju2010/Links'
 import HomePetScreen from '../screens/PetMB/HomeMB'
 import PlinkScreen from '../screens/PetMB/Links'
 
+import Skener from '../components/Skener'
+import SkenerItem from '../components/SkenerItem'
+
 
 
 const PigNavigation = StackNavigator({
@@ -193,6 +196,8 @@ const MainNavigation = StackNavigator({
   PoslovniPartner: { screen: poslovniPartnerNavigation },
   Linkovi: { screen: LinkNav },
   HR : { screen : HRScreen },
+  Scan : { screen : Skener },
+  ScanItem: { screen : SkenerItem },
   HomeEnergo: { screen: EnergoNav },
   Dju2010: { screen: Dju2010Nav },
   PetMB : { screen: PetMBNav }

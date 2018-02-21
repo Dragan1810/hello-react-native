@@ -30,6 +30,11 @@ export const MainRoutes = [
   id: 'Kartoteka',
   title: 'Ljudski Resursi',
   icon: Icon.organization
+},
+{
+  id: 'Scan',
+  title: 'Skener',
+  icon: require('../assets/Icons/barcod.png')
 }
 ];
 
