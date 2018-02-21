@@ -37,7 +37,7 @@ const ProductItem = ({data, navigate}) => {
             <Button
             containerViewStyle={{paddingTop: 12}}
             icon={{name: 'code'}}
-            onPress={() => navigate('detailsArtikli', { url : `http://212.200.54.246:5001/api/Stock/GetStocksByProduct?productId=${data.Product.Id}`, name: data.Product.ProductName })}
+            onPress={() => navigate('detailsArtikli', { url : `http://212.200.54.246:5001/api/Stock/GetStocksByPagesForMobile?companyId=1&currentPage=1&itemsPerPage=50&productId=${data.Product.Id}`, name: data.Product.ProductName })}
             backgroundColor='#009688'
             buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
             title='Kartica'
