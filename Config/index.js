@@ -30,11 +30,6 @@ export const MainRoutes = [
   id: 'Kartoteka',
   title: 'Ljudski Resursi',
   icon: Icon.organization
-},
-{
-  id: 'Scan',
-  title: 'Skener',
-  icon: require('../assets/Icons/barcod.png')
 }
 ];
 
@@ -185,7 +180,7 @@ export const KartotekaRoutes = [
 export const MagacinRoutes = [
   {
     id: 'stock',
-    title: 'Lager',
+    title: 'Ukupni Lager',
     icon: require('../assets/Icons/warehouse.png')
   },
   {
@@ -197,5 +192,10 @@ export const MagacinRoutes = [
     id: 'depot',
     title: 'Depoi',
     icon: require('../assets/png/042-barn.png')
+  },
+  {
+    id: 'Scan',
+    title: 'Sledljivost po Barcodu',
+    icon: require('../assets/Icons/barcod.png')
   }
 ]

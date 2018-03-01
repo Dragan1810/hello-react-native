@@ -35,8 +35,7 @@ const ProductItem = ({data, navigate}) => {
                 hideChevron={true}
             />
             <Button
-            containerViewStyle={{paddingTop: 12}}
-            icon={{name: 'code'}}
+            containerViewStyle={{paddingTop: 12, alignItems:'flex-end'}}
             onPress={() => navigate('detailsArtikli', { url : `http://212.200.54.246:5001/api/Stock/GetStocksByPagesForMobile?companyId=1&currentPage=1&itemsPerPage=50&productId=${data.Product.Id}`, name: data.Product.ProductName })}
             backgroundColor='#009688'
             buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
