@@ -15,10 +15,20 @@ export default class WarehouseScreen extends Component {
     this.state = {
       data:[],
       search: '',
-      refreshing: false
+      refreshing: false,
+      komore: false,
+      komoreData: []
     };
-    this.search = this.search.bind(this);
-    this.handleRefresh = this.handleRefresh.bind(this);
+    this.search = this.search.bind(this)
+    this.handleRefresh = this.handleRefresh.bind(this)
+    this.PickWarehouse = this.PickWarehouse.bind(this)
+  }
+  PickWarehouse(value, i) {
+    console.log(value,i)
+    if (this.state.data[i].WarehouseChambers.length) {
+      const komoreData = this.state.data[i].WarehouseChambers
+      this.setState({komore:true, komoreData })
+    }
   }
 
   search(e) {
@@ -43,21 +53,13 @@ export default class WarehouseScreen extends Component {
             const filteredData = filterData(this.state.data, this.state.search);
             data = filteredData;
           }
-          let dataz = [{
-            value: 'Banana',
-          }, {
-            value: 'Mango',
-          }, {
-            value: 'Pear',
-          }, {
-            value: 'Pear',
-          }, {
-            value: 'Pear',
-          }, {
-            value: 'Pear',
+          let warehouseName = this.state.data.map(item=>({'value': item.WarehouseName}))
+          let komoreName
+          if(this.state.komore){
+           komoreName = this.state.komoreData.map(item => ({'value': item.Code}))
+          } else {
+            komoreName = [{'value': "Prazno"}]
           }
-        ];
-
           const rdy =  <Activity />
           const { navigate, goBack } = this.props.navigation;
           const { search, icon } = styles;
@@ -84,14 +86,15 @@ export default class WarehouseScreen extends Component {
               {this.state.data.length < 1 && rdy}
               <View style={{flexDirection:'row', justifyContent:'space-between'}}>
               <Dropdown
-                  containerStyle={{width:'35%',paddingRight:15}}
+                  containerStyle={{width:'40%',paddingRight:15}}
                   label='Skladiste'
-                  data={dataz}
+                  data={warehouseName}
+                  onChangeText={this.PickWarehouse}
                 />
                 <Dropdown
-                  containerStyle={{width:'35%',paddingLeft:15}}
+                  containerStyle={{width:'40%',paddingLeft:15}}
                   label='Komora'
-                  data={dataz}
+                  data={komoreName}
                 />
                 </View>
               <FlatList
