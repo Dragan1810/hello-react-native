@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Dimensions, FlatList } from 'react-native';
 import { Card, List, ListItem, SearchBar, Icon } from 'react-native-elements';
 import { WrapperHeader, Wrapper } from '../../styled-components/Wrapper'
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import AppHeader from '../../components/AppHeader';
-import AppSearch from '../../components/AppSearch';
 import Activity from '../../components/ActivityIndicator';
 import ListItems from '../../components/WarehouseItem';
 import { getData, filterData } from '../../helpers/index';
 import { data } from '../../helpers/Data';
+import { Dropdown } from 'react-native-material-dropdown'
 
 export default class WarehouseScreen extends Component {
   constructor() {
@@ -45,6 +43,21 @@ export default class WarehouseScreen extends Component {
             const filteredData = filterData(this.state.data, this.state.search);
             data = filteredData;
           }
+          let dataz = [{
+            value: 'Banana',
+          }, {
+            value: 'Mango',
+          }, {
+            value: 'Pear',
+          }, {
+            value: 'Pear',
+          }, {
+            value: 'Pear',
+          }, {
+            value: 'Pear',
+          }
+        ];
+
           const rdy =  <Activity />
           const { navigate, goBack } = this.props.navigation;
           const { search, icon } = styles;
@@ -67,9 +80,20 @@ export default class WarehouseScreen extends Component {
               onSubmitEditing={e=>this.search(e)}
               placeholder='Type Here...'
             />
-
               </WrapperHeader>
               {this.state.data.length < 1 && rdy}
+              <View style={{flexDirection:'row', justifyContent:'space-between'}}>
+              <Dropdown
+                  containerStyle={{width:'35%',paddingRight:15}}
+                  label='Skladiste'
+                  data={dataz}
+                />
+                <Dropdown
+                  containerStyle={{width:'35%',paddingLeft:15}}
+                  label='Komora'
+                  data={dataz}
+                />
+                </View>
               <FlatList
                 style={{width:'100%'}}
                 data={data}
