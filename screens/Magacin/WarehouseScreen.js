@@ -17,18 +17,31 @@ export default class WarehouseScreen extends Component {
       search: '',
       refreshing: false,
       komore: false,
-      komoreData: []
+      komoreData: [],
+      Wi: false,
+      Ci: false,
+      Wid: false,
+      Cid: false
     };
     this.search = this.search.bind(this)
     this.handleRefresh = this.handleRefresh.bind(this)
     this.PickWarehouse = this.PickWarehouse.bind(this)
+    this.PickChamber = this.PickChamber.bind(this)
   }
   PickWarehouse(value, i) {
     console.log(value,i)
     if (this.state.data[i].WarehouseChambers.length) {
       const komoreData = this.state.data[i].WarehouseChambers
-      this.setState({komore:true, komoreData })
+      const Wid = this.state.data[i].Id
+      const Wi = i
+      this.setState({komore:true, komoreData, Wid, Wi })
     }
+  }
+  PickChamber(value,i) {
+    console.log(value,i)
+    const Ci = i
+    const Cid = this.state.data[this.state.Wi].WarehouseChambers[Ci].Id
+    this.setState({ Ci, Cid })
   }
 
   search(e) {
@@ -95,6 +108,7 @@ export default class WarehouseScreen extends Component {
                   containerStyle={{width:'40%',paddingLeft:15}}
                   label='Komora'
                   data={komoreName}
+                  onChangeText={this.PickChamber}
                 />
                 </View>
               <FlatList
