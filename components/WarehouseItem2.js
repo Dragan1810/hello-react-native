@@ -6,12 +6,12 @@ import { getData } from '../helpers/index'
 function Itemz({data}){
     let {basic} = styles
     return(
-        <Card title={data.item.ProductName}>
+        <Card title={data.item.DocumentName}>
         <ListItem
             title={
                 <View style={basic}>
-                    <Text>ProductCode:</Text>
-                    <Text>{data.item.ProductCode}</Text>
+                    <Text>DocumentName:</Text>
+                    <Text>{data.item.DocumentName}</Text>
                 </View>
             }
             hideChevron={true}
@@ -19,8 +19,8 @@ function Itemz({data}){
         <ListItem
             title={
                 <View style={basic}>
-                    <Text>WarehouseName:</Text>
-                    <Text>{data.item.WarehouseName}</Text>
+                    <Text>DocumentDescription:</Text>
+                    <Text>{data.item.DocumentDescription}</Text>
                 </View>
             }
             hideChevron={true}
@@ -29,7 +29,7 @@ function Itemz({data}){
             title={
                 <View style={basic}>
                     <Text>Name:</Text>
-                    <Text>{data.item.Name}</Text>
+                    <Text>{data.item.DocumentProcessDescription}</Text>
                 </View>
             }
             hideChevron={true}
@@ -37,17 +37,8 @@ function Itemz({data}){
         <ListItem
             title={
                 <View style={basic}>
-                    <Text>Weight:</Text>
-                    <Text>{data.item.Weight}</Text>
-                </View>
-            }
-            hideChevron={true}
-        />
-        <ListItem
-            title={
-                <View style={basic}>
-                    <Text>Quantity:</Text>
-                    <Text>{data.item.Quantity}</Text>
+                    <Text>DocumentId:</Text>
+                    <Text>{data.item.DocumentId}</Text>
                 </View>
             }
             hideChevron={true}
@@ -56,7 +47,7 @@ function Itemz({data}){
     )
 }
 
-const urlMini = `http://212.200.54.246:5001/api/StockItem/GetStockItemsByWarehouseForMobile?companyId=1&`
+const urlMini = `http://212.200.54.246:5001/api/StockTraceability/GetTraceabilityByWarehouse?`
 export default class WarehouseItem extends React.Component {
     constructor(props){
         super(props)
@@ -69,7 +60,7 @@ export default class WarehouseItem extends React.Component {
        Cid = 38
        const url = `${urlMini}warehouseId=${Wid}&warehouseChamberId=${Cid}`
        console.log(url)
-       getData(url).then(data => this.setState({ data }))
+       getData(url).then(data => this.setState({ data: data.StockTraceabilities }))
     }
     render() {
         console.log(this.state.data)
@@ -80,7 +71,7 @@ export default class WarehouseItem extends React.Component {
         renderItem={(data) => (
             <Itemz data={data}/>
          )}
-        keyExtractor={data => data.Id}
+        keyExtractor={data => data.DocumentId}
         />
     )
 }

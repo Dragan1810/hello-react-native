@@ -48,6 +48,8 @@ import PlinkScreen from '../screens/PetMB/Links'
 import Skener from '../components/Skener'
 import SkenerItem from '../components/SkenerItem'
 
+import LagerSledjivost from '../screens/Magacin/LagerSledjivost'
+
 
 
 const PigNavigation = StackNavigator({
@@ -108,6 +110,7 @@ const magacinNavigation = StackNavigator({
       stock: { screen: ProductScreen },  //zamenjeno sa Stock Screenom to be fixed....
       depot: { screen: DepotScreen },
       warehouse: { screen: WarehouseScreen },
+      warehouse2: { screen: LagerSledjivost },
       box: { screen: BoxesScreen},
       detailsArtikli: { screen: ArtikliDetaljiScreen },
       warehouseArtikli: { screen: WarehouseArtikliScreen }
