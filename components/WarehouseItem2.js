@@ -34,15 +34,6 @@ function Itemz({data}){
             }
             hideChevron={true}
         />
-        <ListItem
-            title={
-                <View style={basic}>
-                    <Text>DocumentId:</Text>
-                    <Text>{data.item.DocumentId}</Text>
-                </View>
-            }
-            hideChevron={true}
-        />
         </Card>
     )
 }

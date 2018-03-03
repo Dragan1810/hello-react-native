@@ -50,6 +50,8 @@ import SkenerItem from '../components/SkenerItem'
 
 import LagerSledjivost from '../screens/Magacin/LagerSledjivost'
 
+import StockGrid from '../components/StockGrid'
+
 
 
 const PigNavigation = StackNavigator({
@@ -107,7 +109,7 @@ const productionNavigation = StackNavigator({  // primer navigacije
 
 const magacinNavigation = StackNavigator({
       preMagacin: { screen: MagacinDrawer },
-      stock: { screen: ProductScreen },  //zamenjeno sa Stock Screenom to be fixed....
+      stock: { screen: ProductScreen },  //zamenjeno sa Stock Screenom to be fixed.... ProductScreen/Stock Grid
       depot: { screen: DepotScreen },
       warehouse: { screen: WarehouseScreen },
       warehouse2: { screen: LagerSledjivost },
