@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Dimensions, FlatList } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { Card, List, ListItem, SearchBar, Icon } from 'react-native-elements';
 import { WrapperHeader, Wrapper } from '../../styled-components/Wrapper'
 import Activity from '../../components/ActivityIndicator';
@@ -18,6 +18,7 @@ export default class WarehouseScreen extends Component {
       refreshing: false,
       komore: false,
       komoreData: [],
+      warehouseData: [],
       Wi: false,
       Ci: false,
       Wid: false,
@@ -29,19 +30,19 @@ export default class WarehouseScreen extends Component {
     this.PickChamber = this.PickChamber.bind(this)
   }
   PickWarehouse(value, i) {
-    console.log(value,i)
-    if (this.state.data[i].WarehouseChambers.length) {
-      const komoreData = this.state.data[i].WarehouseChambers
-      const Wid = this.state.data[i].Id
-      const Wi = i
-      this.setState({komore:true, komoreData, Wid, Wi })
-    }
+   // console.log(value,i)
+    let Wid = this.state.data[i].Id
+    let Wi = i
+    let komoreData = this.state.data[i].WarehouseChambers.length ?
+      this.state.data[i].WarehouseChambers.map(item => ({'value': item.Code})) : [{'value': "Sve"}]
+    let komore = komoreData.length ? true: false
+      this.setState({komore, komoreData, Wid, Wi })
   }
   PickChamber(value,i) {
-    console.log(value,i)
-    const Ci = i
-    const Cid = this.state.data[this.state.Wi].WarehouseChambers[Ci].Id
-    this.setState({ Ci, Cid })
+   // console.log(value,i)
+      let Cid = value === 'Sve' ? '0'
+      : this.state.data[this.state.Wi].WarehouseChambers[i].Id
+    this.setState({ Cid })
   }
 
   search(e) {
@@ -49,7 +50,12 @@ export default class WarehouseScreen extends Component {
   }
 
   componentDidMount() {
-    getData(data.magacin.warehouse).then(data => this.setState({ data: data.Warehouses, refreshing: false }));
+    getData(data.magacin.warehouse)
+      .then(data => {
+        const warehouseData = data.Warehouses.map(item=>({'value': item.WarehouseName}))
+        this.setState({ data: data.Warehouses, refreshing: false, warehouseData })
+      });
+
   }
 
   handleRefresh() {
@@ -58,21 +64,7 @@ export default class WarehouseScreen extends Component {
       this.setState({ data: data.Warehouses, refreshing: false })
     })
   }
-
-
         render() {
-          let data = this.state.data;
-          if (this.state.data.length>1){
-            const filteredData = filterData(this.state.data, this.state.search);
-            data = filteredData;
-          }
-          let warehouseName = this.state.data.map(item=>({'value': item.WarehouseName}))
-          let komoreName
-          if(this.state.komore){
-           komoreName = this.state.komoreData.map(item => ({'value': item.Code}))
-          } else {
-            komoreName = [{'value': "Prazno"}]
-          }
           const rdy =  <Activity />
           const { navigate, goBack } = this.props.navigation;
           const { search, icon } = styles;
@@ -99,28 +91,21 @@ export default class WarehouseScreen extends Component {
               {this.state.data.length < 1 && rdy}
               <View style={{flexDirection:'row', justifyContent:'space-between'}}>
               <Dropdown
-                  containerStyle={{width:'40%',paddingRight:15}}
+                  containerStyle={{width:'50%',paddingRight:15}}
                   label='Skladiste'
-                  data={warehouseName}
+                  data={this.state.warehouseData}
                   onChangeText={this.PickWarehouse}
                 />
                 <Dropdown
-                  containerStyle={{width:'40%',paddingLeft:15}}
+                  containerStyle={{width:'30%',paddingLeft:15}}
                   label='Komora'
-                  data={komoreName}
+                  data={this.state.komoreData}
                   onChangeText={this.PickChamber}
                 />
                 </View>
-              <FlatList
-                style={{width:'100%'}}
-                data={data}
-                renderItem={({ item }) => (
-                  <ListItems data={item} navigate={navigate} />
-                )}
-                keyExtractor={item => item.Id}
-                refreshing={this.state.refreshing}
-                onRefresh={this.handleRefresh}
-              />
+              {this.state.Wid && this.state.Cid &&
+              <ListItems navigate={navigate} Cid={this.state.Cid} Wid={this.state.Wid} />
+               }
             </Wrapper>
 
           );

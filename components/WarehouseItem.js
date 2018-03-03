@@ -1,31 +1,90 @@
 import React from 'react';
 import { StyleSheet, Text, FlatList, View, Dimensions } from 'react-native';
 import { Card, List, ListItem, Button } from 'react-native-elements';
+import { getData } from '../helpers/index'
 
-
-const WarehouseItem = ({data, navigate}) => {
-    const { basic } = styles
+function Itemz({data}){
+    let {basic} = styles
+    console.log('Item ispod',data)
     return(
-        <Card title={data.WarehouseName}>
+        <Card title={data.item.ProductName}>
         <ListItem
             title={
                 <View style={basic}>
-                    <Text>WarehouseCode:</Text>
-                    <Text>{data.WarehouseCode}</Text>
+                    <Text>ProductCode:</Text>
+                    <Text>{data.item.ProductCode}</Text>
                 </View>
             }
             hideChevron={true}
         />
-        <Button
-            containerViewStyle={{paddingTop: 12}}
-            icon={{name: 'code'}}
-            onPress={() => navigate('warehouseArtikli', { url : `http://212.200.54.246:5001/api/Stock/GetStocksByWarehouse?warehouseId=${data.Id}` })}
-            backgroundColor='#009688'
-            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-            title='Prikazi'
+        <ListItem
+            title={
+                <View style={basic}>
+                    <Text>WarehouseName:</Text>
+                    <Text>{data.item.WarehouseName}</Text>
+                </View>
+            }
+            hideChevron={true}
+        />
+        <ListItem
+            title={
+                <View style={basic}>
+                    <Text>Name:</Text>
+                    <Text>{data.item.Name}</Text>
+                </View>
+            }
+            hideChevron={true}
+        />
+        <ListItem
+            title={
+                <View style={basic}>
+                    <Text>Weight:</Text>
+                    <Text>{data.item.Weight}</Text>
+                </View>
+            }
+            hideChevron={true}
+        />
+        <ListItem
+            title={
+                <View style={basic}>
+                    <Text>Quantity:</Text>
+                    <Text>{data.item.Quantity}</Text>
+                </View>
+            }
+            hideChevron={true}
         />
         </Card>
     )
+}
+
+const urlMini = `http://212.200.54.246:5001/api/StockItem/GetStockItemsByWarehouseForMobile?companyId=1&`
+export default class WarehouseItem extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            data: []
+        }
+    }
+    componentDidMount(){
+       Wid = 15
+       Cid = 38
+       const url = `${urlMini}warehouseId=${Wid}&warehouseChamberId=${Cid}`
+       console.log(url)
+       getData(url).then(data => this.setState({ data }))
+    }
+    render() {
+        console.log(this.state.data)
+    return(
+        <FlatList
+        style={{width:'100%'}}
+        data={this.state.data}
+        renderItem={(data) => (
+            <Itemz data={data}/>
+         )}
+        keyExtractor={data => data.Id}
+        />
+    )
+}
 }
 
 const styles = StyleSheet.create({
@@ -34,25 +93,3 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     }
 })
-export default WarehouseItem;
-
-/*
-        WarehouseCode
-
-        WarehouseName
-        Address
-        TypeId
-        Type
-
-        Company
-
-        Conto
-        ContoPriceDiff
-
-        Active
-
-        CreatedBy
-
-        DateTime CreatedAt
-        DateTime UpdatedAt
-*/
