@@ -22,6 +22,7 @@ export default class Grid extends Component {
             .catch(err => console.log(err))
     }
     render() {
+        let Ids = this.state.data.map(item => item.Id)
         const num = this.state.data.length;
         const { navigate, goBack } = this.props.navigation
         const tableHead = ['Sifra', 'Artikal', 'Na Stanju', 'Tezina','Detalji'];
@@ -30,9 +31,15 @@ export default class Grid extends Component {
           this.state.data.map(item => item.ProductName.split(' ')[0]),
           this.state.data.map(item => item.Quantity),
           this.state.data.map(item => item.Weight.toFixed(2)),
-        Array(num).fill(9).map((item)=><Text onPress={()=>alert('hiii')}>Hello</Text>)
+        Array(num)
+            .fill(9)
+            .map((item, i)=>
+                <Text
+                    style={{paddingLeft:5}}
+                    onPress={() => navigate('detailsArtikli',
+                     { url : `http://212.200.54.246:5001/api/Stock/GetStocksByPagesForMobile?companyId=1&currentPage=1&itemsPerPage=50&productId=${Ids[i]}`})}>==></Text>)
         ]
-       // [Array(num).map((item,i)=>({text: 'Detalji'}))]
+       //
 
         return (
             <View>
