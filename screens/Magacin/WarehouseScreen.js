@@ -34,7 +34,7 @@ export default class WarehouseScreen extends Component {
     let Wid = this.state.data[i].Id
     let Wi = i
     let komoreData = this.state.data[i].WarehouseChambers.length ?
-      this.state.data[i].WarehouseChambers.map(item => ({'value': item.Code})) : [{'value': "Sve"}]
+      this.state.data[i].WarehouseChambers.map(item => ({'value': item.Code})).concat([{'value': "Sve"}]) : [{'value': "Sve"}]
     let komore = komoreData.length ? true: false
       this.setState({komore, komoreData, Wid, Wi })
   }
