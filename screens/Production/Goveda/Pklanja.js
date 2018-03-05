@@ -10,7 +10,7 @@ import { getData, filterData } from '../../../helpers/index'
 import { data } from '../../../helpers/Data'
 
 const { Pklanja: PreKlanja } = data.production.goveda
-export default class CompanyScreen extends Component {
+export default class PKlanjeScreen extends Component {
   constructor(props) {
     super(props);
 
@@ -19,7 +19,8 @@ export default class CompanyScreen extends Component {
       search: '',
       refreshing: false,
       noData: false,
-      message: ''
+      message: '',
+      loaded: false
     };
 
     this.search = this.search.bind(this);
@@ -31,7 +32,7 @@ export default class CompanyScreen extends Component {
     getData(PreKlanja).then(data => {
       !data.Success && this.setState({ message: data.Message })
       data.TotalItems === 0 ? this.setState({ noData: true })
-      : this.setState({ data: data.SlaughtersByPage })
+      : this.setState({ data: data.CowSlaughtersByPage })
     })
     .catch(err => console.log(err))
   }
@@ -39,26 +40,24 @@ export default class CompanyScreen extends Component {
   handleRefresh() {
     this.setState({
       refreshing: true
-    }, ()=> getData(PreKlanja).then(data => this.setState({ data: data.SlaughtersByPage, refreshing: false })))
+    }, ()=> getData(PreKlanja).then(data => this.setState({ data: data.CowSlaughtersByPage, refreshing: false },()=> this.setState({loaded: true}))))
   }
 
-  search(e) {
-    this.setState({search:e.nativeEvent.text})
+  async search(e) {
+    await this.setState({search:e.nativeEvent.text})
+    const filteredData = filterData(this.state.data, this.state.search);
+    await this.setState({data: filterData})
   }
 
 
 
         render() {
-         // let data
-         // if (this.state.data.length>1){
-         //   const filteredData = filterData(this.state.data, this.state.search);
-         //   data = filteredData;
-         // }
-          const rdy =  this.state.noData ? <Text style={{textAlign:'center', paddingTop: 20}}>Nema Podataka...</Text> : <Activity />
-          const { navigate, goBack } = this.props.navigation;
-          const { search, icon } = styles;
+          const rdy =  this.state.noData ?
+              <Text style={{textAlign:'center', paddingTop: 20}}>Nema Podataka...</Text>
+               : <Activity />
+          const { navigate, goBack } = this.props.navigation
+          const { search, icon } = styles
             return (
-
           <Wrapper>
             <WrapperHeader>
             <Icon
@@ -77,13 +76,11 @@ export default class CompanyScreen extends Component {
               onSubmitEditing={e=>this.search(e)}
               placeholder='Type Here...'
             />
-
             </WrapperHeader>
-
-              {/* {!!this.state.data.length && rdy} */}
-              {!this.state.message && <Text>{this.state.message}</Text>}
+              {/* {!this.state.loaded && rdy} */}
+              {/* {!this.state.message && <Text>{this.state.message}</Text>} */}
               <FlatList
-                style={{width:'100%'}}
+                style={{width:'100%', padding:0,margin:0}}
                 data={this.state.data}
                 renderItem={({ item }) => (
                   <ListItems data={item} navigate={navigate} />

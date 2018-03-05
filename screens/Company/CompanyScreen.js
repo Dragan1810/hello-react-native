@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Dimensions, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 import { Card, List, ListItem, SearchBar, Icon } from 'react-native-elements';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AppHeader from '../../components/AppHeader';
@@ -11,7 +11,7 @@ import { data } from '../../helpers/Data';
 import { Constants } from 'expo'
 
 
-class CompanyScreen extends Component {
+export default class CompanyScreen extends Component {
   constructor() {
     super();
 
@@ -42,18 +42,13 @@ class CompanyScreen extends Component {
 
 
         render() {
-          let data = this.state.data;
-          if (this.state.data.length>1){
-            const filteredData = filterData(this.state.data, this.state.search);
-            data = filteredData;
-          }
+
           const rdy =  <Activity />
-          const { width, height } = Dimensions.get('window');
           const { navigate, goBack } = this.props.navigation;
-          const { text, searchBar, search, list, icon, container, title } = styles;
+          const { text, searchBar, search, icon, container, title } = styles;
             return (
 
-              <View style={[container]}>
+          <View style={[container]}>
           <View style={title}>
             <Icon
               containerStyle={icon}
@@ -70,9 +65,7 @@ class CompanyScreen extends Component {
               onSubmitEditing={e=>this.search(e)}
               placeholder='Type Here...'
             />
-
             </View>
-              {this.state.data.length < 1 && rdy}
               <FlatList
                 data={data}
                 renderItem={({ item }) => (
@@ -121,12 +114,5 @@ const styles = StyleSheet.create({
       backgroundColor:'#009688',
       borderBottomWidth:0,
       borderTopWidth:0
-    },
-    list: {
-      borderTopWidth: 0,
-      borderBottomWidth: 0,
-      backgroundColor: '#C7BE9F'
     }
   });
-
-export default CompanyScreen;
