@@ -10,7 +10,7 @@ function Itemz({data}){
         <ListItem
             title={
                 <View style={basic}>
-                    <Text>DocumentName:</Text>
+                    <Text>Document:</Text>
                     <Text>{data.item.DocumentName}</Text>
                 </View>
             }
@@ -19,7 +19,7 @@ function Itemz({data}){
         <ListItem
             title={
                 <View style={basic}>
-                    <Text>DocumentDescription:</Text>
+                    <Text>Opis:</Text>
                     <Text>{data.item.DocumentDescription}</Text>
                 </View>
             }
@@ -28,7 +28,7 @@ function Itemz({data}){
         <ListItem
             title={
                 <View style={basic}>
-                    <Text>Name:</Text>
+                    <Text>Process:</Text>
                     <Text>{data.item.DocumentProcessDescription}</Text>
                 </View>
             }
@@ -50,11 +50,11 @@ export default class WarehouseItem extends React.Component {
        Wid = 15
        Cid = 38
        const url = `${urlMini}warehouseId=${Wid}&warehouseChamberId=${Cid}`
-       console.log(url)
+      // console.log(url)
        getData(url).then(data => this.setState({ data: data.StockTraceabilities }))
     }
     render() {
-        console.log(this.state.data)
+     //   console.log(this.state.data)
     return(
         <FlatList
         style={{width:'100%'}}
@@ -70,7 +70,6 @@ export default class WarehouseItem extends React.Component {
 
 const styles = StyleSheet.create({
     basic: {
-        flexDirection:'row',
-        justifyContent: 'space-between'
+        flexDirection:'column'
     }
 })
