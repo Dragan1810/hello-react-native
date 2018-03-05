@@ -11,8 +11,8 @@ import { data } from '../../../helpers/Data'
 
 const { Pklanja: PreKlanja } = data.production.goveda
 export default class CompanyScreen extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       data:[],
@@ -27,6 +27,7 @@ export default class CompanyScreen extends Component {
   }
 
   componentDidMount() {
+    console.log(PreKlanja)
     getData(PreKlanja).then(data => {
       !data.Success && this.setState({ message: data.Message })
       data.TotalItems === 0 ? this.setState({ noData: true })
@@ -48,13 +49,12 @@ export default class CompanyScreen extends Component {
 
 
         render() {
-          let data = this.state.data;
-          if (this.state.data.length>1){
-            const filteredData = filterData(this.state.data, this.state.search);
-            data = filteredData;
-          }
+         // let data
+         // if (this.state.data.length>1){
+         //   const filteredData = filterData(this.state.data, this.state.search);
+         //   data = filteredData;
+         // }
           const rdy =  this.state.noData ? <Text style={{textAlign:'center', paddingTop: 20}}>Nema Podataka...</Text> : <Activity />
-          const { width, height } = Dimensions.get('window');
           const { navigate, goBack } = this.props.navigation;
           const { search, icon } = styles;
             return (
@@ -80,11 +80,11 @@ export default class CompanyScreen extends Component {
 
             </WrapperHeader>
 
-              {this.state.data.length < 1 && rdy}
-              {!!!this.state.message && <Text>{this.state.message}</Text>}
+              {/* {!!this.state.data.length && rdy} */}
+              {!this.state.message && <Text>{this.state.message}</Text>}
               <FlatList
                 style={{width:'100%'}}
-                data={data}
+                data={this.state.data}
                 renderItem={({ item }) => (
                   <ListItems data={item} navigate={navigate} />
                 )}
@@ -117,3 +117,17 @@ const styles = StyleSheet.create({
     }
   });
 
+/*
+n( (response) => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    throw new Error(`Fetch failed with code ${response.code}`)
+                }
+            })
+            .then(json => {
+                this.setState({data: json})
+            })
+            .catch(err => { console.log(`Something failed: ${err.message}`) };
+    }
+ */

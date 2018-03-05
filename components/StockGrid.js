@@ -5,7 +5,7 @@ import { GridWrapper,GridText, GridMiniView } from '../styled-components/Grid'
 import { TitleText, WrapperHeader, Wrapper } from '../styled-components/Wrapper'
 import { getData } from '../helpers/index'
 import Header from '../reusable-components/Header'
-import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component-pro';
+import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 
 
 
@@ -29,8 +29,8 @@ export default class Grid extends Component {
           this.state.data.map(item => item.ProductCode),
           this.state.data.map(item => item.ProductName.split(' ')[0]),
           this.state.data.map(item => item.Quantity),
-          this.state.data.map(item => item.Weight.toFixed(3)),
-          [{text: 'Detalji'}]
+          this.state.data.map(item => item.Weight.toFixed(2)),
+        Array(num).fill(9).map((item)=><Text onPress={()=>alert('hiii')}>Hello</Text>)
         ]
        // [Array(num).map((item,i)=>({text: 'Detalji'}))]
 

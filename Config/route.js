@@ -109,7 +109,7 @@ const productionNavigation = StackNavigator({  // primer navigacije
 
 const magacinNavigation = StackNavigator({
       preMagacin: { screen: MagacinDrawer },
-      stock: { screen: ProductScreen },  //zamenjeno sa Stock Screenom to be fixed.... ProductScreen/Stock Grid
+      stock: { screen: StockGrid },  //zamenjeno sa Stock Screenom to be fixed.... ProductScreen/Stock Grid
       depot: { screen: DepotScreen },
       warehouse: { screen: WarehouseScreen },
       warehouse2: { screen: LagerSledjivost },
