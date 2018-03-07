@@ -65,8 +65,7 @@ export default class WarehouseItem extends React.Component {
         }
     }
     componentDidMount(){
-       Wid = 15
-       Cid = 38
+       const { Cid, Wid } = this.props;
        const url = `${urlMini}warehouseId=${Wid}&warehouseChamberId=${Cid}`
        console.log(url)
        getData(url).then(data => this.setState({ data }))

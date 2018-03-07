@@ -47,9 +47,9 @@ export default class Grid extends Component {
                 <Header navigate={navigate} title={'Detalji-'} goBack={goBack}/>
             <View>
                 <Table style={styles.table} borderStyle={{borderWidth: 0.5, borderColor: '#c8e1ff'}}>
-                <Row data={tableHead} style={styles.head} textStyle={styles.text} flexArr={[2, 2, 2, 2, 1]}/>
+                <Row data={tableHead} style={styles.head} textStyle={styles.text} flexArr={[1, 2, 1, 2, 1]}/>
             <ScrollView style={{margin:0, padding:0}}>
-                <Cols data={tableData} textStyle={styles.text} flexArr={[2, 2, 2, 2, 1]}/>
+                <Cols data={tableData} textStyle={styles.text} flexArr={[1, 2, 1, 2, 1]}/>
             </ScrollView>
                 </Table>
             </View>
