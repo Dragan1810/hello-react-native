@@ -25,10 +25,10 @@ export default class Grid extends Component {
         let Ids = this.state.data.map(item => item.Id)
         const num = this.state.data.length;
         const { navigate, goBack } = this.props.navigation
-        const tableHead = ['Sifra', 'Artikal', 'Na Stanju', 'Tezina','Detalji'];
+        const tableHead = ['Sifra', 'Artikal', 'Kom.', 'Tezina','Detalji'];
         const tableData = [
           this.state.data.map(item => item.ProductCode),
-          this.state.data.map(item => item.ProductName.split(' ')[0]),
+          this.state.data.map(item => item.ProductName),
           this.state.data.map(item => item.Quantity),
           this.state.data.map(item => item.Weight.toFixed(2)),
           Array(num)
@@ -47,9 +47,9 @@ export default class Grid extends Component {
                 <Header navigate={navigate} title={'Detalji-'} goBack={goBack}/>
             <View>
                 <Table style={styles.table} borderStyle={{borderWidth: 0.5, borderColor: '#c8e1ff'}}>
-                <Row data={tableHead} style={styles.head} textStyle={styles.text} flexArr={[1, 2, 1, 2, 1]}/>
+                <Row data={tableHead} style={styles.head} textStyle={styles.text} flexArr={[2, 4, 1, 2, 1]}/>
             <ScrollView style={{margin:0, padding:0}}>
-                <Cols data={tableData} textStyle={styles.text} flexArr={[1, 2, 1, 2, 1]}/>
+                <Cols data={tableData} textStyle={styles.text} flexArr={[2, 4, 1, 2, 1]}/>
             </ScrollView>
                 </Table>
             </View>
@@ -62,6 +62,10 @@ export default class Grid extends Component {
 
 const styles = StyleSheet.create({
     table: { width: '100%' },
-    head: { height: 40, backgroundColor: '#f1f8ff' },
-    text: { textAlign: 'center' }
+    head: { height: 45, backgroundColor: '#f1f8ff' },
+    text: {
+        textAlign: 'justify',
+        height: 45,
+        paddingLeft: 3
+     }
   })
