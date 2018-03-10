@@ -61,17 +61,34 @@ export default class WarehouseItem extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            data: []
+            data: [],
+            Cid:this.props.Cid,
+            Wid:this.props.Wid
         }
     }
     componentDidMount(){
-       const { Cid, Wid } = this.props;
+       const { Cid, Wid } = this.state
        const url = `${urlMini}warehouseId=${Wid}&warehouseChamberId=${Cid}`
        console.log(url)
        getData(url).then(data => this.setState({ data }))
     }
+    componentWillReceiveProps(nextProps){
+        if(this.props.Cid !== nextProps.Cid){
+          this.setState({Cid: nextProps.Cid, Wid: nextProps.Wid})
+        }
+    }
+    componentDidUpdate(prevProps, prevState) {
+        // only update chart if the data has changed
+        if (prevProps.Cid !== this.props.Cid) {
+            const { Cid, Wid } = this.props
+            const url = `${urlMini}warehouseId=${Wid}&warehouseChamberId=${Cid}`
+            console.log("DONG")
+       getData(url).then(data => this.setState({ data }))
+
+        }
+      }
     render() {
-        console.log(this.state.data)
+        console.log(this.state.Cid)
     return(
         <FlatList
         style={{width:'100%'}}
