@@ -47,12 +47,21 @@ export default class WarehouseItem extends React.Component {
         }
     }
     componentDidMount(){
-       Wid = 15
-       Cid = 38
+       const { Wid, Cid } = this.props
        const url = `${urlMini}warehouseId=${Wid}&warehouseChamberId=${Cid}`
       // console.log(url)
        getData(url).then(data => this.setState({ data: data.StockTraceabilities }))
     }
+    componentDidUpdate(prevProps, prevState) {
+        // only update chart if the data has changed
+        if (prevProps.Cid !== this.props.Cid) {
+            const { Cid, Wid } = this.props
+            const url = `${urlMini}warehouseId=${Wid}&warehouseChamberId=${Cid}`
+            console.log("DONG")
+       getData(url).then(data => this.setState({ data }))
+
+        }
+      }
     render() {
      //   console.log(this.state.data)
     return(
