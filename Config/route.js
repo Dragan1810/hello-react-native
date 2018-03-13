@@ -52,6 +52,8 @@ import LagerSledjivost from '../screens/Magacin/LagerSledjivost'
 
 import StockGrid from '../components/StockGrid'
 
+import LoginScreen from '../components/Login'
+
 
 
 const PigNavigation = StackNavigator({
@@ -205,7 +207,8 @@ const MainNavigation = StackNavigator({
   ScanItem: { screen : SkenerItem },
   HomeEnergo: { screen: EnergoNav },
   Dju2010: { screen: Dju2010Nav },
-  PetMB : { screen: PetMBNav }
+  PetMB : { screen: PetMBNav },
+  login: { screen: LoginScreen }
 
   // dodati drawer sa strane podesavanje strana
 

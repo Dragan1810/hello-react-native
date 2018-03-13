@@ -19,7 +19,9 @@ import SimpleIcon from "react-native-vector-icons/SimpleLineIcons";
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 
-const BG_IMAGE = require("../assets/images/bg_screen4.jpg");
+const BG_IMAGE = require("../assets/dj.png");
+
+const URL = `http://212.200.54.246:5001/api/MobileAuthentication/LogIn`;
 
 // Enable LayoutAnimation on Android
 UIManager.setLayoutAnimationEnabledExperimental &&
@@ -74,17 +76,18 @@ export default class LoginScreen2 extends Component {
       isLoading: false
     });
   }
-
+//asfasfsafk
   validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     return re.test(email);
   }
 
-  login() {
+  async login() {
     const { email, password } = this.state;
     this.setState({ isLoading: true });
-    // Simulate an API call
+    // Simulate an POST OVDE
+    const result = await (await fetch(URL,  {method:'POST', body: JSON.stringify({ email, password }), headers:{"content-type":"aplication/json"}})).json()
     setTimeout(() => {
       LayoutAnimation.easeInEaseOut();
       this.setState({
