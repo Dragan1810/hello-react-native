@@ -107,12 +107,12 @@ export const ProizvodnjaRoutes = [
   {
     id: 'lamb',
     title: 'Jagnjad',
-    icon: require('../assets/Icons/Ram.png')
+    icon: require('../assets/Icons/ram.png')
   },
   {
     id: 'pig',
     title: 'Svinje',
-    icon: require('../assets/Icons/Pig.png')
+    icon: require('../assets/Icons/pig.png')
   }
 ]
 

@@ -30,8 +30,8 @@ class CompanyScreen extends Component {
     console.log(Klanja);
     getData(Klanja).then(data => {
       !data.Success && this.setState({ message: data.Message })
-      !data.SlaughterItemTmps.length ? this.setState({noData: true})
-      : this.setState({ data: data.SlaughterItemTmps })
+      !data.CowSlaughterItemTmps.length ? this.setState({noData: true})
+      : this.setState({ data: data.CowSlaughterItemTmps })
     })
     .catch(err => console.error(err))
   }
@@ -39,7 +39,7 @@ class CompanyScreen extends Component {
   handleRefresh() {
     this.setState({
       refreshing: true
-    }, ()=> getData(Klanja).then(data => this.setState({ data: data.SlaughterItemTmps, refreshing: false })))
+    }, ()=> getData(Klanja).then(data => this.setState({ data: data.CowSlaughterItemTmps, refreshing: false })))
   }
 
   search(e) {

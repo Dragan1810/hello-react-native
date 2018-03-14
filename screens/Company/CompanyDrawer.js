@@ -15,14 +15,23 @@ export default class CompanyDrawer extends Component {
                 </WrapperHeaderCentar>
                <Card
                     title='SZTR Djurdjevic'
-                    image={require('../../assets/logo2.png')}>
-                    <Text style={{marginBottom: 10}}>
-                    </Text>
-                    <Button
+                    image={require('../../assets/logo2.png')}
+                    wrapperStyle={{padding: 0}}
+                >
+                <View style={{flexDirection:'row'}}>
+                <Button
                         onPress={()=> navigate('Home')}
                         backgroundColor='#009688'
                         buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                        title='Izaberi' />
+                        title='Izaberi' 
+                />
+                <Button
+                        onPress={()=> navigate('Home')}
+                        backgroundColor='#009688'
+                        buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                        title='Izaberi' 
+                />
+                </View>
                 </Card>
                 <Card
                     title='Pet MB Agrar d.o.o'
