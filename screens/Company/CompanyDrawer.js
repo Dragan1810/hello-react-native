@@ -42,7 +42,7 @@ export default class CompanyDrawer extends Component {
               disabled={false}
             />
             <Button
-              onPress={() => navigate("Home")}
+              onPress={() => navigate("login")}
               buttonStyle={{
                 marginLeft: 0,
                 marginRight: 0,
