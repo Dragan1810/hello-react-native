@@ -4,7 +4,8 @@ import {
   Text,
   View,
   ImageBackground,
-  Dimensions
+  Dimensions,
+  AsyncStorage
 } from "react-native";
 import { Input, Button } from "react-native-elements";
 
@@ -62,6 +63,7 @@ export default class LoginScreen1 extends Component {
       console.log(result);
       result.Success &&
         this.props.navigation.navigate("preCompany", { role: result.Role });
+      // await AsyncStorage.setItem('@MySuperStore:key', 'I like to save it.');
     } catch (error) {
       console.error(error);
     }
