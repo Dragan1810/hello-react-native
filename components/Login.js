@@ -39,8 +39,16 @@ export default class LoginScreen1 extends Component {
       light: require("../assets/fonts/Montserrat-Light.ttf"),
       bold: require("../assets/fonts/Montserrat-Bold.ttf")
     });
-
     this.setState({ fontLoaded: true });
+    try {
+      const role = await AsyncStorage.getItem("user");
+      !!role &&
+        this.props.navigation.navigate("preCompany", {
+          role
+        });
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   validateEmail(email) {
@@ -51,7 +59,6 @@ export default class LoginScreen1 extends Component {
 
   async submitLoginCredentials() {
     const { showLoading, email, password } = this.state;
-    console.log(email, password);
     try {
       const result = await (await fetch(URL, {
         method: "POST",
@@ -61,9 +68,10 @@ export default class LoginScreen1 extends Component {
         }
       })).json();
       console.log(result);
-      result.Success &&
+      if (result.Success) {
+        await AsyncStorage.setItem("user", result.Role);
         this.props.navigation.navigate("preCompany", { role: result.Role });
-      // await AsyncStorage.setItem('@MySuperStore:key', 'I like to save it.');
+      }
     } catch (error) {
       console.error(error);
     }
