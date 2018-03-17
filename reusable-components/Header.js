@@ -22,7 +22,7 @@ const Header = ({ title, goBack, navigate }) => (
               text: "OK",
               onPress: async () => {
                 await AsyncStorage.removeItem("user");
-                navigate("login"); //need fix
+                goBack("login"); //need fix
               }
             }
           ])

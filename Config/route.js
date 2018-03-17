@@ -54,6 +54,9 @@ import StockGrid from "../components/StockGrid";
 
 import LoginScreen from "../components/Login";
 
+import DocumentDrawer from "../screens/Documents/DocumentsDrawer";
+import PrethodnePrijemScreen from "../screens/Documents/PredhodnePrijem";
+
 const PigNavigation = StackNavigator(
   {
     prePigScreen: { screen: pigDrawer },
@@ -112,6 +115,23 @@ const productionNavigation = StackNavigator(
   },
   {
     initialRouteName: "preProduction"
+  }
+);
+
+const prijemNavigation = StackNavigator(
+  {
+    // primer navigacije
+    prePrijem: { screen: DocumentDrawer }, // routa : { ime screena gde vodi}
+    naloziZaPrijem: { screen: InputNoteScreen },
+    danasnji: { screen: InputNoteScreen },
+    prethodni: { screen: PrethodnePrijemScreen },
+    pretraga: { screen: InputNoteScreen }
+  },
+  {
+    headerMode: "none"
+  },
+  {
+    initialRouteName: "prePrijem"
   }
 );
 
@@ -221,7 +241,7 @@ const MainNavigation = StackNavigator(
     Home: { screen: HomeScreen },
     Magacin: { screen: magacinNavigation },
     Production: { screen: productionNavigation },
-    RobniPromet: { screen: InputNoteScreen },
+    RobniPromet: { screen: prijemNavigation },
     Kartoteka: { screen: kartotekaNavigation },
     PoslovniPartner: { screen: poslovniPartnerNavigation },
     Linkovi: { screen: LinkNav },
