@@ -56,6 +56,7 @@ import LoginScreen from "../components/Login";
 
 import DocumentDrawer from "../screens/Documents/DocumentsDrawer";
 import PrethodnePrijemScreen from "../screens/Documents/PredhodnePrijem";
+import DanasnjePrijemScreen from "../screens/Documents/DanasnjePrijem";
 
 const PigNavigation = StackNavigator(
   {
@@ -123,7 +124,7 @@ const prijemNavigation = StackNavigator(
     // primer navigacije
     prePrijem: { screen: DocumentDrawer }, // routa : { ime screena gde vodi}
     naloziZaPrijem: { screen: InputNoteScreen },
-    danasnji: { screen: InputNoteScreen },
+    danasnji: { screen: DanasnjePrijemScreen },
     prethodni: { screen: PrethodnePrijemScreen },
     pretraga: { screen: InputNoteScreen }
   },

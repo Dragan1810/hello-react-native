@@ -2,14 +2,14 @@ import { Icon } from "./icons";
 
 export const MainRoutes = [
   {
-    id: "Production",
-    title: "Proizvodnja",
-    icon: Icon.knife
-  },
-  {
     id: "RobniPromet",
     title: "Prijem Depo",
     icon: require("../assets/png/truck.png")
+  },
+  {
+    id: "Production",
+    title: "Proizvodnja",
+    icon: Icon.knife
   },
   {
     id: "Magacin",
