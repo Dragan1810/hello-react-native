@@ -8,8 +8,6 @@ import ListItems from "../../components/InputNoteItem";
 import { getData, filterData, newFilterData } from "../../helpers/index";
 import DatePicker from "react-native-datepicker";
 
-const URL = `http://212.200.54.246:5001/api/InputNote/GetInputNotesByPage?CompanyId=1&CurrentPage=1&ItemsPerPage=10`;
-const URLmini = `http://212.200.54.246:5001/api/InputNote/GetInputNotesByPage?CompanyId=1`;
 export default class StockScreen extends Component {
   constructor() {
     super();
@@ -27,12 +25,16 @@ export default class StockScreen extends Component {
     this.handleLoadMore = this.handleLoadMore.bind(this);
   }
   componentDidMount() {
+    //const URL = this.props.navigation.state.params.url;
+    const URL = `http://212.200.54.246:5001/api/InputNote/GetInputNoteForMobile?Id=374`;
     getData(URL)
-      .then(data => this.setState({ data: data.InputNotesByPage }))
+      .then(data => this.setState({ data }))
       .catch(err => console.log(err));
+    console.log(this.state.data);
   }
 
   handleRefresh() {
+    //const URL = this.props.navigation.state.params.url;
     this.setState(
       {
         refreshing: true
@@ -40,7 +42,7 @@ export default class StockScreen extends Component {
       () =>
         getData(URL).then(data =>
           this.setState({
-            data: data.InputNotesByPage,
+            data,
             refreshing: false,
             page: 1
           })
@@ -51,16 +53,16 @@ export default class StockScreen extends Component {
   async search(e) {
     await this.setState({ search: e.nativeEvent.text });
     getData(URLmini)
-      .then(data => newFilterData(data.InputNotesByPage, this.state.search))
+      .then(data => newFilterData(data, this.state.search))
       .then(data => this.setState({ data }));
   }
 
   async handleLoadMore() {
     let { page } = this.state;
     page = page + 1;
-    let Data = await getData(`${URLmini}&CurrentPage=${page}&ItemsPerPage=10`);
-    if (Data.InputNotesByPage.length > 0) {
-      let data = [...this.state.data, ...Data.InputNotesByPage];
+    let Data = await getData(`${URLmini}&CurrentPage=${page}`);
+    if (Data.length > 0) {
+      let data = [...this.state.data, ...Data];
       await this.setState({ data, page });
     }
   }
@@ -89,34 +91,13 @@ export default class StockScreen extends Component {
           />
         </WrapperHeader>
         {this.state.data.length < 1 && rdy}
-        <DatePicker
-          style={{ width: 200, paddingTop: 15 }}
-          date={this.state.date}
-          mode="date"
-          placeholder="select date"
-          format="YYYY-MM-DD"
-          minDate="2018-01-01"
-          maxDate="2025-06-01"
-          confirmBtnText="Confirm"
-          cancelBtnText="Cancel"
-          customStyles={{
-            dateInput: {
-              backgroundColor: "white"
-            }
-          }}
-          onDateChange={date => {
-            this.setState({ date });
-          }}
-        />
         <FlatList
           style={{ width: "100%" }}
           data={this.state.data}
           renderItem={({ item }) => <ListItems data={item} />}
-          keyExtractor={item => item.Id}
+          keyExtractor={(item, i) => i}
           refreshing={this.state.refreshing}
           onRefresh={this.handleRefresh}
-          onEndReached={this.handleLoadMore}
-          onEndReachedThreshold={0.5}
         />
       </Wrapper>
     );

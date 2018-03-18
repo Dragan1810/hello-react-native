@@ -59,6 +59,7 @@ import PrethodnePrijemScreen from "../screens/Documents/PredhodnePrijem";
 import DanasnjePrijemScreen from "../screens/Documents/DanasnjePrijem";
 import NalogZaPrijemScreen from "../screens/Documents/NalogZaPrijem";
 import SubTypePrijemScreen from "../screens/Documents/SubTypePrijem";
+import InputNoteSimpleScreen from "../screens/Documents/InputNoteScreen";
 
 const PigNavigation = StackNavigator(
   {
@@ -129,7 +130,8 @@ const prijemNavigation = StackNavigator(
     danasnji: { screen: DanasnjePrijemScreen },
     prethodni: { screen: PrethodnePrijemScreen },
     pretraga: { screen: InputNoteScreen },
-    subGroup: { screen: SubTypePrijemScreen }
+    subGroup: { screen: SubTypePrijemScreen },
+    simplePrijem: { screen: InputNoteSimpleScreen }
   },
   {
     headerMode: "none"
