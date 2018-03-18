@@ -12,9 +12,9 @@ import ListItems from "../../components/InputNoteItem";
 import { getData, filterData, newFilterData } from "../../helpers/index";
 import DatePicker from "react-native-datepicker";
 
-const URL = `http://212.200.54.246:5001/api/InputNote/GetInputNotesForMobile?companyId=1&currentPage=1`;
-const URLmini = `http://212.200.54.246:5001/api/InputNote/GetInputNotesForMobile?companyId=1`;
-export default class PrePrijemScreen extends Component {
+const URL = `http://212.200.54.246:5001/api/WorkOrderAnimalInputNote/GetWorkOrdersForMobile?companyId=1`;
+const URLmini = `http://212.200.54.246:5001/api/WorkOrderAnimalInputNote/GetWorkOrdersForMobile?companyId=1`;
+export default class NalogPrijemScreen extends Component {
   constructor() {
     super();
 
@@ -85,7 +85,7 @@ export default class PrePrijemScreen extends Component {
             onPress={() => goBack()}
           />
           <View style={search}>
-            <TitleText>Predhodni Prijem</TitleText>
+            <TitleText>Radni Nalozi Za Prijem</TitleText>
           </View>
         </WrapperHeader>
         {this.state.data.length < 1 && rdy}
@@ -111,14 +111,12 @@ export default class PrePrijemScreen extends Component {
                 key={item.Id}
                 title={item.Item}
                 subtitle={item.Description}
+                hideChevron={true}
               />
             );
           }}
           keyExtractor={item => item.Id}
           refreshing={this.state.refreshing}
-          onRefresh={this.handleRefresh}
-          onEndReached={this.handleLoadMore}
-          onEndReachedThreshold={0.5}
         />
       </Wrapper>
     );
@@ -137,6 +135,7 @@ const styles = StyleSheet.create({
   search: {
     flex: 3,
     alignSelf: "flex-end",
+    backgroundColor: "#009688",
     paddingBottom: 12
   }
 });
@@ -161,4 +160,9 @@ const styles = StyleSheet.create({
             this.setState({ date });
           }}
         />
+
+
+           onRefresh={this.handleRefresh}
+          onEndReached={this.handleLoadMore}
+          onEndReachedThreshold={0.5}
 */
