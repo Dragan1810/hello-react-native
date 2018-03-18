@@ -13,70 +13,62 @@ import { data } from "../../helpers/Data";
 import { Dropdown } from "react-native-material-dropdown";
 import DatePicker from "react-native-datepicker";
 
-export default class WarehouseScreen extends Component {
+const DobavljaciURL = `http://212.200.54.246:5001/api/BusinessPartner/GetBusinessPartnersInInputNotesForMobile?companyId=1`;
+const AnimalURL = `http://212.200.54.246:5001/api/AnimalType/GetAnimalTypesForMobile?companyId=1`;
+const SubAnimalURLmini = `http://212.200.54.246:5001/api/AnimalSubType/GetAnimalSubTypesForMobile?companyId=1&animalTypeId=`;
+
+export default class PretragaScreen extends Component {
   constructor() {
     super();
 
     this.state = {
-      data: [],
-      search: "",
-      refreshing: false,
-      komore: false,
-      komoreData: [],
-      warehouseData: [],
-      Wi: false,
-      Ci: false,
-      Wid: false,
-      Cid: false
+      dobavljaci: [],
+      dobavljaciName: [],
+      animalName: [],
+      animal: [],
+      subAnimal: [],
+      subAnimalName: [],
+      od: null,
+      do: null,
+      Sid: null,
+      Aid: null,
+      SAid: null
     };
-    this.search = this.search.bind(this);
-    this.handleRefresh = this.handleRefresh.bind(this);
-    this.PickWarehouse = this.PickWarehouse.bind(this);
-    this.PickChamber = this.PickChamber.bind(this);
+    this.PickSupplier = this.PickSupplier.bind(this);
+    this.PickAnimal = this.PickAnimal.bind(this);
+    this.PickSubAnimal = this.PickSubAnimal.bind(this);
   }
-  PickWarehouse(value, i) {
-    // console.log(value,i)
-    let Wid = this.state.data[i].Id;
-    let Wi = i;
-    let komoreData = this.state.data[i].WarehouseChambers.length
-      ? this.state.data[i].WarehouseChambers.map(item => ({
-          value: item.Code
-        })).concat([{ value: "Sve" }])
-      : [{ value: "Sve" }];
-    let komore = komoreData.length ? true : false;
-    this.setState({ komore, komoreData, Wid, Wi });
+  PickSupplier(value, i) {
+    const Sid = this.state.dobavljaci[i].Id;
+    this.setState({ Sid });
   }
-  PickChamber(value, i) {
-    // console.log(value,i)
-    let Cid =
-      value === "Sve"
-        ? "0"
-        : this.state.data[this.state.Wi].WarehouseChambers[i].Id;
-    this.setState({ Cid });
-  }
-
-  search(e) {
-    this.setState({ search: e.nativeEvent.text });
-  }
-
-  componentDidMount() {
-    getData(data.magacin.warehouse).then(data => {
-      const warehouseData = data.Warehouses.map(item => ({
-        value: item.WarehouseName
-      }));
+  PickAnimal(value, i) {
+    const Aid = this.state.animal[i].Id;
+    getData(`${SubAnimalURLmini}${Aid}`).then(data =>
       this.setState({
-        data: data.Warehouses,
-        refreshing: false,
-        warehouseData
-      });
-    });
+        subAnimal: data,
+        subAnimalName: data.map(item => ({ value: item.Name }))
+      })
+    );
+    this.setState({ Aid });
   }
-
-  handleRefresh() {
-    this.setState({ refreshing: true });
-    getData(data.magacin.warehouse).then(data => {
-      this.setState({ data: data.Warehouses, refreshing: false });
-    });
+  PickSubAnimal(value, i) {
+    const SAid = this.state.subAnimal[i].Id;
+    this.setState({ SAid });
+  }
+  componentDidMount() {
+    getData(DobavljaciURL).then(data =>
+      this.setState({
+        dobavljaci: data,
+        dobavljaciName: data.map(item => ({ value: item.Name }))
+      })
+    );
+    getData(AnimalURL).then(data =>
+      this.setState({
+        animal: data,
+        animalName: data.map(item => ({ value: item.Name }))
+      })
+    );
   }
   render() {
     const rdy = <Activity />;
@@ -97,7 +89,6 @@ export default class WarehouseScreen extends Component {
             <TitleText>Pretraga</TitleText>
           </View>
         </WrapperHeader>
-        {this.state.data.length < 1 && rdy}
         <View
           style={{
             flexDirection: "row",
@@ -107,57 +98,52 @@ export default class WarehouseScreen extends Component {
         >
           <DatePicker
             style={{ width: 150 }}
-            date={this.state.date}
+            date={this.state.od}
             mode="date"
             placeholder="Od: "
-            format="YYYY-MM-DD"
+            format="YYYYMMDD"
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
-            onDateChange={date => {
-              this.setState({ date: date });
+            onDateChange={od => {
+              this.setState({ od: `${od}000000` });
             }}
           />
           <DatePicker
             style={{ width: 150, marginLeft: 15 }}
-            date={this.state.date}
+            date={this.state.do}
             mode="date"
             placeholder="Do: "
-            format="YYYY-MM-DD"
+            format="YYYYMMDD"
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
-            onDateChange={date => {
-              this.setState({ date: date });
+            onDateChange={doDate => {
+              this.setState({ do: `${doDate}000000` });
             }}
           />
         </View>
         <Dropdown
           containerStyle={{ width: "80%" }}
           label="Dobavljac"
-          data={this.state.warehouseData}
-          onChangeText={this.PickWarehouse}
+          data={this.state.dobavljaciName}
+          onChangeText={this.PickSupplier}
         />
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <Dropdown
             containerStyle={{ width: "45%", paddingRight: 15 }}
             label="Zivotinja"
-            data={this.state.warehouseData}
-            onChangeText={this.PickWarehouse}
+            data={this.state.animalName}
+            onChangeText={this.PickAnimal}
           />
           <Dropdown
             containerStyle={{ width: "35%", paddingLeft: 15 }}
             label="Tip"
-            data={this.state.komoreData}
-            onChangeText={this.PickChamber}
+            data={this.state.subAnimalName}
+            onChangeText={this.PickSubAnimal}
           />
         </View>
-        {this.state.Wid &&
-          this.state.Cid && (
-            <ListItems
-              navigate={navigate}
-              Cid={this.state.Cid}
-              Wid={this.state.Wid}
-            />
-          )}
+        {this.state.Sid &&
+          this.state.Aid &&
+          this.state.SAid && <ListItems navigate={navigate} />}
       </Wrapper>
     );
   }
