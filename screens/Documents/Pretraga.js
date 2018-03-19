@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import { StyleSheet, Text, View, FlatList } from "react-native";
 import { Card, List, ListItem, SearchBar, Icon } from "react-native-elements";
 import {
   WrapperHeader,
@@ -143,7 +143,15 @@ export default class PretragaScreen extends Component {
         </View>
         {this.state.Sid &&
           this.state.Aid &&
-          this.state.SAid && <ListItems navigate={navigate} />}
+          this.state.SAid && (
+            <Rezultat
+              doDate={this.state.do}
+              od={this.state.od}
+              sid={this.state.Sid}
+              aid={this.state.Aid}
+              said={this.state.SAid}
+            />
+          )}
       </Wrapper>
     );
   }
@@ -165,3 +173,47 @@ const styles = StyleSheet.create({
     backgroundColor: "#009688"
   }
 });
+
+class Rezultat extends Component {
+  constructor() {
+    super();
+    this.state = {
+      data: []
+    };
+  }
+  componentDidMount() {
+    const { od, doDate, sid, aid, said } = this.props;
+    const Uri = `http://212.200.54.246:5001/api/InputNote/GetInputNotesForGroupedReportMobile?companyId=1&dateFrom=20180312000000&dateTo=20180314000000&businessPartnerId=0&animalTypeId=0/animalSubTypeId=0`;
+    getData(Uri).then(data => this.setState({ data }));
+  }
+  render() {
+    return (
+      <FlatList
+        style={{ width: "100%" }}
+        data={this.state.data}
+        renderItem={({ item }) => {
+          let img;
+          switch (item.Image.split(".")[0]) {
+            case "cow":
+              img = require("../../assets/Icons/cow2.png");
+              break;
+            case "pig":
+              img = require("../../assets/Icons/pig2.png");
+              break;
+            case "lamb":
+              img = require("../../assets/Icons/lamb2.png");
+          }
+          return (
+            <ListItem
+              roundAvatar
+              avatar={img}
+              title={item.Item}
+              subtitle={item.Description}
+            />
+          );
+        }}
+        keyExtractor={(item, i) => i}
+      />
+    );
+  }
+}
