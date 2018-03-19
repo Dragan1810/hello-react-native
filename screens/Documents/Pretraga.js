@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, FlatList } from "react-native";
-import { Card, List, ListItem, SearchBar, Icon } from "react-native-elements";
+import {
+  Card,
+  List,
+  ListItem,
+  SearchBar,
+  Icon,
+  Button
+} from "react-native-elements";
 import {
   WrapperHeader,
   Wrapper,
@@ -12,6 +19,7 @@ import { getData, filterData } from "../../helpers/index";
 import { data } from "../../helpers/Data";
 import { Dropdown } from "react-native-material-dropdown";
 import DatePicker from "react-native-datepicker";
+import Header from "../../reusable-components/Header";
 
 const DobavljaciURL = `http://212.200.54.246:5001/api/BusinessPartner/GetBusinessPartnersInInputNotesForMobile?companyId=1`;
 const AnimalURL = `http://212.200.54.246:5001/api/AnimalType/GetAnimalTypesForMobile?companyId=1`;
@@ -76,19 +84,7 @@ export default class PretragaScreen extends Component {
     const { search, icon } = styles;
     return (
       <Wrapper>
-        <WrapperHeader>
-          <Icon
-            containerStyle={icon}
-            name="chevron-left"
-            type="font-awesome"
-            color="#fff"
-            size={32}
-            onPress={() => goBack()}
-          />
-          <View style={search}>
-            <TitleText>Pretraga</TitleText>
-          </View>
-        </WrapperHeader>
+        <Header title={"Pretraga"} goBack={goBack} />
         <View
           style={{
             flexDirection: "row",
@@ -141,6 +137,10 @@ export default class PretragaScreen extends Component {
             onChangeText={this.PickSubAnimal}
           />
         </View>
+        <Button
+          title="Trazi"
+          icon={<Icon name="search" size={15} color="white" />}
+        />
         {this.state.Sid &&
           this.state.Aid &&
           this.state.SAid && (
