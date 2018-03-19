@@ -7,7 +7,7 @@ const Prijemnica = ({ data }) => {
   console.log("ovde sam");
   const { basic } = styles;
   return (
-    <Card title={data.Supplier.BusinessPartner}>
+    <Card title={data.BusinessPartner}>
       <ListItem
         title={
           <View style={basic}>
@@ -137,6 +137,13 @@ const Prijemnica = ({ data }) => {
     </Card>
   );
 };
+
+const styles = StyleSheet.create({
+  basic: {
+    flexDirection: "row",
+    justifyContent: "space-between"
+  }
+});
 
 export default Prijemnica;
 

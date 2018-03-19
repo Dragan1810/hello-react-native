@@ -8,27 +8,23 @@ import ListItems from "../../components/InputNoteItem";
 import { getData, filterData, newFilterData } from "../../helpers/index";
 import DatePicker from "react-native-datepicker";
 
-export default class StockScreen extends Component {
+export default class SingleScreen extends Component {
   constructor() {
     super();
 
     this.state = {
       data: [],
       search: "",
-      page: 1,
-      refreshing: false,
-      date: "2018-01-01"
+      refreshing: false
     };
-
-    this.search = this.search.bind(this);
     this.handleRefresh = this.handleRefresh.bind(this);
-    this.handleLoadMore = this.handleLoadMore.bind(this);
   }
   componentDidMount() {
     //const URL = this.props.navigation.state.params.url;
+    console.log("ovde sam 1");
     const URL = `http://212.200.54.246:5001/api/InputNote/GetInputNoteForMobile?Id=374`;
     getData(URL)
-      .then(data => this.setState({ data }))
+      .then(data => this.setState({ data: [data] }))
       .catch(err => console.log(err));
     console.log(this.state.data);
   }
@@ -50,23 +46,6 @@ export default class StockScreen extends Component {
     );
   }
 
-  async search(e) {
-    await this.setState({ search: e.nativeEvent.text });
-    getData(URLmini)
-      .then(data => newFilterData(data, this.state.search))
-      .then(data => this.setState({ data }));
-  }
-
-  async handleLoadMore() {
-    let { page } = this.state;
-    page = page + 1;
-    let Data = await getData(`${URLmini}&CurrentPage=${page}`);
-    if (Data.length > 0) {
-      let data = [...this.state.data, ...Data];
-      await this.setState({ data, page });
-    }
-  }
-
   render() {
     const rdy = <Activity />;
     const { navigate, goBack } = this.props.navigation;
@@ -86,11 +65,10 @@ export default class StockScreen extends Component {
             containerStyle={search}
             round
             lightTheme
-            onSubmitEditing={e => this.search(e)}
             placeholder="Type Here..."
           />
         </WrapperHeader>
-        {this.state.data.length < 1 && rdy}
+        {!this.state.data.length && rdy}
         <FlatList
           style={{ width: "100%" }}
           data={this.state.data}
