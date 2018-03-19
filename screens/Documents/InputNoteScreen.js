@@ -7,6 +7,7 @@ import Activity from "../../components/ActivityIndicator";
 import ListItems from "../../components/InputNoteItem";
 import { getData, filterData, newFilterData } from "../../helpers/index";
 import DatePicker from "react-native-datepicker";
+import Header from "../../reusable-components/Header";
 
 export default class SingleScreen extends Component {
   constructor() {
@@ -20,23 +21,22 @@ export default class SingleScreen extends Component {
     this.handleRefresh = this.handleRefresh.bind(this);
   }
   componentDidMount() {
-    //const URL = this.props.navigation.state.params.url;
-    console.log("ovde sam 1");
-    const URL = `http://212.200.54.246:5001/api/InputNote/GetInputNoteForMobile?Id=374`;
-    getData(URL)
+    const { url } = this.props.navigation.state.params;
+    console.log("ovde sam 1", url);
+    getData(url)
       .then(data => this.setState({ data: [data] }))
       .catch(err => console.log(err));
     console.log(this.state.data);
   }
 
   handleRefresh() {
-    //const URL = this.props.navigation.state.params.url;
+    const { url } = this.props.navigation.state.params;
     this.setState(
       {
         refreshing: true
       },
       () =>
-        getData(URL).then(data =>
+        getData(url).then(data =>
           this.setState({
             data,
             refreshing: false,
@@ -52,22 +52,7 @@ export default class SingleScreen extends Component {
     const { search, icon } = styles;
     return (
       <Wrapper>
-        <WrapperHeader>
-          <Icon
-            containerStyle={icon}
-            name="chevron-left"
-            type="font-awesome"
-            color="#fff"
-            size={32}
-            onPress={() => goBack()}
-          />
-          <SearchBar
-            containerStyle={search}
-            round
-            lightTheme
-            placeholder="Type Here..."
-          />
-        </WrapperHeader>
+        <Header title={"Danasnji Prijem"} goBack={goBack} />
         {!this.state.data.length && rdy}
         <FlatList
           style={{ width: "100%" }}

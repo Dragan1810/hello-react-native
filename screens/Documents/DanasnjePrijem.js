@@ -1,21 +1,26 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, FlatList } from "react-native";
 import { SearchBar, Icon, ListItem } from "react-native-elements";
-import { Wrapper, WrapperHeader } from "../../styled-components/Wrapper";
+import {
+  Wrapper,
+  WrapperHeader,
+  TitleText
+} from "../../styled-components/Wrapper";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import Activity from "../../components/ActivityIndicator";
 import ListItems from "../../components/InputNoteItem";
 import { getData, filterData, newFilterData } from "../../helpers/index";
 import DatePicker from "react-native-datepicker";
 import { format } from "date-fns";
+import Header from "../../reusable-components/Header";
 
 //let date0 = `${format(Date.now(), "YYYYMMDD")}000000`;
 let date = format(Date.now(), "YYYYMMDDHHmmss");
 
 let date0 = `20180317000000`;
 
-const dateFrom = `&dateFrom=${date0}`;
-const dateTo = `&dateTo=${date0}`;
+const dateFrom = `&dateFrom=${date}`;
+const dateTo = `&dateTo=${date}`;
 const BP = `&businessPartnerId=0`;
 const animalSubTypeId = `&animalSubTypeId=0`;
 const URLmini = `http://212.200.54.246:5001/api/InputNote/GetInputNotesForGroupedReportMobile?companyId=1`;
@@ -81,28 +86,12 @@ export default class PrePrijemScreen extends Component {
     const { search, icon } = styles;
     return (
       <Wrapper>
-        <WrapperHeader>
-          <Icon
-            containerStyle={icon}
-            name="chevron-left"
-            type="font-awesome"
-            color="#fff"
-            size={32}
-            onPress={() => goBack()}
-          />
-          <SearchBar
-            containerStyle={search}
-            round
-            lightTheme
-            onSubmitEditing={e => this.search(e)}
-            placeholder="Type Here..."
-          />
-        </WrapperHeader>
+        <Header title={"Danasnji Prijem"} goBack={goBack} />
         {this.state.data.length < 1 && rdy}
         <FlatList
           style={{ width: "100%" }}
           data={this.state.data}
-          renderItem={({ item }) => {
+          renderItem={({ item, index }) => {
             let img;
             switch (item.Image.split(".")[0]) {
               case "cow":
@@ -117,6 +106,7 @@ export default class PrePrijemScreen extends Component {
               case "all":
                 img = require("../../assets/Icons/004-all.png");
             }
+            const show = index === 0 ? true : false;
             return (
               <ListItem
                 roundAvatar
@@ -127,9 +117,11 @@ export default class PrePrijemScreen extends Component {
                   navigate("subGroup", {
                     url: `http://212.200.54.246:5001/api/InputNote/GetInputNotesForSubGroupedReportMobile?companyId=1&dateFrom=20180317000000&dateTo=20180317000000&businessPartnerId=0&animalSubTypeId=${
                       item.AnimalSubTypeId
-                    }`
+                    }`,
+                    name: item.Item
                   })
                 }
+                hideChevron={show}
               />
             );
           }}

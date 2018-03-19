@@ -111,6 +111,13 @@ export default class PrePrijemScreen extends Component {
                 key={item.Id}
                 title={item.Item}
                 subtitle={item.Description}
+                onPressRightIcon={() =>
+                  navigate("simplePrijem", {
+                    url: `http://212.200.54.246:5001/api/InputNote/GetInputNoteForMobile?Id=${
+                      item.Id
+                    }`
+                  })
+                }
               />
             );
           }}

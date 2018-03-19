@@ -11,6 +11,7 @@ import Activity from "../../components/ActivityIndicator";
 import ListItems from "../../components/InputNoteItem";
 import { getData, filterData, newFilterData } from "../../helpers/index";
 import DatePicker from "react-native-datepicker";
+import Header from "../../reusable-components/Header";
 
 export default class SubTypeScreen extends Component {
   constructor() {
@@ -70,29 +71,18 @@ export default class SubTypeScreen extends Component {
   }
 
   render() {
+    const { name } = this.props.navigation.state.params;
     const rdy = <Activity />;
     const { navigate, goBack } = this.props.navigation;
     const { search, icon } = styles;
     return (
       <Wrapper>
-        <WrapperHeader>
-          <Icon
-            containerStyle={icon}
-            name="chevron-left"
-            type="font-awesome"
-            color="#fff"
-            size={32}
-            onPress={() => goBack()}
-          />
-          <View style={search}>
-            <TitleText>Predhodni Prijem</TitleText>
-          </View>
-        </WrapperHeader>
+        <Header title={name} goBack={goBack} />
         {this.state.data.length < 1 && rdy}
         <FlatList
           style={{ width: "100%" }}
           data={this.state.data}
-          renderItem={({ item }) => {
+          renderItem={({ item, index }) => {
             let img;
             switch (item.Image.split(".")[0]) {
               case "cow":
@@ -107,9 +97,12 @@ export default class SubTypeScreen extends Component {
               case "farmer":
                 img = require("../../assets/Icons/farmer.png");
             }
+            console.log(index);
+            const show = index === 0 ? true : false;
             return (
               <ListItem
                 roundAvatar
+                avatarStyle={{ backgroundColor: "transparent" }}
                 avatar={img}
                 title={item.Item}
                 subtitle={item.Description}
@@ -120,6 +113,7 @@ export default class SubTypeScreen extends Component {
                     }`
                   })
                 }
+                hideChevron={show}
               />
             );
           }}
