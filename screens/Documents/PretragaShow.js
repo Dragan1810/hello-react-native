@@ -47,7 +47,7 @@ export default class Rezultat extends Component {
               case "all":
                 img = require("../../assets/Icons/004-all.png");
             }
-            //show = img === "all" ? true : false;
+            show = item.Image.split(".")[0] === "all" ? true : false;
             return (
               <ListItem
                 roundAvatar
