@@ -13,11 +13,16 @@ export default class Rezultat extends Component {
     };
   }
   componentDidMount() {
+    const URLmini = `http://212.200.54.246:5001/api/InputNote/GetInputNotesForGroupedReportMobile?companyId=1`;
     let { od, doDate, sid, aid, said } = this.props.navigation.state.params;
-    let od = od || "";
-    let doDate = doDate || "";
-    const Uri = `http://212.200.54.246:5001/api/InputNote/GetInputNotesForGroupedReportMobile?companyId=1&dateFrom=20180312000000&dateTo=20180314000000&businessPartnerId=0&animalTypeId=0/animalSubTypeId=0`;
+    const OD = od ? `&dateFrom=${od}` : "";
+    const DODATE = doDate ? `&dateTo=${doDate}` : "";
+    const SID = sid || 0;
+    const AID = aid || 0;
+    const SAID = said || 0;
+    const Uri = `${URLmini}${OD}${DODATE}&businessPartnerId=${SID}&animalTypeId=${AID}&animalSubTypeId=${SAID}`;
     getData(Uri).then(data => this.setState({ data }));
+    console.log(Uri);
   }
   render() {
     const { goBack } = this.props.navigation;
@@ -42,12 +47,14 @@ export default class Rezultat extends Component {
               case "all":
                 img = require("../../assets/Icons/004-all.png");
             }
+            //show = img === "all" ? true : false;
             return (
               <ListItem
                 roundAvatar
                 avatar={img}
                 title={item.Item}
                 subtitle={item.Description}
+                hideChevron={show}
               />
             );
           }}
