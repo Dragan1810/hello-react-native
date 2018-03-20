@@ -40,7 +40,8 @@ export default class PretragaScreen extends Component {
       do: null,
       Sid: null,
       Aid: null,
-      SAid: null
+      SAid: null,
+      show: false
     };
     this.PickSupplier = this.PickSupplier.bind(this);
     this.PickAnimal = this.PickAnimal.bind(this);
@@ -140,23 +141,21 @@ export default class PretragaScreen extends Component {
         <Button
           title="Trazi"
           icon={<Icon name="search" size={15} color="white" />}
+          onPress={() =>
+            navigate("showPretraga", {
+              do: this.state.do,
+              od: this.state.od,
+              sid: this.state.Sid,
+              aid: this.state.Aid,
+              said: this.state.SAid
+            })
+          }
         />
-        {this.state.Sid &&
-          this.state.Aid &&
-          this.state.SAid && (
-            <Rezultat
-              doDate={this.state.do}
-              od={this.state.od}
-              sid={this.state.Sid}
-              aid={this.state.Aid}
-              said={this.state.SAid}
-            />
-          )}
       </Wrapper>
     );
   }
 }
-
+//
 const styles = StyleSheet.create({
   icon: {
     flex: 1,
