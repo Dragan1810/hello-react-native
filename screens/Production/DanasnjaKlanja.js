@@ -114,7 +114,7 @@ export default class PrePrijemScreen extends Component {
                 title={item.Item}
                 subtitle={item.Description}
                 onPressRightIcon={() =>
-                  navigate("subGroup", {
+                  navigate("detaljiKlanja", {
                     url: `http://212.200.54.246:5001/api/SlaughterForMobile/GetSlaughter?CompanyId=1&id=${
                       item.Id
                     }&type=${item.Type}`,

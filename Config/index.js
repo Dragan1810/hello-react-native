@@ -168,19 +168,19 @@ export const LambRoutes = [
 
 export const PigRoutes = [
   {
-    id: "prePigKlanja",
+    id: "aktPigKlanja",
     title: "Trenutne Svinje",
-    icon: require("../assets/Icons/pred.png")
+    icon: require("../assets/Icons/pig.png")
   },
   {
     id: "prePigKlanja",
     title: "Trenutna Goveda",
-    icon: require("../assets/Icons/pred.png")
+    icon: require("../assets/Icons/cow.png")
   },
   {
-    id: "aktPigKlanja",
+    id: "aktLambKlanja",
     title: "Trenutni Jaganjci",
-    icon: require("../assets/Icons/aktivnok.png")
+    icon: require("../assets/Icons/ram.png")
   }
 ];
 

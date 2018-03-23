@@ -23,8 +23,8 @@ const dateFrom = `&dateFrom=${date}`;
 const dateTo = `&dateTo=${date}`;
 const BP = `&businessPartnerId=0`;
 const animalSubTypeId = `&animalSubTypeId=0`;
-const URLmini = `http://212.200.54.246:5001/api/InputNote/GetInputNotesForGroupedReportMobile?companyId=1`;
-const URL = `http://212.200.54.246:5001/api/SlaughterForMobile/GetSlaughtersForMobile?CompanyId=1&currentPage=1`;
+const URLmini = `http://212.200.54.246:5001/api/SlaughterForMobile/GetSlaughtersForMobile?CompanyId=1`;
+const URL = `${URLmini}&currentPage=1`;
 export default class PrePrijemScreen extends Component {
   constructor() {
     super();
@@ -62,14 +62,6 @@ export default class PrePrijemScreen extends Component {
         )
     );
   }
-
-  async search(e) {
-    await this.setState({ search: e.nativeEvent.text });
-    getData(URLmini)
-      .then(data => newFilterData(data, this.state.search))
-      .then(data => this.setState({ data }));
-  }
-
   async handleLoadMore() {
     let { page } = this.state;
     page = page + 1;
@@ -114,7 +106,7 @@ export default class PrePrijemScreen extends Component {
                 title={item.Item}
                 subtitle={item.Description}
                 onPressRightIcon={() =>
-                  navigate("subGroup", {
+                  navigate("detaljiKlanja", {
                     url: `http://212.200.54.246:5001/api/SlaughterForMobile/GetSlaughter?CompanyId=1&id=${
                       item.Id
                     }&type=${item.Type}`,
@@ -128,6 +120,8 @@ export default class PrePrijemScreen extends Component {
           keyExtractor={(item, i) => i}
           refreshing={this.state.refreshing}
           onRefresh={this.handleRefresh}
+          onEndReached={this.handleLoadMore}
+          onEndReachedThreshold={0.5}
         />
       </Wrapper>
     );
