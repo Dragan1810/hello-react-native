@@ -17,6 +17,8 @@ import LambPKlanja from "../screens/Production/Lamb/Pklanja";
 import LambAKlanja from "../screens/Production/Lamb/Aklanja";
 import PigPKlanja from "../screens/Production/Pig/Pklanja";
 import PigAKlanja from "../screens/Production/Pig/Aklanja";
+import DanasnjaKlanjaScreen from "../screens/Production/DanasnjaKlanja";
+import prethodnaKlanjaScreen from "../screens/Production/PrethodnaKlanja";
 
 import CompanyDrawer from "../screens/Company/CompanyDrawer";
 import DocumentsDrawer from "../screens/Documents/DocumentsDrawer";
@@ -114,7 +116,9 @@ const productionNavigation = StackNavigator(
     preProduction: { screen: ProductionDrawer }, // routa : { ime screena gde vodi}
     goveda: { screen: GovedaNavigation },
     lamb: { screen: LambNavigation },
-    pig: { screen: PigNavigation }
+    pig: { screen: PigNavigation },
+    danasnjaKlanja: { screen: DanasnjaKlanjaScreen },
+    prethodnaKlanja: { screen: prethodnaKlanjaScreen }
   },
   {
     headerMode: "none"

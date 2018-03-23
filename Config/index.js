@@ -8,7 +8,7 @@ export const MainRoutes = [
   },
   {
     id: "Production",
-    title: "Proizvodnja",
+    title: "Klanje",
     icon: Icon.knife
   },
   {
@@ -93,19 +93,19 @@ export const LinkRoutes = [
 
 export const ProizvodnjaRoutes = [
   {
-    id: "goveda",
-    title: "Goveda",
-    icon: require("../assets/Icons/cow.png")
+    id: "danasnjaKlanja",
+    title: "Danasnja Klanja",
+    icon: Icon.knife
   },
   {
-    id: "lamb",
-    title: "Jagnjad",
-    icon: require("../assets/Icons/ram.png")
+    id: "prethodnaKlanja",
+    title: "Predhodna Klanja",
+    icon: Icon.knife
   },
   {
     id: "pig",
-    title: "Svinje",
-    icon: require("../assets/Icons/pig.png")
+    title: "Trenutna Klanja",
+    icon: Icon.knife
   }
 ];
 
@@ -169,12 +169,17 @@ export const LambRoutes = [
 export const PigRoutes = [
   {
     id: "prePigKlanja",
-    title: "Prethodna Klanja",
+    title: "Trenutne Svinje",
+    icon: require("../assets/Icons/pred.png")
+  },
+  {
+    id: "prePigKlanja",
+    title: "Trenutna Goveda",
     icon: require("../assets/Icons/pred.png")
   },
   {
     id: "aktPigKlanja",
-    title: "Aktivna Klanja",
+    title: "Trenutni Jaganjci",
     icon: require("../assets/Icons/aktivnok.png")
   }
 ];
