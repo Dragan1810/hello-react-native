@@ -36,8 +36,6 @@ export default class PrePrijemScreen extends Component {
       refreshing: false,
       date: "2018-01-01"
     };
-
-    this.search = this.search.bind(this);
     this.handleRefresh = this.handleRefresh.bind(this);
     this.handleLoadMore = this.handleLoadMore.bind(this);
   }
@@ -78,7 +76,7 @@ export default class PrePrijemScreen extends Component {
     const { search, icon } = styles;
     return (
       <Wrapper>
-        <Header title={"Danasnja Klanja"} goBack={goBack} />
+        <Header title={"Prethodna Klanja"} goBack={goBack} />
         {this.state.data.length < 1 && rdy}
         <FlatList
           style={{ width: "100%" }}
