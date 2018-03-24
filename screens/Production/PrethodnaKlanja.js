@@ -96,7 +96,7 @@ export default class PrePrijemScreen extends Component {
               case "all":
                 img = require("../../assets/Icons/004-all.png");
             }
-            const show = index === 0 ? true : false;
+            // const show = index === 0 ? true : false;
             return (
               <ListItem
                 roundAvatar
@@ -111,7 +111,7 @@ export default class PrePrijemScreen extends Component {
                     name: item.Item
                   })
                 }
-                hideChevron={show}
+                hideChevron={false}
               />
             );
           }}

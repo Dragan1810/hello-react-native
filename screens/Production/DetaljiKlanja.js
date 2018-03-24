@@ -127,30 +127,6 @@ const ListItems = ({ data }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  icon: {
-    flex: 1,
-    alignSelf: "flex-start",
-    margin: 0,
-    padding: 0,
-    backgroundColor: "#009688",
-    height: 56
-  },
-  search: {
-    flex: 3,
-    alignSelf: "flex-end",
-    margin: 0,
-    padding: 0,
-    backgroundColor: "#009688",
-    borderBottomWidth: 0,
-    borderTopWidth: 0
-  },
-  basic: {
-    flexDirection: "row",
-    justifyContent: "space-between"
-  }
-});
-
 const Grid = ({ data }) => {
   const tableHead = ["Redni br.", "Sifra", "Artikal", "Tezina"];
   const tableData = [
@@ -182,3 +158,34 @@ const Grid = ({ data }) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  icon: {
+    flex: 1,
+    alignSelf: "flex-start",
+    margin: 0,
+    padding: 0,
+    backgroundColor: "#009688",
+    height: 56
+  },
+  search: {
+    flex: 3,
+    alignSelf: "flex-end",
+    margin: 0,
+    padding: 0,
+    backgroundColor: "#009688",
+    borderBottomWidth: 0,
+    borderTopWidth: 0
+  },
+  basic: {
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  table: { width: "100%" },
+  head: { height: 45, backgroundColor: "#f1f8ff" },
+  text: {
+    textAlign: "left",
+    height: 45,
+    paddingLeft: 3
+  }
+});
