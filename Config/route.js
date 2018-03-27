@@ -251,8 +251,8 @@ const Dju2010Nav = StackNavigator(
 
 const MainNavigation = StackNavigator(
   {
-    login: { screen: LoginScreen },
     preCompany: { screen: CompanyDrawer }, //main navigacija u koju su ubacene sve sub navigacije
+    login: { screen: LoginScreen },
     Home: { screen: HomeScreen },
     Magacin: { screen: magacinNavigation },
     Production: { screen: productionNavigation },
@@ -273,7 +273,7 @@ const MainNavigation = StackNavigator(
     headerMode: "none"
   },
   {
-    initialRouteName: "login"
+    initialRouteName: "preCompany"
   }
 );
 
