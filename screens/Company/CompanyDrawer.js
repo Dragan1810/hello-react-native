@@ -113,6 +113,7 @@ export default class CompanyDrawer extends Component {
             />
           </View>
         </Card>
+        <Text>1.27</Text>
       </ScrollView>
     );
   }
