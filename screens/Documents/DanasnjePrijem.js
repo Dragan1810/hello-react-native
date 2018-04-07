@@ -14,7 +14,6 @@ import DatePicker from "react-native-datepicker";
 import { format } from "date-fns";
 import Header from "../../reusable-components/Header";
 
-//let date0 = `${format(Date.now(), "YYYYMMDD")}000000`;
 let date = format(Date.now(), "YYYYMMDDHHmmss");
 
 let date0 = `20180317000000`;
@@ -37,9 +36,7 @@ export default class PrePrijemScreen extends Component {
       date: "2018-01-01"
     };
 
-    this.search = this.search.bind(this);
     this.handleRefresh = this.handleRefresh.bind(this);
-    this.handleLoadMore = this.handleLoadMore.bind(this);
   }
   componentDidMount() {
     getData(URL)
@@ -62,24 +59,6 @@ export default class PrePrijemScreen extends Component {
         )
     );
   }
-
-  async search(e) {
-    await this.setState({ search: e.nativeEvent.text });
-    getData(URLmini)
-      .then(data => newFilterData(data, this.state.search))
-      .then(data => this.setState({ data }));
-  }
-
-  async handleLoadMore() {
-    let { page } = this.state;
-    page = page + 1;
-    let Data = await getData(`${URLmini}&CurrentPage=${page}`);
-    if (Data.length > 0) {
-      let data = [...this.state.data, ...Data];
-      await this.setState({ data, page });
-    }
-  }
-
   render() {
     const rdy = <Activity />;
     const { navigate, goBack } = this.props.navigation;
@@ -115,7 +94,7 @@ export default class PrePrijemScreen extends Component {
                 subtitle={item.Description}
                 onPressRightIcon={() =>
                   navigate("subGroup", {
-                    url: `http://212.200.54.246:5001/api/InputNote/GetInputNotesForSubGroupedReportMobile?companyId=1&dateFrom=20180317000000&dateTo=20180317000000&businessPartnerId=0&animalSubTypeId=${
+                    url: `http://212.200.54.246:5001/api/InputNote/GetInputNotesForSubGroupedReportMobile?companyId=1${dateFrom}${dateTo}&businessPartnerId=0&animalSubTypeId=${
                       item.AnimalSubTypeId
                     }`,
                     name: item.Item
