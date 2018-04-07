@@ -38,6 +38,8 @@ export default class PretragaScreen extends Component {
       subAnimalName: [],
       od: null,
       do: null,
+      odShow: null,
+      doShow: null,
       Sid: null,
       Aid: null,
       SAid: null,
@@ -95,26 +97,32 @@ export default class PretragaScreen extends Component {
         >
           <DatePicker
             style={{ width: 150 }}
-            date={this.state.od}
+            date={this.state.odShow}
             mode="date"
             placeholder="Od: "
-            format="YYYYMMDD"
+            format="YYYY-MM-DD"
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
             onDateChange={od => {
-              this.setState({ od: `${od}000000` });
+              this.setState({
+                od: `${od.replace(/-/gi, "")}000000`,
+                odShow: od
+              });
             }}
           />
           <DatePicker
             style={{ width: 150, marginLeft: 15 }}
-            date={this.state.do}
+            date={this.state.doShow}
             mode="date"
             placeholder="Do: "
-            format="YYYYMMDD"
+            format="YYYY-MM-DD"
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
             onDateChange={doDate => {
-              this.setState({ do: `${doDate}000000` });
+              this.setState({
+                do: `${doDate.replace(/-/gi, "")}000000`,
+                doShow: doDate
+              });
             }}
           />
         </View>

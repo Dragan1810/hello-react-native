@@ -60,7 +60,7 @@ export default class SingleScreen extends Component {
     const { search, icon } = styles;
     return (
       <Wrapper>
-        <Header title={"Danasnji Prijem"} goBack={goBack} />
+        <Header title={"Detalji Klanja"} goBack={goBack} />
         {!this.state.data.length && rdy}
         <FlatList
           style={{ width: "100%" }}
@@ -91,15 +91,6 @@ const ListItems = ({ data }) => {
         title={
           <View style={basic}>
             <Text>LOT prijema:</Text>
-            <Text>{data.AnimalSubType}</Text>
-          </View>
-        }
-        hideChevron={true}
-      />
-      <ListItem
-        title={
-          <View style={basic}>
-            <Text>Datum prijema:</Text>
             <Text>{data.Lot}</Text>
           </View>
         }
@@ -108,8 +99,17 @@ const ListItems = ({ data }) => {
       <ListItem
         title={
           <View style={basic}>
+            <Text>Datum prijema:</Text>
+            <Text>{data.SlaughterDate.split("T")[0]}</Text>
+          </View>
+        }
+        hideChevron={true}
+      />
+      <ListItem
+        title={
+          <View style={basic}>
             <Text>Depo:</Text>
-            <Text>{data.SlaughterDate}</Text>
+            <Text>{}</Text>
           </View>
         }
         hideChevron={true}
@@ -118,7 +118,7 @@ const ListItems = ({ data }) => {
         title={
           <View style={basic}>
             <Text>Vrsta zivotinje:</Text>
-            <Text>{data.Randman}</Text>
+            <Text>{data.AnimalSubType}</Text>
           </View>
         }
         hideChevron={true}
