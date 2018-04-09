@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, FlatList, View, Dimensions } from "react-native";
 import { Card, List, ListItem, Button } from "react-native-elements";
-import { getData } from "../helpers/index";
+import { getData, ImgPicker } from "../helpers/index";
 
 const urlMini = `http://212.200.54.246:5001/api/StockItem/GetStockItemsByWarehouseForMobile?companyId=1&`;
 export default class WarehouseItem extends React.Component {
@@ -40,23 +40,7 @@ export default class WarehouseItem extends React.Component {
         style={{ width: "100%" }}
         data={this.state.data}
         renderItem={({ item }) => {
-          let img;
-          switch (item.Image.split(".")[0]) {
-            case "cow":
-              img = require("../assets/Icons/cow2.png");
-              break;
-            case "pig":
-              img = require("../assets/Icons/pig2.png");
-              break;
-            case "lamb":
-              img = require("../assets/Icons/lamb2.png");
-              break;
-            case "all":
-              img = require("../assets/Icons/004-all.png");
-              break;
-            case "meat":
-              img = require("../assets/Icons/steak.png");
-          }
+          let img = ImgPicker(item);
           show = item.Image.split(".")[0] === "all" ? true : false;
           return (
             <ListItem
