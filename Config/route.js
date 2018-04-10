@@ -66,6 +66,8 @@ import InputNoteSimpleScreen from "../screens/Documents/InputNoteScreen";
 import PretragaScreen from "../screens/Documents/Pretraga";
 import PretragaShowScreen from "../screens/Documents/PretragaShow";
 
+import ArtikliDetaljiDetaljiScreen from "../components/ArtikliDetaljiDetalji";
+
 const PigNavigation = StackNavigator(
   {
     prePigScreen: { screen: pigDrawer },
@@ -159,6 +161,7 @@ const magacinNavigation = StackNavigator(
     warehouse2: { screen: LagerSledjivost },
     box: { screen: BoxesScreen },
     detailsArtikli: { screen: ArtikliDetaljiScreen },
+    LagerDetaljiDetalji: { screen: ArtikliDetaljiDetaljiScreen },
     warehouseArtikli: { screen: WarehouseArtikliScreen }
   },
   {
