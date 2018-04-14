@@ -5,7 +5,8 @@ import {
   ScrollView,
   TouchableOpacity,
   WebView,
-  Image
+  Image,
+  StyleSheet
 } from "react-native";
 import {
   WrapperHeader,
@@ -28,16 +29,18 @@ export default class CompanyDrawer extends Component {
       <ScrollView>
         <Header title={"Kompanije"} />
         <View style={{ paddingTop: 0, flexDirection: "row" }}>
-          <Image
-            source={img1}
-            style={{
-              width: 100,
-              height: 200,
-              borderTopRightRadius: 100,
-              borderBottomRightRadius: 100,
-              flex: 3
-            }}
-          />
+          <View style={{}}>
+            <Image
+              source={img1}
+              style={{
+                width: 100,
+                height: 200,
+                borderTopRightRadius: 100,
+                borderBottomRightRadius: 100,
+                flex: 3
+              }}
+            />
+          </View>
           <View
             style={{ flex: 2, justifyContent: "center", alignItems: "center" }}
           >
@@ -203,7 +206,8 @@ export default class CompanyDrawer extends Component {
               height: 200,
               borderTopLeftRadius: 100,
               borderBottomLeftRadius: 100,
-              flex: 3
+              flex: 3,
+              overflow: "hidden"
             }}
           />
         </View>
