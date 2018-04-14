@@ -22,9 +22,11 @@ const img2 = require("../assets/petmb.jpg");
 const img3 = require("../assets/dj2010.png");
 const img4 = require("../assets/viber_image.jpg");
 
-export default () => {
+export default props => {
+  const { navigate } = props;
+  const { main } = styles;
   return (
-    <View style={{ paddingTop: 0, flexDirection: "row" }}>
+    <View style={main}>
       <View style={{}}>
         <Image
           source={img1}
@@ -72,4 +74,26 @@ export default () => {
   );
 };
 
-const styles = StyleSheet.create({});
+const Dugme = props => {
+  return (
+    <Button
+      containerStyle={{ padding: 0, margin: 0, flexDirection: "row" }}
+      onPress={() => navigate("login")}
+      buttonStyle={{
+        marginLeft: 0,
+        marginRight: 0,
+        marginBottom: 0,
+        width: "80%"
+      }}
+      title="Finansije"
+      disabled={false}
+    />
+  );
+};
+
+const styles = StyleSheet.create({
+  main: {
+    paddingTop: 0,
+    flexDirection: "row"
+  }
+});
