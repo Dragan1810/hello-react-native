@@ -109,7 +109,8 @@ export default class PrePrijemScreen extends Component {
             //const show = index === 0 ? true : false;
             return (
               <ListItem
-                leftAvatar={{ rounded: true, source: { uri: img } }}
+                //leftAvatar={{ rounded: true, source: { uri: img } }}
+                avatar={img}
                 title={item.Item}
                 subtitle={item.Description}
                 onPressRightIcon={() =>
@@ -120,11 +121,10 @@ export default class PrePrijemScreen extends Component {
                     name: item.Item
                   })
                 }
-                chevron
               />
             );
           }}
-          keyExtractor={(item, i) => `key-${i}`}
+          keyExtractor={(item, i) => i.toString()}
           refreshing={this.state.refreshing}
           onRefresh={this.handleRefresh}
         />
