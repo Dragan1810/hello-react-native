@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import {
   View,
   Text,
@@ -16,52 +16,88 @@ import {
 import { Card, ListItem, Button } from "react-native-elements";
 import Header from "./Header";
 import styled from "styled-components/native";
+import { withNavigation } from "react-navigation";
 
-const img1 = require("../assets/logo2.png");
-const img2 = require("../assets/petmb.jpg");
-const img3 = require("../assets/dj2010.png");
-const img4 = require("../assets/viber_image.jpg");
+import { Consumer } from "../screens/Company/CompanyDrawer";
 
 const ImgWrapper = styled.View`
-  border-top-right-radius: 50%;
-  border-bottom-right-radius: 50%;
+  border-top-right-radius: 50;
+  border-bottom-right-radius: 50;
+  flex: 3;
 `;
 
-export default class CompanySlot extends Component {
-  render() {
-    //const { navigate } = props;
-    const { main, btnDiv } = styles;
-    return (
-      <View style={main}>
+const MainContainer = styled.View`
+  display: flex;
+  padding-top: 0;
+  flex-direction: row;
+`;
+
+const BtnDiv = styled.View`
+  display: flex;
+  flex: 2;
+  justify-content: center;
+  align-items: center;
+`;
+
+const CompanyImg = styled.Image`
+  width: 200;
+  height: 200;
+  border-top-left-radius: ${props => (props.Left ? "0" : "100")};
+  border-bottom-left-radius: ${props => (props.Left ? "0" : "100")};
+  border-top-right-radius: ${props => (props.Left ? "100" : "0")};
+  border-bottom-right-radius: ${props => (props.Left ? "100" : "0")};
+`;
+
+class CompanySlot extends Component {
+  constructor() {
+    super();
+  }
+  flip(item, i) {
+    const img =
+      i % 2 === 0 ? (
         <ImgWrapper>
-          <Image
-            source={img1}
-            style={{
-              width: 100,
-              height: 200,
-              borderTopRightRadius: 100,
-              borderBottomRightRadius: 100,
-              flex: 3
-            }}
-          />
+          <CompanyImg Left source={item.img} />
         </ImgWrapper>
-        <View style={btnDiv}>
-          <ListDugme />
-        </View>
-      </View>
+      ) : (
+        <ImgWrapper>
+          <CompanyImg source={item.img} />
+        </ImgWrapper>
+      );
+    const btn = (
+      <BtnDiv>
+        <ListDugme
+          list={item.btn_list}
+          navigate={this.props.navigation.navigate}
+        />
+      </BtnDiv>
+    );
+    return i % 2 === 0 ? [img, btn] : [btn, img];
+  }
+  render() {
+    return (
+      <Fragment>
+        <Consumer>
+          {data =>
+            data.map((item, i) => (
+              <MainContainer key={i}>{this.flip(item, i)}</MainContainer>
+            ))
+          }
+        </Consumer>
+      </Fragment>
     );
   }
 }
 
-const ListDugme = props => {
-  return <Dugme />;
+const ListDugme = ({ list, navigate }) => {
+  return list.map((item, i) => (
+    <Dugme key={i} name={item.name} route={item.route} navigate={navigate} />
+  ));
 };
-
-const Dugme = props => {
+const Dugme = ({ name, route, navigate }) => {
   return (
     <Button
-      containerStyle={{ padding: 0, marginBottom: 10, flexDirection: "row" }}
-      onPress={() => navigate("Home")}
+      containerStyle={styles.btn}
+      onPress={() => navigate(route)}
       buttonStyle={{
         marginLeft: 0,
         marginRight: 0,
@@ -69,20 +105,18 @@ const Dugme = props => {
         backgroundColor: "#009688",
         width: "80%"
       }}
-      title="Proizvodnja"
+      title={name}
       disabled={false}
     />
   );
 };
 
 const styles = StyleSheet.create({
-  main: {
-    paddingTop: 0,
+  btn: {
+    padding: 0,
+    marginBottom: 10,
     flexDirection: "row"
-  },
-  btnDiv: {
-    flex: 2,
-    justifyContent: "center",
-    alignItems: "center"
   }
 });
+
+export default withNavigation(CompanySlot);

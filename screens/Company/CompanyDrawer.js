@@ -22,14 +22,43 @@ const img2 = require("../../assets/petmb.jpg");
 const img3 = require("../../assets/dj2010.png");
 const img4 = require("../../assets/viber_image.jpg");
 
+export const { Provider, Consumer } = React.createContext();
+
 export default class CompanyDrawer extends Component {
+  constructor() {
+    super();
+    this.state = {
+      data: [
+        {
+          img: img1,
+          btn_list: [
+            {
+              name: "Proizvodnja",
+              route: "Home"
+            }
+          ]
+        },
+        {
+          img: img2,
+          btn_list: [
+            {
+              name: "Proizvodnja",
+              route: "Home"
+            }
+          ]
+        }
+      ]
+    };
+  }
   render() {
     const { navigate, goBack } = this.props.navigation;
     return (
       <Fragment>
         <Header title={"Kompanije"} />
         <ScrollView>
-          <CompanySlot />
+          <Provider value={this.state.data}>
+            <CompanySlot data={this.state.data} />
+          </Provider>
           <Card title="HALAL Standard Djurdjevic">
             <View style={{ width: "100%", height: 200 }}>
               <WebView
