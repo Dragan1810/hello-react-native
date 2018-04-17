@@ -1,32 +1,23 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, FlatList } from "react-native";
-import { SearchBar, Icon, ListItem } from "react-native-elements";
-import {
-  Wrapper,
-  WrapperHeader,
-  TitleText
-} from "../../styled-components/Wrapper";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import { Text, View, FlatList } from "react-native";
+import { Wrapper } from "../../styled-components/Wrapper";
 import Activity from "../../components/ActivityIndicator";
-import ListItems from "../../components/InputNoteItem";
-import { getData, filterData, newFilterData } from "../../helpers/index";
-import DatePicker from "react-native-datepicker";
+import { getData } from "../../helpers/index";
+import Header from "../../reusable-components/Header";
+import Item from "../../reusable-components/ListItem";
+import { withNavigation } from "react-navigation";
 
 const URL = `http://212.200.54.246:5001/api/InputNote/GetInputNotesForMobile?companyId=1&currentPage=1`;
 const URLmini = `http://212.200.54.246:5001/api/InputNote/GetInputNotesForMobile?companyId=1`;
-export default class PrePrijemScreen extends Component {
+
+class StariPredhodniPrijem extends Component {
   constructor() {
     super();
-
     this.state = {
       data: [],
-      search: "",
       page: 1,
-      refreshing: false,
-      date: "2018-01-01"
+      refreshing: false
     };
-
-    this.search = this.search.bind(this);
     this.handleRefresh = this.handleRefresh.bind(this);
     this.handleLoadMore = this.handleLoadMore.bind(this);
   }
@@ -51,14 +42,6 @@ export default class PrePrijemScreen extends Component {
         )
     );
   }
-
-  async search(e) {
-    await this.setState({ search: e.nativeEvent.text });
-    getData(URLmini)
-      .then(data => newFilterData(data, this.state.search))
-      .then(data => this.setState({ data }));
-  }
-
   async handleLoadMore() {
     let { page } = this.state;
     page = page + 1;
@@ -68,59 +51,19 @@ export default class PrePrijemScreen extends Component {
       await this.setState({ data, page });
     }
   }
-
   render() {
-    const rdy = <Activity />;
     const { navigate, goBack } = this.props.navigation;
-    const { search, icon } = styles;
     return (
       <Wrapper>
-        <WrapperHeader>
-          <Icon
-            containerStyle={icon}
-            name="chevron-left"
-            type="font-awesome"
-            color="#fff"
-            size={32}
-            onPress={() => goBack()}
-          />
-          <View style={search}>
-            <TitleText>Predhodni Prijem</TitleText>
-          </View>
-        </WrapperHeader>
-        {this.state.data.length < 1 && rdy}
+        <Header
+          title={"Predhodni Prijem"}
+          goBack={goBack}
+          navigate={navigate}
+        />
         <FlatList
           style={{ width: "100%" }}
           data={this.state.data}
-          renderItem={({ item }) => {
-            let img;
-            switch (item.Image.split(".")[0]) {
-              case "cow":
-                img = require("../../assets/Icons/cow2.png");
-                break;
-              case "pig":
-                img = require("../../assets/Icons/pig2.png");
-                break;
-              case "lamb":
-                img = require("../../assets/Icons/lamb2.png");
-            }
-            return (
-              <ListItem
-                roundAvatar
-                avatar={img}
-                key={item.Id}
-                title={item.Item}
-                subtitle={item.Description}
-                onPressRightIcon={() =>
-                  navigate("simplePrijem", {
-                    url: `http://212.200.54.246:5001/api/InputNote/GetInputNoteForMobile?Id=${
-                      item.Id
-                    }`
-                  })
-                }
-              />
-            );
-          }}
+          renderItem={({ item }) => <Item item={item} />}
           keyExtractor={item => item.Id}
           refreshing={this.state.refreshing}
           onRefresh={this.handleRefresh}
@@ -131,41 +74,82 @@ export default class PrePrijemScreen extends Component {
     );
   }
 }
+const PredhodniPrijem = ({
+  data,
+  title,
+  handleRefresh,
+  handleLoadMore,
+  navigation: { goBack, navigate }
+}) => (
+  <Wrapper>
+    <Header title={title} goBack={goBack} navigate={navigate} />
+    <FlatList
+      style={{ width: "100%" }}
+      data={data}
+      renderItem={({ item }) => <Item item={item} />}
+      keyExtractor={item => item.Id}
+      refreshing={data.refreshing || false}
+      onRefresh={handleRefresh}
+      onEndReached={handleLoadMore}
+      onEndReachedThreshold={0.5}
+    />
+  </Wrapper>
+);
 
-const styles = StyleSheet.create({
-  icon: {
-    flex: 1,
-    alignSelf: "flex-start",
-    margin: 0,
-    padding: 0,
-    backgroundColor: "#009688",
-    height: 56
-  },
-  search: {
-    flex: 3,
-    alignSelf: "flex-end",
-    paddingBottom: 12
-  }
-});
+const HOC = (Component, title) => {
+  return class extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        data: [],
+        page: 1,
+        refreshing: false
+      };
+      this.handleRefresh = this.handleRefresh.bind(this);
+      this.handleLoadMore = this.handleLoadMore.bind(this);
+    }
+    componentDidMount() {
+      getData(URL)
+        .then(data => this.setState({ data }))
+        .catch(err => console.log(err));
+    }
 
-/*
- <DatePicker
-          style={{ width: 200, paddingTop: 15 }}
-          date={this.state.date}
-          mode="date"
-          placeholder="select date"
-          format="YYYY-MM-DD"
-          minDate="2018-01-01"
-          maxDate="2025-06-01"
-          confirmBtnText="Confirm"
-          cancelBtnText="Cancel"
-          customStyles={{
-            dateInput: {
-              backgroundColor: "white"
-            }
-          }}
-          onDateChange={date => {
-            this.setState({ date });
-          }}
+    handleRefresh() {
+      this.setState(
+        {
+          refreshing: true
+        },
+        () =>
+          getData(URL).then(data =>
+            this.setState({
+              data,
+              refreshing: false,
+              page: 1
+            })
+          )
+      );
+    }
+    async handleLoadMore() {
+      let { page } = this.state;
+      page = page + 1;
+      let Data = await getData(`${URLmini}&CurrentPage=${page}`);
+      if (Data.length > 0) {
+        let data = [...this.state.data, ...Data];
+        await this.setState({ data, page });
+      }
+    }
+    render() {
+      return (
+        <Component
+          {...this.props}
+          data={this.state.data}
+          title={title}
+          handleRefresh={this.handleRefresh}
+          handleLoadMore={this.handleLoadMore}
         />
-*/
+      );
+    }
+  };
+};
+const Proba = HOC(PredhodniPrijem, "Hello");
+export default Proba;

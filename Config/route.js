@@ -134,15 +134,14 @@ const productionNavigation = StackNavigator(
 
 const prijemNavigation = StackNavigator(
   {
-    // primer navigacije
-    prePrijem: { screen: DocumentDrawer }, // routa : { ime screena gde vodi}
-    naloziZaPrijem: { screen: NalogZaPrijemScreen },
-    danasnji: { screen: DanasnjePrijemScreen },
-    prethodni: { screen: PrethodnePrijemScreen },
-    pretraga: { screen: PretragaScreen },
-    showPretraga: { screen: PretragaShowScreen },
-    subGroup: { screen: SubTypePrijemScreen },
-    simplePrijem: { screen: InputNoteSimpleScreen }
+    prePrijem: DocumentDrawer,
+    naloziZaPrijem: NalogZaPrijemScreen,
+    danasnji: DanasnjePrijemScreen,
+    prethodni: PrethodnePrijemScreen,
+    pretraga: PretragaScreen,
+    showPretraga: PretragaShowScreen,
+    subGroup: SubTypePrijemScreen,
+    simplePrijem: InputNoteSimpleScreen
   },
   {
     headerMode: "none"

@@ -45,12 +45,10 @@ export default class NalogPrijemScreen extends Component {
     }
   }
   render() {
-    const rdy = <Activity />;
     const { navigate, goBack } = this.props.navigation;
     return (
       <Wrapper>
-        <Header title={"Nalog za Prijem"} />
-        {this.state.data.length < 1 && rdy}
+        <Header title={"Nalog za Prijem"} goBack={goBack} navigate={navigate} />
         <FlatList
           style={{ width: "100%" }}
           data={this.state.data}
