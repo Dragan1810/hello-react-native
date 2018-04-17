@@ -52,3 +52,13 @@ export const ImgPicker = item => {
   }
   return img;
 };
+
+/*
+async search(e) {
+    await this.setState({ search: e.nativeEvent.text });
+    getData(URLmini)
+      .then(data => newFilterData(data, this.state.search))
+      .then(data => this.setState({ data }));
+  }
+
+*/

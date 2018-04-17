@@ -28,7 +28,8 @@ const ImgWrapper = styled.View`
 
 const MainContainer = styled.View`
   display: flex;
-  padding-top: 0;
+  padding: 0;
+  margin: 0;
   flex-direction: row;
 `;
 
@@ -42,6 +43,7 @@ const BtnDiv = styled.View`
 const CompanyImg = styled.Image`
   width: 200;
   height: 200;
+  padding: 0;
   border-top-left-radius: ${props => (props.Left ? "0" : "100")};
   border-bottom-left-radius: ${props => (props.Left ? "0" : "100")};
   border-top-right-radius: ${props => (props.Left ? "100" : "0")};
