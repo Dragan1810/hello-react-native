@@ -1,46 +1,62 @@
-import format from 'date-fns/format'
+import format from "date-fns/format";
 
-const currentHostName = "212.200.54.246:5001"
-const currentCompanyID = 1
-let date = format(Date.now(),'YYYYMMDD');
+const currentHostName = "212.200.54.246:5001";
+const currentCompanyID = 1;
+let date = format(Date.now(), "YYYYMMDD");
 
 //let Id = () => fetch(`http://212.200.54.246:5001/api/Company/GetCompanies`).then(res => res.json()).then(x =>{return x.Companies[0]['CompanyCode']} );
 
 export const data = {
-    production: {
-        goveda : {
-            Aklanja: `http://${currentHostName}/api/Slaughter/GetSlaughterItemTmpsByDate?slaughterDate=${date}0000&${currentCompanyID}`,
-            Pklanja: `http://${currentHostName}/api/Slaughter/GetSlaughtersByPage?CompanyId=${currentCompanyID}`
-        },
-        Pig : {
-            Aklanja: `http://${currentHostName}/api/PigSlaughter/GetPigSlaughterItemTmpsByDate?PigSlaughterDate=${date}0000&${currentCompanyID}`,
-            Pklanja: `http://${currentHostName}/api/PigSlaughter/GetPigSlaughtersByPage?CompanyId=${currentCompanyID}`
-        },
-        Lamb : {
-            Aklanja: `http://${currentHostName}/api/LambSlaughter/GetlambSlaughterItemTmpsByDate?LambSlaughterDate=${date}0000&${currentCompanyID}`,
-            Pklanja: `http://${currentHostName}/api/LambSlaughter/GetLambSlaughtersByPage?CompanyId=${currentCompanyID}`
-        }
+  production: {
+    goveda: {
+      Aklanja: `http://${currentHostName}/api/Slaughter/GetSlaughterItemTmpsByDate?slaughterDate=${date}0000&${currentCompanyID}`,
+      Pklanja: `http://${currentHostName}/api/Slaughter/GetSlaughtersByPage?CompanyId=${currentCompanyID}`
     },
-    documents: {
-        inputNote : `http://${currentHostName}/api/InputNote/GetInputNotesByPage?${currentCompanyID}&CurrentPage=1&ItemsPerPage=1`
+    Pig: {
+      Aklanja: `http://${currentHostName}/api/PigSlaughter/GetPigSlaughterItemTmpsByDate?PigSlaughterDate=${date}0000&${currentCompanyID}`,
+      Pklanja: `http://${currentHostName}/api/PigSlaughter/GetPigSlaughtersByPage?CompanyId=${currentCompanyID}`
     },
-    magacin: {
-        depot: "http://" + currentHostName + "/api/Depot/GetDepots?CompanyId=" + currentCompanyID,
-        warehouse: "http://" + currentHostName + "/api/Warehouse/GetWarehouses?CompanyId=" + currentCompanyID,
-        box: "http://" + currentHostName + "/api/Box/GetBoxes?CompanyId=" + currentCompanyID,
-        stock: `http://${currentHostName}/api/Product/GetProductsByPage?CompanyId=${currentCompanyID}&CurrentPage=1&ItemsPerPage=20`
-    },
-    kartoteka: {
-        stock: `http://212.200.54.246:5001/api/StockTotal/GetStockTotalsByPages?companyId=1`,
-        animal: "http://" + currentHostName + "/api/AnimalType/GetAnimalTypes?CompanyId=" + currentCompanyID
-    },
-    poslovniPartner: {
-        businessPartner: "http://" + currentHostName + "/api/BusinessPartner/GetBusinessPartners?CompanyId=" + currentCompanyID,
-    },
-    company : {
-        company: `http://${currentHostName}/api/Company/GetCompanies`
+    Lamb: {
+      Aklanja: `http://${currentHostName}/api/LambSlaughter/GetlambSlaughterItemTmpsByDate?LambSlaughterDate=${date}0000&${currentCompanyID}`,
+      Pklanja: `http://${currentHostName}/api/LambSlaughter/GetLambSlaughtersByPage?CompanyId=${currentCompanyID}`
     }
-}
+  },
+  documents: {
+    inputNote: `http://${currentHostName}/api/InputNote/GetInputNotesByPage?${currentCompanyID}&CurrentPage=1&ItemsPerPage=1`,
+    predhodniPrijem: `http://${currentHostName}/api/InputNote/GetInputNotesForMobile?companyId=1&currentPage=1`,
+    nalogZaPrijem: `http://212.200.54.246:5001/api/WorkOrderAnimalInputNote/GetWorkOrdersForMobile?companyId=1`
+  },
+  magacin: {
+    depot: `http://${currentHostName}/api/Depot/GetDepots?CompanyId=${currentCompanyID}`,
+    warehouse:
+      "http://" +
+      currentHostName +
+      "/api/Warehouse/GetWarehouses?CompanyId=" +
+      currentCompanyID,
+    box:
+      "http://" +
+      currentHostName +
+      "/api/Box/GetBoxes?CompanyId=" +
+      currentCompanyID,
+    stock: `http://${currentHostName}/api/Product/GetProductsByPage?CompanyId=${currentCompanyID}&CurrentPage=1&ItemsPerPage=20`
+  },
+  kartoteka: {
+    stock: `http://212.200.54.246:5001/api/StockTotal/GetStockTotalsByPages?companyId=1`,
+    animal:
+      "http://" +
+      currentHostName +
+      "/api/AnimalType/GetAnimalTypes?CompanyId=" +
+      currentCompanyID
+  },
+  poslovniPartner: {
+    businessPartner:
+      "http://" +
+      currentHostName +
+      "/api/BusinessPartner/GetBusinessPartners?CompanyId=" +
+      currentCompanyID
+  },
+  company: { company: `http://${currentHostName}/api/Company/GetCompanies` }
+};
 
 /*
 
