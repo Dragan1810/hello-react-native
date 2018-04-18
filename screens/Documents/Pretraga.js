@@ -82,9 +82,7 @@ export default class PretragaScreen extends Component {
     );
   }
   render() {
-    const rdy = <Activity />;
     const { navigate, goBack } = this.props.navigation;
-    const { search, icon } = styles;
     return (
       <Wrapper>
         <Header title={"Pretraga"} goBack={goBack} />
@@ -160,67 +158,6 @@ export default class PretragaScreen extends Component {
           }
         />
       </Wrapper>
-    );
-  }
-}
-//
-const styles = StyleSheet.create({
-  icon: {
-    flex: 1,
-    alignSelf: "flex-start",
-    margin: 0,
-    padding: 0,
-    backgroundColor: "#009688",
-    height: 56
-  },
-  search: {
-    flex: 3,
-    alignSelf: "flex-end",
-    paddingBottom: 12,
-    backgroundColor: "#009688"
-  }
-});
-
-class Rezultat extends Component {
-  constructor() {
-    super();
-    this.state = {
-      data: []
-    };
-  }
-  componentDidMount() {
-    const { od, doDate, sid, aid, said } = this.props;
-    const Uri = `http://212.200.54.246:5001/api/InputNote/GetInputNotesForGroupedReportMobile?companyId=1&dateFrom=20180312000000&dateTo=20180314000000&businessPartnerId=0&animalTypeId=0/animalSubTypeId=0`;
-    getData(Uri).then(data => this.setState({ data }));
-  }
-  render() {
-    return (
-      <FlatList
-        style={{ width: "100%" }}
-        data={this.state.data}
-        renderItem={({ item }) => {
-          let img;
-          switch (item.Image.split(".")[0]) {
-            case "cow":
-              img = require("../../assets/Icons/cow2.png");
-              break;
-            case "pig":
-              img = require("../../assets/Icons/pig2.png");
-              break;
-            case "lamb":
-              img = require("../../assets/Icons/lamb2.png");
-          }
-          return (
-            <ListItem
-              roundAvatar
-              avatar={img}
-              title={item.Item}
-              subtitle={item.Description}
-            />
-          );
-        }}
-        keyExtractor={(item, i) => i}
-      />
     );
   }
 }

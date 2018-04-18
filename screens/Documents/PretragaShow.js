@@ -4,6 +4,7 @@ import { ListItem } from "react-native-elements";
 import Header from "../../reusable-components/Header";
 import { Wrapper } from "../../styled-components/Wrapper";
 import { getData } from "../../helpers/index";
+import Item from "../../reusable-components/ListItem";
 
 export default class Rezultat extends Component {
   constructor() {
@@ -32,33 +33,8 @@ export default class Rezultat extends Component {
         <FlatList
           style={{ width: "100%" }}
           data={this.state.data}
-          renderItem={({ item }) => {
-            let img;
-            switch (item.Image.split(".")[0]) {
-              case "cow":
-                img = require("../../assets/Icons/cow2.png");
-                break;
-              case "pig":
-                img = require("../../assets/Icons/pig2.png");
-                break;
-              case "lamb":
-                img = require("../../assets/Icons/lamb2.png");
-                break;
-              case "all":
-                img = require("../../assets/Icons/004-all.png");
-            }
-            show = item.Image.split(".")[0] === "all" ? true : false;
-            return (
-              <ListItem
-                roundAvatar
-                avatar={img}
-                title={item.Item}
-                subtitle={item.Description}
-                hideChevron={show}
-              />
-            );
-          }}
-          keyExtractor={(item, i) => i}
+          renderItem={({ item }) => <Item item={item} />}
+          keyExtractor={(item, i) => (item.Id ? `${item.Id}` : `item-${i}`)}
         />
       </Wrapper>
     );

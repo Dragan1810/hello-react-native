@@ -30,7 +30,7 @@ const PredhodniPrijem = ({
           }}
         />
       )}
-      keyExtractor={item => `${item.Id}`}
+      keyExtractor={(item, i) => (item.Id ? `${item.Id}` : `item-${i}`)}
       refreshing={data.refreshing || false}
       onRefresh={handleRefresh}
       onEndReached={handleLoadMore || null}

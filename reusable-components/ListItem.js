@@ -10,6 +10,8 @@ const Item = ({ item, navigation: { navigate }, routeData }) => {
     return () => navigate(route, { url: `${routeUrl}${item[prop]}`, name });
   };
 
+  const Action = !!routeData ? Next(routeData) : null;
+
   // chevron logic
   return (
     <ListItem
@@ -17,7 +19,7 @@ const Item = ({ item, navigation: { navigate }, routeData }) => {
       key={item.Id}
       title={item.Item}
       subtitle={item.Description}
-      onPress={Next(routeData)}
+      onPress={Action}
       chevron
     />
   );

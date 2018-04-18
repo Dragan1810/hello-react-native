@@ -1,6 +1,8 @@
 import React from "react";
 import { getData } from "../helpers/index";
 
+// ime i rute iz parametar propsa, refactor soon
+
 const HOC = (Component, title, url) => {
   const URL = url;
   const rege = /&currentPage=\d+/;
