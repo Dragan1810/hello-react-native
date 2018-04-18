@@ -22,10 +22,12 @@ const PredhodniPrijem = ({
       renderItem={({ item }) => (
         <Item
           item={item}
-          route={"simplePrijem"}
-          routeUrl={
-            "http://212.200.54.246:5001/api/InputNote/GetInputNoteForMobile?Id="
-          }
+          routeData={{
+            route: "simplePrijem",
+            routeUrl:
+              "http://212.200.54.246:5001/api/InputNote/GetInputNoteForMobile?Id=",
+            prop: "Id"
+          }}
         />
       )}
       keyExtractor={item => `${item.Id}`}

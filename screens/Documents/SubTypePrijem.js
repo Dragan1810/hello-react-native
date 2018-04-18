@@ -1,16 +1,10 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, FlatList } from "react-native";
 import { SearchBar, Icon, ListItem } from "react-native-elements";
-import {
-  Wrapper,
-  WrapperHeader,
-  TitleText
-} from "../../styled-components/Wrapper";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import { Wrapper } from "../../styled-components/Wrapper";
 import Activity from "../../components/ActivityIndicator";
 import ListItems from "../../components/InputNoteItem";
-import { getData, filterData, newFilterData } from "../../helpers/index";
-import DatePicker from "react-native-datepicker";
+import { getData } from "../../helpers/index";
 import Header from "../../reusable-components/Header";
 
 export default class SubTypeScreen extends Component {
@@ -52,14 +46,6 @@ export default class SubTypeScreen extends Component {
         )
     );
   }
-
-  async search(e) {
-    await this.setState({ search: e.nativeEvent.text });
-    getData(URLmini)
-      .then(data => newFilterData(data, this.state.search))
-      .then(data => this.setState({ data }));
-  }
-
   async handleLoadMore() {
     let { page } = this.state;
     page = page + 1;
@@ -74,7 +60,6 @@ export default class SubTypeScreen extends Component {
     const { name } = this.props.navigation.state.params;
     const rdy = <Activity />;
     const { navigate, goBack } = this.props.navigation;
-    const { search, icon } = styles;
     return (
       <Wrapper>
         <Header title={name} goBack={goBack} />
@@ -125,41 +110,3 @@ export default class SubTypeScreen extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  icon: {
-    flex: 1,
-    alignSelf: "flex-start",
-    margin: 0,
-    padding: 0,
-    backgroundColor: "#009688",
-    height: 56
-  },
-  search: {
-    flex: 3,
-    alignSelf: "flex-end",
-    paddingBottom: 12
-  }
-});
-
-/*
- <DatePicker
-          style={{ width: 200, paddingTop: 15 }}
-          date={this.state.date}
-          mode="date"
-          placeholder="select date"
-          format="YYYY-MM-DD"
-          minDate="2018-01-01"
-          maxDate="2025-06-01"
-          confirmBtnText="Confirm"
-          cancelBtnText="Cancel"
-          customStyles={{
-            dateInput: {
-              backgroundColor: "white"
-            }
-          }}
-          onDateChange={date => {
-            this.setState({ date });
-          }}
-        />
-*/
