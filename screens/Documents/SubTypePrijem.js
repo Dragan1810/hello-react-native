@@ -38,5 +38,5 @@ const SubTypePrijem = ({
   </Wrapper>
 );
 
-const Output = HOC(SubTypePrijem, "Ovo iz Route-name");
+const Output = HOC(SubTypePrijem);
 export default Output;

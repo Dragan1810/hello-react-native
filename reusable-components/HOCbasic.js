@@ -61,11 +61,12 @@ const HOC = (Component, title, url) => {
       }
     }
     render() {
+      let name = !!title ? title : this.props.navigation.state.params.name;
       return result ? (
         <Component
           {...this.props}
           data={this.state.data}
-          title={title}
+          title={name}
           handleRefresh={this.handleRefresh}
           handleLoadMore={this.handleLoadMore}
         />
@@ -73,7 +74,7 @@ const HOC = (Component, title, url) => {
         <Component
           {...this.props}
           data={this.state.data}
-          title={title}
+          title={name}
           handleRefresh={this.handleRefresh}
         />
       );
