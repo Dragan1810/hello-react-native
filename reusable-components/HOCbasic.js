@@ -4,12 +4,17 @@ import { getData } from "../helpers/index";
 const HOC = (Component, title, url) => {
   const URL = url;
   const rege = /&currentPage=\d+/;
-  const result = url.includes("&currentPage")
-    ? url
-        .split(rege)
-        .filter(x => rege.test(x))
-        .join("")
-    : false;
+  let result;
+  if (!!url) {
+    result = url.includes("&currentPage")
+      ? url
+          .split(rege)
+          .filter(x => rege.test(x))
+          .join("")
+      : false;
+  } else {
+    result = false;
+  }
 
   return class extends React.Component {
     constructor(props) {
@@ -23,13 +28,20 @@ const HOC = (Component, title, url) => {
       this.handleLoadMore = this.handleLoadMore.bind(this);
     }
     componentDidMount() {
-      getData(URL)
+      const { url: urlParam } = this.props.navigation.state.params;
+      console.log(url, URL, urlParam);
+      if (!URL) {
+        URLfinal = urlParam;
+      } else {
+        URLfinal = URL;
+      }
+      getData(URLfinal)
         .then(data => this.setState({ data }))
         .catch(err => console.log(err));
     }
     async handleRefresh() {
       await this.setState({ refreshing: true });
-      getData(URL).then(data =>
+      getData(URLfinal).then(data =>
         this.setState({
           data,
           refreshing: false,

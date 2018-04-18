@@ -6,11 +6,8 @@ import { withNavigation } from "react-navigation";
 const Item = ({ item, navigation: { navigate }, routeData }) => {
   let img = ImgPicker(item);
 
-  const Next = ({ route, routeUrl, prop = "Id" }) => {
-    if (!!route) {
-      return null;
-    }
-    return () => navigate(route, { url: `${routeUrl}${item[prop]}` });
+  const Next = ({ route, routeUrl, prop = "Id", name }) => {
+    return () => navigate(route, { url: `${routeUrl}${item[prop]}`, name });
   };
 
   // chevron logic
