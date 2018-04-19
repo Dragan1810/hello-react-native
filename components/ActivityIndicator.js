@@ -7,6 +7,8 @@ const Activity = () => (
     <Header title={"Loading"} />
     <ActivityIndicator
       animating={true}
+      size="large"
+      color="#bc2b78"
       style={{
         opacity: 1,
         paddingTop: 30,
