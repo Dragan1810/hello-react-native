@@ -100,7 +100,7 @@ const ListItems = ({ data }) => {
         title={
           <View style={basic}>
             <Text>Datum prijema:</Text>
-            <Text>{data.SlaughterDate.split("T")[0]}</Text>
+            <Text>{data.SlaughterDate}</Text>
           </View>
         }
         hideChevron={true}

@@ -1,5 +1,6 @@
 import React from "react";
 import { getData } from "../helpers/index";
+import Activity from "../components/ActivityIndicator";
 
 // ime i rute iz parametar propsa, refactor soon
 
@@ -24,7 +25,9 @@ const HOC = (Component, title, url) => {
       this.state = {
         data: [],
         page: 1,
-        refreshing: false
+        refreshing: false,
+        loading: true,
+        error: null
       };
       this.handleRefresh = this.handleRefresh.bind(this);
       this.handleLoadMore = this.handleLoadMore.bind(this);
@@ -38,8 +41,8 @@ const HOC = (Component, title, url) => {
         URLfinal = URL;
       }
       getData(URLfinal)
-        .then(data => this.setState({ data }))
-        .catch(err => console.log(err));
+        .then(data => this.setState({ loading: false, data }))
+        .catch(error => this.setState({ loading: false, error }));
     }
     async handleRefresh() {
       await this.setState({ refreshing: true });
@@ -62,22 +65,26 @@ const HOC = (Component, title, url) => {
     }
     render() {
       let name = !!title ? title : this.props.navigation.state.params.name;
-      return result ? (
-        <Component
-          {...this.props}
-          data={this.state.data}
-          title={name}
-          handleRefresh={this.handleRefresh}
-          handleLoadMore={this.handleLoadMore}
-        />
-      ) : (
-        <Component
-          {...this.props}
-          data={this.state.data}
-          title={name}
-          handleRefresh={this.handleRefresh}
-        />
-      );
+      if (this.state.loading) {
+        return <Activity />;
+      } else {
+        return result ? (
+          <Component
+            {...this.props}
+            data={this.state.data}
+            title={name}
+            handleRefresh={this.handleRefresh}
+            handleLoadMore={this.handleLoadMore}
+          />
+        ) : (
+          <Component
+            {...this.props}
+            data={this.state.data}
+            title={name}
+            handleRefresh={this.handleRefresh}
+          />
+        );
+      }
     }
   };
 };
