@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, FlatList, View, Dimensions } from "react-native";
 import { Card, List, ListItem, Button } from "react-native-elements";
 import { getData, ImgPicker } from "../helpers/index";
+import Item from "../reusable-components/ListItem";
 
 const urlMini = `http://212.200.54.246:5001/api/StockItem/GetStockItemsByWarehouseForMobile?companyId=1&`;
 export default class WarehouseItem extends React.Component {
@@ -29,7 +30,6 @@ export default class WarehouseItem extends React.Component {
     if (prevProps.Cid !== this.props.Cid) {
       const { Cid, Wid } = this.props;
       const url = `${urlMini}warehouseId=${Wid}&warehouseChamberId=${Cid}`;
-      console.log("DONG");
       getData(url).then(data => this.setState({ data }));
     }
   }
@@ -39,20 +39,8 @@ export default class WarehouseItem extends React.Component {
       <FlatList
         style={{ width: "100%" }}
         data={this.state.data}
-        renderItem={({ item }) => {
-          let img = ImgPicker(item);
-          show = item.Image.split(".")[0] === "all" ? true : false;
-          return (
-            <ListItem
-              roundAvatar
-              avatar={img}
-              title={item.Item}
-              subtitle={item.Description}
-              hideChevron={show}
-            />
-          );
-        }}
-        keyExtractor={(item, i) => i}
+        renderItem={({ item }) => <Item item={item} />}
+        keyExtractor={(item, i) => (item.Id ? `${item.Id}` : `item-${i}`)}
       />
     );
   }
