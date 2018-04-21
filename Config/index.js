@@ -224,3 +224,15 @@ export const MagacinRoutes = [
     icon: require("../assets/Icons/barcod.png")
   }
 ];
+
+const logo1 = require("../assets/logo2.png");
+const logo2 = require("../assets/petmb.jpg");
+const logo3 = require("../assets/dj2010.png");
+const logo4 = require("../assets/viber_image.jpg");
+
+export const CompanyListConfig = [
+  { img: logo1, btn_list: [{ name: "Proizvodnja", route: "Home" }] },
+  { img: logo2, btn_list: [{ name: "Proizvodnja", route: "Home" }] },
+  { img: logo3, btn_list: [{ name: "Proizvodnja", route: "Home" }] },
+  { img: logo4, btn_list: [{ name: "Proizvodnja", route: "Home" }] }
+];
