@@ -98,7 +98,7 @@ export default class PretragaScreen extends Component {
             date={this.state.odShow}
             mode="date"
             placeholder="Od: "
-            format="YYYY-MM-DD"
+            format="DD-MM-YYYY"
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
             onDateChange={od => {
@@ -113,7 +113,7 @@ export default class PretragaScreen extends Component {
             date={this.state.doShow}
             mode="date"
             placeholder="Do: "
-            format="YYYY-MM-DD"
+            format="DD-MM-YYYY"
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
             onDateChange={doDate => {
