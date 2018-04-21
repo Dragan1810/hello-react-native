@@ -8,7 +8,6 @@ export const Wrapper = styled.View`
   align-items: center;
   justify-content: flex-start;
 `;
-
 export const WrapperHeader = styled.View`
   background-color: #009688;
   width: 100%;

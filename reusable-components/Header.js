@@ -6,6 +6,7 @@ import {
   WrapperHeader,
   TitleText
 } from "../styled-components/Wrapper";
+import { LinearGradient } from "expo";
 
 const Header = ({ title, goBack, navigate }) => (
   <WrapperHeader>
