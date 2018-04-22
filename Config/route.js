@@ -8,7 +8,6 @@ import WarehouseScreen from "../screens/Magacin/WarehouseScreen";
 import ProductScreen from "../screens/Kartoteka/ProductScreen";
 import AnimalScreen from "../screens/Kartoteka/AnimalScreen";
 import SubAnimalScreen from "../screens/Kartoteka/SubAnimalScreen";
-import BusinessPartnerScreen from "../screens/PoslovniPartner/BusinessPartnerScreen";
 import CompanyScreen from "../screens/Company/CompanyScreen";
 import BoxesScreen from "../screens/Magacin/BoxesScreen";
 import GovedaPKlanja from "../screens/Production/Goveda/Pklanja";
@@ -26,7 +25,6 @@ import DocumentsDrawer from "../screens/Documents/DocumentsDrawer";
 import KartotekaDrawer from "../screens/Kartoteka/KartotekaDrawer";
 import MagacinDrawer from "../screens/Magacin/MagacinDrawer";
 import ProductionDrawer from "../screens/Production/ProductionDrawer";
-import PoslovniPartnerDrawer from "../screens/PoslovniPartner/PoslovniPartnerDrawer";
 import govedaDrawer from "../screens/Production/Goveda/govedaDrawer";
 import pigDrawer from "../screens/Production/Pig/pigDrawer";
 import lambDrawer from "../screens/Production/Lamb/lambDrawer";
@@ -70,10 +68,10 @@ import ArtikliDetaljiDetaljiScreen from "../components/ArtikliDetaljiDetalji";
 
 const PigNavigation = StackNavigator(
   {
-    prePigScreen: { screen: pigDrawer },
-    prePigKlanja: { screen: PigPKlanja },
-    aktPigKlanja: { screen: PigAKlanja },
-    details: { screen: Details } // aktivna predhodna klanja toDO
+    prePigScreen: pigDrawer,
+    prePigKlanja: PigPKlanja,
+    aktPigKlanja: PigAKlanja,
+    details: Details // aktivna predhodna klanja toDO
   },
   {
     headerMode: "none"
@@ -85,9 +83,9 @@ const PigNavigation = StackNavigator(
 
 const GovedaNavigation = StackNavigator(
   {
-    preGovedaScreen: { screen: govedaDrawer },
-    preGovedaKlanja: { screen: GovedaPKlanja },
-    aktGovedaKlanja: { screen: GovedaAKlanja }
+    preGovedaScreen: govedaDrawer,
+    preGovedaKlanja: GovedaPKlanja,
+    aktGovedaKlanja: GovedaAKlanja
     //details: { screen: Details }
   },
   {
@@ -100,9 +98,9 @@ const GovedaNavigation = StackNavigator(
 
 const LambNavigation = StackNavigator(
   {
-    preLambScreen: { screen: lambDrawer },
-    preLambKlanja: { screen: LambPKlanja },
-    aktLambKlanja: { screen: LambAKlanja }
+    preLambScreen: lambDrawer,
+    preLambKlanja: LambPKlanja,
+    aktLambKlanja: LambAKlanja
     //details: { screen: Details }
   },
   {
@@ -116,13 +114,13 @@ const LambNavigation = StackNavigator(
 const productionNavigation = StackNavigator(
   {
     // primer navigacije
-    preProduction: { screen: ProductionDrawer }, // routa : { ime screena gde vodi}
-    goveda: { screen: GovedaNavigation },
-    lamb: { screen: LambNavigation },
-    pig: { screen: PigNavigation },
-    danasnjaKlanja: { screen: DanasnjaKlanjaScreen },
-    prethodnaKlanja: { screen: prethodnaKlanjaScreen },
-    detaljiKlanja: { screen: DetaljiKlanjaScreen }
+    preProduction: ProductionDrawer, // routa : { ime screena gde vodi}
+    goveda: GovedaNavigation,
+    lamb: LambNavigation,
+    pig: PigNavigation,
+    danasnjaKlanja: DanasnjaKlanjaScreen,
+    prethodnaKlanja: prethodnaKlanjaScreen,
+    detaljiKlanja: DetaljiKlanjaScreen
   },
   {
     headerMode: "none"
@@ -153,15 +151,15 @@ const prijemNavigation = StackNavigator(
 
 const magacinNavigation = StackNavigator(
   {
-    preMagacin: { screen: MagacinDrawer },
-    stock: { screen: StockGrid }, //zamenjeno sa Stock Screenom to be fixed.... ProductScreen/Stock Grid
-    depot: { screen: DepotScreen },
-    warehouse: { screen: WarehouseScreen },
-    warehouse2: { screen: LagerSledjivost },
-    box: { screen: BoxesScreen },
-    detailsArtikli: { screen: ArtikliDetaljiScreen },
-    LagerDetaljiDetalji: { screen: ArtikliDetaljiDetaljiScreen },
-    warehouseArtikli: { screen: WarehouseArtikliScreen }
+    preMagacin: MagacinDrawer,
+    stock: StockGrid, //zamenjeno sa Stock Screenom to be fixed.... ProductScreen/Stock Grid
+    depot: DepotScreen,
+    warehouse: WarehouseScreen,
+    warehouse2: LagerSledjivost,
+    box: BoxesScreen,
+    detailsArtikli: ArtikliDetaljiScreen,
+    LagerDetaljiDetalji: ArtikliDetaljiDetaljiScreen,
+    warehouseArtikli: WarehouseArtikliScreen
   },
   {
     headerMode: "none"
@@ -173,10 +171,10 @@ const magacinNavigation = StackNavigator(
 
 const kartotekaNavigation = StackNavigator(
   {
-    preKartoteka: { screen: KartotekaDrawer },
-    product: { screen: StockScreen },
-    animal: { screen: AnimalScreen },
-    subAnimal: { screen: SubAnimalScreen }
+    preKartoteka: KartotekaDrawer,
+    product: StockScreen,
+    animal: AnimalScreen,
+    subAnimal: SubAnimalScreen
   },
   {
     headerMode: "none"
@@ -186,20 +184,10 @@ const kartotekaNavigation = StackNavigator(
   }
 );
 
-const poslovniPartnerNavigation = StackNavigator(
-  {
-    prePoslovniPartner: { screen: PoslovniPartnerDrawer },
-    businessPartner: { screen: BusinessPartnerScreen }
-  },
-  {
-    initialRouteName: "prePoslovniPartner"
-  }
-);
-
 const LinkNav = StackNavigator(
   {
-    LinkScreen: { screen: LinkScreen },
-    web: { screen: Web }
+    LinkScreen: LinkScreen,
+    web: Web
   },
   {
     headerMode: "none"
@@ -211,9 +199,9 @@ const LinkNav = StackNavigator(
 
 const EnergoNav = StackNavigator(
   {
-    HomeEnergoScreen: { screen: HomeEnergoScreen },
-    Elinkovi: { screen: ElinkScreen },
-    web: { screen: Web }
+    HomeEnergoScreen: HomeEnergoScreen,
+    Elinkovi: ElinkScreen,
+    web: Web
   },
   {
     headerMode: "none"
@@ -225,9 +213,9 @@ const EnergoNav = StackNavigator(
 
 const PetMBNav = StackNavigator(
   {
-    HomePet: { screen: HomePetScreen },
-    Plinkovi: { screen: PlinkScreen },
-    web: { screen: Web }
+    HomePet: HomePetScreen,
+    Plinkovi: PlinkScreen,
+    web: Web
   },
   {
     headerMode: "none"
@@ -239,9 +227,9 @@ const PetMBNav = StackNavigator(
 
 const Dju2010Nav = StackNavigator(
   {
-    HomeDju2010Screen: { screen: HomeDju2010Screen },
-    Djlinkovi: { screen: DjLink2010Screen },
-    web: { screen: Web }
+    HomeDju2010Screen: HomeDju2010Screen,
+    Djlinkovi: DjLink2010Screen,
+    web: Web
   },
   {
     headerMode: "none"
@@ -260,14 +248,13 @@ const MainNavigation = StackNavigator(
     Production: productionNavigation,
     RobniPromet: prijemNavigation,
     Kartoteka: kartotekaNavigation,
-    PoslovniPartner: poslovniPartnerNavigation,
     Linkovi: LinkNav,
     HR: HRScreen,
-    Scan: { screen: Skener },
-    ScanItem: { screen: SkenerItem },
-    HomeEnergo: { screen: EnergoNav },
-    Dju2010: { screen: Dju2010Nav },
-    PetMB: { screen: PetMBNav }
+    Scan: Skener,
+    ScanItem: SkenerItem,
+    HomeEnergo: EnergoNav,
+    Dju2010: Dju2010Nav,
+    PetMB: PetMBNav
 
     // dodati drawer sa strane podesavanje strana
   },

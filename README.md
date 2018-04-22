@@ -39,13 +39,14 @@ Koristi se React-Navigation dokumentacija [ovde](https://reactnavigation.org/doc
 ```javascript
 const MainNavigation = StackNavigator(
   {
-    preCompany: { screen: CompanyDrawer },
-    login: { screen: LoginScreen },
-    Home: { screen: HomeScreen },
-    Magacin: { screen: magacinNavigation },
-    Production: { screen: productionNavigation },
-    RobniPromet: { screen: prijemNavigation },
-    Kartoteka: { screen: kartotekaNavigation }
+    imeRute: Ekran koji se prikazuje ili navigacija
+    preCompany: CompanyDrawer,
+    login: LoginScreen,
+    Home: HomeScreen,
+    Magacin: magacinNavigation,
+    Production: productionNavigation,
+    RobniPromet: prijemNavigation,
+    Kartoteka: kartotekaNavigation
   },
   {
     headerMode: "none"
