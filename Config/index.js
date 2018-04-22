@@ -232,7 +232,7 @@ const logo4 = require("../assets/viber_image.jpg");
 
 export const CompanyListConfig = [
   { img: logo1, btn_list: [{ name: "Proizvodnja", route: "Home" }] },
-  { img: logo2, btn_list: [{ name: "Proizvodnja", route: "Home" }] },
-  { img: logo3, btn_list: [{ name: "Proizvodnja", route: "Home" }] },
-  { img: logo4, btn_list: [{ name: "Proizvodnja", route: "Home" }] }
+  { img: logo2, btn_list: [{ name: "Proizvodnja", route: "PetMB" }] },
+  { img: logo3, btn_list: [{ name: "Proizvodnja", route: "Dju2010" }] },
+  { img: logo4, btn_list: [{ name: "Proizvodnja", route: "HomeEnergo" }] }
 ];
