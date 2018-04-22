@@ -25,13 +25,13 @@ export const LinkRoutes = [
   {
     id: "web",
     title: "AgroKlub",
-    icon: Icon.knife,
+    icon: require("../assets/New folder/agroklub-logotip.png"),
     uri: "https://www.agroklub.rs/poljoprivredne-vesti/"
   },
   {
     id: "web",
     title: "Fendt",
-    icon: Icon.knife,
+    icon: require("../assets/New folder/fendt-logo_220x37.png"),
     uri: "https://www.fendt.com/int/default.html"
   },
   {
@@ -43,7 +43,7 @@ export const LinkRoutes = [
   {
     id: "web",
     title: "Delta Agrar",
-    icon: require("../assets/linkovi/knez.jpg"),
+    icon: require("../assets/New folder/delta-agrar.png"),
     uri: "http://www.deltaagrar.rs/"
   }
 ];
