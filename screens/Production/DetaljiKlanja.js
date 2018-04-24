@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, FlatList, ScrollView } from "react-native";
-import { SearchBar, Icon, Card, ListItem } from "react-native-elements";
-import { Wrapper, WrapperHeader } from "../../styled-components/Wrapper";
-import Activity from "../../components/ActivityIndicator";
-import { getData, filterData, newFilterData } from "../../helpers/index";
+import { Card, ListItem } from "react-native-elements";
+import { Wrapper } from "../../styled-components/Wrapper";
 import Header from "../../reusable-components/Header";
 import {
   Table,
@@ -36,7 +34,6 @@ const Output = HOC(DetaljiKlanja, "Detalji Klanja");
 export default Output;
 
 const ListItems = ({ data }) => {
-  console.log("ovde sam", data);
   const { basic } = styles;
   return (
     <Card title={data.Supplier}>
