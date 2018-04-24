@@ -14,74 +14,29 @@ import {
   Cols,
   Cell
 } from "react-native-table-component";
+import HOC from "../../reusable-components/HOCbasic";
 
-export default class SingleScreen extends Component {
-  constructor() {
-    super();
+const DetaljiKlanja = ({
+  data,
+  title,
+  handleRefresh,
+  handleLoadMore,
+  navigation: { goBack, navigate }
+}) => (
+  <Wrapper>
+    <Header title={title} goBack={goBack} navigate={navigate} />
+    <View style={{ width: "100%" }}>
+      <ListItems data={data} />
+      <Grid data={data.SlaughterItems} />
+    </View>
+  </Wrapper>
+);
 
-    this.state = {
-      data: [],
-      search: "",
-      refreshing: false
-    };
-    this.handleRefresh = this.handleRefresh.bind(this);
-  }
-  componentDidMount() {
-    const { url } = this.props.navigation.state.params;
-    console.log("ovde sam 1", url);
-    getData(url)
-      .then(data => this.setState({ data: [data] }))
-      .catch(err => console.log(err));
-    console.log(this.state.data);
-  }
-
-  handleRefresh() {
-    const { url } = this.props.navigation.state.params;
-    this.setState(
-      {
-        refreshing: true
-      },
-      () =>
-        getData(url).then(data =>
-          this.setState({
-            data,
-            refreshing: false,
-            page: 1
-          })
-        )
-    );
-  }
-
-  render() {
-    const rdy = <Activity />;
-    const { navigate, goBack } = this.props.navigation;
-    const { search, icon } = styles;
-    return (
-      <Wrapper>
-        <Header title={"Detalji Klanja"} goBack={goBack} />
-        {!this.state.data.length && rdy}
-        <FlatList
-          style={{ width: "100%" }}
-          data={this.state.data}
-          renderItem={({ item }) => {
-            return (
-              <View>
-                <ListItems data={item} />
-                <Grid data={item.SlaughterItems} />
-              </View>
-            );
-          }}
-          keyExtractor={(item, i) => `${i}`}
-          refreshing={this.state.refreshing}
-          onRefresh={this.handleRefresh}
-        />
-      </Wrapper>
-    );
-  }
-}
+const Output = HOC(DetaljiKlanja, "Detalji Klanja");
+export default Output;
 
 const ListItems = ({ data }) => {
-  console.log("ovde sam");
+  console.log("ovde sam", data);
   const { basic } = styles;
   return (
     <Card title={data.Supplier}>
@@ -117,6 +72,7 @@ const ListItems = ({ data }) => {
 };
 
 const Grid = ({ data }) => {
+  console.log("Grid-data", data);
   const tableHead = ["Redni br.", "Sifra", "Artikal", "Tezina"];
   const tableData = [
     data.map(item => item.OrderNumber),
