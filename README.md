@@ -64,6 +64,8 @@ export default MainNavigation;
 
 ### Stilizovanje
 
+CSS u JS razlike?
+
 ```javascript
 import { View, Text, StyleSheet } from 'react-native'
 
@@ -80,7 +82,7 @@ const styles = StyleSheet.create({
 })
 ```
 
-Koristi se Styled-Components dokumentacija [ovde](https://www.styled-components.com/docs/basics#react-native)
+Takodje moze da se koristi Styled-Components. dokumentacija [ovde](https://www.styled-components.com/docs/basics#react-native)
 
 ```javascript
 export const WrapperHeader = styled.View`
@@ -102,3 +104,23 @@ export const WrapperHeader = styled.View`
 |-- GridList.js
 |-- HOCbasic.js
 ```
+* Header Komponenta
+  ```javascript
+  <Header 
+    title={"naziv trenutne strane"}
+    navigate={navigate} // prosledjuje se navigate funkcija iz navigacije
+    goBack={goBack} // prosledjena funkicja
+  />
+  ```
+  
+ * GridLista Komponenta
+  
+  GridLista komponenta prima kao prop Array sa informacija iz config foldera, koristi se za prikazivanje Grid Ikonica
+  ```javascript
+  import { RuteProizvodnje } from '@config/index'
+  
+  <GridLista 
+    MainRoutes={RutePrizvodnje}
+    navigate={navigate} // prosledjuje se navigate funkcija iz navigacije
+  />
+  ```
