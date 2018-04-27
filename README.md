@@ -9,6 +9,9 @@
  yarn global add exp
 ```
 
+## Tutorial 
+[![CS50 React Native Predavanja](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=X52b-8y2Hf4&list=PLhQjrBD2T382gdfveyad09Ierl_3Jh_wR)
+
 ## Pokretanje
 
 ```bash
@@ -61,6 +64,22 @@ export default MainNavigation;
 
 ### Stilizovanje
 
+```javascript
+import { View, Text, StyleSheet } from 'react-native'
+
+<View style={styles.pozadina}>
+  <Text style={{ color: 'blue', fontSize: 18 }}>Hello World</Text>
+</View>
+
+const styles = StyleSheet.create({
+ pozadina: {
+   width: 100,
+   height: 100,
+   backgroundColor: 'green'
+ }
+})
+```
+
 Koristi se Styled-Components dokumentacija [ovde](https://www.styled-components.com/docs/basics#react-native)
 
 ```javascript
@@ -72,4 +91,14 @@ export const WrapperHeader = styled.View`
   align-items: center;
   padding: ${Constants.statusBarHeight + 5}px 12px 15px 12px;
 `;
+```
+
+### Reusable - Komponente
+
+```
+|-- CompanySlot.js
+|-- Header.js
+|-- ListItems.js
+|-- GridList.js
+|-- HOCbasic.js
 ```
