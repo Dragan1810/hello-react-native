@@ -9,7 +9,8 @@
  yarn global add exp
 ```
 
-## Tutorial 
+## Tutorial
+
 [![CS50 React Native Predavanja](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=X52b-8y2Hf4&list=PLhQjrBD2T382gdfveyad09Ierl_3Jh_wR)
 
 ## Pokretanje
@@ -104,23 +105,67 @@ export const WrapperHeader = styled.View`
 |-- GridList.js
 |-- HOCbasic.js
 ```
+
 * Header Komponenta
+
   ```javascript
-  <Header 
+  <Header
     title={"naziv trenutne strane"}
     navigate={navigate} // prosledjuje se navigate funkcija iz navigacije
     goBack={goBack} // prosledjena funkicja
   />
   ```
-  
- * GridLista Komponenta
-  
-  GridLista komponenta prima kao prop Array sa informacija iz config foldera, koristi se za prikazivanje Grid Ikonica
-  ```javascript
-  import { RuteProizvodnje } from '@config/index'
-  
-  <GridLista 
-    MainRoutes={RutePrizvodnje}
-    navigate={navigate} // prosledjuje se navigate funkcija iz navigacije
+
+* GridLista Komponenta
+
+GridLista komponenta prima kao prop Array sa informacija iz config foldera, koristi se za prikazivanje Grid Ikonica
+
+```javascript
+import { RuteProizvodnje } from '@config/index'
+
+<GridLista
+  MainRoutes={RutePrizvodnje}
+  navigate={navigate} // prosledjuje se navigate funkcija iz navigacije
+/>
+```
+
+* ListItem Komponenta
+
+ListItem komponenta se koristi za prikazivanje svih tabela u aplikaciji npr: prethodni prijem
+
+```javascript
+import Item from '@reusable-components/ListItem'
+
+<FlatList
+    data={data}
+    renderItem={({ item }) => (
+      <Item
+        item={item}
+        routeData={{
+          route: "detaljiKlanja",
+          routeUrl: `http://212.200.54.246:5001/api/SlaughterForMobile/GetSlaughter?CompanyId=1&id=${
+            item.Id
+          }&type=${item.Type}`,
+          name: item.Item
+        }}
+      />
+    )}
+    keyExtractor={(item, i) => (item.Id ? `${item.Id}` : `item-${i}`)}
+    refreshing={data.refreshing || false}
+    onRefresh={handleRefresh}
+    onEndReached={handleLoadMore || null}
+    onEndReachedThreshold={0.5}
   />
-  ```
+```
+
+* HOC(mozda refactoring u Render prop) Komponenta
+
+HOC funkcija prima komponentu, ime komponente, i URL sa koga treba da se pokupe podaci.
+
+ime i url nisu obavezni, ako se izuzmu, funkcija ce pokusati da uzme te podatke iz same komponente(kroz navigacioni prop)
+
+```javascript
+import HOC from "@reusable-components/HOCbasic";
+
+const Output = HOC(DanasnjaKlanja, "Danasnja Klanja", URL);
+```
