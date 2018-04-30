@@ -1,4 +1,8 @@
 # ERPMobile Dokumentacija
+### To-Do
+* Redux zbog Post Formi
+* Prebaciti HOC u Render prop i probati dinamicke rute
+* Error Parent Componenta + RenderProp
 
 ## Instalacija
 
