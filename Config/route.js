@@ -66,6 +66,8 @@ import PretragaShowScreen from "../screens/Documents/PretragaShow";
 
 import ArtikliDetaljiDetaljiScreen from "../components/ArtikliDetaljiDetalji";
 
+import Sledjivost from "../screens/Magacin/Sledjivost";
+
 const PigNavigation = StackNavigator(
   {
     prePigScreen: pigDrawer,
@@ -160,7 +162,8 @@ const magacinNavigation = StackNavigator(
     box: BoxesScreen,
     detailsArtikli: ArtikliDetaljiScreen,
     LagerDetaljiDetalji: ArtikliDetaljiDetaljiScreen,
-    warehouseArtikli: WarehouseArtikliScreen
+    warehouseArtikli: WarehouseArtikliScreen,
+    sledjivost: Sledjivost
   },
   {
     headerMode: "none"

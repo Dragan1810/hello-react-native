@@ -204,6 +204,11 @@ export const MagacinRoutes = [
     icon: require("../assets/Icons/warehouse.png")
   },
   {
+    id: "sledjivost",
+    title: "Sledljivost",
+    icon: require("../assets/Icons/warehouse.png")
+  },
+  {
     id: "warehouse2",
     title: "Lager Sledljivost",
     icon: require("../assets/Icons/warehouse.png")
@@ -213,11 +218,7 @@ export const MagacinRoutes = [
     title: "Skladista",
     icon: require("../assets/png/004-warehouse-1.png")
   },
-  {
-    id: "depot",
-    title: "Depoi",
-    icon: require("../assets/png/042-barn.png")
-  },
+  { id: "depot", title: "Depoi", icon: require("../assets/png/042-barn.png") },
   {
     id: "Scan",
     title: "Sledljivost Barcod",
