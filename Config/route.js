@@ -120,7 +120,8 @@ const productionNavigation = StackNavigator(
     pig: PigNavigation,
     danasnjaKlanja: DanasnjaKlanjaScreen,
     prethodnaKlanja: prethodnaKlanjaScreen,
-    detaljiKlanja: DetaljiKlanjaScreen
+    detaljiKlanja: DetaljiKlanjaScreen,
+    web: Web
   },
   {
     headerMode: "none"
